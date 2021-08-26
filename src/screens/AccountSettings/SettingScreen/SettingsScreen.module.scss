@@ -1,0 +1,16 @@
+.accountSettingsContainer {
+  border-radius: 10px;
+  height: 80%;
+  padding: 0px 60px 2rem 60px;
+  margin-bottom: 5rem;
+}
+
+.settings_header{
+  cursor: pointer;
+}
+
+.userInfoHeader{
+  background-color: var(--bg-less-dark-color) !important;
+  color: #fff !important;
+  border-radius: 5px;
+}

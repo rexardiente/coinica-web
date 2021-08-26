@@ -1,0 +1,53 @@
+$black-color: #111a44;
+$gray-color: #6c757d;
+
+#tasks-container {
+  @media (max-width: 425px) {
+    padding: 20px 15px !important;
+  }
+}
+
+.daily-task-header,
+.weekly-task-header,
+.monthly-task-header {
+  color: $black-color;
+}
+
+.icon-note {
+  margin-right: 15px;
+}
+
+.daily-timer,
+.weekly-timer,
+.monthly-timer {
+  font-size: 1.875rem;
+
+  > .icon-clock {
+    margin-left: 40px;
+    font-size: 1.75rem;
+    font-weight: 600;
+
+    img {
+      width: 25px;
+      height: 25px;
+      margin-top: -3px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .daily-timer,
+  .weekly-timer,
+  .monthly-timer {
+    font-size: 1.275rem;
+
+    > .icon-clock {
+      font-size: 1rem;
+      margin-left: 20px;
+
+      img {
+        margin-top: 0px;
+      }
+    }
+  }
+}

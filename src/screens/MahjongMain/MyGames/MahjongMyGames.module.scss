@@ -1,0 +1,144 @@
+@import "./src/assets/scss/config";
+@import "./src/assets/scss/global";
+
+.my_games_container {
+  padding: 40px 30px 40px 30px;
+  height: 430px;
+  width: 422px;
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/home_screen/my_games.png");
+  background-size: cover;
+
+  @media (max-width: 527px) {
+    height: 330px;
+    width: 322px;
+  }
+}
+
+.my_games {
+  height: 80%;
+  padding: 5px;
+  overflow-y: auto;
+}
+
+.my_games::-webkit-scrollbar {
+  width: 20px;
+}
+/* Track */
+.my_games::-webkit-scrollbar-track {
+  background: #a8a7a7;
+  border-radius: 10px;
+  border-left: 3px solid linear-gradient(#cecdce, #fafaf1);
+  border-right: 3px solid linear-gradient(#cecdce, #fafaf1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border: 2px solid #454545;
+  background: linear-gradient(to right, #adaeae, #f9f9f9);
+  border-radius: 10px;
+}
+
+.my_games_header {
+  height: 20%;
+}
+
+.my_games_title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #f6cf46;
+  // -webkit-text-stroke: 2px #53381f;
+  @media (max-width: 1280px) {
+    font-size: 1.3rem;
+    // -webkit-text-stroke: 1px #53381f;
+  }
+}
+
+.all_games {
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/home_screen/all_games.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 69%;
+  width: 43%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer !important;
+}
+
+.all_games_label {
+  font-size: 0.75;
+  font-weight: 700;
+  color: #fff;
+  @include stroke(#183153, 3px);
+}
+
+.game_details {
+  background-color: #f5f5ea;
+  border: 3px solid #5d6a96;
+}
+
+.game_tile {
+  height: 3.5vh;
+}
+
+.my_games_hr {
+  margin-top: 0 !important;
+}
+
+.game_index {
+  font-size: 1.5rem;
+  font-weight: 900;
+  -webkit-text-stroke: 1px #76502a;
+  color: white;
+  @media (max-width: 1280px) {
+    font-size: 1rem;
+  }
+}
+
+.game_success {
+  margin-left: 10px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  -webkit-text-stroke: 1px #76502a;
+  background: -webkit-linear-gradient(#fef2b7, #f6cf46);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  @media (max-width: 1280px) {
+    font-size: 1rem;
+  }
+}
+
+.game_fail {
+  margin-left: 10px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  -webkit-text-stroke: 1px #76502a;
+  background: -webkit-linear-gradient(#febcb7, #fa4b4b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  @media (max-width: 1280px) {
+    font-size: 1rem;
+  }
+}
+
+.game_earning {
+  font-size: 1rem;
+  font-weight: 900;
+  -webkit-text-stroke: 1px #76502a;
+  background: -webkit-linear-gradient(#fef2b7, #f6cf46);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.game_bet {
+  font-size: 1rem;
+  font-weight: 900;
+  -webkit-text-stroke: 1px #76502a;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.exit_button {
+  margin-top: -30px;
+  margin-right: -15px;
+}

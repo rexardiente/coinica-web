@@ -1,0 +1,157 @@
+@import "./src/assets/scss/config";
+
+:global #TreasurehuntAutoplayV2 {
+  min-height: 90vh;
+  color: #fff;
+  background-color: #222527 !important;
+}
+
+// MAIN STYLES
+.main {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    margin: 0;
+  }
+}
+.header {
+  max-width: 600px;
+  font-size: 1.5rem;
+}
+.step {
+  font-family: "Piedra", cursive;
+  color: #d5a96b;
+}
+.message {
+  color: #b5bac0;
+  font-size: 1rem;
+  line-height: 2;
+}
+.content {
+  width: 100%;
+  min-height: 300px;
+  flex-grow: 1;
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+
+  @media (max-width: 767px) {
+    margin-bottom: 40px;
+  }
+}
+.navigateBtns {
+  padding-bottom: 40px;
+}
+
+.mainPageBtn, .startBtn, .backBtn, .nextBtn {
+  cursor: pointer;
+  min-width: 168px;
+  min-height: 61px;
+}
+.mainPageBtn:hover, .mainPageBtn:hover, .startBtn:hover, .backBtn:hover, .nextBtn:hover {
+  opacity: 0.95;
+}
+.mainPageBtn:active, .mainPageBtn:active, .startBtn:active, .backBtn:active, .nextBtn:active {
+  opacity: 0.7;
+}
+// END MAIN STYLES
+
+// STEP1 STYLES
+.step1_container {
+}
+// END STEP1 STYLES
+
+// STEP2 STYLES
+.step2_container {
+  // @media(min-width: 900px) {
+  //   width: 700px;
+  // }
+
+  // label:hover {
+  //   cursor: pointer;
+  // }
+
+  // .step2_label {
+  //   margin: 0 0 0 10px;
+  // }
+  // .step2_small {
+  //   color: #cccccc;
+  // }
+}
+// END STEP2 STYLES
+
+// STEP3 STYLES
+.step3_options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  justify-content: space-between;
+  @media (max-width: 668px) {
+    justify-content: center;
+  }
+
+  input:hover,
+  label:hover {
+    cursor: pointer;
+  }
+}
+.step3_option1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-width: 300px;
+}
+.step3_option2 {
+  min-width: 300px;
+  text-align: center;
+  position: relative;
+  @media (max-width: 668px) {
+    text-align: start;
+  }
+}
+.step3_random {
+  position: absolute;
+  right: 0;
+  @media (max-width: 668px) {
+    position: unset;
+  }
+}
+// END STEP3 STYLES
+
+// CONFIRMATION STYLES
+.confirmation_container {
+  .change_btn {
+    position: absolute;
+    top: 12px;
+    right: -185px;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
+  .conf_stepContainer {
+    display: flex;
+    position: relative;
+    left: -90px;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 3px;
+  }
+  .conf_stepValue {
+    display: inline-block;
+    min-width: 50px;
+    background: #fff;
+    color: #000;
+    padding: 5px;
+    border-radius: 3px;
+  }
+}
+// END CONFIRMATION STYLES

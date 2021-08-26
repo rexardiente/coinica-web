@@ -1,0 +1,83 @@
+.referralBackgroundAsset  {
+	position: relative;
+	left: -400px;
+  top: -70px;
+}
+
+.referralLink {
+	position: absolute;
+	top : 60px;
+	left: 350px;
+	font-size: 20px;
+	z-index: 1;
+}
+
+.copyButton {
+	position: absolute;
+	top : 55px;
+	left: 685px;
+	font-size: 20px;
+	background: transparent;
+	border-width: 0px;
+	color: white;
+	height: 30px;
+	width: 85px;
+	z-index: 1;
+}
+
+.rateDisplay {
+	position: absolute;
+	top: 190px;
+	left: 250px;
+	display: grid;
+	color: white;
+	font-size: 37.5px;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 0px 245px;
+	font-family: "Poppins-Regular, Poppins";
+	z-index: 1;
+}
+
+.rateTable {
+	position: absolute;
+	top: 715px;
+	left: 70px;
+	display: grid;
+	font-size: 14px;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-gap: 30px 82px;
+	font-family: "Poppins-Regular, Poppins";
+	z-index: 1;
+}
+
+#referral-rate-bonus{
+	background-image: linear-gradient(to right, #2E3866 , #101835);
+}
+
+$background-gray: #e2e5e9;
+
+.gray-background{
+	background-color: $background-gray;
+}
+
+#referralProgram > li{
+	padding-top: 10px;
+	font-size: 15px;
+}
+
+.referral-table tbody > tr {
+	border-bottom: 1px solid #dee2e6;
+}
+  
+
+#referral-table-container{
+
+	padding: 4rem 10rem 4rem 10rem;
+  
+  
+	@media (max-width:576px) {
+  
+	  padding: 4rem 1rem 4rem 1rem;
+	  
+	}
+}

@@ -1,0 +1,46 @@
+.container {
+  margin-bottom: 1rem;
+  color: #666;
+  width: 100%;
+  height: 40px;
+  padding: 0px 12px;
+  font-size: 14px;
+  background: #fff;
+
+  font-weight: bold;
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.placeHolder {
+  margin-bottom: 0;
+  user-select: none;
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vl {
+  height: 60%;
+  margin-right: 15px;
+  border-left: black 2px solid;
+}
+
+.btnIconCopy {
+  cursor: pointer;
+
+  font-size: 1.2rem;
+}
+
+.showQrCode {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btnShowQrCode {
+  margin-right: 7px;
+}

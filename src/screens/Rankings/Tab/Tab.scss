@@ -1,0 +1,33 @@
+.tab-nav-wrapper {
+  a {
+    color: #6c757d;
+    text-transform: uppercase;
+    font-size: 1.125rem;
+
+    @media (min-width: 767px) {
+      padding: 0.625rem 1.7rem;
+    }
+
+    @media (max-width: 525px) {
+      padding: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    &.active + div.border-bottom-active {
+      height: 4px;
+      width: auto;
+      background-color: #111a44;
+      border-radius: 5px 5px 0px 0px;
+    }
+  }
+  div[role="tablist"] {
+    border-bottom: 1px solid #e2e5e9;
+  }
+}
+
+.tab-nav-wrapper,
+.tab-content-wrapper {
+  @media (max-width: 525px) {
+    padding: 0px !important;
+  }
+}

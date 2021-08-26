@@ -1,0 +1,119 @@
+// override pre-define css
+@media (min-width: 992px) {
+  .col-lg-3 {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+// main css
+#dashboard {
+  // overflow: hidden;
+
+  .card.card-play {
+    position: relative;
+    background-color: transparent;
+    flex-wrap: nowrap;
+    border: 0;
+
+    .card-img-top,
+    .card-img-bottom {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    .row {
+      border-radius: 10px 10px 10px 10px;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+
+      #card-banner {
+        background: #0a0f2d;
+        position: relative;
+        overflow: hidden;
+        float: left;
+        border-radius: 10px 10px 0 0;
+        padding: 0;
+
+        .game-img {
+          opacity: 1;
+          display: block;
+          width: 100%;
+          height: auto;
+          transition: 0.5s ease;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+      }
+
+      &:hover #card-banner {
+        cursor: pointer;
+
+        .game-img {
+          opacity: 1;
+          vertical-align: top;
+          transform: scale(1.2);
+          transition: transform 0.2s linear;
+          transform: translateZ(1);
+        }
+
+        &:after {
+          content: "\A";
+          position: absolute;
+          min-width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background: rgba(0, 0, 0, 0.6);
+          opacity: 1;
+          transition: all 0.5s;
+          -webkit-transition: all 0.5s;
+        }
+
+        &:hover:after {
+          opacity: 1;
+        }
+      }
+
+      .play-button {
+        transition: 0.5s ease;
+        opacity: 0;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+        top: 50%;
+        left: 50%;
+      }
+
+      &:hover .play-button {
+        opacity: 1;
+      }
+
+      .card-body {
+        background-color: #0a0f2d;
+        color: var(--contrast-color);
+        // margin-top: -20px;
+        border-radius: 0 0 10px 10px;
+        z-index: 1;
+        line-height: 13px;
+        padding: 1rem;
+
+        h1 {
+          font-size: 12px;
+          font-weight: bolder;
+          margin-bottom: 2px;
+        }
+      }
+    }
+  }
+
+  .description .card-text  {
+      font-weight: lighter;
+      font-size: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+  }
+}

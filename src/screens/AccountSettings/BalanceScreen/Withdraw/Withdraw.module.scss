@@ -1,0 +1,108 @@
+.container {
+  padding: 40px 60px;
+  margin-bottom: 5rem;
+
+  @media (max-width: 576px) {
+    padding: 10px;
+  }
+
+  h6 {
+    font-weight: bold;
+    font-size: 1.125rem;
+  }
+}
+
+.stepOne {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropDownCurrency {
+  margin-top: 15px;
+}
+
+.numberCircle {
+  width: 1.125em;
+  height: 1.125em;
+  display: inline-block;
+
+  box-sizing: initial;
+  border: 2px solid #000;
+
+  color: #000;
+  text-align: center;
+  border-radius: 50%;
+  box-sizing: content-box;
+}
+
+.iconQuestion {
+  svg {
+    margin-right: 4px;
+    font-size: 1.125rem;
+  }
+}
+
+.stepTwo {
+  margin-top: 25px;
+  h6 {
+    margin-bottom: 15px;
+  }
+}
+
+.formContainer {
+  label {
+    font-size: 0.8125rem;
+    font-weight: bold;
+  }
+}
+
+.currency {
+  text-transform: uppercase;
+}
+
+.asterisk {
+  &::after {
+    content: "*";
+    display: inline-block;
+    color: red;
+    margin-left: 5px;
+  }
+}
+
+.noMemo {
+  float: right;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+
+  label {
+    margin-bottom: 0;
+  }
+
+  input[type="checkbox"] {
+    margin-right: 7px;
+  }
+}
+
+.divider {
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.note {
+  h5 {
+    font-weight: bold;
+  }
+  p {
+    font-size: 0.875rem;
+    &::before {
+      width: 8px;
+      height: 8px;
+      content: "";
+      display: inline-block;
+      background: #57d657;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  }
+}

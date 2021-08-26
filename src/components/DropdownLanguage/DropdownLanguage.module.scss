@@ -1,0 +1,28 @@
+.buttonLang {
+  padding: 0;
+
+  > button {
+    color: #adadad;
+
+    &:hover {
+      color: #d8d8d8;
+    }
+  }
+
+  > div > button {
+    color: #adadad;
+
+    &:hover {
+      color: #141c3c;
+    }
+  }
+}
+
+.fixedPosWhenCollapsed {
+  div {
+    position: fixed !important;
+    inset: auto auto 120px 40px !important;
+    margin: 0px !important;
+    transform: none !important;
+  }
+}

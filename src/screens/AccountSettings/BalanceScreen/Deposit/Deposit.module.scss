@@ -1,0 +1,144 @@
+.container {
+  padding: 40px 60px;
+  margin-bottom: 5rem;
+
+  @media (max-width: 576px) {
+    padding: 10px;
+  }
+
+  h6 {
+    font-weight: bold;
+    font-size: 1.125rem;
+  }
+}
+
+.stepOne {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.stepTwo {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropDownCurrency {
+  margin-top: 5px;
+}
+
+.numberCircle {
+  width: 21px;
+  height: 21px;
+  display: inline-block;
+
+  box-sizing: initial;
+  border: 2px solid #000;
+
+  color: #000;
+  text-align: center;
+  border-radius: 50%;
+  box-sizing: content-box;
+}
+
+.stepTwo,
+.stepThree {
+  margin-top: 25px;
+}
+
+.copyCurrency,
+.copyMemo,
+.exchangeReceiveLabel,
+.exchangeDepositLabel {
+  font-size: 0.8125rem;
+  font-weight: bold;
+}
+
+.labelCopy {
+  margin-bottom: 8px;
+}
+
+.currency {
+  text-transform: uppercase;
+}
+
+.divider {
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.note {
+  h5 {
+    font-weight: bold;
+  }
+  p {
+    font-size: 0.875rem;
+    &::before {
+      width: 8px;
+      height: 8px;
+      content: "";
+      display: inline-block;
+      background: #57d657;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.modalDialogMemo_qrCode {
+  max-width: 250px !important;
+
+  @media (min-width: 0px) and (max-width: 576px) {
+    max-width: 500px !important;
+  }
+}
+
+.exchangeForm {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 575px) {
+    flex-direction: column;
+  }
+}
+
+.exchangeReceive,
+.exchangeDeposit {
+  flex: 1 0 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+.exchangeDepositLabel {
+  display: flex;
+  justify-content: space-between;
+}
+
+.exchangeIcon {
+  margin: auto 10px;
+  align-items: center;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.dropDownExchange {
+  button {
+    width: 100%;
+  }
+}
+
+.depositFee,
+.depositLimit {
+  font-weight: normal;
+}
+
+.depositLimit {
+  font-size: 0.8125rem;
+  margin-top: 5px;
+  span {
+    &:first-child {
+      margin-right: 25%;
+    }
+  }
+}

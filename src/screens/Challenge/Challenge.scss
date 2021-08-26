@@ -1,0 +1,28 @@
+#button-toggle {
+  margin-top: -20px;
+}
+
+.challenge-banner {
+  img {
+    max-height: 358px;
+    object-fit: cover;
+  }
+}
+
+.challenge-container {
+  padding: 0 6rem 4rem 6rem;
+
+  @media (max-width: 576px) {
+    padding: 0 2rem 4rem 2rem;
+  }
+}
+
+$background-gray: #e2e5e9;
+
+.card.top-three {
+  background-color: $background-gray;
+}
+
+.gray {
+  background-color: $background-gray;
+}

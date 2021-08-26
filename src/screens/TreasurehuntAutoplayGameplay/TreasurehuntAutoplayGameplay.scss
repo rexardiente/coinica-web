@@ -1,0 +1,358 @@
+@import "./src/assets/scss/config";
+
+.TreasurehuntAutoplayGameplay-Error-Modal {
+  // ERROR MODAL
+  .modal-content {
+    background-color: #181816 !important;
+    border: 1px solid #d8a764;
+    color: wheat;
+  }
+}
+
+#TreasurehuntAutoplayGameplay {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 85px !important;
+  color: #641e15;
+  background-color: #4e2a1a !important;
+  background: url("#{$ASSETS_URL}/imgs/games/treasurehunt_v3/gameplay/background.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media (max-width: 768px) {
+    .gameplay-container {
+      padding: 120px 0px;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .gameplay-container {
+      zoom: 0.5;
+    }
+  }
+  @media only screen and (min-width: 980px) {
+    .gameplay-container {
+      zoom: 0.6;
+    }
+  }
+  @media only screen and (min-width: 1150px) {
+    .gameplay-container {
+      zoom: 0.7;
+    }
+  }
+  @media only screen and (min-width: 1450px) {
+    .gameplay-container {
+      zoom: 0.8;
+    }
+  }
+  @media only screen and (min-width: 1800px) {
+    .gameplay-container {
+      zoom: 1;
+    }
+  }
+  @media only screen and (min-width: 2500px) {
+    .gameplay-container {
+      zoom: 1.2;
+    }
+  }
+  @media only screen and (min-width: 3840px) {
+    .gameplay-container {
+      zoom: 1.8;
+    }
+  }
+
+  .left-container,
+  .map-container,
+  .right-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    min-height: calc(100vh - 110px);
+  }
+
+  .game_start_btn:hover,
+  .withdraw_btn:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+
+  .recent_game_item_spinner {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  // MAP
+  .map-container {
+    font-family: "TH Secondary";
+    align-items: center;
+  }
+
+  #map-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  #tiles-1 {
+    padding: 0px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  #tiles-1.tile-disabled:hover {
+    cursor: not-allowed;
+  }
+  #tiles-1:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  #tiles-row:nth-child(2) {
+    #tiles-1 {
+      top: -3px;
+    }
+  }
+  #tiles-row:nth-child(3) {
+    #tiles-1 {
+      top: -6px;
+    }
+  }
+  #tiles-row:nth-child(4) {
+    #tiles-1 {
+      top: -9px;
+    }
+  }
+  #tiles-row:nth-child(5) {
+    #tiles-1 {
+      top: -12px;
+    }
+  }
+  #tiles-row:nth-child(6) {
+    #tiles-1 {
+      top: -15px;
+    }
+  }
+
+  #tiles-1:nth-child(2) {
+    left: -3px;
+  }
+  #tiles-1:nth-child(3) {
+    left: -6px;
+  }
+  #tiles-1:nth-child(4) {
+    left: -9px;
+  }
+  // END MAP
+
+  .left_wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .left_nav_parent {
+      height: 700px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .left_nav {
+      min-width: 320px;
+      min-height: 300px;
+      border: 2px solid #d8a764;
+      border-radius: 5px;
+      background-color: #282520;
+      padding: 20px;
+
+      .recent-history {
+        height: 350px;
+        overflow: auto;
+        padding-right: 5px;
+
+        &::-webkit-scrollbar {
+          width: 3px;
+          height: 3px;
+        }
+        &::-webkit-scrollbar-button {
+          width: 0px;
+          height: 0px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #d8a764;
+          border: 0px none #ffffff;
+          border-radius: 50px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+          background: #d59234;
+        }
+        &::-webkit-scrollbar-thumb:active {
+          background: #d59234;
+        }
+        &::-webkit-scrollbar-track {
+          background: #282520;
+          border: 0px none #ffffff;
+          border-radius: 2px;
+        }
+        &::-webkit-scrollbar-track:hover {
+          background: #000000;
+        }
+        &::-webkit-scrollbar-track:active {
+          background: #000000;
+        }
+        &::-webkit-scrollbar-corner {
+          background: transparent;
+        }
+      }
+    }
+
+    .left_details {
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .paper_value {
+        position: absolute;
+        margin: 0 !important;
+        padding: 0 !important;
+        color: #000;
+      }
+    }
+
+    .left_buttons {
+      max-width: 100%;
+      display: flex;
+
+      .home_btn {
+        width: 70px;
+        height: 61px;
+        background: url("#{$ASSETS_URL}/imgs/games/treasurehunt_v3/gameplay/buttons/btn_home.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      .home_btn:hover {
+        cursor: pointer;
+        background: url("#{$ASSETS_URL}/imgs/games/treasurehunt_v3/gameplay/buttons/btn_home_hover.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      .home_btn:active {
+        cursor: pointer;
+        background: url("#{$ASSETS_URL}/imgs/games/treasurehunt_v3/gameplay/buttons/btn_home_active.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+
+      .rules_btn {
+        width: 170px;
+        background: url("#{$ASSETS_URL}/imgs/games/treasurehunt_v3/gameplay/buttons/btn_rules.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      .rules_btn:hover {
+        cursor: pointer;
+        background: url("#{$ASSETS_URL}/imgs/games/treasurehunt_v3/gameplay/buttons/btn_rules_hover.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      .rules_btn:active {
+        cursor: pointer;
+        background: url("#{$ASSETS_URL}/imgs/games/treasurehunt_v3/gameplay/buttons/btn_rules_active.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  .right_wrapper {
+    font-family: "TH Primary";
+    text-transform: lowercase;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .right_details {
+      max-width: 100%;
+      min-width: 320px;
+      height: 700px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background: #282520;
+      border: 2px solid #d8a764;
+      border-radius: 5px;
+
+      .winnings_detail {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .stop_param_title {
+        line-height: 2em;
+      }
+      .title {
+        color: #e0b579eb;
+        font-size: 1.8rem;
+      }
+      .stop_param_wrapper {
+        text-align: end;
+        line-height: 0em;
+      }
+      .value_wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        overflow: auto;
+      }
+      .value {
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 2rem;
+        line-height: 1em;
+        margin-bottom: 6px;
+      }
+      .value_unit {
+        font-size: 3rem;
+        line-height: 1em;
+      }
+
+      .stop_btn_wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: scale(0.8);
+
+        &:hover {
+          filter: brightness(1.1);
+        }
+        &:active {
+          filter: brightness(0.9);
+        }
+      }
+    }
+  }
+}

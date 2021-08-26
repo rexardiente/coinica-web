@@ -1,0 +1,22 @@
+.footer.py-3 {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  z-index: 400;
+  font-family: sans-serif;
+  padding-left: 230px;
+
+   @media (max-width: 960px) {
+    padding-left: 0px;
+  }
+
+  small {
+    font-weight: 200;
+    letter-spacing: 0.8px;
+    font-size: 0.7rem;
+  }
+
+  small:hover {
+    cursor: pointer;
+  }
+}

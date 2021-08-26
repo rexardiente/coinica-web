@@ -1,0 +1,44 @@
+#carousel-controls {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -25px;
+  margin-right: -25px;
+  margin-top: -25px;
+}
+
+// .carousel-inner{
+//   height: 400px;
+// }
+
+.carousel-item {
+  height: 100%;
+  transition: transform 0.1s ease-in-out;
+}
+
+.carousel-vip{
+  background-color: white;
+  padding: 20px 70px 20px 70px;
+  border-radius: 40px;
+  opacity: 0;
+}
+
+.carousel-mahjong{
+  background-color: white;
+  padding: 25px 90px 25px 90px;
+  border-radius: 40px;
+  opacity: 0;
+  margin-left: 135px;
+  margin-bottom: 10px;
+}
+
+.carousel-image{
+
+@media (max-width: 411px){
+  height: 5em;
+  overflow: hidden;
+  transform: scale(1.7);
+  margin-top: 57px;
+  transform-origin: bottom;
+}
+
+}

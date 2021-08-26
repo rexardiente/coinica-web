@@ -1,0 +1,25 @@
+.content-instructions {
+  > p {
+    font-size: 1.75rem;
+    color: #6c757d;
+    font-weight: 500;
+  }
+  #list-instructions {
+    background-color: #e2e5e9;
+
+    ol li {
+      color: #3d404a;
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin-left: 20px;
+      color: #6c757d;
+      font-weight: 600;
+
+      @media (max-width: 767px) {
+        margin-left: 5px;
+      }
+    }
+  }
+}

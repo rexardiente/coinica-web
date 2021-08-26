@@ -1,0 +1,49 @@
+@keyframes fadeInDownBig {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -2000px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.outer {
+  z-index: 160;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  z-index: 160;
+  position: relative;
+  height: 100%;
+  text-align: center;
+  margin-bottom: 60px;
+  & :local {
+    animation-name: fadeInDownBig;
+    animation-duration: 500ms;
+  }
+  
+  .closeBtn {
+    position: absolute;
+    top: 14%;
+    right: -7%;
+  }
+
+  .sortButtonsContainer {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    width: 320px;
+  }
+
+  .sortBtn {
+    transform: scale(1);
+    padding: 0 !important;
+  }
+}

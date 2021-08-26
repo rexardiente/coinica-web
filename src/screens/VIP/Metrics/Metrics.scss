@@ -1,0 +1,28 @@
+.icon-rank {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+
+  @media (max-width: 375px) {
+    margin-right: 3px;
+  }
+}
+
+.icon-rank-bronze {
+  background: transparent
+    linear-gradient(163deg, #c57600 0%, #ffba53 52%, #c57600 100%);
+  border: 1px solid #e7e7e7;
+}
+
+.icon-rank-silver {
+  background: transparent
+    linear-gradient(163deg, #808080 0%, #ffffff 52%, #808080 100%);
+  border: 1px solid #e7e7e7;
+}
+
+.icon-rank-gold {
+  background: transparent
+    linear-gradient(163deg, #c5b700 0%, #ffef1d 52%, #c5b700 100%);
+  border: 1px solid #e7e7e7;
+}

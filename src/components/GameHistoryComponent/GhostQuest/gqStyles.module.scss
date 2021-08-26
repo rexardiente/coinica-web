@@ -1,0 +1,77 @@
+.gamehistoryContainer {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding-top: 20px;
+  padding-bottom: 90px;
+  background-color: #000;
+}
+
+.gamehistoryTable {
+  width: 50% !important;
+  margin: 0 auto;
+  background: transparent !important;
+}
+
+.tableBody {
+  th {
+    vertical-align: middle !important;
+  }
+  h5 {
+    margin: 0;
+  }
+}
+
+.gameIcon {
+  width: 70px;
+  height: 50;
+  margin-right: 10px;
+}
+
+.gameIdLink {
+  text-decoration: underline;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.tableTransparentRow {
+  border: 0px !important;
+
+  th {
+    border: 0px !important;
+  }
+}
+
+.scrollableDiv {
+  width: 80% !important;
+  margin: 0 auto;
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.scrollableDiv::-webkit-scrollbar{
+  width: 17px;
+  background-color: #8a4338;
+}
+.scrollableDiv::-webkit-scrollbar:horizontal{
+  height: 17px;
+}
+.scrollableDiv::-webkit-scrollbar-track{
+  border: 3px #5d1b0e solid;
+  box-shadow: 0 0 6px #5d1b0e inset;
+  -webkit-box-shadow: 0 0 6px #5d1b0e inset;
+}
+.scrollableDiv::-webkit-scrollbar-thumb{
+  background-color: #695a6a;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  box-shadow: 7px 6px 1px #594858 inset;
+  -webkit-box-shadow: 7px 6px 1px #594858 inset;
+}
+.scrollableDiv::-webkit-scrollbar-thumb:hover{
+  background-color: #6f6470;
+  border: 1px solid #333333;
+}
+.scrollableDiv::-webkit-scrollbar-thumb:active{
+  border: 1px solid #000000;
+}

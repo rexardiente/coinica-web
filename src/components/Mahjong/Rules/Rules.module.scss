@@ -1,0 +1,184 @@
+@import "./src/assets/scss/config";
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  padding: 40px 40px 40px 60px;
+  align-items: center;
+  flex-direction: column;
+  height: 566px;
+  width: 100%;
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/home_screen/rules_bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 99.99%;
+  background-position-x: center;
+  background-position-y: center;
+
+  @media (max-width: 425px) {
+    padding: 20px 20px 20px 30px;
+    background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/home_screen/rules_bg_mob.png");
+  }
+}
+
+.header {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.25);
+
+  h1 {
+    font-size: 1.5rem;
+    color: #f6cf46;
+  }
+}
+
+.content {
+  overflow-y: auto;
+  width: 100%;
+}
+
+.wrapper {
+  margin-right: 20px;
+}
+
+.close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background-color: transparent;
+  border: none;
+  color: black;
+  padding: 0;
+}
+
+.title {
+  color: #2d64e1;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.paragraph {
+  color: #254b7e;
+  font-size: 1rem;
+  white-space: pre-line;
+  text-align: justify;
+  font-weight: 700;
+}
+
+.diagramContainer {
+  background-color: #2c39a7;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 330px;
+  padding-top: 42px;
+  padding-left: 37px;
+}
+
+.box {
+  background-color: #2d64e1;
+  width: 140.78px;
+  height: 75.08px;
+  padding: 8px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: white;
+  text-align: center;
+}
+
+.break1 {
+  display: inline-flex;
+  justify-content: flex-end;
+  flex-basis: 80%;
+  height: 46.78px;
+  margin-top: -60px;
+}
+
+.arrow {
+  width: 37.54px;
+  height: 46.78px;
+}
+
+.arrow1,
+.arrow2 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.arrow3 {
+  margin-right: 10%;
+  transform: rotate(-140deg);
+}
+.arrow4 {
+  margin-right: 10%;
+  transform: rotate(120deg);
+}
+
+.arrow5 {
+  transform: rotate(45deg);
+}
+
+.break2 {
+  flex-basis: 45%;
+  height: 0;
+}
+
+.refresh {
+  margin-right: 15px;
+  margin-top: -80px;
+}
+
+.complete {
+  margin-top: -80px;
+}
+
+.fontWeight_900 {
+  font-weight: 900;
+  color: #2d64e1;
+}
+
+table.tableOddsCalculation {
+  thead th,
+  tbody td {
+    border: 1px solid #182d5a;
+    text-align: center;
+  }
+
+  thead tr {
+    background-color: #2d64e1;
+    color: white;
+  }
+
+  tbody tr {
+    &:nth-child(odd) {
+      background-color: #9eb7f0;
+    }
+    &:nth-child(even) {
+      background-color: #d0ddfa;
+    }
+  }
+}
+
+.rankingList {
+  padding-left: 20px;
+}

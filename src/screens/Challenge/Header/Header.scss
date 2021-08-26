@@ -1,0 +1,11 @@
+.challenge-title h3 {
+  @media (min-width: 320px) {
+    font-size: 0.875rem;
+  }
+  @media (min-width: 425px) {
+    font-size: 1.3rem;
+  }
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+  }
+}

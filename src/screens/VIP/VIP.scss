@@ -1,0 +1,214 @@
+@import "./src/assets/scss/config";
+
+$base-black-color: #111a44;
+$gray-color: #6c757d;
+
+#vip-container {
+  @media (max-width: 425px) {
+    padding-top: 20px !important;
+  }
+  .vip-page-title {
+    margin-left: 25px;
+    font-size: 1.5rem;
+    color: $base-black-color;
+
+    .tie {
+      display: inline-block;
+    }
+  }
+
+  .vip-banner {
+    height: 315px;
+    width: 100%;
+    background-image: url("#{$ASSETS_URL}/imgs/platform/vip/banner.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+
+    @media (max-width: 475px) {
+      height: 200px;
+    }
+
+    @media (max-width: 767px) {
+      background-image: url("#{$ASSETS_URL}/imgs/platform/vip/banner-mob.png");
+      background-size: 100%;
+    }
+
+    @media (min-width: 1605px) {
+      height: 450px;
+    }
+  }
+}
+
+//Content
+#vip-content {
+  padding: 0px 40px;
+  @media (max-width: 425px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .vip-username {
+    font-size: 1.75rem;
+    text-transform: capitalize;
+
+    > span {
+      font-size: 1.375rem;
+    }
+  }
+
+  .vip-content-metrics,
+  .vip-content-progress {
+    background-color: #fff;
+    border-radius: 4px;
+    height: 200px;
+
+    @media (max-width: 767px) {
+      margin-bottom: 15px;
+    }
+  }
+
+  .vip-content-metrics {
+    @media (max-width: 767px) {
+      flex-basis: auto;
+    }
+    .title {
+      font-size: 1.125rem;
+      font-weight: 500;
+
+      > span {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: normal;
+
+        @media (max-width: 767px) {
+          display: inline;
+          margin-left: 14px;
+        }
+      }
+    }
+    .value {
+      font-size: 1.125rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      text-transform: capitalize;
+    }
+
+    @media (max-width: 425px) {
+      .title,
+      .value {
+        font-size: 1rem;
+      }
+
+      .title span {
+        font-size: 0.625rem;
+      }
+    }
+  }
+
+  .vip-content-progress {
+    @media (max-width: 767px) {
+      .tie-wrapper {
+        justify-content: flex-start !important;
+        flex-basis: 0;
+
+        img {
+          width: 25px;
+          height: 36px;
+        }
+      }
+    }
+
+    // svg {
+    //   width: 43px;
+    //   height: 61px;
+
+    //   @media (max-width: 767px) {
+    //     width: 25px;
+    //     height: 36px;
+    //   }
+    // }
+    .progress-wrapper {
+      font-size: 0.75rem;
+      > div {
+        flex-basis: auto;
+      }
+
+      .progress-title {
+        font-weight: 600;
+      }
+
+      .progress {
+        background-color: #3d404a;
+        border-radius: 2px;
+        padding: 2px;
+      }
+
+      > :first-child {
+        .progress-current {
+          color: #7289da;
+        }
+        .progress-bar {
+          background-color: #7289da;
+        }
+      }
+
+      > :last-child {
+        .progress-current {
+          color: #ef9a3a;
+        }
+        .progress-bar {
+          background-color: #ef9a3a;
+        }
+      }
+
+      @media (max-width: 767px) {
+        flex-basis: 60%;
+        align-items: center;
+      }
+    }
+  }
+
+  .tie-text {
+    font-size: 0.895rem;
+    font-weight: 500;
+  }
+
+  #vip-table {
+    background-image: url("#{$ASSETS_URL}/imgs/platform/vip/mask-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba($color: #2e3866, $alpha: 1);
+    background-position: center top;
+    font-size: 0.875rem;
+    position: relative;
+    padding-bottom: 10px;
+
+    @media (max-width: 767px) {
+      padding: 10px 0px 0px 10px;
+
+      .column-bg-divider {
+        display: grid;
+        grid-template-columns: repeat(3, 33.333%);
+        grid-column-gap: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        overflow: hidden;
+        margin-top: 3.5rem;
+
+        div {
+          &:nth-child(2) {
+            background-color: rgba(255, 255, 255, 0.05);
+          }
+          &:nth-child(3) {
+            background-color: rgba(255, 179, 0, 0.09);
+          }
+        }
+      }
+    }
+  }
+}

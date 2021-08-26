@@ -1,0 +1,44 @@
+.gamehistoryContainer {
+  margin-top: -8px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding-top: 20px;
+  padding-bottom: 90px;
+  background-color: #000;
+}
+
+.gamehistoryTable {
+  width: 60% !important;
+  margin: 0 auto;
+  background: transparent !important;
+}
+
+.tableBody {
+  th {
+    vertical-align: middle !important;
+  }
+  h5 {
+    margin: 0;
+  }
+}
+
+.gameIcon {
+  width: 70px;
+  height: 50;
+  margin-right: 10px;
+}
+
+.gameIdLink {
+  text-decoration: underline;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.tableTransparentRow {
+  border: 0px !important;
+
+  th {
+    border: 0px !important;
+  }
+}

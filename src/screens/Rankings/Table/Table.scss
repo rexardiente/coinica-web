@@ -1,0 +1,36 @@
+table.table-ranking {
+  text-transform: capitalize;
+
+  thead th {
+    border-bottom: none;
+    border-top: none;
+    color: #6c757d;
+    font-size: 1rem;
+    padding: 1.2rem;
+
+    @media (max-width: 425px) {
+      font-size: 0.875rem;
+      padding: 1.25rem;
+    }
+  }
+
+  tbody td {
+    border-top: 1px solid #e2e5e9;
+    color: #111a44;
+    padding: 1.2rem;
+    img {
+      margin-right: 5px;
+    }
+
+    @media (max-width: 425px) {
+      font-size: 0.75rem;
+      padding: 1.25rem;
+    }
+  }
+
+  .img-profile {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+  }
+}

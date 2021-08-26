@@ -1,0 +1,49 @@
+@import "../MahjongGameplay.module.scss";
+
+.tilesWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 127px;
+  min-height: 43px;
+
+  @media (max-width: 320px) {
+    min-width: 90px;
+  }
+
+  > div:not(:first-of-type) {
+    margin-top: 10px;
+  }
+}
+
+.numberOfTiles {
+  text-align: left;
+  @extend .textDarkYellow;
+}
+
+//tile size when max-width is 768px
+$tileWidth: 37px;
+$tileHeight: 57px;
+.rowTiles {
+  display: flex;
+  img {
+    &:not(:first-of-type) {
+      margin-left: 5px;
+    }
+
+    @media (min-width: 320px) and (max-width: 425px) {
+      width: calc(#{$tileWidth} - (#{$tileWidth} * (50 / 100)));
+      height: calc(#{$tileHeight} - (#{$tileHeight} * (50 / 100)));
+    }
+
+    @media (min-width: 425px) and (max-width: 576px) {
+      width: calc(#{$tileWidth} - (#{$tileWidth} * (30 / 100)));
+      height: calc(#{$tileHeight} - (#{$tileHeight} * (30 / 100)));
+    }
+
+    @media (min-width: 576px) and (max-width: 768px) {
+      width: $tileWidth;
+      height: $tileHeight;
+    }
+  }
+}

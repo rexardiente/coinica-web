@@ -1,0 +1,50 @@
+@import "./src/assets/scss/config";
+
+$black-color: #111a44;
+$gray-color: #6c757d;
+
+#ranking-container {
+  overflow: hidden;
+
+  @media (max-width: 525px) {
+    padding: 20px 15px !important;
+  }
+}
+
+.tab-ranking {
+  position: relative;
+
+  .bg-cup {
+    background-image: url("#{$ASSETS_URL}/imgs/platform/rankings/cup.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: bottom;
+    width: 38%;
+    min-height: 400px;
+    position: absolute;
+    top: 0;
+    bottom: 2.1rem;
+    right: -6rem;
+
+    @media (max-width: 1500px) {
+      width: 35%;
+      min-height: 375px;
+    }
+
+    @media (max-width: 1199px) {
+      display: none;
+    }
+  }
+}
+
+.ranking-header {
+  .icon-star {
+    img {
+      margin-right: 8px;
+    }
+    span {
+      color: $gray-color;
+      font-size: 1.875rem;
+    }
+  }
+}

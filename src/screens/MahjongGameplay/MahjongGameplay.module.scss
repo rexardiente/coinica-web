@@ -1,0 +1,129 @@
+.parent_container {
+  font-family: Nunito;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+}
+
+//Grid container
+.content {
+  width: 100%;
+  background: radial-gradient(circle, #3f4aac 5%, #272540);
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  grid-template-rows: repeat(6, max-content);
+
+  grid-template-areas:
+    "menu category action"
+    "turn kong wallet"
+    "hand hand hand";
+  column-gap: 60px;
+  justify-content: center;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    grid-template-columns: 60% 40%;
+    grid-template-rows: repeat(5, max-content);
+    grid-template-areas:
+      "category menu"
+      "turn kong"
+      "hand hand"
+      "action action"
+      "wallet wallet";
+    column-gap: unset;
+  }
+
+  @media (min-width: 768.98px) and(max-width: 991.98px) {
+    column-gap: 25px;
+  }
+}
+
+//Grid items
+.itemMenu {
+  grid-area: menu;
+
+  @media (max-width: 768px) {
+    order: 2;
+    justify-self: end;
+  }
+}
+.itemCategory {
+  grid-area: category;
+  justify-self: end;
+
+  @media (max-width: 768px) {
+    order: 1;
+    justify-self: start;
+  }
+}
+.itemActions {
+  grid-area: action;
+  grid-row: 1 / span 2;
+
+  @media (max-width: 768px) {
+    order: 6;
+    grid-row: unset;
+    justify-self: stretch;
+    margin-top: 40px;
+  }
+}
+.itemTurn {
+  grid-area: turn;
+  grid-row: 2 / span 3;
+  align-self: end;
+
+  @media (max-width: 768px) {
+    order: 3;
+    margin-top: 22px;
+  }
+}
+.itemKong {
+  grid-area: kong;
+  grid-row: 2 / span 3;
+  align-self: end;
+
+  @media (max-width: 768px) {
+    order: 4;
+    justify-self: end;
+  }
+}
+.itemWallet {
+  grid-area: wallet;
+  grid-row: 3 / span 2;
+  margin-top: 40px;
+
+  @media (max-width: 768px) {
+    order: 7;
+    grid-row: unset;
+    justify-self: stretch;
+  }
+}
+.itemHand {
+  grid-area: hand;
+  grid-row: 5 / span 2;
+  margin-top: 40px;
+
+  @media (max-width: 768px) {
+    order: 5;
+    grid-row: unset;
+  }
+}
+
+.menuContainer {
+  width: 67px;
+  height: 67px;
+
+  @media (max-width: 768px) {
+    order: 1;
+    justify-self: start;
+  }
+}
+
+.textDarkYellow {
+  color: #f6cf46;
+  font-weight: 700;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 33px;
+  letter-spacing: 0.05em;
+}

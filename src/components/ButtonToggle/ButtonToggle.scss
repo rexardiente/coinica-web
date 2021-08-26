@@ -1,0 +1,27 @@
+$black-color: #111a44;
+
+// .btn-toggle {
+//   .btn-outline-dark:not(:disabled):not(.disabled):active,
+//   .btn-outline-dark:not(:disabled):not(.disabled).active,
+//   .show > .btn-outline-dark.dropdown-toggle {
+//     background-color: $black-color;
+//   }
+
+// .btn-outline-dark {
+//   color: $black-color;
+//   border-color: $black-color;
+// }
+
+.btn-toggle {
+  .btn-light:not(:disabled):not(.disabled):active,
+  .btn-light:not(:disabled):not(.disabled).active,
+  .show > .btn-light.dropdown-toggle {
+    background-color: $black-color;
+    color: white;
+  }
+
+  .btn-light {
+    color: $black-color;
+    border-color: $black-color;
+  }
+}

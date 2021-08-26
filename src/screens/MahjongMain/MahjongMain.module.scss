@@ -1,0 +1,162 @@
+@import "./src/assets/scss/config";
+@import "./src/assets/scss/global";
+
+.parent_container {
+  // display: flex;
+  // min-height: 70vh;
+  font-family: "Nunito";
+  position: relative;
+}
+
+.background {
+  overflow-x: hidden;
+  position: relative;
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/home_screen/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  @media (max-width: 527px) {
+    height: 90vh;
+  }
+}
+
+.content {
+  width: 100%;
+  // height: 100%;
+  max-width: 1800px;
+}
+
+.girlBG {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  height: 90%;
+
+  @media (max-width: 527px) {
+    position: absolute;
+    left: -10%;
+    height: 70vh;
+    bottom: 0;
+  }
+}
+
+.help {
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/home_screen/Help.png");
+}
+
+.ranking {
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/home_screen/Ranking.png");
+}
+
+.my_data {
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/home_screen/my_data.png");
+}
+
+.settings {
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/home_screen/Settings.png");
+}
+
+.logo_header {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  justify-content: center;
+
+  @media (max-width: 991px) {
+    justify-content: space-between;
+  }
+
+  @media (max-width: 527px) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+.all_games_button {
+  display: none;
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/home_screen/all_games_mob.png");
+  height: 55.3px;
+  width: 161.5px;
+  background-size: cover;
+  background-color: transparent;
+  border: none;
+
+  @media (max-width: 991px) {
+    display: block;
+  }
+
+  @media (max-width: 527px) {
+    height: 46.15px;
+    width: 133.8px;
+  }
+}
+
+.logo {
+  height: 300px;
+  @media (max-width: 527px) {
+    height: 20vh;
+  }
+}
+
+.start_game {
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/home_screen/start_game.png");
+  height: 126px;
+  width: 422px;
+  background-size: cover;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 10px;
+
+  @media (max-width: 991px) {
+    margin-top: 30%;
+  }
+
+  @media (max-width: 527px) {
+    height: 8.9vh;
+    width: 30vh;
+    margin-top: 60%;
+  }
+}
+
+.start_game_label {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #f6cf46;
+  @media (max-width: 527px) {
+    font-size: 1.5rem;
+  }
+}
+
+.mj_4_button {
+  background-size: cover;
+  height: 90px;
+  width: 90px;
+  background-color: transparent;
+  border: none;
+  margin-left: 2rem;
+
+  @media (max-width: 527px) {
+    height: 60px;
+    width: 60px;
+    margin-left: 2rem;
+  }
+}
+
+.mj_button_container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.mj_button:active {
+  transform: scale(0.9);
+}
+
+.mj_button_label {
+  display: block;
+  margin-top: 45%;
+  font-size: 14px;
+  font-weight: bold;
+  color: #214893;
+  @include stroke(#fff, 2px);
+}

@@ -1,0 +1,55 @@
+.modalContent {
+  padding: 20px;
+  color: #fff;
+  background-image: linear-gradient(
+    var(--bg-dark-color),
+    var(--bg-less-dark-color)
+  );
+}
+
+.tabContainer {
+  padding: 20px 20px 0px 20px;
+  strong {
+    color: #fff;
+  }
+}
+
+.formGroup {
+  margin-bottom: 30px;
+}
+
+.separator {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 0.5px solid #fff;
+}
+
+.separator:not(:empty)::before {
+  margin-right: 0.75em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: 0.75em;
+}
+
+.blue {
+  color: #007bff;
+  &:hover {
+    cursor: pointer;
+    color: #74b5ff;
+  }
+}
+
+.label {
+  font-size: 12px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
