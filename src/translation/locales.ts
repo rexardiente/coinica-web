@@ -1,6 +1,8 @@
 import { translate } from "helpers/translate";
 
-export default {
+export const locales = {
   en: "English",
   ja: translate("sidebar.language.japanese"),
 };
+
+export default locales;

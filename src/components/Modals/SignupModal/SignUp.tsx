@@ -150,7 +150,7 @@ const SignUp = ({
         } else {
           throw new Error(formatMessage({ id: "signup.msg.error" }));
         }
-      } catch (e) {
+      } catch (e: any) {
         setSubmitSuccess("");
         if (
           e?.response?.status === 409 &&

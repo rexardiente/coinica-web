@@ -7,7 +7,7 @@ import { translate } from "helpers/translate";
 const RouteDict = {
   'AccountBalance': 'balance',
   'AccountSetting': 'settings',
-  'Transactions' : 'transactions'
+  'Transactions': 'transactions'
 }
 
 const getClassName = (key, activeKey) => {
@@ -21,7 +21,7 @@ const Header = (props) => {
   const history = useHistory()
   return (
     <Nav
-      activeKey={activeKey}
+      activeKey={activeKey as string}
       className="flex-column"
       onSelect={(selectedKey) => {
         setActiveKey(selectedKey)
@@ -41,11 +41,11 @@ const Header = (props) => {
       </Nav.Item>
       <Nav.Item>
         <Nav.Link
-        className={getClassName('transactions',activeKey)}
-        eventKey="transactions"
+          className={getClassName('transactions', activeKey)}
+          eventKey="transactions"
         >
           {translate("account_settings.header.nav.transactions.title")}
-          </Nav.Link>
+        </Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link

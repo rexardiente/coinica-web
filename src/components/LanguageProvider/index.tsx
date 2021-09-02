@@ -8,9 +8,13 @@ type Props = {
   children: React.ReactNode;
 };
 
+type ReduxState = {
+  platform: any
+}
+
 const LanguageProvider = ({ children }: Props) => {
   const [messages, setMessages] = useState(English);
-  const { language } = useSelector((state) => state.platform);
+  const { language } = useSelector((state: ReduxState) => state.platform);
 
   const loadTranslation = async (lang: string) => {
     const data = await import(`../../translation/${lang}.json`);

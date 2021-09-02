@@ -5,15 +5,19 @@ import { setLanguage } from "redux/platform/platform_action";
 import "react-toastify/dist/ReactToastify.css";
 import "./style.scss";
 import Footer from "../Footer";
-import { TermsOfUse , PrivacyPolicy } from "../Modals";
+import { TermsOfUse, PrivacyPolicy } from "../Modals";
 
 const HeaderContainer = React.lazy(() => import("../Header"));
 const SidebarContainer = React.lazy(() => import("../Sidebar"));
 
+type ReduxState = {
+  platform: any
+}
+
 const Layout = (props) => {
   const [collapsed, setCollapsed] = useState(false);
   const [toggled, setToggled] = useState(false);
-  const { language } = useSelector((state) => state.platform);
+  const { language } = useSelector((state: ReduxState) => state.platform);
   const dispatch = useDispatch();
 
   const handleCollapsedChange = () => {

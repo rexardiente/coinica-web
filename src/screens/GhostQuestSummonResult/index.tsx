@@ -19,7 +19,7 @@ const GQfixedHeight = 750
 const GhostQuestSummonResult = (props) => {
   const GQ_VOLUME = props?.ghost_quest?.volume
   const ref = useRef<HTMLDivElement | null>(null)
-  const allCharSummoned:any[] = props?.location?.state?.allCharSummoned
+  const allCharSummoned: any[] = props?.location?.state?.allCharSummoned
   console.log({ allCharSummoned, locationState: props?.location?.state })
 
   const [summonState, showSummon] = useState(false)
@@ -52,7 +52,7 @@ const GhostQuestSummonResult = (props) => {
     if (allCharSummoned == null) {
       props.history.push("/game/ghostquest")
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allCharSummoned])
 
   // useEffect(() => {
@@ -81,6 +81,8 @@ const GhostQuestSummonResult = (props) => {
           height: `${GQfixedHeight}px`
         }}
       >
+
+        {/* @ts-ignore:next-line */}
         <Summon
           navigation={props}
           summonState={summonState}

@@ -13,6 +13,9 @@ import { faChevronCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import DropdownLanguage from "components/DropdownLanguage";
 import * as assets from "./Assets";
 
+type ReduxState = {
+  platform: any
+}
 
 const Sidebar = ({
   collapsed,
@@ -22,7 +25,7 @@ const Sidebar = ({
   handleToggleSidebar,
   handleCollapsedChange
 }) => {
-  const account = useSelector(state => state.platform.account);
+  const account = useSelector((state: ReduxState) => state.platform.account);
 
   const helpMenu = () => {
     return (

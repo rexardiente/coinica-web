@@ -81,7 +81,7 @@ const GhostQuestGameplay = (props) => {
     if (battleBGM.sound) {
       if (bool) {
         battleBGM.sound?.play()
-        
+
         battleBGM.sound?.on('end', () => {
           battleBGM.sound?.play();
         })
@@ -129,7 +129,7 @@ const GhostQuestGameplay = (props) => {
   const [nextBattleTime, setBattleTime] = useState<any>(null)
   const [isBattleDone, setBattleDone] = useState(false)
   const [fetchLatestMatch, setFetchLatestMatch] = useState(false)
-  
+
   // CHARACTER DATA
   const [charHP, setCharHP] = useState(0)
   const [enemyHP, setEnemyHP] = useState(0)
@@ -236,7 +236,7 @@ const GhostQuestGameplay = (props) => {
 
   useEffect(() => {
     const interval = 1000;
-    let nextBattleTimer:any =  null 
+    let nextBattleTimer: any = null
 
     if (nextBattleTime) {
       nextBattleTimer = setInterval(() => {
@@ -244,8 +244,8 @@ const GhostQuestGameplay = (props) => {
           const nextBattle = nextBattleTime
           const currentTime = moment().unix()
           const diffTime = nextBattle - currentTime;
-          const duration = moment.duration(diffTime*1000, 'milliseconds');
-  
+          const duration = moment.duration(diffTime * 1000, 'milliseconds');
+
           if (duration.seconds() < 0) {
             const InitBattleHTML = (
               <span>
@@ -271,7 +271,7 @@ const GhostQuestGameplay = (props) => {
   }, [nextBattleTime])
 
   const playNextBattle = (userLatestMatch, bools) => {
-    console.log('PLAYING NEXT BATTLE WITH DATA: ', userLatestMatch, { isUnderThirtyMins: bools})
+    console.log('PLAYING NEXT BATTLE WITH DATA: ', userLatestMatch, { isUnderThirtyMins: bools })
   }
 
   useEffect(() => {
@@ -282,7 +282,7 @@ const GhostQuestGameplay = (props) => {
       if (userCharKey) {
         GetCharacterById(userCharKey).then(res => {
           console.log({ USER_CHAR_DATA: res })
-          let userLatestMatch:any = []
+          let userLatestMatch: any = []
           if (Array.isArray(res?.data) && res?.data.length) {
             const charData = res?.data[0]
 
@@ -389,8 +389,8 @@ const GhostQuestGameplay = (props) => {
 
       // IF IN-BATTLE
       if (inBattle) {
-        const latestMatch = {...charBattles[latestMatchIndex - 1]}
-        let latestMatchLogs:any = []
+        const latestMatch = { ...charBattles[latestMatchIndex - 1] }
+        let latestMatchLogs: any = []
 
         if (latestMatch?.logs?.length) {
           latestMatch?.logs?.forEach((log) => {
@@ -417,12 +417,12 @@ const GhostQuestGameplay = (props) => {
           // const enemyCharId = latestMatch?.is_win?.find(obj => obj?.player === enemyUsername)?.char_id
 
           GetCharacterById(enemyCharId).then(res => {
-            let data:any = null
+            let data: any = null
             if (res.data.length) {
               data = res?.data[0][0]
             }
             console.log({ ENEMY_CHAR_DATA: data })
-            const flattenData = {...data?.value, key: data?.key }
+            const flattenData = { ...data?.value, key: data?.key }
             if (flattenData) {
               setEnemyHP(flattenData?.hitpoints)
             }
@@ -519,7 +519,7 @@ const GhostQuestGameplay = (props) => {
       setAnimationPlaying(false)
     }
   }, [latestMatch, enemyCharData])
-  
+
   // ANIMATION PROCESSES
   useEffect(() => {
     const winner = latestMatch?.winner
@@ -535,7 +535,7 @@ const GhostQuestGameplay = (props) => {
         if (roundCounter < latestMatch?.logs?.length) {
           const DATA = latestMatch?.logs[roundCounter]
           if (DATA) {
-            const battle_log:any = []
+            const battle_log: any = []
             if (DATA.defender === user_game_id) {
               if (DATA.is_crit) {
                 battle_log.push(`A critical hit! enemy's ghost ${enemyGhostExtractedId} gave ${DATA.damage} damage to ${charGhostExtractedId}`)
@@ -556,30 +556,30 @@ const GhostQuestGameplay = (props) => {
 
               if (DATA?.defender === user_game_id) {
                 if (DATA?.is_crit) {
-                  for (let i = 1; i < 4; i ++) {
+                  for (let i = 1; i < 4; i++) {
                     setTimeout(() => {
                       playCritical()
-                    }, i*500)
+                    }, i * 500)
                   }
                 } else {
-                  for (let i = 1; i < 4; i ++) {
+                  for (let i = 1; i < 4; i++) {
                     setTimeout(() => {
                       playDamage()
-                    }, i*500)
+                    }, i * 500)
                   }
                 }
               } else {
                 if (DATA?.is_crit) {
-                  for (let i = 1; i < 4; i ++) {
+                  for (let i = 1; i < 4; i++) {
                     setTimeout(() => {
                       playCritical()
-                    }, i*500)
+                    }, i * 500)
                   }
                 } else {
-                  for (let i = 1; i < 4; i ++) {
+                  for (let i = 1; i < 4; i++) {
                     setTimeout(() => {
                       playAttack1()
-                    }, i*500)
+                    }, i * 500)
                   }
                 }
               }
@@ -595,7 +595,7 @@ const GhostQuestGameplay = (props) => {
             }, 1500)
           }
         } else {
-          let battle_log:any = [`Battle Outcome : `]
+          let battle_log: any = [`Battle Outcome : `]
           if (winner === user_game_id) {
             battle_log.push(`Your ghost ${charGhostExtractedId} has won against enemy's ghost ${enemyGhostExtractedId}`)
           } else {
@@ -627,7 +627,7 @@ const GhostQuestGameplay = (props) => {
 
       let totalEnemyDamageTaken = 0
       let totalCharDamageTaken = 0
-      let battle_logs:any = []
+      let battle_logs: any = []
       const enemyGhostId = enemyCharData?.key ? (enemyCharData?.key + '').substr(enemyCharData?.key.length - 12) : `other player's ghost`
 
       battle_logs.push('Matching process in progress...')
@@ -676,7 +676,7 @@ const GhostQuestGameplay = (props) => {
         const finalHP = tempHP > 0 ? tempHP : 0
         return finalHP
       })
-      
+
       showResults({
         state: true,
         isWin: user_game_id === winner,
@@ -706,7 +706,7 @@ const GhostQuestGameplay = (props) => {
       } else if (defender === user_game_id) {
         setCharHP(prevHP => {
           const newHP = prevHP - damage > 0 ? prevHP - damage : 0
-          return newHP 
+          return newHP
         })
       }
 
@@ -729,7 +729,7 @@ const GhostQuestGameplay = (props) => {
       const battleLogs = [...animationBattleLogs]
       const length = battleLogs.length
       const lastLog = battleLogs[length - 1]?.substr(0, 14)
-      
+
       if (lastLog !== 'Battle Outcome' && length) {
         battleLogs.pop()
         setAnimationBattleLogs(battleLogs)
@@ -759,7 +759,7 @@ const GhostQuestGameplay = (props) => {
     setSkip(true)
     setAnimationCounter(0)
   }
-  
+
   const goBackHandler = () => {
     // props.history.goBack()
     playCancel()
@@ -788,7 +788,7 @@ const GhostQuestGameplay = (props) => {
   }
 
   const BLOW_ATTACK_GIF = (currentAttack) => {
-    let img:any = null
+    let img: any = null
 
     if (currentAttack !== null) {
       if (currentAttack?.is_crit) {
@@ -806,8 +806,8 @@ const GhostQuestGameplay = (props) => {
                 top: '70px',
                 left: '30%',
               }}
-              />
-              )
+            />
+          )
         } else {
           // IF USER IS THE DEFENDER
           img = (
@@ -832,12 +832,12 @@ const GhostQuestGameplay = (props) => {
         style={{
           zIndex: isAnimationPlaying ? 998 : 0 // lower than REACT TOASTIFY with zIndex of 999
         }}
-        >
+      >
         {img}
       </div>
     )
   }
-  
+
   const battleLogStyle = inBattle ? (
     { height: '333px', top: '270px' }
   ) : (
@@ -845,8 +845,8 @@ const GhostQuestGameplay = (props) => {
   )
 
 
-  let player_hp_bar:any = null
-  let enemy_hp_bar:any = null
+  let player_hp_bar: any = null
+  let enemy_hp_bar: any = null
   if (enemyCharData) {
     enemy_hp_bar = GHOST_LIFE_BAR(enemyHP, enemyCharData?.hitpoints)
   }
@@ -867,6 +867,7 @@ const GhostQuestGameplay = (props) => {
         }}
       >
         <Summon
+          // @ts-ignore:next-line
           username={wsUsername}
           navigation={props}
           summonState={summonState}
@@ -936,11 +937,10 @@ const GhostQuestGameplay = (props) => {
             <div
               className={`
                 ${styles.playerDetails}
-                ${
-                  !skipped && currentAttack !== null && currentAttack?.defender === user_game_id 
+                ${!skipped && currentAttack !== null && currentAttack?.defender === user_game_id
                   ? currentAttack?.is_crit
-                  ? styles.bigShake_div // if attack is crit
-                  : styles.shake_div  // if attack is not crit
+                    ? styles.bigShake_div // if attack is crit
+                    : styles.shake_div  // if attack is not crit
                   : '' // if user is not the defender
                 }
                 ${charHP <= 8 ? styles.redText : charHP <= 28 ? styles.yellowText : ''}
@@ -952,8 +952,8 @@ const GhostQuestGameplay = (props) => {
                   Player: {' '}
                   {
                     userCharacterKey
-                    ? (userCharacterKey + '').substr(userCharacterKey.length - 12)
-                    : ''
+                      ? (userCharacterKey + '').substr(userCharacterKey.length - 12)
+                      : ''
                   }
                 </h5>
                 <h5>
@@ -974,7 +974,7 @@ const GhostQuestGameplay = (props) => {
                       }}
                     />
                   ) : (
-                    <Spinner animation="grow" style={{color: '#fff'}} />
+                    <Spinner animation="grow" style={{ color: '#fff' }} />
                   )
                 }
               </div>
@@ -1013,11 +1013,10 @@ const GhostQuestGameplay = (props) => {
               <div
                 className={`
                   ${styles.enemyContainer}
-                  ${
-                    !skipped && currentAttack !== null && currentAttack?.defender === enemyCharData?.owner_id 
+                  ${!skipped && currentAttack !== null && currentAttack?.defender === enemyCharData?.owner_id
                     ? currentAttack?.is_crit
-                    ? styles.bigShake_div // if attack is crit
-                    : styles.shake_div  // if attack is not crit
+                      ? styles.bigShake_div // if attack is crit
+                      : styles.shake_div  // if attack is not crit
                     : '' // if the enemy is not the defender
                   }
                 `}
@@ -1041,77 +1040,77 @@ const GhostQuestGameplay = (props) => {
                     // IF GAMEPLAY IS INITIALIZING
                     !initialized || loading.state === true || enemyFoundState === 1 ? (
                       <div className="text-center">
-                        <Spinner animation="grow" style={{color: '#fff'}} />
+                        <Spinner animation="grow" style={{ color: '#fff' }} />
                       </div>
                     )
-                    // IF GHOST ALREADY HAS AN OPONENT => SHOW THE BATTLE ANIMATIONS
-                    : isAnimationPlaying && enemyFoundState === 2 ? (
-                      (
-                        <>
-                          {
-                            enemyCharData !== null ? (
-                              // <img className={styles.enemyGhostImage} src={enemyGhostAvatar} alt="Ghost Avatar" />
-                              <div
-                                className={styles.enemyGhostImage}
-                                style={{
-                                  backgroundImage: `url(${enemyGhostAvatar})`,
-                                  backgroundPosition: 'center',
-                                  backgroundSize: 'cover',
-                                  backgroundRepeat: 'no-repeat',
-                                }}
-                              />
-                            ) : (
-                              <Spinner animation="grow" style={{color: '#fff'}} />
-                            )
-                          }
-                          <div className={styles.enemyDetailsLeft}>
-                            <h5>Ghost name: {enemyCharData?.ghost_name}</h5>
-                            <h5>
-                              Player: {' '}
-                              {
-                                enemyCharData?.key
-                                ? (enemyCharData.key + '').substr(enemyCharData.key.length - 12)
-                                : ''
-                              }
-                            </h5>
-                            <h5>Life: {enemyCharData ? `${enemyCharData?.character_life}` : 'No data'}</h5>
-                            <div className={styles.enemyHpBar}>
-                              {enemy_hp_bar}
+                      // IF GHOST ALREADY HAS AN OPONENT => SHOW THE BATTLE ANIMATIONS
+                      : isAnimationPlaying && enemyFoundState === 2 ? (
+                        (
+                          <>
+                            {
+                              enemyCharData !== null ? (
+                                // <img className={styles.enemyGhostImage} src={enemyGhostAvatar} alt="Ghost Avatar" />
+                                <div
+                                  className={styles.enemyGhostImage}
+                                  style={{
+                                    backgroundImage: `url(${enemyGhostAvatar})`,
+                                    backgroundPosition: 'center',
+                                    backgroundSize: 'cover',
+                                    backgroundRepeat: 'no-repeat',
+                                  }}
+                                />
+                              ) : (
+                                <Spinner animation="grow" style={{ color: '#fff' }} />
+                              )
+                            }
+                            <div className={styles.enemyDetailsLeft}>
+                              <h5>Ghost name: {enemyCharData?.ghost_name}</h5>
+                              <h5>
+                                Player: {' '}
+                                {
+                                  enemyCharData?.key
+                                    ? (enemyCharData.key + '').substr(enemyCharData.key.length - 12)
+                                    : ''
+                                }
+                              </h5>
+                              <h5>Life: {enemyCharData ? `${enemyCharData?.character_life}` : 'No data'}</h5>
+                              <div className={styles.enemyHpBar}>
+                                {enemy_hp_bar}
+                              </div>
+
                             </div>
-  
-                          </div>
-                          <div className={styles.enemyDetailsRight}>
-                            <h5>HP: {enemyCharData ? `${enemyHP} / ${enemyCharData?.hitpoints}` : 'No data' }</h5>
-                            <h5>ATK: {enemyCharData?.attack || 'No data'}  DEF: {enemyCharData?.defense || 'No data'}</h5>
-                            <h5>SPD: {enemyCharData?.speed || 'No data'}  LUK: {enemyCharData?.luck || 'No data'}</h5>
-                          </div>
-                        </>
+                            <div className={styles.enemyDetailsRight}>
+                              <h5>HP: {enemyCharData ? `${enemyHP} / ${enemyCharData?.hitpoints}` : 'No data'}</h5>
+                              <h5>ATK: {enemyCharData?.attack || 'No data'}  DEF: {enemyCharData?.defense || 'No data'}</h5>
+                              <h5>SPD: {enemyCharData?.speed || 'No data'}  LUK: {enemyCharData?.luck || 'No data'}</h5>
+                            </div>
+                          </>
+                        )
                       )
-                    )
-                    // IF GHOST IS STANDBY MEANING THERE IS NO ENEMY YET
-                    : !isAnimationPlaying && enemyFoundState === 0 ? (
-                      <div className="text-center">
-                        <h4 className="text-white">You can deposit and withdraw while your ghost stands by.</h4>
-                        <img
-                          src={BtnDeposit}
-                          alt="Deposit"
-                          className="hover-cursor"
-                          style={{ marginRight: '60px' }}
-                          onClick={() => _showDepositConfirmation()}
-                        />
-                        <img
-                          src={BtnWithdraw}
-                          alt="Withdraw"
-                          className="hover-cursor"
-                          onClick={() => _showWithdrawalConfirmation()}
-                        />
-                      </div>
-                    )
-                    : (
-                      <div className="text-center">
-                        <Spinner animation="grow" style={{color: '#fff'}} />
-                      </div>
-                    )
+                        // IF GHOST IS STANDBY MEANING THERE IS NO ENEMY YET
+                        : !isAnimationPlaying && enemyFoundState === 0 ? (
+                          <div className="text-center">
+                            <h4 className="text-white">You can deposit and withdraw while your ghost stands by.</h4>
+                            <img
+                              src={BtnDeposit}
+                              alt="Deposit"
+                              className="hover-cursor"
+                              style={{ marginRight: '60px' }}
+                              onClick={() => _showDepositConfirmation()}
+                            />
+                            <img
+                              src={BtnWithdraw}
+                              alt="Withdraw"
+                              className="hover-cursor"
+                              onClick={() => _showWithdrawalConfirmation()}
+                            />
+                          </div>
+                        )
+                          : (
+                            <div className="text-center">
+                              <Spinner animation="grow" style={{ color: '#fff' }} />
+                            </div>
+                          )
                   }
                 </div>
               </div>
@@ -1152,7 +1151,7 @@ const GhostQuestGameplay = (props) => {
                       <div className={styles.battleLog}>
                         {
                           ghostHistory
-                          ? ghostHistory.map((history, idx) => {
+                            ? ghostHistory.map((history, idx) => {
                               const date = UnixMicroToDate((+history?.timeExecuted), "MM/DD/YYYY hh:mm:ss A ", null)
                               const enemyWon = history?.winner !== user_game_id
                               const enemyGhostId = enemyWon ? history?.winnerID : history?.loserID
@@ -1173,8 +1172,8 @@ const GhostQuestGameplay = (props) => {
                                 </div>
                               )
                             })
-                          : (
-                              <p className={styles.battleLogText}>No history found</p>  
+                            : (
+                              <p className={styles.battleLogText}>No history found</p>
                             )
                         }
                       </div>
@@ -1185,35 +1184,35 @@ const GhostQuestGameplay = (props) => {
                       <div className={styles.battleLog}>
                         {
                           loading.state
-                          ? <p>Loading...</p>
-                          : (
+                            ? <p>Loading...</p>
+                            : (
                               isAnimationPlaying || animationBattleLogs.length
-                              ? animationBattleLogs.map((log, idx) => (
+                                ? animationBattleLogs.map((log, idx) => (
                                   <p key={idx} className={styles.battleLogText}>
                                     {log}
                                   </p>
                                 ))
-                              : charData?.character_life <= 0
-                              ? <p className={styles.battleLogText}>Your ghost has been already eliminated or withdrawn...</p>
-                              : charData?.battle_count === charData?.battle_limit
-                              ? <p className={styles.battleLogText}>Your ghost has already reached its battle limit please withdraw and summon again</p>
-                              : (
-                                  <>
-                                    {noOpponentFound && <p className={styles.battleLogText}>No opponent found.</p>}
-                                    {noOpponentFound ? (
-                                      <p className={styles.battleLogText}>Finding next opponent...</p>
-                                    ) : (
-                                      <p className={styles.battleLogText}>We're looking for an opponent...</p>
-                                    )}
-                                    {
-                                      timerText && (
-                                        <p className={styles.battleLogText}>
-                                          {timerText}
-                                        </p>
-                                      )
-                                    }
-                                  </>
-                                )
+                                : charData?.character_life <= 0
+                                  ? <p className={styles.battleLogText}>Your ghost has been already eliminated or withdrawn...</p>
+                                  : charData?.battle_count === charData?.battle_limit
+                                    ? <p className={styles.battleLogText}>Your ghost has already reached its battle limit please withdraw and summon again</p>
+                                    : (
+                                      <>
+                                        {noOpponentFound && <p className={styles.battleLogText}>No opponent found.</p>}
+                                        {noOpponentFound ? (
+                                          <p className={styles.battleLogText}>Finding next opponent...</p>
+                                        ) : (
+                                          <p className={styles.battleLogText}>We're looking for an opponent...</p>
+                                        )}
+                                        {
+                                          timerText && (
+                                            <p className={styles.battleLogText}>
+                                              {timerText}
+                                            </p>
+                                          )
+                                        }
+                                      </>
+                                    )
                             )
                         }
                         {
@@ -1222,7 +1221,7 @@ const GhostQuestGameplay = (props) => {
                           )
                         }
                         {
-                           isBattleDone && ( timerText && (
+                          isBattleDone && (timerText && (
                             <p className={`${styles.battleLogText} mt-4`}>
                               {noOpponentFound && <p>No opponent found...</p>}
                               {timerText}
@@ -1304,7 +1303,7 @@ const GhostQuestGameplay = (props) => {
                 Skip
               </button>
             )
-          }  
+          }
         </div>
         <div className={styles.main_container_btm_overlay} />
       </div>

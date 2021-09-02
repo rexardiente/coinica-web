@@ -9,10 +9,14 @@ import routes from "./routes";
 
 const HomeScreen = React.lazy(() => import("../screens/HomeScreen"));
 
+type ReduxState = {
+  platform: any
+}
+
 // A wrapper for <Route> that redirects to the login
 // screen if you're not yet authenticated.
 const PrivateRoute = ({ isGame, renderComponentFunc, ...rest }) => {
-  const platform = useSelector((state) => state.platform);
+  const platform = useSelector((state: ReduxState) => state.platform);
   const dispatch = useDispatch();
 
   return (

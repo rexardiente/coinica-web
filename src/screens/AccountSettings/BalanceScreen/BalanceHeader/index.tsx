@@ -31,7 +31,7 @@ const BalanceHeader = (props: Props) => {
   return (
     <Nav
       className={`${styles.containerNav} justify-content-center`}
-      activeKey={activeKey}
+      activeKey={activeKey as string}
       onSelect={(selectedKey) => {
         setActiveKey(selectedKey);
         history.push(`/account/balance/${selectedKey}`);
