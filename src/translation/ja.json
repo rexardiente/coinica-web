@@ -498,6 +498,7 @@
 
   "account_settings.balance_screen.deposit.header.info":"取引には一時的に「RopstenTestNetwork」を使用しています.",
   "account_settings.balance_screen.deposit.connect_wallet.label":"ウォレットを接続します",
+  "account_settings.balance_screen.deposit.connect_wallet.btn.label":"ウォレットを接続します",
   "account_settings.balance_screen.deposit.connect_wallet.button.loading":"連絡...",
   "account_settings.balance_screen.deposit.account_balance.reminder":"勘定残高: (正しいアドレスにログインしていることを確認してください)",
   "account_settings.balance_screen.deposit.select_currency.label":"通貨を選択",
@@ -540,10 +541,8 @@
   "account_settings.balance_screen.metamask_deposit.depositing":"寄託...",
   "account_settings.balance_screen.metamask_deposit.deposit":"預り金",
   "account_settings.balance_screen.metamask_deposit.note.title":"ノート:",
-  "account_settings.balance_screen.metamask_deposit.note.content.one.a":"このアドレスにのみ",
-  "account_settings.balance_screen.metamask_deposit.note.content.one.b":"を送信する, 他のコインやトークンを送ると、資金が失われます;",
-  "account_settings.balance_screen.metamask_deposit.note.content.two.a":" ",
-  "account_settings.balance_screen.metamask_deposit.note.content.two.b":"ブロックチェーンネットワークで1回確認した後、デポジットが入金されます.",
+  "account_settings.balance_screen.metamask_deposit.note.content.one":"選択したアセットのみをこのアドレスに送信します。他のコインやトークンを送信すると、資金が失われます.",
+  "account_settings.balance_screen.metamask_deposit.note.content.two":"ブロックチェーンネットワークで1回確認すると、デポジットが入金されます.",
   "account_settings.balance_screen.metamask_deposit.deposit_handler.no_account_detected":"metamask アカウントが検出されませんでした",
   "account_settings.balance_screen.metamask_deposit.deposit_handler.invalid_amount":"無効なデポジット額",
   "account_settings.balance_screen.metamask_deposit.deposit_handler.cant_deposit":"入金できません, ブラウザを更新してください",
@@ -587,6 +586,7 @@
   "account_settings.setting_screen.user_information.button.submit":"参加する",
 
   "account_settings.setting_screen.title":"ユーザー情報",
+  "account_settings.setting_screen.account_settings":"アカウント設定",
   "account_settings.setting_screen.email_address.title":"電子メールアドレス",
   "account_settings.setting_screen.password.title":"パスワード",
 

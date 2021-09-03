@@ -498,7 +498,8 @@
   "account_settings.balance_screen.balance_header.nav.withdraw":"Withdraw",
 
   "account_settings.balance_screen.deposit.header.info":"We are temporarily using 'Ropsten Test Network' for transactions.",
-  "account_settings.balance_screen.deposit.connect_wallet.label":"Connect Wallet",
+  "account_settings.balance_screen.deposit.connect_wallet.label":"Connect your wallet",
+  "account_settings.balance_screen.deposit.connect_wallet.btn.label":"Connect Wallet",
   "account_settings.balance_screen.deposit.connect_wallet.button.loading":"Connecting...",
   "account_settings.balance_screen.deposit.account_balance.reminder":"Account balance: (make sure you have logged in the correct address)",
   "account_settings.balance_screen.deposit.select_currency.label":"Select Currency",
@@ -541,10 +542,8 @@
   "account_settings.balance_screen.metamask_deposit.depositing":"Depositing...",
   "account_settings.balance_screen.metamask_deposit.deposit":"Deposit",
   "account_settings.balance_screen.metamask_deposit.note.title":"Note:",
-  "account_settings.balance_screen.metamask_deposit.note.content.one.a":"Send only ",
-  "account_settings.balance_screen.metamask_deposit.note.content.one.b":"to this address, sending any other coin or token will result in losing your funds;",
-  "account_settings.balance_screen.metamask_deposit.note.content.two.a":"Your deposit will be credited after 1 confirmation on the",
-  "account_settings.balance_screen.metamask_deposit.note.content.two.b":"blockchain network.",
+  "account_settings.balance_screen.metamask_deposit.note.content.one":"Send only your selected asset to this address, sending any other coin or token will result in losing your funds.",
+  "account_settings.balance_screen.metamask_deposit.note.content.two":"Your deposit will be credited after 1 confirmation on the blockchain network.",
   "account_settings.balance_screen.metamask_deposit.deposit_handler.no_account_detected":"No metamask account detected",
   "account_settings.balance_screen.metamask_deposit.deposit_handler.invalid_amount":"Invalid deposit amount",
   "account_settings.balance_screen.metamask_deposit.deposit_handler.cant_deposit":"Can't deposit, Please refresh your browser",
@@ -578,9 +577,9 @@
 
   "account_settings.setting_screen.user_information.email_input.toast.warning":"Please enter email address",
   "account_settings.setting_screen.user_information.email_input.toast.error":"New E-mail address cannot be the same as current address!",
-  "account_settings.setting_screen.user_information.email_input.toast.success":"update e-mail requested successfully!\nPlease check your mail for verification",
-  "account_settings.setting_screen.user_information.update_email.toast.error":"error updating email",
-  "account_settings.setting_screen.user_information.no_account.toast.error":"please log-in first",
+  "account_settings.setting_screen.user_information.email_input.toast.success":"Update e-mail requested successfully!\nPlease check your mail for verification",
+  "account_settings.setting_screen.user_information.update_email.toast.error":"Error updating email",
+  "account_settings.setting_screen.user_information.no_account.toast.error":"Please log-in first",
   "account_settings.setting_screen.user_information.email.change":"Change",
   "account_settings.setting_screen.user_information.email.add":"Add",
   "account_settings.setting_screen.user_information.email.title":"Email Address",
@@ -588,6 +587,7 @@
   "account_settings.setting_screen.user_information.button.submit":"Submit",
 
   "account_settings.setting_screen.title":"User Information",
+  "account_settings.setting_screen.account_settings":"Account Settings",
   "account_settings.setting_screen.email_address.title":"Email Address",
   "account_settings.setting_screen.password.title":"Password",
 

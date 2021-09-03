@@ -1,7 +1,4 @@
 .container {
-  padding: 40px 60px;
-  margin-bottom: 5rem;
-
   @media (max-width: 576px) {
     padding: 10px;
   }
@@ -12,9 +9,16 @@
   }
 }
 
-.stepOne {
+.stepOne, .stepTwo {
+  margin-top: 10px;
   display: flex;
-  justify-content: space-between;
+  input {
+    color: #ffffff;
+  }
+}
+
+.stepTwo {
+  margin-bottom: 15px;
 }
 
 .dropDownCurrency {
@@ -39,13 +43,6 @@
   svg {
     margin-right: 4px;
     font-size: 1.125rem;
-  }
-}
-
-.stepTwo {
-  margin-top: 25px;
-  h6 {
-    margin-bottom: 15px;
   }
 }
 
@@ -84,25 +81,11 @@
   }
 }
 
-.divider {
-  margin-top: 40px;
-  margin-bottom: 30px;
-}
-
-.note {
-  h5 {
-    font-weight: bold;
-  }
-  p {
-    font-size: 0.875rem;
-    &::before {
-      width: 8px;
-      height: 8px;
-      content: "";
-      display: inline-block;
-      background: #57d657;
-      margin-right: 10px;
-      border-radius: 50%;
-    }
-  }
+.withdrawBtnContainer {
+  width: 100%;
+  text-align: center;
+  border-top: 2px solid #405680;
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }

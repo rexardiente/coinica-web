@@ -3,59 +3,123 @@ import { connect } from "react-redux";
 import { Switch, Route, useLocation, useHistory } from "react-router-dom";
 import { Location, History } from "history";
 import { Row, Container, Col, Image, ListGroup } from "react-bootstrap";
-import { ArrowCounterclockwise } from "react-bootstrap-icons";
-import { run as runHolder } from "holderjs/holder";
-import truncate from "helpers/numbers/truncate";
 import SettingsRoutes from "./routes";
 import NotFound from "../NotFound";
 import Header from "./Header";
-import { GetUserWalletBalance } from "services/api/server/platform";
-import { setUserBalance } from "redux/platform/platform_action";
 import styles from "./AccountSetting.module.scss";
 import { translate } from "helpers/translate";
 
+import { makeStyles, withStyles, Theme, createStyles } from '@material-ui/core/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
+const DISABLED_TABS = ["Bonuses", "Transaction"]
+
+interface StyledTabProps {
+  label: string;
+}
+
+const HeaderTab = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      color: '#405680',
+      textTransform: 'none',
+      minWidth: 72,
+      fontWeight: theme.typography.fontWeightRegular,
+      marginRight: theme.spacing(4),
+      '&:hover': {
+        color: '#1785EB',
+        opacity: 1,
+      },
+      '&$selected': {
+        color: '#1785EB',
+        fontWeight: theme.typography.fontWeightMedium,
+      },
+      '&:focus': {
+        color: '#1785EB',
+      },
+    },
+    selected: {},
+  }),
+)((props: StyledTabProps) => (
+  <Tab
+    disableRipple
+    {...props}
+    disabled={DISABLED_TABS.includes(props?.label)}
+  />
+));
+
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  headerContainer: {
+    background: 'transparent',
+  },
+}));
+
+const HeaderTabs = withStyles({
+  root: {
+    borderBottom: '2px solid #405680',
+  },
+  indicator: {
+    backgroundColor: '#1890ff',
+  },
+})(Tabs);
+
+const getTabLabel = (value) => {
+  switch(value) {
+    case 0:
+      return "Balance";
+    case 1:
+      return "Bonuses";
+    case 2:
+      return "Transaction";
+    case 3:
+      return "Settings";
+    default:
+      return "Balance";
+  }
+}
+
+const getInitialTab = (path) => {
+  switch (path) {
+    case '/account/balance/deposit':
+    case '/account/balance/withdraw':
+      return 0;
+    case '/account/bonuses':
+      return 1;
+    case '/account/transaction':
+      return 2;
+    case '/account/settings':
+      return 3;
+    default:
+      return 0;
+  }
+}
+
 const AccountSetting = ({ platform, dispatch }) => {
-  const { account, accountBalance } = platform;
   const location = useLocation<Location>();
   const history = useHistory<History>();
+  const pathname = location.pathname;
+  const { account, accountBalance } = platform;
+  const classes = useStyles();
+  const [selectedTab, setSelectedTab] = useState(getInitialTab(pathname));
 
   //Redirect to deposit as default view for Balance
   useEffect(() => {
-    if (location.pathname === "/account/balance") {
+    if (pathname === "/account/balance") {
       history.replace("/account/balance/deposit");
     }
-    runHolder({
-      images: '.profile-image-holder',
-      bg: 'black',
-      theme: 'gray'
-    });
+    setSelectedTab(getInitialTab(pathname))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
-  const getBalance = useCallback(async () => {
-    try {
-      const { data } = await GetUserWalletBalance();
-      if (data) {
-        dispatch(setUserBalance(data))
-      }
-    } catch (e) {
-      // do nothing
-    }
-  }, [account]);
-
-  useEffect(() => {
-    runHolder({
-      images: '.profile-image-holder',
-      bg: 'black',
-      theme: 'gray'
-    });
-  }, [accountBalance])
-
-  useEffect(() => {
-    if (accountBalance.id === null) {
-      getBalance()
-    }
-  }, [])
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setSelectedTab(newValue);
+    const route = getTabLabel(newValue)
+    history.push(`/account/${(route + '').toLowerCase()}`)
+  };
 
   return (
     <Switch>
@@ -66,75 +130,24 @@ const AccountSetting = ({ platform, dispatch }) => {
             key={route.key}
             path={route.path}
             component={(props) => (
-              <Container fluid>
+              <Container fluid style={{ background: '#161E2F', height: '100%' }}>
+                <Row className={`${styles.headerTabsContainer}`}>
+                  <div className={classes.root}>
+                    <div className={classes.headerContainer}>
+                      <HeaderTabs value={selectedTab} onChange={handleChange} aria-label="Header Tabs">
+                        <HeaderTab label="Balance" />
+                        <HeaderTab label="Bonuses" />
+                        <HeaderTab label="Transaction" />
+                        <HeaderTab label="Settings" />
+                      </HeaderTabs>
+                    </div>
+                  </div>
+                </Row>
                 <Row className={`${styles.settingsContainer}`}>
-                  <Col sm={"12"} md={"4"} lg={"3"}>
-                    <div className={`${styles.settingsSideNav}`}>
-                      <div>
-                        <Image
-                          src={"holder.js/200x200?theme=gray"}
-                          className="profile-image-holder mb-2 h-100"
-                          roundedCircle
-                          fluid
-                        />
-                        <h3 className="mb-4">{account ? account.username : 'User'}</h3>
-                      </div>
-                      <div className="text-left">
-                        <div className="d-flex justify-content-between">
-                          <h5> {translate("account_settings.side_nav.balance.title")}</h5>
-                          <div className="hover-cursor mt-1">
-                            <ArrowCounterclockwise onClick={getBalance}/>
-                          </div>
-                        </div>
-                        <ListGroup>
-                          <ListGroup.Item key="btc">
-                            <div className="d-flex justify-content-between">
-                              <div>BTC</div>
-                              <div>
-                                {
-                                  accountBalance && accountBalance.btc !== null
-                                  ? truncate((accountBalance.btc.amount), 6)
-                                  : (0).toFixed(6)
-                                }
-                              </div>
-                            </div>
-                          </ListGroup.Item>
-                          <ListGroup.Item key="eth">
-                            <div className="d-flex justify-content-between">
-                              <div>ETH</div>
-                              <div>
-                                {
-                                  accountBalance && accountBalance.eth !== null
-                                  ? truncate((accountBalance.eth.amount), 6)
-                                  : (0).toFixed(6)
-                                }
-                              </div>
-                            </div>
-                          </ListGroup.Item>
-                          <ListGroup.Item key="usdc">
-                            <div className="d-flex justify-content-between">
-                              <div>USDC</div>
-                              <div>
-                                {
-                                  accountBalance && accountBalance.usdc !== null
-                                  ? truncate((accountBalance.usdc.amount), 6)
-                                  : (0).toFixed(6)
-                                }
-                              </div>
-                            </div>
-                          </ListGroup.Item>
-                        </ListGroup>
-                      </div>
-                    </div>
-                    <div className="my-4">
-                      <Header {...route} routeKey={route.key} />
-                    </div>
-                  </Col>
-                  <Col sm={"12"} md={"8"} lg={"9"}>
-                    <div className={`${styles.settingsContent} pt-5 h-100`}>
-                      <route.component {...props} />  
-                    </div>
-                  </Col>
+                  <div className={`${styles.settingsContent} h-100`}>
+                    <h5 className={styles.tabLabel}>{getTabLabel(selectedTab)}</h5>
+                    <route.component {...props} />  
+                  </div>
                 </Row>
               </Container>
             )}
@@ -154,5 +167,4 @@ const AccountSetting = ({ platform, dispatch }) => {
 };
 
 const mapStateToProps = ({ platform }) => ({ platform });
-const mapDispatchToProps = (dispatch) => ({ dispatch });
 export default connect(mapStateToProps)(AccountSetting);

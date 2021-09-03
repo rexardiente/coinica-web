@@ -1,7 +1,8 @@
 import React , {useState, useEffect} from "react";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
-import { Container, Form, Button } from "react-bootstrap";
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import { UpdateEmail, AddEmail } from "services/api/server/multi_currency_api";
 import { GetUserAccountById } from "services/api/server/platform";
 import { setPlatformAccountSuccess } from "redux/platform/platform_action";
@@ -66,7 +67,8 @@ type SettingsProps = {
 };
 
 const UserInformation = ({platform, dispatch, showModal, setShow} : SettingsProps) => {
-  const{account} = platform;
+  const { account } = platform;
+  const [loading, setLoading] = useState(false)
   const [emailInput, setEmailInput] = useState("");
   const [email, setEmail] = useState(undefined);
   
@@ -86,6 +88,7 @@ const UserInformation = ({platform, dispatch, showModal, setShow} : SettingsProp
             return toast.error(translate("account_settings.setting_screen.user_information.email_input.toast.error"));
           }
           // console.log('update email');
+          setLoading(true)
           AddEmail(emailInput).then(async data => {
             toast.success(translate("account_settings.setting_screen.user_information.email_input.toast.success"),{position:"top-center"});
             // console.log('data',data);
@@ -98,6 +101,8 @@ const UserInformation = ({platform, dispatch, showModal, setShow} : SettingsProp
             setShow(false);
           }).catch(error => {
             toast.error(translate("account_settings.setting_screen.user_information.update_email.toast.error"));
+          }).finally(() => {
+            setLoading(false)
           });
         }else{
           // console.log('add email');
@@ -118,28 +123,33 @@ const UserInformation = ({platform, dispatch, showModal, setShow} : SettingsProp
   }
 
   return (
-      <Form>
-        <Form.Group controlId="formEmail">
-          <Form.Label>{
-            email ? 
-              translate("account_settings.setting_screen.user_information.email.change") 
-              : 
-              translate("account_settings.setting_screen.user_information.email.add")
-              } 
-              {translate("account_settings.setting_screen.user_information.email.title")}</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder={email ? email : translate("account_settings.setting_screen.user_information.email_input.placeholder") + ``}
-            className={`col-lg-12`}
-            value={emailInput}
-            onChange={EmailHandler}
-          />
-        </Form.Group>
-
-        <Button variant="btn btn-egs-outline-primary" type="button" onClick={() => handleSubmit()}>
-          {translate("account_settings.setting_screen.user_information.button.submit")}
+      <div className="d-flex align-items-center h-100">
+        <TextField
+          type="email"
+          variant="outlined"
+          label={email ? email : ''}
+          style={{
+            width: '400px',
+            background: '#0E131F',
+            borderRadius: '5px'
+          }}
+          InputLabelProps={{
+            style: { color: '#427AAD' },
+          }}
+          onChange={EmailHandler}
+        />
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={() => handleSubmit()}
+          style={{
+            height: '55px',
+            marginLeft: '15px'
+          }}
+        >
+          {loading ? 'Loading...' : translate("account_settings.setting_screen.user_information.button.submit")}
         </Button>
-      </Form>
+      </div>
   );
 };
 

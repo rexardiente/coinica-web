@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Web3 from "web3";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
-import { Alert } from "react-bootstrap";
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 import {
   setWalletSuccess,
   setWalletError,
@@ -26,6 +28,14 @@ import Exchange from "./Exchange";
 import DropdownCurrency from "components/DropdownCurrency";
 import styles from "./Deposit.module.scss";
 import { translate } from "helpers/translate";
+
+const useStyles = makeStyles(() => ({
+  connectWalletBtn: {
+    color: '#ffffff',
+    padding: '10px 15px',
+    background: '#1785EB'
+  },
+}));
 
 type Currency = {
   name: string;
@@ -65,12 +75,18 @@ const displayAccountAddress = (account_address) => {
 }
 
 const Deposit = ({ listOfCurrency, walletExt, dispatch, isServerUp, platform }: Props) => {
+  const classes = useStyles();
   const [loading, setLoading] = useState(false);
   const { wallet, chainId, account_address, balance } = walletExt;
   const [currency, setCurrency] = useState<string | null>("USDC");
   const [exchangeDepositAddress, setExchangeDepositAddress] = useState("");
+  const [depositAmount, setDepositAmount] = useState(0);
   const { fromWei } = Web3.utils;
-  const { walletConfig } = platform;
+
+  const depositAmountHandler = (e) => {
+    const { value } = e.target
+    setDepositAmount(value)
+  }
 
   const handleSelectedCurrency = (val: string | null) => {
     setCurrency(val);
@@ -175,6 +191,7 @@ const Deposit = ({ listOfCurrency, walletExt, dispatch, isServerUp, platform }: 
             walletAddress="0xc04f52d7a8d1251c927d33e6da90d6ef3f5327a1"
             walletMemo="johnDoe34"
             isServerUp={isServerUp}
+            depositAmount={depositAmount}
           />
         );
       case "more...":
@@ -190,37 +207,30 @@ const Deposit = ({ listOfCurrency, walletExt, dispatch, isServerUp, platform }: 
   };
   return (
     <div className={styles.container}>
-      {walletConfig.network && <Alert variant={'primary'}>{translate("account_settings.balance_screen.deposit.header.info")}</Alert>}
-
       <div className={styles.stepOne}>
-        <h6>
-          <span className={styles.numberCircle}>1</span> {translate("account_settings.balance_screen.deposit.connect_wallet.label")}
-        </h6>
+        <h4>
+          {translate("account_settings.balance_screen.deposit.connect_wallet.label")}
+        </h4>
       </div>
       <div>
-        <span id="header-wallet-btn" className="badge badge-primary hover-cursor" onClick={() => connectWallet()}>
+        <Button className={classes.connectWalletBtn} variant="contained" onClick={() => connectWallet()}>
           {
             loading
               ? translate("account_settings.balance_screen.deposit.connect_wallet.button.loading")
               : wallet !== null && account_address !== null
                 ? displayAccountAddress(account_address)
-                : translate("account_settings.balance_screen.deposit.connect_wallet.label")
+                : translate("account_settings.balance_screen.deposit.connect_wallet.btn.label")
           }
-        </span>
-        {/* {
-          wallet !== null && account_address !== null ? (
-            <span id="header-wallet-btn" className="badge badge-warning text-white hover-cursor mt-2">
-              Logout
-            </span>
-          ) : null
-        } */}
+        </Button>
         {
           wallet !== null && account_address !== null ? (
-            <div className="mt-2">
-              {translate("account_settings.balance_screen.deposit.account_balance.reminder")}
-              <div className="d-flex justify-content-between">
+            <div className={styles.walletBalance}>
+              <span>
+                {translate("account_settings.balance_screen.deposit.account_balance.reminder")}
+              </span>
+              <div className="d-flex justify-content-between w-50">
                 <span>ETH</span>
-                <span>{balance || 0}</span>
+                <span>{(+balance).toFixed(4) || 0}</span>
               </div>
               {/* <div className="d-flex justify-content-between">
                 <span>USDC</span>
@@ -231,18 +241,29 @@ const Deposit = ({ listOfCurrency, walletExt, dispatch, isServerUp, platform }: 
         }
       </div>
 
-      <div className={styles.stepTwo}>
-        <h6>
-          <span className={styles.numberCircle}>2</span> {translate("account_settings.balance_screen.deposit.select_currency.label")}
-        </h6>
-      </div>
-
-      <div className={styles.dropDownCurrency}>
-        <DropdownCurrency
-          listCurrency={listOfCurrency}
-          selectedCurrency={currency}
-          onSelectCurrency={handleSelectedCurrency}
-        />
+      <div>
+        <p style={{ color: '#9DC8EF', margin: '30px 0 0 0' }}>I want to deposit</p>
+        <div className={styles.stepTwo}>
+          <TextField
+            label={translate("account_settings.balance_screen.metamask_deposit.amount")}
+            type="number"
+            variant="outlined"
+            InputLabelProps={{
+              style: { color: '#FFFF' },
+            }}
+            style={{
+              background: '#0E131F',
+              borderRadius: '5px'
+            }}
+            onChange={depositAmountHandler}
+          />
+          <DropdownCurrency
+            listCurrency={listOfCurrency}
+            selectedCurrency={currency}
+            onSelectCurrency={handleSelectedCurrency}
+            styles={{ marginLeft: '-7px' }}
+          />
+        </div>
       </div>
       {renderDepositFunction()}
     </div>

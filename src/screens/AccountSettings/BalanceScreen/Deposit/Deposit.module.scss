@@ -1,7 +1,4 @@
 .container {
-  padding: 40px 60px;
-  margin-bottom: 5rem;
-
   @media (max-width: 576px) {
     padding: 10px;
   }
@@ -15,17 +12,32 @@
 .stepOne {
   display: flex;
   justify-content: space-between;
+  padding-top: 10px;
   margin-bottom: 5px;
+  color: #9DC8EF;
+}
+
+.depositBtnContainer {
+  width: 100%;
+  text-align: center;
+  border-top: 2px solid #405680;
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.walletBalance {
+  background: #0E141F;
+  padding: 1rem;
+  margin-top: 15px;
 }
 
 .stepTwo {
   margin-top: 10px;
   display: flex;
-  justify-content: space-between;
-}
-
-.dropDownCurrency {
-  margin-top: 5px;
+  input {
+    color: #ffffff;
+  }
 }
 
 .numberCircle {
@@ -42,7 +54,6 @@
   box-sizing: content-box;
 }
 
-.stepTwo,
 .stepThree {
   margin-top: 25px;
 }
@@ -59,31 +70,9 @@
   margin-bottom: 8px;
 }
 
-.currency {
-  text-transform: uppercase;
-}
-
 .divider {
   margin-top: 40px;
   margin-bottom: 30px;
-}
-
-.note {
-  h5 {
-    font-weight: bold;
-  }
-  p {
-    font-size: 0.875rem;
-    &::before {
-      width: 8px;
-      height: 8px;
-      content: "";
-      display: inline-block;
-      background: #57d657;
-      margin-right: 10px;
-      border-radius: 50%;
-    }
-  }
 }
 
 .modalDialogMemo_qrCode {

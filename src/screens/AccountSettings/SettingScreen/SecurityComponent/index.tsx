@@ -1,9 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux"
-import { Container, Row, Col, Button, Modal } from "react-bootstrap";
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import { Row, Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import ResetPasswordModal from "../Modal/ResetPasswordModal";
 import { translate } from "helpers/translate";
+
+const useStyles = makeStyles(() => ({
+  button: {
+    background: '#31699C',
+    color: '#DEEFFF',
+    fontSize: '10px',
+    marginTop: '10px',
+    '&:hover': {
+      background: '#31699C'
+    }
+  }
+}));
 
 const ChangePasswordModal = ({email = '', showModal = false, hideModal}) => {
   return(
@@ -19,6 +33,7 @@ const ChangePasswordModal = ({email = '', showModal = false, hideModal}) => {
 }
 
 const SecurityComponent = ({platform, dispatch}) => {
+  const classes = useStyles();
   let email = '';
 
   if(platform.account !== null){
@@ -45,7 +60,13 @@ const SecurityComponent = ({platform, dispatch}) => {
 
   return(
     <Row noGutters={true}>
-      <Button variant="btn btn-egs-outline-primary" type="button" onClick={handleClick}>{translate("account_settings.setting_screen.security.reset_password.button")}</Button>
+      <Button
+        className={classes.button}
+        variant="contained"
+        onClick={handleClick}
+      >
+        {translate("account_settings.setting_screen.security.reset_password.button")}
+      </Button>
       <ChangePasswordModal email={email} showModal={showChangePasswordModal} hideModal={toggleHideModal}/>
     </Row>
   )
