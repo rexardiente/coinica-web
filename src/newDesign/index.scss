@@ -1,0 +1,20 @@
+$primary-color: #161E2F;
+$primary-lighter: #242D41;
+$primary-darker: #0E141F;
+
+$secondary-color: #1785EB; //sidebar & header text color
+
+$text-primary-color: #79B9F4;
+$sub-text-color: #6A81A4;
+
+html{
+    height: 100%;
+}
+
+body{
+    color: $text-primary-color;
+    height: 100%;
+    background-color: $primary-color;
+}
+
+

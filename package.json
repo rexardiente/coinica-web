@@ -49,6 +49,7 @@
     "react-idle-timer": "^4.6.4",
     "react-intl": "^5.10.13",
     "react-lazyload": "^3.2.0",
+    "react-material-ui-carousel": "^2.3.1",
     "react-player": "^2.8.2",
     "react-pro-sidebar": "^0.5.0",
     "react-redux": "^7.2.2",

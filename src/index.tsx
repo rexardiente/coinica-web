@@ -9,6 +9,7 @@ import { store, persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import "./index.scss";
 import "./assets/js/main";
+import AppNewDesign from "./newDesign/AppNewDesign";
 
 let myEnv = dotenv.config();
 dotenvExpand(myEnv);
@@ -18,7 +19,8 @@ ReactDOM.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Router>
-          <App />
+          {/* <App /> */}
+          <AppNewDesign />
         </Router>
       </PersistGate>
     </Provider>
