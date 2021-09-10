@@ -32,10 +32,10 @@ const Dashboard = () => {
                   title="Contemplative Reptile"
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
+                  <Typography gutterBottom variant="h6" component="h2">
                     Ghost Quest
                   </Typography>
-                  <Typography variant="body2" component="p">
+                  <Typography variant="caption" component="p">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Morbi vitae dolor convallis, euismod velit quis, commodo
                     massa....
@@ -55,10 +55,10 @@ const Dashboard = () => {
                   title="Contemplative Reptile"
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
+                  <Typography gutterBottom variant="h6" component="h2">
                     Treasure Hunt
                   </Typography>
-                  <Typography variant="body2" component="p">
+                  <Typography variant="caption" component="p">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Morbi vitae dolor convallis, euismod velit quis, commodo
                     massa....
@@ -78,10 +78,10 @@ const Dashboard = () => {
                   title="Contemplative Reptile"
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
+                  <Typography gutterBottom variant="h6" component="h2">
                     Mahjong Hi-Lo
                   </Typography>
-                  <Typography variant="body2" component="p">
+                  <Typography variant="caption" component="p">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Morbi vitae dolor convallis, euismod velit quis, commodo
                     massa....

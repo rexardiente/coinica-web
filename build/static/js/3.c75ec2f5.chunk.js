@@ -1,0 +1,1 @@
+(this.webpackJsonpcoinica=this.webpackJsonpcoinica||[]).push([[3],{400:function(c,n,i){"use strict";i.r(n);i(0);var t=i(2);n.default=function(){return Object(t.jsx)(t.Fragment,{children:"VIP"})}}}]);
