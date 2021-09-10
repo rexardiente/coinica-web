@@ -3,17 +3,13 @@ import clsx from 'clsx';
 import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import { Link } from 'react-router-dom';
+import * as assets from "./Assets";
+import { translate } from "../../../../helpers";
 
 const drawerWidth = 240;
 
@@ -25,6 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       whiteSpace: 'nowrap',
     },
     drawerOpen: {
+      top: '65px',
       backgroundColor: '#242D41',
       width: drawerWidth,
       transition: theme.transitions.create('width', {
@@ -33,16 +30,18 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
     },
     drawerClose: {
+      top: '65px',
       backgroundColor: '#242D41',
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
       overflowX: 'hidden',
-      width: theme.spacing(7) + 1,
-      [theme.breakpoints.up('sm')]: {
-        width: theme.spacing(9) + 1,
-      },
+      // width: theme.spacing(7) + 1,
+      width: 0,
+      // [theme.breakpoints.up('sm')]: {
+      //   width: theme.spacing(9) + 1,
+      // },
     },
     toolbar: {
       display: 'flex',
@@ -59,45 +58,86 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+const sidebarItems = [
+  {
+    name : 'Games',
+    image : assets.games,
+    url : '/'
+  },
+  {
+    name : 'VIP',
+    image : assets.vip,
+    url : '/vip'
+
+  },
+  {
+    name : 'Referral',
+    image : assets.referral,
+    url : '/referral'
+  },
+  {
+    name : 'Tasks',
+    image : assets.tasks,
+    url : '/tasks'
+  },
+  {
+    name : 'Challenge',
+    image : assets.challenge,
+    url : '/challenge'
+  },
+  {
+    name : 'Rank',
+    image : assets.rank,
+    url : '/rankings'
+  },
+  {
+    name : 'News',
+    image : assets.news,
+    url : '/news'
+  },
+]
+
 type props = {
   open: boolean;
-  handleDrawerClose: Function;
+  // handleDrawerClose: Function;
+  handleDrawerToggle: Function
 }
 
-const Sidebar = ({ open, handleDrawerClose } : props) => {
+const Sidebar = ({ open, handleDrawerToggle } : props) => {
   const classes = useStyles();
   const theme = useTheme();
 
  
   return (
     <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
+      variant="permanent"
+      className={clsx(classes.drawer, {
+        [classes.drawerOpen]: open,
+        [classes.drawerClose]: !open,
+      })}
+      classes={{
+        paper: clsx({
           [classes.drawerOpen]: open,
           [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          }),
-        }}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={() => handleDrawerClose()} style={{color : '#1785EB'}}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {['Games', 'VIP', 'Referral', 'Tasks', 'Challenge', 'Rank' , 'News'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon style={{color: '#1785EB'}}><InboxIcon /></ListItemIcon>
-              <ListItemText primary={text} style={{color: '#1785EB'}} />
+        }),
+      }}
+    >
+      <List>
+        {sidebarItems.map((item, index) => (
+          <Link to={item.url}>
+            <ListItem button key={item.name}>
+              <ListItemIcon style={{ color: "#1785EB" }}>
+                <img src={item.image} width={"20px"} />
+              </ListItemIcon>
+              <ListItemText
+                primary={item.name}
+                style={{ color: "#1785EB", textDecoration: "none" }}
+              />
             </ListItem>
-          ))}
-        </List>
-      </Drawer>
+          </Link>
+        ))}
+      </List>
+    </Drawer>
   );
 };
 

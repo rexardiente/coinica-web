@@ -1,0 +1,24 @@
+@import "../../index.scss";
+
+.carousel{
+    padding-top: 25px;
+}
+
+.games_title{
+    padding-top: 4rem;
+    font-weight: bolder;
+}
+
+.card{
+    border-radius: 0;
+    background-color: $primary-lighter;
+    color: $text-primary-color;
+    max-width: 345px;
+}
+
+.game_list{
+    padding-top: 2rem;
+    width: 100%;
+    flex-grow: 1;
+    align-items: center;
+}

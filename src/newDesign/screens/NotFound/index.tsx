@@ -4,11 +4,12 @@ import styles from "./PageContent.module.scss";
 import Typography from "@material-ui/core/Typography";
 import Carousel from "react-material-ui-carousel";
 
-const Dashboard = () =>{
+const NotFound = () => {
     return (
       <>
+        Not Found
       </>
     );
 };
 
-export default Dashboard;
+export default NotFound;
