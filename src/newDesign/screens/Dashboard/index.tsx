@@ -20,7 +20,7 @@ const Dashboard = () => {
 
         <Typography variant="h4" className={`${styles.games_title}`}>Games</Typography>
 
-        <Grid justifyContent="space-between" container className={`${styles.game_list}`} spacing={5}>
+        <Grid justifyContent="flex-start" container className={`${styles.game_list}`} spacing={4}>
           <Grid item>
             <Card className={`${styles.card}`}>
               <CardActionArea>
