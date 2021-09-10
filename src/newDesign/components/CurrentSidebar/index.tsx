@@ -3,15 +3,24 @@ import { useSelector } from "react-redux";
 import * as Icon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { translate } from "../../../helpers";
-import {
-  SidebarCollapse,
-} from "../../../assets/js/main";
+import { SidebarCollapse } from "../../../assets/js/main";
 import "./Sidebar.scss";
-import { ProSidebar, Menu, MenuItem, SubMenu, SidebarContent, SidebarFooter } from "react-pro-sidebar";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  ProSidebar,
+  Menu,
+  MenuItem,
+  SubMenu,
+  SidebarContent,
+  SidebarFooter,
+} from "react-pro-sidebar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import DropdownLanguage from "components/DropdownLanguage";
 import * as assets from "./Assets";
+
+type ReduxState = {
+  platform: any;
+};
 
 const Sidebar = ({
   collapsed,
@@ -19,9 +28,9 @@ const Sidebar = ({
   language,
   handleSelectLanguage,
   handleToggleSidebar,
-  handleCollapsedChange
+  handleCollapsedChange,
 }) => {
-  const account = useSelector(state => state.platform.account);
+  const account = useSelector((state: ReduxState) => state.platform.account);
 
   const helpMenu = () => {
     return (
@@ -34,7 +43,10 @@ const Sidebar = ({
           className="list-group-item list-group-item-action d-flex align-items-center"
           onClick={() => SidebarCollapse()}
         >
-          <div className="d-flex w-100 justify-content-start align-items-center" id="fixed-bottom">
+          <div
+            className="d-flex w-100 justify-content-start align-items-center"
+            id="fixed-bottom"
+          >
             <svg
               id="collapse-icon-left"
               className="bi bi-chevron-double-left mr-3"
@@ -83,7 +95,6 @@ const Sidebar = ({
   };
 
   const fixedBottom = () => {
-
     return (
       <ul className="list-group mt-auto mb-0" id="fixed-bottom">
         {/* <button
@@ -120,7 +131,7 @@ const Sidebar = ({
         </button> */}
       </ul>
     );
-  }
+  };
 
   const proSidebar = () => {
     return (
@@ -169,7 +180,7 @@ const Sidebar = ({
             </MenuItem>
             <SubMenu
               className="side-menu-item"
-              title={(translate("sidebar.games") as unknown) as string}
+              title={translate("sidebar.games") as unknown as string}
               icon={<img src={assets.games} height="20px" alt=""></img>}
             >
               <MenuItem>
@@ -274,13 +285,9 @@ const Sidebar = ({
         </SidebarFooter>
       </ProSidebar>
     );
-  }
+  };
 
+  return proSidebar();
+};
 
-  return (
-    proSidebar()
-  );
-
-}
-
-export default (Sidebar);
+export default Sidebar;

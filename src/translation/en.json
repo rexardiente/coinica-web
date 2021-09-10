@@ -111,11 +111,11 @@
   "referral.applyReferral.button": "Apply Referral Code",
   "referral.rate": "Referral Rate",
   "referral.bonus": "Referral Bonus",
-  "referral.instruction": "Take part in the Referral Program and earn more! Available for everyone !",
+  "referral.instruction": "Take part in the Referral Program and earn more! Available for everyone!",
   "referral.instruction.one": "Each player has a unique referral link.",
   "referral.instruction.two": "Invite others to play on the Coinica and earn rewards when they apply your referral code.",
   "referral.instruction.three": "Referral rewards change based on your VIP rank.",
-  "referral.history": "Referral History",
+  "referral.history": "Income Referral History",
   "referral.history.date": "Date",
   "referral.history.time": "Time",
   "referral.history.referent": "Referent",
@@ -460,7 +460,7 @@
   "vip.temp_data.points_and_rank.cumulative_payout.benefits":"Cumulative payout amount:",
   "vip.temp_data.points_and_rank.cumulative_vip_points.benefits":"Cumulative VIP Points:",
   
-  "vip.metrics.next_level":"For Next VIP Level",
+  "vip.metrics.next_level":"Next VIP Level",
   
   "vip.benefits_head.vip_benefits":"VIP Benefits",
   "vip.benefits_head.bronze":"Bronze",

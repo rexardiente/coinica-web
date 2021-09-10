@@ -1,0 +1,41 @@
+@import "./src/assets/scss/utils";
+
+.container {
+  background-color: #0e141f;
+  width: 100%;
+  min-height: 268px;
+  padding: 25px 70px;
+
+  @media (max-width: 599px) {
+    padding: 25px;
+  }
+
+  h3 {
+    color: #1785eb;
+    font-size: rem(24);
+    font-weight: bold;
+    margin-bottom: rem(20);
+  }
+
+  p {
+    color: #9dc8ef;
+    font-size: rem(24);
+    font-weight: 700;
+  }
+
+  ol li {
+    display: revert;
+    font-size: rem(18);
+
+    &:nth-of-type(n + 1):not(:last-of-type) {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.iconInfo {
+  color: #fad720;
+  width: 33px;
+  height: 33px;
+  margin-right: 16px;
+}
