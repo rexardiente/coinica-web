@@ -11,7 +11,9 @@ export const challenge = `${ASSETS_URL}/imgs/platform/sidebar/trophy.png`;
 export const rank = `${ASSETS_URL}/imgs/platform/sidebar/insights.png`;
 export const news = `${ASSETS_URL}/imgs/platform/sidebar/notes.png`;
 
-
+export const ghostquest = `${ASSETS_URL}/imgs/platform/sidebar/ghostquest.png`;
+export const mahjong = `${ASSETS_URL}/imgs/platform/sidebar/mahjong.png`;
+export const treasurehunt = `${ASSETS_URL}/imgs/platform/sidebar/treasurehunt.png`;
 
 
 

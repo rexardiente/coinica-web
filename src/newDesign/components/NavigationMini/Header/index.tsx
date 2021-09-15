@@ -77,7 +77,7 @@ const Header = ({open, handleDrawerToggle, mini, handleNavHidden}:props) =>{
       className={clsx(classes.appBar)}
     >
       <Toolbar>
-        <IconButton
+        {/* <IconButton
           color="inherit"
           aria-label="open drawer"
           onClick={() => handleDrawerToggle()}
@@ -85,7 +85,7 @@ const Header = ({open, handleDrawerToggle, mini, handleNavHidden}:props) =>{
           className={clsx(classes.menuButton)}
         >
           <MenuIcon />
-        </IconButton>
+        </IconButton> */}
         <Typography variant="h6" noWrap>
           <img src={assets.logo} width={40} height={40} alt="logo" className="logo w-auto" />
         </Typography>

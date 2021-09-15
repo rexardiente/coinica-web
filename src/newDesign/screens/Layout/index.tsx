@@ -1,69 +1,85 @@
 import React , { useState } from "react";
-// import { useSelector , useDispatch } from "react-redux";
-// import { Switch, Route, Redirect } from "react-router-dom";
+import { useSelector , useDispatch } from "react-redux";
 import styles from "./Layout.module.scss";
 import Footer from "../../components/Footer";
 import PageContent from "../PageContent";
 import ModalContainer from "../../components/ModalContainer";
-// import { setLanguage } from "redux/platform/platform_action";
+import { setLanguage } from "redux/platform/platform_action";
 import { StylesProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import SwitchComponent from "../../components/SwitchComponent";
 import Navigation from "../../components/NavigationHidden";
 import NavigationMini from "../../components/NavigationMini";
 
+type ReduxState = {
+  platform: any
+}
+
 const Layout = () => {
-  const [open, setOpen] = useState(true);
-  const [activeSidebar, setActiveSidebar] = useState('navigationHidden');
+  const [openSidebar, seOpenSidebar] = useState(true);
+  const [activeSidebar, setActiveSidebar] = useState("navigationHidden");
   const [mini, setMini] = useState(false);
+  const { language } = useSelector((state: ReduxState) => state.platform);
+  const dispatch = useDispatch();
 
-    const handleSwitchSidebar = (name : string) => {
-      switch (name) {
-        case 'navigationHidden':
-          setActiveSidebar(name);
-          setMini(false);
-          break;
-        case 'navigationMini':
-          setActiveSidebar(name);
-          setMini(true);
-          break;
-      
-        default:
-          break;
-      }
-    };
+  const handleSelectLanguage = (val: string) => {
+    dispatch(setLanguage(val));
+  };
 
-    const handleNavMini = () => {
-      handleSwitchSidebar('navigationMini');
-    };
+  const handleSwitchSidebar = (name: string) => {
+    switch (name) {
+      case "navigationHidden":
+        setActiveSidebar(name);
+        setMini(false);
+        break;
+      case "navigationMini":
+        setActiveSidebar(name);
+        setMini(true);
+        break;
 
-    const handleNavHidden = () => {
-      handleSwitchSidebar('navigationHidden');
-    };
+      default:
+        break;
+    }
+  };
 
-    const handleDrawerOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleDrawerClose = () => {
-      setOpen(false);
-    };
+  const handleNavMini = () => {
+    handleSwitchSidebar("navigationMini");
+  };
 
-    const handleDrawerToggle = () => {
-      setOpen(!open);
-    };
-  
+  const handleNavHidden = () => {
+    handleSwitchSidebar("navigationHidden");
+  };
 
-    return(
-        <StylesProvider injectFirst>
-          <CssBaseline />
-          <div className={`${styles.wrapper}`}>
-            <ModalContainer />
-            <SwitchComponent active={activeSidebar}>
-              <Navigation name='navigationHidden' open={open} handleDrawerToggle={handleDrawerToggle} handleNavMini={handleNavMini} mini={mini} />
-              <NavigationMini name='navigationMini' open={open} handleDrawerToggle={handleDrawerToggle} handleNavHidden={handleNavHidden} mini={mini} />            
-            </SwitchComponent>
-            {/* <CurrentSidebar 
+  const handleDrawerToggle = () => {
+    seOpenSidebar(!openSidebar);
+  };
+
+  return (
+    <StylesProvider injectFirst>
+      <CssBaseline />
+      <div className={`${styles.wrapper}`}>
+        <ModalContainer />
+        <SwitchComponent active={activeSidebar}>
+          <Navigation
+            name="navigationHidden"
+            open={openSidebar}
+            handleDrawerToggle={handleDrawerToggle}
+            handleNavMini={handleNavMini}
+            mini={mini}
+            language={language}
+            handleSelectLanguage={handleSelectLanguage}
+          />
+          <NavigationMini
+            name="navigationMini"
+            open={openSidebar}
+            handleDrawerToggle={handleDrawerToggle}
+            handleNavHidden={handleNavHidden}
+            mini={mini}
+            language={language}
+            handleSelectLanguage={handleSelectLanguage}
+          />
+        </SwitchComponent>
+        {/* <CurrentSidebar 
             collapsed={collapsed}
             language={language}
             toggled={toggled}
@@ -71,11 +87,11 @@ const Layout = () => {
             handleSelectLanguage={handleSelectLanguage}
             handleToggleSidebar={handleToggleSidebar}
             /> */}
-            <PageContent />
-            <Footer />
-          </div>
-        </StylesProvider>
-    );
+        <PageContent />
+        <Footer />
+      </div>
+    </StylesProvider>
+  );
 };
 
 export default Layout;

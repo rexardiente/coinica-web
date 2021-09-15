@@ -5,13 +5,11 @@ import Loading from "./screens/Loading";
 
 const AppNewDesign = () => {
     return(
-        <>
         <LanguageProvider>
             <React.Suspense fallback={<Loading />} >
             <Layout />  
             </React.Suspense>
         </LanguageProvider>
-        </>
     );
 };
 

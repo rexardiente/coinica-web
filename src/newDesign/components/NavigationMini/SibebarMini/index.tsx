@@ -1,20 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from 'clsx';
-import { Link } from "react-router-dom";
 import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MenuIcon from "@material-ui/icons/Menu";
+import { Drawer, List, Divider, ListItem, ListItemIcon, ListItemText ,Collapse } from '@material-ui/core';
+import { Language, ExpandLess, PlayCircleFilled } from "@material-ui/icons";
 import * as assets from "./Assets";
-
-
+import { translate } from "helpers";
+import styles from "./Sidebar.module.scss";
+import DropdownLanguage from "newDesign/components/DropdownLanguage";
+import locale from "translation/locales";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -26,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
       whiteSpace: 'nowrap',
     },
     drawerOpen: {
-      top: '65px',
+      top: '75px',
       backgroundColor: '#242D41',
       width: drawerWidth,
       transition: theme.transitions.create('width', {
@@ -35,18 +29,17 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
     },
     drawerClose: {
-      top: '65px',
+      top: '75px',
       backgroundColor: '#242D41',
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
       overflowX: 'hidden',
-      // width: theme.spacing(7) + 1,
-      width: 0,
-      // [theme.breakpoints.up('sm')]: {
-      //   width: theme.spacing(9) + 1,
-      // },
+      width: theme.spacing(5),
+      [theme.breakpoints.up('sm')]: {
+        width: theme.spacing(7),
+      },
     },
     toolbar: {
       display: 'flex',
@@ -65,53 +58,110 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const sidebarItems = [
   {
-    name : 'Games',
-    image : assets.games,
-    url : '/'
-  },
-  {
-    name : 'VIP',
-    image : assets.vip,
-    url : '/vip'
+    name: translate("sidebar.vip"),
+    image: assets.vip,
+    url: '/vip'
 
   },
   {
-    name : 'Referral',
-    image : assets.referral,
-    url : '/referral'
+    name: translate("sidebar.referral"),
+    image: assets.referral,
+    url: '/referral'
   },
   {
-    name : 'Tasks',
-    image : assets.tasks,
-    url : '/tasks'
+    name: translate("sidebar.task"),
+    image: assets.tasks,
+    url: '/tasks'
   },
   {
-    name : 'Challenge',
-    image : assets.challenge,
-    url : '/challenge'
+    name: translate("sidebar.challenge"),
+    image: assets.challenge,
+    url: '/challenge'
   },
   {
-    name : 'Rank',
-    image : assets.rank,
-    url : '/rankings'
+    name: translate("sidebar.rank"),
+    image: assets.rank,
+    url: '/rankings'
   },
   {
-    name : 'News',
-    image : assets.news,
-    url : '/news'
+    name: translate("sidebar.news"),
+    image: assets.news,
+    url: '/news'
   },
-]
+];
+
+const sidebarGames = [
+{
+  name: translate("sidebar.games.gq"),
+  image: assets.ghostquest,
+  url: '/game/ghostquest',
+},
+{
+  name: translate("sidebar.games.th"),
+  image: assets.treasurehunt,
+  url: '/game/treasurehunt',
+},{
+  name: translate("sidebar.games.mj"),
+  image: assets.mahjong,
+  url: '/game/mahjong',
+}
+];
 
 type props = {
   open: boolean;
   // handleDrawerClose: Function;
-  handleDrawerToggle: Function
+  handleDrawerToggle: Function;
+  language: string;
+  handleSelectLanguage: Function;
 }
 
-const SidebarMini = ({ open, handleDrawerToggle } : props) => {
+const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, open} : props) => {
+  return(
+    <div className={`${styles.sidebar_footer}`}>
+        <Divider />
+        <List>
+          <ListItem>
+            <ListItemIcon>
+              <Language style={{ color: "#1785EB" }} />
+            </ListItemIcon>
+            <ListItemText
+              primary={
+                <DropdownLanguage
+                  selectedLang={language}
+                  onSelectLang={handleSelectLanguage}
+                />
+              }
+            />
+          </ListItem>
+          <ListItem button onClick={() => handleDrawerToggle()}>
+            <ListItemIcon>
+              <PlayCircleFilled className={`${styles.toggle_mini_icon} ${open ? styles.toggle_mini_icon_open : ''}`} />
+            </ListItemIcon>
+            <ListItemText primary={translate('sidebar.collapse')} style={{ color: "#1785EB" }}/>
+          </ListItem>
+        </List>
+      </div>
+  );
+};
+
+const Sidebar = ({ open, handleDrawerToggle, language, handleSelectLanguage } : props) => {
   const classes = useStyles();
   const theme = useTheme();
+  const langToArray = Object.entries(locale);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [collapse, setCollapse] = useState(false);
 
+  const handleCollapse = () =>{
+    setCollapse(!collapse);
+  }
+
+  const handleMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
  
   return (
     <Drawer
@@ -128,22 +178,54 @@ const SidebarMini = ({ open, handleDrawerToggle } : props) => {
       }}
     >
       <List>
-        <ListItem>
-          <ListItemText primary={"Mini sidebar"} style={{ color: "#1785EB" }} />
+        <ListItem className={`${styles.links}`} button onClick={handleCollapse}>
+          <ListItemIcon style={{ color: "#1785EB" }}>
+            <img src={assets.games} width={"20px"} />
+          </ListItemIcon>
+          <ListItemText
+            primary={translate("sidebar.games")}
+            style={{ color: "#1785EB" }}
+          />
+          <ExpandLess className={`${styles.collapse_icon} ${ collapse ? styles.collapse_icon_collapsed : ''}`} />
         </ListItem>
+        <Collapse in={collapse} unmountOnExit>
+          <List component="div" disablePadding>
+            {sidebarGames.map((item, index) => (
+              <ListItem
+                className={`${styles.links}`}
+                component={Link}
+                to={item.url}
+                key={"sidebar-item" + index}
+              >
+                <ListItemIcon style={{ color: "#1785EB" }}>
+                  <img src={item.image} width={open ? "40px" : "30px"} />
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.name}
+                  style={{ color: "#1785EB" }}
+                />
+              </ListItem>
+            ))}
+          </List>
+        </Collapse>
+
         {sidebarItems.map((item, index) => (
-          <Link to={item.url}>
-            <ListItem button key={item.name}>
-              <ListItemIcon style={{ color: "#1785EB" }}>
-                <img src={item.image} width={"20px"} />
-              </ListItemIcon>
-              <ListItemText primary={item.name} style={{ color: "#1785EB" }} />
-            </ListItem>
-          </Link>
+          <ListItem
+            className={`${styles.links}`}
+            component={Link}
+            to={item.url}
+            key={"sidebar-item" + index}
+          >
+            <ListItemIcon style={{ color: "#1785EB" }}>
+              <img src={item.image} width={"20px"} />
+            </ListItemIcon>
+            <ListItemText primary={item.name} style={{ color: "#1785EB" }} />
+          </ListItem>
         ))}
       </List>
+      <SidebarFooter language={language} handleSelectLanguage={handleSelectLanguage} handleDrawerToggle={handleDrawerToggle} open={open} />
     </Drawer>
   );
 };
 
-export default SidebarMini;
+export default Sidebar;

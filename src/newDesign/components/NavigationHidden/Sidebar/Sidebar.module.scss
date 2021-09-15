@@ -10,7 +10,7 @@ $drawer-width : 240px;
 
 .drawerOpen{
     width: $drawer-width;
-    top: 65px;
+    margin-top: 55px;
     background-color: $primary-lighter;
     transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
     transition-property: width;
@@ -22,7 +22,7 @@ $drawer-width : 240px;
 .drawerClose{
     width: 0;
     overflow-x: hidden;
-    top: 65px;
+    top: 55px;
     background-color: $primary-lighter;
     transition: width 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
     transition-property: width;
@@ -42,3 +42,22 @@ $drawer-width : 240px;
     color: $secondary-color;
 }
 
+.sidebar_footer{
+    margin-top: 100%;
+}
+
+.links:hover{
+    background-color: $primary-color;
+    text-decoration: none;
+}
+
+.collapse_icon{
+    color: $secondary-color;
+    transform: rotate(90deg);
+    transition: all 0.5s;
+    
+    }
+    
+    .collapse_icon_collapsed{
+    transform: rotate(180deg);
+    }
