@@ -10,6 +10,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import SwitchComponent from "../../components/SwitchComponent";
 import Navigation from "../../components/NavigationHidden";
 import NavigationMini from "../../components/NavigationMini";
+import "newDesign/index.scss";
 
 type ReduxState = {
   platform: any
