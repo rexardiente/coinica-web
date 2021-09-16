@@ -2,6 +2,7 @@ import { ServerAPI } from "Config";
 const ASSETS_URL = ServerAPI.assets_url;
 
 export const logo = `${ASSETS_URL}/imgs/coinica-logo.png`;
+export const coinLogo = `${ASSETS_URL}/imgs/logo.png`;
 
 export const games = `${ASSETS_URL}/imgs/platform/sidebar/controller.png`;
 export const vip = `${ASSETS_URL}/imgs/platform/sidebar/crown.png`;

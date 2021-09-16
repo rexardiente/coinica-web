@@ -1,15 +1,8 @@
 import React from "react";
 import clsx from "clsx";
 import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
+import { AppBar, Toolbar, IconButton, Button, Typography, FormGroup, FormControlLabel, Switch } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Switch from "@material-ui/core/Switch";
 import styles from "./Header.module.scss";
 import * as assets from "./Assets";
 
@@ -36,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
     },
     menuButton: {
-      marginRight: 36,
+      marginRight: 10,
     },
     hide: {
       display: 'none',
@@ -86,15 +79,14 @@ const Header = ({open, handleDrawerToggle, mini, handleNavMini}:props) =>{
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap>
-          <img src={assets.logo} width={40} height={40} alt="logo" className="logo w-auto" />
-        </Typography>
+        <img src={assets.logo} width={40} height={40} alt="logo" className="logo w-auto" />
         <FormGroup>
           <FormControlLabel
             control={<Switch color="primary" checked={mini} onChange={() => handleNavMini()} />}
             label={'Mini'}
           />
         </FormGroup>
+        <Button className={`coinica-button-primary ${styles.login_button}`}>Login</Button>
       </Toolbar>
     </AppBar>
     );

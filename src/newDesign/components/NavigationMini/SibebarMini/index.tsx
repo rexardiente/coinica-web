@@ -15,12 +15,12 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     drawer: {
+      zIndex: 1210,
       width: drawerWidth,
       flexShrink: 0,
       whiteSpace: 'nowrap',
     },
     drawerOpen: {
-      top: '75px',
       backgroundColor: '#242D41',
       width: drawerWidth,
       transition: theme.transitions.create('width', {
@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
     },
     drawerClose: {
-      top: '75px',
       backgroundColor: '#242D41',
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
@@ -115,9 +114,9 @@ type props = {
   handleSelectLanguage: Function;
 }
 
-const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, open} : props) => {
+const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, open} : props) => {  
   return(
-    <div className={`${styles.sidebar_footer}`}>
+    <div className={`${styles.sidebar_footer} ${!open ? styles.sidebar_footer_close : ''}`}>
         <Divider />
         <List>
           <ListItem>
@@ -135,7 +134,7 @@ const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, open
           </ListItem>
           <ListItem button onClick={() => handleDrawerToggle()}>
             <ListItemIcon>
-              <PlayCircleFilled className={`${styles.toggle_mini_icon} ${open ? styles.toggle_mini_icon_open : ''}`} />
+              <PlayCircleFilled className={`${styles.toggle_mini_icon} ${!open ? styles.toggle_mini_icon_open : ''}`} />
             </ListItemIcon>
             <ListItemText primary={translate('sidebar.collapse')} style={{ color: "#1785EB" }}/>
           </ListItem>
@@ -177,6 +176,8 @@ const Sidebar = ({ open, handleDrawerToggle, language, handleSelectLanguage } : 
         }),
       }}
     >
+
+      <img className={`${styles.sidebar_logo} ${!open ? styles.sidebar_logo_closed : ''}`} src={open? assets.logo : assets.coinLogo} />
       <List>
         <ListItem className={`${styles.links}`} button onClick={handleCollapse}>
           <ListItemIcon style={{ color: "#1785EB" }}>

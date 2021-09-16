@@ -104,6 +104,29 @@ const sidebarGames = [
 }
 ];
 
+const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, open} : props) => {  
+  return(
+    <div className={`${styles.sidebar_footer} ${!open ? styles.sidebar_footer_close : ''}`}>
+        <Divider />
+        <List>
+          <ListItem>
+            <ListItemIcon>
+              <Language style={{ color: "#1785EB" }} />
+            </ListItemIcon>
+            <ListItemText
+              primary={
+                <DropdownLanguage
+                  selectedLang={language}
+                  onSelectLang={handleSelectLanguage}
+                />
+              }
+            />
+          </ListItem>
+        </List>
+      </div>
+  );
+};
+
 type props = {
   open: boolean;
   // handleDrawerClose: Function;
@@ -191,24 +214,7 @@ const Sidebar = ({ open, handleDrawerToggle, language, handleSelectLanguage } : 
           </ListItem>
         ))}
       </List>
-      <div className={`${styles.sidebar_footer}`}>
-        <Divider />
-        <List>
-          <ListItem>
-            <ListItemIcon>
-              <Language style={{ color: "#1785EB" }} />
-            </ListItemIcon>
-            <ListItemText
-              primary={
-                <DropdownLanguage
-                  selectedLang={language}
-                  onSelectLang={handleSelectLanguage}
-                />
-              }
-            />
-          </ListItem>
-        </List>
-      </div>
+      <SidebarFooter language={language} handleSelectLanguage={handleSelectLanguage} handleDrawerToggle={handleDrawerToggle} open={open} />
     </Drawer>
   );
 };

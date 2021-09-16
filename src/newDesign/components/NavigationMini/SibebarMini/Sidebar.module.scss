@@ -10,7 +10,6 @@ $drawer-width : 240px;
 
 .drawerOpen{
     width: $drawer-width;
-    margin-top: 55px;
     background-color: $primary-lighter;
     transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
     transition-property: width;
@@ -20,15 +19,33 @@ $drawer-width : 240px;
 }
 
 .drawerClose{
-    width: 0;
+    width: 56px;
     overflow-x: hidden;
-    top: 55px;
     background-color: $primary-lighter;
     transition: width 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
     transition-property: width;
     transition-duration: 195ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
     transition-delay: 0ms;
+}
+
+.sidebar_logo{
+    width: 230px;
+    padding: 30px;
+    // transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+    // transition-property: width;
+    // transition-duration: 225ms;
+    // transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+    // transition-delay: 0ms;   
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidebar_logo_closed{
+    width: 46px;
+    padding: 6px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .toolbar{
@@ -43,7 +60,19 @@ $drawer-width : 240px;
 }
 
 .sidebar_footer{
-    margin-top: 100%;
+    overflow-x: hidden;
+    position: fixed;
+    bottom: 0;
+    width: $drawer-width;
+    transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+    transition-property: width;
+    transition-duration: 225ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+    transition-delay: 0ms;
+}
+
+.sidebar_footer_close{
+    width: 56px;
 }
 
 .links:hover{
@@ -52,10 +81,9 @@ $drawer-width : 240px;
 }
 
 .collapse_icon{
-color: $secondary-color;
-transform: rotate(90deg);
-transition: all 0.5s;
-
+    color: $secondary-color;
+    transform: rotate(90deg);
+    transition: all 0.5s;
 }
 
 .collapse_icon_collapsed{
@@ -72,3 +100,4 @@ transition: all 0.5s;
 .toggle_mini_icon_open{
 transform: rotate(0deg);
 }
+

@@ -86,10 +86,10 @@ const Header = ({open, handleDrawerToggle, mini, handleNavHidden}:props) =>{
         >
           <MenuIcon />
         </IconButton> */}
-        <Typography variant="h6" noWrap>
+        {/* <Typography variant="h6" noWrap>
           <img src={assets.logo} width={40} height={40} alt="logo" className="logo w-auto" />
-        </Typography>
-        <FormGroup>
+        </Typography> */}
+        <FormGroup style={{paddingLeft:'60px'}}>
           <FormControlLabel
             control={<Switch color="primary" checked={mini} onChange={() => handleNavHidden()} />}
             label={'Mini'}
