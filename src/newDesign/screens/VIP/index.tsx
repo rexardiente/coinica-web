@@ -1,5 +1,6 @@
 import { Fragment, useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setPageLoading } from "redux/page/page_action";
 import { Grid, Typography } from "@material-ui/core";
 import { Rank, Points } from "./Level";
 import HowItWorks from "newDesign/components/HowItWorks";
@@ -22,19 +23,20 @@ const INSTRUCTION_LIST = [
 
 const VIP = () => {
   const { account } = useSelector((state: ReduxState) => state.platform);
+  const dispatch = useDispatch();
+
   const [data, setData] = useState<{ [key: string]: any }>({});
   const [error, setError] = useState<any>();
-  const [isLoading, setLoading] = useState(false);
 
   const getVip = async () => {
-    setLoading(true);
+    dispatch(setPageLoading(true));
     try {
       const res = await GetVIP(account?.id);
       setData({ ...res.data });
     } catch (error: any) {
       setError(error.message);
     } finally {
-      setLoading(false);
+      dispatch(setPageLoading(false));
     }
   };
 
@@ -49,14 +51,6 @@ const VIP = () => {
     return (
       <Typography component="p" align="center">
         {error}
-      </Typography>
-    );
-  }
-
-  if (isLoading) {
-    return (
-      <Typography component="p" align="center">
-        Loading data...
       </Typography>
     );
   }

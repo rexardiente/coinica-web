@@ -1,0 +1,66 @@
+@import "./src/assets/scss/utils";
+
+.inputBase {
+  font-size: rem(24);
+  font-weight: 500;
+  color: #5574bd;
+  background-color: #0e131f;
+  border-radius: 10px;
+  width: 100%;
+  height: 46px;
+  padding: 6px;
+
+  input {
+    padding: 0;
+  }
+}
+
+.labelCopy {
+  padding: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+}
+
+.labelApplyCode {
+  padding-top: 3px;
+  padding-bottom: 7px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5%;
+
+  @media (max-width: 599px) {
+    padding-left: 3%;
+  }
+}
+
+.buttonWrapper {
+  flex-grow: 0;
+  max-width: 45%;
+  flex-basis: 45%;
+}
+
+.buttonCopy {
+  height: 100%;
+  font-size: rem(18);
+  text-transform: capitalize;
+
+  @media (max-width: 599px) {
+    font-size: rem(10);
+    min-width: auto;
+  }
+}
+
+.button {
+  height: 100%;
+  font-size: rem(18);
+  text-transform: capitalize;
+
+  @media (max-width: 599px) {
+    font-size: rem(10);
+    min-width: auto;
+  }
+}

@@ -19,13 +19,17 @@
 
   p {
     color: #9dc8ef;
-    font-size: rem(24);
+    font-size: rem(22);
     font-weight: 700;
+
+    display: flex;
+    align-items: center;
   }
 
   ol li {
     display: revert;
-    font-size: rem(18);
+    font-size: rem(16);
+    color: #558abb;
 
     &:nth-of-type(n + 1):not(:last-of-type) {
       margin-bottom: 8px;

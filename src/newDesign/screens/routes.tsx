@@ -2,9 +2,9 @@ import { lazy } from "react";
 
 //Lazy load screens
 const VIP = lazy(() => import("./VIP"));
-// const Challenge = lazy(() => import("./Challenge"));
-// const Tasks = lazy(() => import("./Tasks"));
-// const Referral = lazy(() => import("./Referral"));
+const Challenge = lazy(() => import("./Challenge"));
+const Tasks = lazy(() => import("./Tasks"));
+const Referral = lazy(() => import("./Referral"));
 // const News = lazy(() => import("./News"));
 // const Rankings = lazy(() => import("./Rankings"));
 // const Leaderboard = lazy(() => import("./Leaderboard"));
@@ -38,29 +38,30 @@ const routes = [
     component: VIP,
     isPrivate: false,
   },
-  // {
-  //   key: "Challenge",
-  //   exact: true,
-  //   path: "/challenge",
-  //   component: Challenge,
-  //   isPrivate: false,
-  // },
-  // {
-  //   key: "Tasks",
-  //   // game: "tasks", // temporary variable to trigger sign-up modal
-  //   exact: true,
-  //   path: "/tasks",
-  //   component: Tasks,
-  //   isPrivate: true,
-  // },
-  // {
-  //   key: "Referral",
-  //   // game: "referral", // temporary variable to trigger sign-up modal
-  //   exact: true,
-  //   path: "/referral",
-  //   component: Referral,
-  //   isPrivate: true,
-  // },
+  {
+    key: "Challenge",
+    game: "challenge",
+    exact: true,
+    path: "/challenge",
+    component: Challenge,
+    isPrivate: false,
+  },
+  {
+    key: "Tasks",
+    game: "tasks", // temporary variable to trigger sign-up modal
+    exact: true,
+    path: "/tasks",
+    component: Tasks,
+    isPrivate: true,
+  },
+  {
+    key: "Referral",
+    game: "referral", // temporary variable to trigger sign-up modal
+    exact: true,
+    path: "/referral",
+    component: Referral,
+    isPrivate: true,
+  },
   // {
   //   key: "News",
   //   exact: true,

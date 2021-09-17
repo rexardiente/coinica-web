@@ -1,0 +1,7 @@
+@import "./src/assets/scss/utils";
+
+.container {
+  > div {
+    margin-bottom: 30px;
+  }
+}

@@ -5,6 +5,7 @@ import platform from "./platform/platform_reducer";
 import scatter from "./scatter/scatter_reducer";
 import treasurehunt from "./treasurehunt/treasurehunt_reducer";
 import walletExt from "./wallet/wallet_reducer";
+import page from "./page/page_reducer";
 
 export default combineReducers({
   ghost_quest,
@@ -13,4 +14,5 @@ export default combineReducers({
   scatter,
   treasurehunt,
   walletExt,
+  page
 });

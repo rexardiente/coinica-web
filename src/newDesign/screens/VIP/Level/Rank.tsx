@@ -30,7 +30,7 @@ const Rank = ({ username, data }: Props) => {
               <span> {translate("vip.temp_data.rank.titles.rank.sub")} </span>
             </Grid>
             <Grid item xs={6} className={styles.text_right}>
-              <span>{data.rank || "Silver"} </span>
+              <span>{data.rank || "__"} </span>
             </Grid>
           </Grid>
           <Grid item container>
@@ -57,7 +57,7 @@ const Rank = ({ username, data }: Props) => {
               <span> {translate("vip.temp_data.rank.titles.rank.sub")} </span>
             </Grid>
             <Grid item xs={6} className={styles.text_right}>
-              <span>{data.next_rank || "Silver"}</span>
+              <span>{data.next_rank || "__"}</span>
             </Grid>
           </Grid>
         </Grid>

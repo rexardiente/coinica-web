@@ -1,5 +1,5 @@
 export default function useCopyToClipboard() {
-  function copy(elementId: string) {
+  function copy(text: string) {
     try {
       const textarea: HTMLTextAreaElement = document.createElement("textarea");
 
@@ -9,11 +9,10 @@ export default function useCopyToClipboard() {
 
       document.body.appendChild(textarea);
 
-      textarea.value = document.getElementById(elementId)?.innerText || "";
+      textarea.value = text || "";
 
-      const selector: HTMLTextAreaElement | null = document.querySelector(
-        "#temp_code"
-      );
+      const selector: HTMLTextAreaElement | null =
+        document.querySelector("#temp_code");
 
       selector?.select();
       document.execCommand("copy");

@@ -1,5 +1,5 @@
-import React , { useState } from "react";
-import { useSelector , useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "./Layout.module.scss";
 import Footer from "../../components/Footer";
 import PageContent from "../PageContent";
@@ -13,8 +13,8 @@ import NavigationMini from "../../components/NavigationMini";
 import "newDesign/index.scss";
 
 type ReduxState = {
-  platform: any
-}
+  platform: any;
+};
 
 const Layout = () => {
   const [openSidebar, seOpenSidebar] = useState(true);
@@ -88,7 +88,7 @@ const Layout = () => {
             handleSelectLanguage={handleSelectLanguage}
             handleToggleSidebar={handleToggleSidebar}
             /> */}
-        <PageContent />
+        <PageContent sideBarOpen={openSidebar} />
         <Footer />
       </div>
     </StylesProvider>

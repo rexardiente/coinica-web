@@ -8,11 +8,13 @@ import Typography from "@material-ui/core/Typography";
 import NotFound from "../NotFound";
 import routes from "../routes";
 import HomeScreen from "../Dashboard";
+import Loading from "../../components/Loading";
 
 // const HomeScreen = React.lazy(() => import("../Dashboard"));
 
 type ReduxState = {
-  platform: any
+  platform: any;
+  page: any;
 };
 
 // A wrapper for <Route> that redirects to the login
@@ -26,30 +28,28 @@ const PrivateRoute = ({ isGame, renderComponentFunc, ...rest }) => {
       {...rest}
       render={(props) => {
         if (platform?.account) {
-          return (
-            renderComponentFunc(props)
-          )
+          return renderComponentFunc(props);
         } else if (isGame) {
           if (typeof dispatch === "function" && !platform?.entryModalState) {
-            dispatch(setEntryModalState(true))
+            dispatch(setEntryModalState(true));
             return (
               <Redirect
                 to={{
                   pathname: "/",
-                  state: { from: props.location }
+                  state: { from: props.location },
                 }}
               />
-            )
+            );
           }
         } else {
           return (
             <Redirect
               to={{
                 pathname: "/",
-                state: { from: props.location }
+                state: { from: props.location },
               }}
             />
-          )
+          );
         }
       }}
     />
@@ -83,53 +83,53 @@ const RouteComponent = ({ props, route }) => {
   //   }
   //   // FOR PLATFORM SCREENS
   // } else {
-    return (
-      <div id={route.key}>
-        <route.component {...props} />
-      </div>
-    );
+  return (
+    <div id={route.key}>
+      <route.component {...props} />
+    </div>
+  );
   // }
 };
 
-const PageContent = (props) =>{
-    return (
-      <Container className={`${styles.page_content}`} maxWidth="lg">
-        <Switch>
-          {routes.map((route) => {
-            // if (route?.isPrivate) {
-            //   return (
-            //     <PrivateRoute
-            //       exact={route.exact}
-            //       key={route.key}
-            //       path={route.path}
-            //       isGame={route?.game || false}
-            //       renderComponentFunc={(props) => (<RouteComponent props={props} route={route} />)}
-            //     />
-            //   )
-            // }
-            return (
-              <Route
-                exact={route.exact}
-                key={route.key}
-                path={route.path}
-                render={(props) => (
-                  <RouteComponent props={props} route={route} />
-                )}
-              />
-            );
-          })}
-          <Route
-            path={["/home", "/"]}
-            render={() => (
-              <div id={"Home"}>
-                <HomeScreen />
-              </div>
-            )}
-          />
-          <Route path="*" render={(props) => <NotFound />} />
-        </Switch>
-      </Container>
-    );
+const PageContent = ({ sideBarOpen }) => {
+  const { isLoading } = useSelector((state: ReduxState) => state.page);
+  return (
+    <Container className={`${styles.page_content}`} maxWidth="lg">
+      <Loading isLoading={isLoading} sideBarOpen={sideBarOpen} />
+      <Switch>
+        {routes.map((route) => {
+          // if (route?.isPrivate) {
+          //   return (
+          //     <PrivateRoute
+          //       exact={route.exact}
+          //       key={route.key}
+          //       path={route.path}
+          //       isGame={route?.game || false}
+          //       renderComponentFunc={(props) => (<RouteComponent props={props} route={route} />)}
+          //     />
+          //   )
+          // }
+          return (
+            <Route
+              exact={route.exact}
+              key={route.key}
+              path={route.path}
+              render={(props) => <RouteComponent props={props} route={route} />}
+            />
+          );
+        })}
+        <Route
+          path={["/home", "/"]}
+          render={() => (
+            <div id={"Home"}>
+              <HomeScreen />
+            </div>
+          )}
+        />
+        <Route path="*" render={(props) => <NotFound />} />
+      </Switch>
+    </Container>
+  );
 };
 
 export default PageContent;

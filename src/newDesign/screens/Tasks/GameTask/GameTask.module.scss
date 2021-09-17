@@ -1,0 +1,50 @@
+@import "./src/assets/scss/utils";
+
+.container {
+  background-color: #242d41;
+  max-width: 312px;
+  width: 100%;
+  height: 227px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  font-size: rem(16);
+  padding: 20px 30px;
+
+  @media (max-width: 600px) {
+    font-size: rem(13);
+    padding: 10px 15px;
+  }
+}
+
+.fontWeight_700 {
+  font-weight: 700;
+}
+
+.gameName {
+  font-size: rem(22);
+  text-align: left;
+
+  @media (max-width: 425px) {
+    font-size: rem(18);
+  }
+}
+
+.textCapitalize {
+  text-transform: capitalize;
+}
+
+.progress {
+  margin-bottom: 20px;
+}
+
+.points {
+  display: flex;
+  justify-content: center;
+
+  svg {
+    margin-right: 5px;
+  }
+}
