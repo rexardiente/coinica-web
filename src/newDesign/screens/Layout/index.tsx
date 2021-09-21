@@ -5,12 +5,13 @@ import Footer from "../../components/Footer";
 import PageContent from "../PageContent";
 import ModalContainer from "../../components/ModalContainer";
 import { setLanguage } from "redux/platform/platform_action";
-import { StylesProvider } from "@material-ui/core/styles";
+import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import SwitchComponent from "../../components/SwitchComponent";
 import Navigation from "../../components/NavigationHidden";
 import NavigationMini from "../../components/NavigationMini";
 import "newDesign/index.scss";
+import theme from "newDesign/theme";
 
 type ReduxState = {
   platform: any;
@@ -57,30 +58,31 @@ const Layout = () => {
 
   return (
     <StylesProvider injectFirst>
-      <CssBaseline />
-      <div className={`${styles.wrapper}`}>
-        <ModalContainer />
-        <SwitchComponent active={activeSidebar}>
-          <Navigation
-            name="navigationHidden"
-            open={openSidebar}
-            handleDrawerToggle={handleDrawerToggle}
-            handleNavMini={handleNavMini}
-            mini={mini}
-            language={language}
-            handleSelectLanguage={handleSelectLanguage}
-          />
-          <NavigationMini
-            name="navigationMini"
-            open={openSidebar}
-            handleDrawerToggle={handleDrawerToggle}
-            handleNavHidden={handleNavHidden}
-            mini={mini}
-            language={language}
-            handleSelectLanguage={handleSelectLanguage}
-          />
-        </SwitchComponent>
-        {/* <CurrentSidebar 
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <div className={`${styles.wrapper}`}>
+          <ModalContainer />
+          <SwitchComponent active={activeSidebar}>
+            <Navigation
+              name="navigationHidden"
+              open={openSidebar}
+              handleDrawerToggle={handleDrawerToggle}
+              handleNavMini={handleNavMini}
+              mini={mini}
+              language={language}
+              handleSelectLanguage={handleSelectLanguage}
+            />
+            <NavigationMini
+              name="navigationMini"
+              open={openSidebar}
+              handleDrawerToggle={handleDrawerToggle}
+              handleNavHidden={handleNavHidden}
+              mini={mini}
+              language={language}
+              handleSelectLanguage={handleSelectLanguage}
+            />
+          </SwitchComponent>
+          {/* <CurrentSidebar 
             collapsed={collapsed}
             language={language}
             toggled={toggled}
@@ -88,9 +90,10 @@ const Layout = () => {
             handleSelectLanguage={handleSelectLanguage}
             handleToggleSidebar={handleToggleSidebar}
             /> */}
-        <PageContent sideBarOpen={openSidebar} />
-        <Footer />
-      </div>
+          <PageContent sideBarOpen={openSidebar} />
+          <Footer />
+        </div>
+      </ThemeProvider>
     </StylesProvider>
   );
 };

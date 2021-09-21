@@ -2,7 +2,7 @@ import { lazy } from "react";
 
 //Lazy load screens
 const VIP = lazy(() => import("./VIP"));
-const Challenge = lazy(() => import("./Challenge"));
+// const Challenge = lazy(() => import("./Challenge"));
 const Tasks = lazy(() => import("./Tasks"));
 const Referral = lazy(() => import("./Referral"));
 // const News = lazy(() => import("./News"));
@@ -38,14 +38,14 @@ const routes = [
     component: VIP,
     isPrivate: false,
   },
-  {
-    key: "Challenge",
-    game: "challenge",
-    exact: true,
-    path: "/challenge",
-    component: Challenge,
-    isPrivate: false,
-  },
+  // {
+  //   key: "Challenge",
+  //   game: "challenge",
+  //   exact: true,
+  //   path: "/challenge",
+  //   component: Challenge,
+  //   isPrivate: false,
+  // },
   {
     key: "Tasks",
     game: "tasks", // temporary variable to trigger sign-up modal
