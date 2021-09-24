@@ -140,9 +140,10 @@
   "task.points": "ポイント",
   "task.earned": "稼いだ！",
 
-  "challenge.title": "デイリーチャレンジ-ジャックスオアベター",
+  "challenge.title": "毎日の挑戦",
   "challenge.yesterday.button": "昨日",
   "challenge.today.button": "今日",
+  "challenge.table.rank": "ランク",
   "challenge.table.player": "プレーヤー",
   "challenge.table.bets": "賭け",
   "challenge.table.payouts": "支払い",
@@ -474,7 +475,8 @@
   "vip.how_it_works.list.item.third":"クローズドベータテストプレイに参加する権利: 新しいゲームがリリースされる前にクローズドベータに参加する権利.",
   "vip.how_it_works.list.item.fourth":"ビップ接客係: 具体的なサービスは未定. オペレーターにとっては本当のホットラインのようなものです.",
 
-  "news.header.title":"ニュース",
+  "news.title":"ニュース",
+  "news.noRecent":"最近のニュースはありません",
   "news.news_card.recent_news.title":"最近のニュース",
   "news.news_card.click_to_view":"クリックして表示",
 

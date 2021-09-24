@@ -80,7 +80,7 @@ const sidebarItems = [
   {
     name: translate("sidebar.rank"),
     image: assets.rank,
-    url: '/rankings'
+    url: '/ranking'
   },
   {
     name: translate("sidebar.news"),

@@ -141,9 +141,10 @@
   "task.points": "Points",
   "task.earned": "Earned!",
 
-  "challenge.title": "Daily Challenge - Jacks or Better",
+  "challenge.title": "Daily Challenge",
   "challenge.yesterday.button": "Yesterday",
   "challenge.today.button": "Today",
+  "challenge.table.rank": "Rank",
   "challenge.table.player": "Player",
   "challenge.table.bets": "Bets",
   "challenge.table.payouts": "Payouts",
@@ -152,7 +153,7 @@
   "challenge.payout.title": "Total payout of the day",
   "challenge.payout.reward": "Reward set",
 
-  "ranking.title": "Rankings",
+  "ranking.title": "Ranking",
   "ranking.history.button": "History",
   "ranking.hours.button": "24Hrs",
   "ranking.tab.profits": "Profit",
@@ -475,7 +476,8 @@
   "vip.how_it_works.list.item.third":"The right to participate in closed beta test play: The right to participate in closed beta before the new game is released.",
   "vip.how_it_works.list.item.fourth":"VIP concierge: Specific services are yet to be determined. It's like a real hotline to the operator.",
 
-  "news.header.title":"NEWS",
+  "news.title":"News",
+  "news.noRecent":"No recent news",
   "news.news_card.recent_news.title":"Recent News",
   "news.news_card.click_to_view":"Click to view",
 

@@ -2,11 +2,11 @@ import { lazy } from "react";
 
 //Lazy load screens
 const VIP = lazy(() => import("./VIP"));
-// const Challenge = lazy(() => import("./Challenge"));
+const Challenge = lazy(() => import("./Challenge"));
 const Tasks = lazy(() => import("./Tasks"));
 const Referral = lazy(() => import("./Referral"));
-// const News = lazy(() => import("./News"));
-// const Rankings = lazy(() => import("./Rankings"));
+const News = lazy(() => import("./News"));
+const Ranking = lazy(() => import("./Ranking"));
 // const Leaderboard = lazy(() => import("./Leaderboard"));
 // const FAQ = lazy(() => import("./FAQ"));
 // const AccountSetting = lazy(() => import("./AccountSettings"));
@@ -38,14 +38,14 @@ const routes = [
     component: VIP,
     isPrivate: false,
   },
-  // {
-  //   key: "Challenge",
-  //   game: "challenge",
-  //   exact: true,
-  //   path: "/challenge",
-  //   component: Challenge,
-  //   isPrivate: false,
-  // },
+  {
+    key: "Challenge",
+    game: "challenge",
+    exact: true,
+    path: "/challenge",
+    component: Challenge,
+    isPrivate: false,
+  },
   {
     key: "Tasks",
     game: "tasks", // temporary variable to trigger sign-up modal
@@ -62,20 +62,20 @@ const routes = [
     component: Referral,
     isPrivate: true,
   },
-  // {
-  //   key: "News",
-  //   exact: true,
-  //   path: "/news",
-  //   component: News,
-  //   isPrivate: false,
-  // },
-  // {
-  //   key: "Rankings",
-  //   exact: true,
-  //   path: "/rankings",
-  //   component: Rankings,
-  //   isPrivate: false,
-  // },
+  {
+    key: "News",
+    exact: true,
+    path: "/news",
+    component: News,
+    isPrivate: false,
+  },
+  {
+    key: "Ranking",
+    exact: true,
+    path: "/ranking",
+    component: Ranking,
+    isPrivate: false,
+  },
   // {
   //   key: "Leaderboard",
   //   exact: true,

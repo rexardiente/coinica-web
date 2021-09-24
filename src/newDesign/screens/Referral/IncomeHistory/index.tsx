@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import {
   Table,
   TableBody,
@@ -6,7 +7,6 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Box,
   Typography,
 } from "@material-ui/core";
 import { translate } from "helpers/translate";
@@ -51,7 +51,7 @@ const Benefits = ({ data }: Props) => {
     ));
   };
   return (
-    <Box>
+    <Fragment>
       <Typography component="h2" className={stylesMain.heading}>
         {translate("referral.history")}
       </Typography>
@@ -73,7 +73,7 @@ const Benefits = ({ data }: Props) => {
           <TableBody>{rows()}</TableBody>
         </Table>
       </TableContainer>
-    </Box>
+    </Fragment>
   );
 };
 
