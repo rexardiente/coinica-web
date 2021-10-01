@@ -9,7 +9,7 @@ const News = lazy(() => import("./News"));
 const Ranking = lazy(() => import("./Ranking"));
 // const Leaderboard = lazy(() => import("./Leaderboard"));
 // const FAQ = lazy(() => import("./FAQ"));
-// const AccountSetting = lazy(() => import("./AccountSettings"));
+const AccountSetting = lazy(() => import("./AccountSettings"));
 // const Treasurehunt = lazy(() => import("./Treasurehunt"));
 // const TreasurehuntGameplayV2 = lazy(() => import("./TreasurehuntGameplayV2"));
 // const TreasurehuntAutoplayV2 = lazy(() => import("./TreasurehuntAutoplayV2"));
@@ -97,14 +97,14 @@ const routes = [
   //  * =========== PRIVATE ROUTES ===========
   //  * ======================================
   //  */
-  // {
-  //   key: "Account",
-  //   exact: false,
-  //   path: "/account",
-  //   component: AccountSetting,
-  //   showHistory: false,
-  //   isPrivate: true
-  // },
+  {
+    key: "Account",
+    exact: false,
+    path: "/account",
+    component: AccountSetting,
+    showHistory: false,
+    isPrivate: false
+  },
   // /**
   //  * ===========================
   //  * ==== TREASUREHUNT GAME ====

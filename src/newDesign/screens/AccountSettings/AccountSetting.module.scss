@@ -1,0 +1,84 @@
+.mainContainer {
+  height: 100vh;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 70px;
+  flex-direction: column;
+}
+
+.componentWrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.inactiveItem {
+  color: var(--bg-less-dark-color);
+}
+
+.activeItem {
+  background-color: var(--bg-less-dark-color) !important;
+  color: #fff;
+  &:hover { color: #fff }
+}
+
+.settingsContainer, .headerTabsContainer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 0px;
+  @media (max-width: 1300px) {
+    padding: 20px 0px;
+  }
+}
+
+.settingsSideNav {
+  color: #52A4F0;
+  display: block;
+  padding: 1rem 1.5rem 1.5rem 1rem;
+  text-align: center;
+  background-color: #242D41;
+  border-radius: 5px;
+}
+
+.settingsContent {
+  width: 100%;
+  color: #fff;
+  border-radius: 20px;
+  transition: height 1s;
+}
+
+.tabLabel {
+  color: #52A4F0;
+  font-weight: 500;
+  font-size: 36px;
+}
+
+.deposit_withdraw_container {
+  padding: 1rem 2rem;
+  background-color: #242D41;
+  border-radius: 5px;
+}
+
+.info_message {
+  padding: 2rem;  
+  background: #0E141F;
+  color: #52A4F0;
+  font-size: 14px;
+  margin-bottom: 15px;
+
+  ul {
+    color: #526FA4;
+    margin-bottom: 0px;
+  }
+  ul li {
+    margin-top: 10px;
+  }
+}
+
+.balanceTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  color: #9DC8EF;
+  h5 { margin: 0; }
+}
