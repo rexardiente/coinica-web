@@ -1,10 +1,13 @@
 import React from "react";
 import clsx from "clsx";
+import { Link } from "react-router-dom";
 import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
 import { AppBar, Toolbar, IconButton, Button, Typography, FormGroup, FormControlLabel, Switch } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import styles from "./Header.module.scss";
 import * as assets from "./Assets";
+import { translate } from "helpers/translate";
+
 
 
 const drawerWidth = 240;
@@ -58,9 +61,10 @@ type props = {
   handleDrawerToggle: Function;
   mini : boolean
   handleNavMini: Function;
+  handleSignUpModalOpen: Function;
 }
 
-const Header = ({open, handleDrawerToggle, mini, handleNavMini}:props) =>{
+const Header = ({open, handleDrawerToggle, mini, handleNavMini, handleSignUpModalOpen}:props) =>{
   const classes = useStyles();
   const theme = useTheme();
 
@@ -79,14 +83,16 @@ const Header = ({open, handleDrawerToggle, mini, handleNavMini}:props) =>{
         >
           <MenuIcon />
         </IconButton>
+        <Link to='/'>
         <img src={assets.logo} width={40} height={40} alt="logo" className="logo w-auto" />
+        </Link>
         <FormGroup>
           <FormControlLabel
             control={<Switch color="primary" checked={mini} onChange={() => handleNavMini()} />}
             label={'Mini'}
           />
         </FormGroup>
-        <Button className={`coinica-button-primary ${styles.login_button}`}>Login</Button>
+        <Button variant="text" color="primary" className={`${styles.login_button}`} onClick={() => handleSignUpModalOpen()}>{translate("header.login")}</Button>
       </Toolbar>
     </AppBar>
     );

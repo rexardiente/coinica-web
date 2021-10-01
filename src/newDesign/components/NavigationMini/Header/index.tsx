@@ -12,6 +12,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import styles from "./Header.module.scss";
 import * as assets from "./Assets";
+import { translate } from "helpers/translate";
 
 
 const drawerWidth = 240;
@@ -65,9 +66,10 @@ type props = {
   handleDrawerToggle: Function;
   mini: boolean;
   handleNavHidden: Function;
+  handleSignUpModalOpen: Function;
 }
 
-const Header = ({open, handleDrawerToggle, mini, handleNavHidden}:props) =>{
+const Header = ({open, handleDrawerToggle, mini, handleNavHidden, handleSignUpModalOpen}:props) =>{
   const classes = useStyles();
   const theme = useTheme();
 
@@ -95,6 +97,7 @@ const Header = ({open, handleDrawerToggle, mini, handleNavHidden}:props) =>{
             label={'Mini'}
           />
         </FormGroup>
+        <Button variant="text" color="primary" className={`${styles.login_button}`} onClick={() => handleSignUpModalOpen()}>{translate("header.login")}</Button>
       </Toolbar>
     </AppBar>
     );

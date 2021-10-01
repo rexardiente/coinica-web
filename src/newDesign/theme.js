@@ -9,7 +9,9 @@ const coinicaTheme = createTheme({
         main: '#79B9F4',
       },
     },
-
+    typography:{
+      fontFamily: 'Roboto',
+    }
   });
 
   export default coinicaTheme;

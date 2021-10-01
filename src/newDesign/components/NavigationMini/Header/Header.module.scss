@@ -1,5 +1,11 @@
-@import "../../index.scss";
+@import "/src/newDesign/index.scss";
 
 .coinica_header{
     background-color: $primary-lighter;
+}
+
+.login_button{
+    margin-left:auto;
+    font-size: large;
+    font-weight: 700;
 }

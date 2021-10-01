@@ -1,0 +1,65 @@
+@import "/src/newDesign/index.scss";
+
+.input_field{
+    border-radius: 4;
+    position: relative;
+    background-color: white;
+    border: 1px solid $text-primary-color;
+    font-size: 16;
+    width: auto;
+    padding: 10px 12px;
+    transition: border-color 1s, box-shadow 1s;
+    box-shadow: 0 0 0 0.2rem;
+    border-color: $text-primary-color;
+}
+
+.label{
+    margin-top: 5px;
+    color: $text-primary-lighter;
+    font-size: large;
+}
+
+.agreement{
+    color: $text-primary-lighter
+}
+
+.agreement_label {
+    color: $text-primary-lighter;
+    margin-left: 0;
+}
+
+.divider {
+    background-color: #384665;
+    padding: 0;
+    margin: 0;
+}
+
+.signup_submit{
+    padding: 10px 5px;
+}
+
+.important text{
+    color: $text-sub-secondary-color;
+    font-weight: 400;
+    font-size: small;
+}
+
+.important svg{
+    color: #FAD720;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.password_field{
+    flex-direction: row-reverse;
+}
+
+.password_visibility{
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+
+.password_visibility svg{
+    color: $text-sub-secondary-color;
+}
