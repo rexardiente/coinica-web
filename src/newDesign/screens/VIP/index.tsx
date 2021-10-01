@@ -56,6 +56,7 @@ const VIP = () => {
   }
 
   const { rank, points, payout, next_rank } = data;
+  const DUMMY_PROGRESS_VALUE = { current: 50, max: 100 };
   return (
     <Fragment>
       <Grid container xs>
@@ -70,7 +71,10 @@ const VIP = () => {
             />
           </Grid>
           <Grid item className={styles.levelWrapper} xs={12}>
-            <Points />
+            <Points
+              vipPoints={DUMMY_PROGRESS_VALUE}
+              totalPayout={DUMMY_PROGRESS_VALUE}
+            />
           </Grid>
         </Grid>
         <Grid item className={styles.howItWorksWrapper} xs={12}>

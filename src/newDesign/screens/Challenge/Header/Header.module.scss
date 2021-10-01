@@ -29,7 +29,7 @@
   svg {
     margin-left: 7px;
     margin-right: 7px;
-    align-self: end;
+    align-self: center;
 
     @media (max-width: 600px) {
       width: 28px;
@@ -43,8 +43,7 @@
 }
 
 .timer {
-  font-size: rem(22);
-  align-self: center;
+  font-size: rem(20);
 
   @media (max-width: 600px) {
     font-size: rem(16);

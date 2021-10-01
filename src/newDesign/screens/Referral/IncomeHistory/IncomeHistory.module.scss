@@ -12,6 +12,11 @@
   tbody td {
     padding: 25px;
     font-size: rem(18);
+
+    @media (max-width: 600px) {
+      padding: 20px;
+      font-size: rem(16);
+    }
   }
 
   thead th {

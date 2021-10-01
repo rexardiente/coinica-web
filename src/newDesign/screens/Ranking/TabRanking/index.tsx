@@ -1,19 +1,11 @@
-import React, { ChangeEvent } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Tab from "@material-ui/core/Tab";
+import { ChangeEvent } from "react";
+import { Tab, makeStyles } from "@material-ui/core";
 import TabContext from "@material-ui/lab/TabContext";
 import TabList from "@material-ui/lab/TabList";
 import TabPanel from "@material-ui/lab/TabPanel";
 import TableRanking from "../Table";
 import { translate } from "helpers/translate";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    // borderBottom: "1px solid #e8e8e8",
-    // backgroundColor: theme.palette.background.paper,
-  },
-}));
+import styles from "./Tabs.module.scss";
 
 type Props = {
   data: Record<string, any>;
@@ -21,13 +13,31 @@ type Props = {
   onChangeTab: (e: ChangeEvent<{}>, value: any) => void;
 };
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    borderBottom: "2px solid #405680",
+    "& .Mui-selected": {
+      color: theme.palette.primary.main,
+    },
+    "& .PrivateTabIndicator-colorPrimary-21": {
+      height: 4,
+    },
+  },
+}));
+
 const TabRanking = ({ data, selectedTab, onChangeTab }: Props) => {
   const classes = useStyles();
   const dataEntries = Object.entries(data);
 
   const renderTabTitle = () => {
     return (
-      <TabList onChange={onChangeTab} aria-label="simple tabs example">
+      <TabList
+        onChange={onChangeTab}
+        aria-label="ranking tab"
+        className={[classes.root, styles.tabListHeader].join(" ")}
+        indicatorColor="primary"
+      >
         {dataEntries.map((title) => (
           <Tab label={translate(`ranking.tab.${title[0]}`)} value={title[0]} />
         ))}
@@ -37,7 +47,7 @@ const TabRanking = ({ data, selectedTab, onChangeTab }: Props) => {
 
   const renderTabContent = () => {
     const tableHead = [
-      "#",
+      translate("ranking.table.rank") as unknown as string,
       translate("ranking.table.player") as unknown as string,
       translate("ranking.table.bets") as unknown as string,
     ];
@@ -55,7 +65,7 @@ const TabRanking = ({ data, selectedTab, onChangeTab }: Props) => {
     ));
   };
   return (
-    <div className={classes.root}>
+    <div className={styles.container}>
       <TabContext value={selectedTab}>
         {renderTabTitle()}
         {renderTabContent()}

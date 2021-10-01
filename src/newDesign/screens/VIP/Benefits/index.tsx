@@ -9,7 +9,7 @@ import {
   Paper,
 } from "@material-ui/core";
 import { translate } from "helpers/translate";
-import { benefits_row } from "../temp_data";
+import { benefits_row } from "../data";
 import styles from "./Benefits.module.scss";
 
 type rowType = string | ReactNode;

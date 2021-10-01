@@ -92,15 +92,14 @@ const Challenge = () => {
 
   const handleToggle = (e, value: any) => {
     setSelectedToggle(value);
-    getChallengeRank(value);
   };
 
   useEffect(() => {
-    if (account) {
-      handleToggle(null, "today");
+    if (account && selectedToggle) {
+      getChallengeRank(selectedToggle);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account]);
+  }, [account, selectedToggle]);
 
   if (error) {
     return (

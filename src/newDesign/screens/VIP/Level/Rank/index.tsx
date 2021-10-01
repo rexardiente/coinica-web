@@ -1,7 +1,7 @@
 import { Grid, Divider } from "@material-ui/core";
 import { translate } from "helpers/translate";
-import * as assets from "../Assets";
-import styles from "./Level.module.scss";
+import * as assets from "../../Assets";
+import styles from "../Level.module.scss";
 
 type Props = {
   username: string;

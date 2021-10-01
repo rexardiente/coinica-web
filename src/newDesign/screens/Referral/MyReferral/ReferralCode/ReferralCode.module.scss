@@ -1,7 +1,7 @@
 @import "./src/assets/scss/utils";
 
 .inputBase {
-  font-size: rem(24);
+  font-size: rem(22);
   font-weight: 500;
   color: #5574bd;
   background-color: #0e131f;
@@ -56,7 +56,7 @@
 
 .button {
   height: 100%;
-  font-size: rem(18);
+  font-size: rem(16);
   text-transform: capitalize;
 
   @media (max-width: 599px) {

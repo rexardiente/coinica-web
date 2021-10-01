@@ -6,8 +6,9 @@ import {
   createStyles,
   Theme,
 } from "@material-ui/core";
+import LinearProgressBar from "newDesign/components/LinearProgressBar";
 import { translate } from "helpers/translate";
-import styles from "./Level.module.scss";
+import styles from "../Level.module.scss";
 
 const BorderLinearProgress = withStyles((theme: Theme) =>
   createStyles({
@@ -25,7 +26,12 @@ const BorderLinearProgress = withStyles((theme: Theme) =>
   })
 )(LinearProgress);
 
-const Points = () => {
+type Props = {
+  vipPoints: { current: number; max: number };
+  totalPayout: { current: number; max: number };
+};
+
+const Points = ({ vipPoints, totalPayout }: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles.headerTitle}>
@@ -41,9 +47,10 @@ const Points = () => {
               <div>{translate("vip.temp_data.progress_values.vip_points")}</div>
             </Grid>
             <Grid item>
-              <BorderLinearProgress value={20} variant="determinate">
-                <span>100%</span>
-              </BorderLinearProgress>
+              <LinearProgressBar
+                currentValue={vipPoints.current}
+                maxValue={vipPoints.max}
+              />
             </Grid>
           </Grid>
           <Grid item container direction="column" justifyContent="space-evenly">
@@ -51,7 +58,10 @@ const Points = () => {
               <div>{translate("vip.temp_data.rank.titles.totalPayout")}</div>
             </Grid>
             <Grid item>
-              <BorderLinearProgress value={50} variant="determinate" />
+              <LinearProgressBar
+                currentValue={vipPoints.current}
+                maxValue={vipPoints.max}
+              />
             </Grid>
           </Grid>
         </Grid>

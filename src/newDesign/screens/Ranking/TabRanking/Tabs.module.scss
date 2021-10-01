@@ -1,0 +1,11 @@
+@import "./src/assets/scss/utils";
+
+.tabListHeader {
+  border-bottom: 2px solid #405680;
+
+  > div {
+    > div button {
+      font-size: rem(18);
+    }
+  }
+}
