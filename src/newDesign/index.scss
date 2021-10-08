@@ -1,44 +1,70 @@
-@font-face{
-    font-family: "OpenSans";
-    src: url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+@import "./src/assets/scss/mixin";
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
 }
 
-@font-face{
-    font-family: "Roboto";
-    src: url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@font-face {
+  font-family: "Roboto";
+  src: url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 }
 
-$primary-color: #161E2F;
-$primary-lighter: #242D41;
-$primary-darker: #0E141F;
+$primary-color: #161e2f;
+$primary-lighter: #242d41;
+$primary-darker: #0e141f;
 
-$secondary-color: #1785EB; //sidebar & header text color
+$secondary-color: #1785eb; //sidebar & header text color
 
-$text-primary-color: #79B9F4;
-$text-primary-lighter: #9DC8EF;
-$text-sub-color: #6A81A4;
-$text-sub-secondary-color: #526FA4;
+$text-primary-color: #79b9f4;
+$text-primary-lighter: #9dc8ef;
+$text-sub-color: #6a81a4;
+$text-sub-secondary-color: #526fa4;
 
-html{
-    height: 100%;
-    font-family: "Roboto";
+html {
+  height: 100%;
+  font-family: "Roboto";
 }
 
-body{
-    color: $text-primary-color;
-    height: 100%;
-    background-color: $primary-color;
+body {
+  color: $text-primary-color;
+  height: 100%;
+  background-color: $primary-color;
 }
 
-.coinica-button-primary{
-    color: $secondary-color;
+.coinica-button-primary {
+  color: $secondary-color;
 }
 
-.center-content{
-    text-align: center; //for img / buttons / span
+.center-content {
+  text-align: center; //for img / buttons / span
 }
 
-.center-item{
-    margin-left: auto;
-    margin-right: auto;
+.center-item {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.strokeBlue2 {
+  @include stroke(#12186b, 2px);
+}
+
+.strokeBlue4 {
+  @include stroke(#12186b, 4px);
+}
+
+.strokeViolet2 {
+  @include stroke(#493072, 2px);
+}
+
+.strokeViolet4 {
+  @include stroke(#493072, 4px);
+}
+
+.strokeDarkYellow2 {
+  @include stroke(#735430, 2px);
+}
+
+.strokeDarkYellow4 {
+  @include stroke(#735430, 4px);
 }

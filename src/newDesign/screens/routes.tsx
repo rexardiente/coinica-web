@@ -19,7 +19,7 @@ const AccountSetting = lazy(() => import("./AccountSettings"));
 // const GhostQuestGameplay = lazy(() => import("./GhostQuestGameplay"));
 // const GhostQuestRanking = lazy(() => import("./GhostQuestRanking"));
 // const GhostQuestSummonResult = lazy(() => import("./GhostQuestSummonResult"));
-// const MahjongMain = lazy(() => import("./MahjongMain"));
+const MahjongMain = lazy(() => import("./MahjongMain"));
 // const MahjongGameplay = lazy(() => import("./MahjongGameplay"));
 
 const routes = [
@@ -103,7 +103,7 @@ const routes = [
     path: "/account",
     component: AccountSetting,
     showHistory: false,
-    isPrivate: false
+    isPrivate: false,
   },
   // /**
   //  * ===========================
@@ -201,15 +201,15 @@ const routes = [
   //  * ====== MAHJONG GAME =======
   //  * ===========================
   //  * */
-  // {
-  //   key: "MahjongMain",
-  //   game: "Mahjong",
-  //   exact: true,
-  //   path: "/game/mahjong",
-  //   component: MahjongMain,
-  //   isPrivate: true,
-  //   showHistory: false,
-  // },
+  {
+    key: "MahjongMain",
+    game: "Mahjong",
+    exact: true,
+    path: "/game/mahjong",
+    component: MahjongMain,
+    isPrivate: true,
+    showHistory: false,
+  },
   // {
   //   key: "MahjongGameplay",
   //   game: "Mahjong",

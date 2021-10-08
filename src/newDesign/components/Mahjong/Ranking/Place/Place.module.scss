@@ -1,0 +1,134 @@
+@import "./src/assets/scss/config";
+@import "./src/assets/scss/utils";
+@import "./src/assets/scss/mixin";
+
+.container {
+  font-family: Nunito;
+  display: flex;
+  width: 100%;
+  height: 88px;
+  padding: 10px;
+  position: relative;
+}
+
+.userRankWrapper {
+  width: calc(100% - 220px);
+  height: inherit;
+  display: flex;
+  justify-content: space-evenly;
+
+  padding: 10px 10% 10px 10px;
+
+  align-items: center;
+  background: linear-gradient(
+    90deg,
+    #c18869 0.1%,
+    #dfceb5 0.11%,
+    #fff7dd 22.02%,
+    #fff7dd 63.59%,
+    #dfceb5 79.58%
+  );
+  border: 2px solid #ab8c67;
+  box-sizing: border-box;
+  box-shadow: inset 0px -5px 6px #c6b396;
+  border-radius: 8px;
+  z-index: 100;
+}
+
+.rank {
+  width: 45%; // remaining 10% for padding-right in .container
+}
+.user {
+  width: 45%; // remaining 10% for padding-right in .container
+}
+
+.rankNumber {
+  display: block;
+  margin: 0 auto;
+}
+
+.user {
+  display: flex;
+}
+
+.avatarBg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 76px;
+  height: 76px;
+
+  background: #e6d3b5;
+  border: 2px solid #836742;
+  border-radius: 10px;
+  color: #886d48;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.winsWrapper {
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/home_screen/ranking/bg_pentagon.png");
+  background-repeat: no-repeat;
+  background-size: 100% 99%;
+  width: 320px;
+  height: 88px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-left: 8%;
+  padding-right: 8%;
+  z-index: 150;
+  position: absolute;
+  right: 0;
+}
+
+.nameWrapper {
+  margin: auto 10px;
+  div {
+    &:first-child {
+      color: #4e463c;
+      font-weight: 800;
+      font-size: rem(24);
+      line-height: 33px;
+    }
+    &:last-child {
+      font-weight: 600;
+      font-size: rem(14);
+      line-height: 19px;
+
+      color: #857867;
+    }
+  }
+}
+
+.divider {
+  border: 1px solid #857867;
+}
+
+.winRate,
+.maxPayout {
+  text-align: center;
+  width: 40%;
+
+  div:first-child {
+    color: #fff;
+    font-size: rem(12);
+    padding: 1px 2px;
+    border-radius: 5px;
+    background-color: #db9d41;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  div:last-child {
+    color: #fff7dd;
+    font-weight: 900;
+    font-size: rem(24);
+    @include stroke(#53381f, 1px);
+    float: right;
+  }
+}

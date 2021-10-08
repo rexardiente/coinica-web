@@ -1,0 +1,34 @@
+@import "./src/assets/scss/config";
+@import "./src/assets/scss/utils";
+@import "./src/assets/scss/mixin";
+
+.dialog {
+  position: absolute !important;
+}
+
+.dialogTitle {
+  padding: 8px 16px;
+  text-align: center;
+}
+
+.dialogContent {
+  display: flex;
+  justify-content: center;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.innerScrollable {
+  overflow-y: auto;
+  width: inherit;
+  height: 95%;
+}
+
+.title {
+  font-family: Nunito;
+  font-size: rem(28);
+  font-weight: bold;
+  color: #fff;
+
+  position: relative;
+}
