@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Modal from "../Modal";
 import Place from "./Place";
 import { translate } from "helpers/translate";
@@ -17,7 +18,11 @@ const Ranking = ({ show, onHide, data }: Props) => {
         <div className={styles.content}>
           {data && data.length > 0
             ? data.map((rank, index) => {
-                return <Place data={rank} index={index} />;
+                return (
+                  <Fragment key={index}>
+                    <Place data={rank} index={index} />
+                  </Fragment>
+                );
               })
             : translate("misc.noAvailableData")}
         </div>

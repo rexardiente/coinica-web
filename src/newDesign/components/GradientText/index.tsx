@@ -37,8 +37,8 @@ const TextSvg = ({
         fill={`url(#${id})`}
         x="50%"
         y="50%"
-        dominant-baseline="middle"
-        text-anchor="middle"
+        dominantBaseline="middle"
+        textAnchor="middle"
         strokeLinejoin="round"
       >
         {text}
@@ -62,8 +62,8 @@ const GradientText = ({
       .substring(1);
   }, []);
 
-  const _width = width || "auto";
-  const _height = height || "auto";
+  const _width = width || "100%";
+  const _height = height || "100%";
   const uniqueId = id || "gradient-" + generateId;
 
   return (
