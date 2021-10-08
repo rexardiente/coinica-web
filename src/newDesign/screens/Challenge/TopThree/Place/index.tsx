@@ -11,16 +11,16 @@ const trophies = [
 type Props = {
   index: number;
   playerName: string;
-  vipPoints: number;
+  points: number;
 };
 
-const Place = ({ playerName, vipPoints, index }: Props) => {
+const Place = ({ playerName, points, index }: Props) => {
   return (
     <div className={styles.container}>
       <Avatar variant="square" className={styles.avatarBg} />
       <div className={styles.playerPoints}>
         <div>{playerName || "---"}</div>
-        <div>{vipPoints || 0}</div>
+        <div>{points || 0}</div>
       </div>
       <img className={styles.trophy} alt="trophy" src={trophies[index]} />
     </div>

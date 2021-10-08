@@ -11,7 +11,7 @@ import { translate } from "helpers/translate";
 import styles from "./LeaderBoardTable.module.scss";
 
 type LeaderBoard = {
-  playerName: string;
+  username: string;
   bets: number;
   wagered: number;
   ratio: number;
@@ -37,7 +37,7 @@ const Benefits = ({ data }: Props) => {
     return data.map((row, index) => (
       <TableRow key={index}>
         <TableCell align="center">{index + 1}</TableCell>
-        <TableCell align="center">{row.playerName || "---"}</TableCell>
+        <TableCell align="center">{row.username || "---"}</TableCell>
         <TableCell align="center">{row.bets}</TableCell>
         <TableCell align="center">{row.wagered}</TableCell>
         <TableCell align="center">{row.ratio}</TableCell>

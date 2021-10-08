@@ -5,7 +5,6 @@ import { Grid, Typography } from "@material-ui/core";
 import {
   GetChallengeRankToday,
   GetChallengeRankYesterday,
-  GetUsernameAccountById,
 } from "services/api/server/platform";
 import { translate } from "helpers/translate";
 import Header from "./Header";
@@ -30,8 +29,7 @@ type ReduxState = {
 };
 
 type ChallengeData = {
-  user: string;
-  playerName: string;
+  username: string;
   bets: number;
   wagered: number;
   ratio: number;
@@ -46,22 +44,6 @@ const Challenge = () => {
   const [selectedToggle, setSelectedToggle] = useState("yesterday");
   const [error, setError] = useState("");
 
-  const getUsername = async (data: ChallengeData[]) => {
-    try {
-      if (data.length) {
-        return await Promise.all(
-          data.map(async (account: ChallengeData) => {
-            const res = await GetUsernameAccountById(account.user);
-
-            return { ...account, playerName: res.data[1] };
-          })
-        );
-      }
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  };
   const getChallengeRank = async (val: string) => {
     dispatch(setPageLoading(true));
     try {
@@ -69,10 +51,7 @@ const Challenge = () => {
         ? GetChallengeRankYesterday
         : GetChallengeRankToday)();
 
-      const data = val === "yesterday" ? res.data.rank_users : res.data;
-      const formattedChallengeData = await getUsername(data);
-
-      setChallengeData(formattedChallengeData);
+      setChallengeData(res.data);
     } catch (error: any) {
       setError(error.message);
     } finally {
