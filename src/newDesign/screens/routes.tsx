@@ -14,10 +14,11 @@ const AccountSetting = lazy(() => import("./AccountSettings"));
 // const TreasurehuntGameplayV2 = lazy(() => import("./TreasurehuntGameplayV2"));
 // const TreasurehuntAutoplayV2 = lazy(() => import("./TreasurehuntAutoplayV2"));
 // const TreasurehuntAutoplayGameplay = lazy(() => import("./TreasurehuntAutoplayGameplay"));
-// const GhostQuest = lazy(() => import("./GhostQuest"));
-// const GhostQuestGhostList = lazy(() => import("./GhostQuestGhostList"));
+const GhostQuest = lazy(() => import("./GhostQuest"));
+const GhostQuestGhostList = lazy(() => import("./GhostQuestGhostList"));
+const GhostQuestSummon = lazy(() => import("./GhostQuestSummon"));
 // const GhostQuestGameplay = lazy(() => import("./GhostQuestGameplay"));
-// const GhostQuestRanking = lazy(() => import("./GhostQuestRanking"));
+const GhostQuestRanking = lazy(() => import("./GhostQuestRanking"));
 // const GhostQuestSummonResult = lazy(() => import("./GhostQuestSummonResult"));
 const MahjongMain = lazy(() => import("./MahjongMain"));
 // const MahjongGameplay = lazy(() => import("./MahjongGameplay"));
@@ -151,24 +152,33 @@ const routes = [
   //  * ==== GHOST QUEST GAME =====
   //  * ===========================
   //  * */
-  // {
-  //   key: "GhostQuest",
-  //   game: "GhostQuest",
-  //   exact: true,
-  //   path: "/game/ghostquest",
-  //   component: GhostQuest,
-  //   isPrivate: true,
-  //   showHistory: true,
-  // },
-  // {
-  //   key: "GhostQuestGhostList",
-  //   game: "GhostQuest",
-  //   exact: true,
-  //   path: "/game/ghostquest/ghostlist",
-  //   component: GhostQuestGhostList,
-  //   isPrivate: true,
-  //   showHistory: false,
-  // },
+  {
+    key: "GhostQuest",
+    game: "GhostQuest",
+    exact: true,
+    path: "/game/ghostquest",
+    component: GhostQuest,
+    isPrivate: true,
+    showHistory: true,
+  },
+  {
+    key: "GhostQuestGhostList",
+    game: "GhostQuest",
+    exact: true,
+    path: "/game/ghostquest/ghostlist",
+    component: GhostQuestGhostList,
+    isPrivate: true,
+    showHistory: false,
+  },
+  {
+    key: "GhostQuestSummon",
+    game: "GhostQuest",
+    exact: true,
+    path: "/game/ghostquest/summon",
+    component: GhostQuestSummon,
+    isPrivate: true,
+    showHistory: false,
+  },
   // {
   //   key: "GhostQuestGameplay",
   //   game: "GhostQuest",
@@ -178,15 +188,15 @@ const routes = [
   //   isPrivate: true,
   //   showHistory: false,
   // },
-  // {
-  //   key: "GhostQuestRanking",
-  //   game: "GhostQuest",
-  //   exact: true,
-  //   path: "/game/ghostquest/ranking",
-  //   component: GhostQuestRanking,
-  //   isPrivate: true,
-  //   showHistory: false,
-  // },
+  {
+    key: "GhostQuestRanking",
+    game: "GhostQuest",
+    exact: true,
+    path: "/game/ghostquest/ranking",
+    component: GhostQuestRanking,
+    isPrivate: true,
+    showHistory: false,
+  },
   // {
   //   key: "GhostQuestSummonResult",
   //   game: "GhostQuest",
