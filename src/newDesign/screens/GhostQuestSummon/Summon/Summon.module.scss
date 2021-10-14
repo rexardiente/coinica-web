@@ -1,0 +1,289 @@
+@keyframes fadeInDownBig {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -2000px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.outer {
+  z-index: 160;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: linear-gradient(180deg, #2E252D 14.92%, #594858 100%);
+  position: relative;
+  height: 500px;
+  width: 560px;
+  border-radius: 20px;
+  z-index: 160;
+  text-align: center;
+  & :local {
+    animation-name: fadeInDownBig;
+    animation-duration: 500ms;
+  }
+
+  .title {
+    background: radial-gradient(35.99% 76.43% at 50% 40%, #8861AD 0%, #5D4B85 100%);
+    border-radius: 20px 20px 0px 0px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      color:#FEE3A1;
+      font-weight: 800;
+      font-size: 24px;
+      -webkit-text-stroke: 2px #423054;
+    }
+  }
+  
+  .closeBtn {
+    position: absolute;
+    top: 0%;
+    right: -17%;
+  }
+  
+  .settingContent {
+    position: absolute;
+    width: 560px;
+    height: 440px;
+    top: 60px;
+    left: 0;
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+
+    .settingsNote, .confirmationNote {
+      color: #FEE3A1;
+      text-align: center;
+      p { margin:  0 0 5px 0; }
+      small {
+        color:#987595;
+        font-style: italic;
+      }
+    }
+    .confirmationNote {
+      p { font-size: 20px; }
+      margin-top: 70px;
+      margin-bottom: 108px;
+    }
+
+    .summonLimit {
+      width: 100%;
+      text-align: left;
+    }
+
+    .btnContainer {
+      width: 80%;
+      display: flex;
+      margin-top: 50px;
+      margin-left: auto;
+      margin-right: auto;
+      justify-content: space-around;
+      
+      .btnStyle {
+        transform: scale(0.9);
+      }
+    }
+
+    .divider {
+      margin-top: 20px;
+      border: 1px solid rgba(48, 38, 47, 0.5);
+    }
+
+    
+    .summonConfirm {
+      width: 100%;
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+
+      .buttonStyle {
+        width: 45%;
+        padding: 10px 0;
+        background: #2B2339;
+        color: #FEE3A1;
+      }
+    }
+  }
+}
+
+.animationContainer {
+  position: absolute;
+  z-index: 170;
+  height: 100%;
+  width: 100%;
+}
+
+.ghostAnimationContainer {
+  background: #fff;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-y: 24px;
+  background-position-x: center;
+}
+
+@keyframes zoomEntrance {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.summonEffect {
+  position: absolute;
+  opacity: 0;
+  z-index: 999;
+  transform: scale(1.8);
+  & :local {
+    animation: zoomEntrance 0.75s;
+    animation-fill-mode: forwards;
+  }
+}
+
+.ghostIconAnimation {
+  position: absolute;
+  opacity: 0;
+  z-index: 1000;
+  transform: scale(1.8);
+  & :local {
+    animation: zoomEntrance 0.75s;
+    animation-delay: 0.75s;
+    animation-fill-mode: forwards;
+  }
+}
+
+.ghostDetailContainer {
+  position: absolute;
+  top: 20px;
+  & :local {
+    animation-name: fadeInDownBig;
+    animation-duration: 500ms;
+  }
+}
+
+.ghostDetails {
+  position: absolute;
+  height: 510px;
+  width: 480px;
+  left: 59px;
+  top: 150px;
+}
+
+.ghostBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ghostImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 314px;
+  width: 318px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ghostDescription {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  width: 170px;
+  height: 200px;
+  
+  .ghostId {
+    color: #fff;
+  }
+  .ghostName {
+    margin-top: 10px;
+    color: #fff;
+  }
+  .ghostDescText {
+    font-size: 13px;
+    margin: 0 !important;
+    color: #fff;
+  }
+}
+
+.ghostAttributes {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 230px;
+  padding: 0 25px;
+
+  span {
+    font-size: 25px;
+    color: #fff;
+  }
+}
+
+.leftAttrib {
+  width: 100%;
+  padding: 0 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rarityStarContainer {
+  margin-right: -10px;
+  width: 100px;
+  position: relative;
+}
+
+.rightAttrib {
+  width: 40%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.ghostRarity {
+  position: absolute;
+  transform: scale(0.8);
+}
+
+.btnSkip:hover {
+  transform: scale(1.075);
+}
+.btnSkip {
+  position: absolute;
+  z-index: 200;
+  top: 40px;
+  right: 20px;
+  height: 60px;
+  width: 65px;
+  border-radius: 9px;
+  background-color: #282520;
+  color: #fff;
+  font-weight: bold;
+  border: 2px solid #928362;
+}
