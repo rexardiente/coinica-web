@@ -2,12 +2,13 @@ import React from "react";
 import Layout from "./screens/Layout";
 import LanguageProvider from "components/LanguageProvider";
 import Loading from "./components/Loading";
+import EntryScreen from "./screens";
 
 const AppNewDesign = () => {
     return(
         <LanguageProvider>
             <React.Suspense fallback={<Loading isLoading={false} />} >
-            <Layout />  
+            <EntryScreen />  
             </React.Suspense>
         </LanguageProvider>
     );

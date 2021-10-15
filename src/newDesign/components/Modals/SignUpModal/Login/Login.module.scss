@@ -1,4 +1,4 @@
-@import "/src/newDesign/index.scss";
+@import "/src/assets/scss/colors.scss";
 
 .input_field{
     border-radius: 4;
@@ -61,4 +61,9 @@
 
 .password_visibility svg{
     color: $text-sub-secondary-color;
+}
+
+.error{
+    color: #f44336;
+    text-align: center;
 }

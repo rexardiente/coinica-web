@@ -1,6 +1,5 @@
 import React from "react";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import styles from "./Footer.module.scss";
 import { Divider, Typography } from "@material-ui/core";
 

@@ -2,3 +2,10 @@
     display: flex;
 }
 
+.page_content{
+    height: 100%;
+    width: 100%;
+    padding-top: 65px + 20px; //height of header : 65
+    padding-bottom: 56px + 20px; //height of footer : 56
+    // border: 3px solid $primary-lighter;
+}

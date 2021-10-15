@@ -1,12 +1,52 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import styles from "./Login.module.scss";
 import { FormControl, TextField, Button, Box, Grid, Typography, Divider, InputBase, InputLabel, InputAdornment, IconButton } from "@material-ui/core";
 import { Theme, withStyles, createStyles, alpha } from "@material-ui/core/styles";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { translate } from "helpers/translate";
+import { useHistory } from "react-router-dom";
+import { useIntl } from "react-intl";
+import { setUserBalance } from "redux/platform/platform_action";
+import {
+  GetUserAccountById,
+  GetUserWalletBalance,
+} from "services/api/server/platform";
+import {
+  multi_currency_sign_in,
+  multi_currency_set_token,
+} from "services/api/server/multi_currency_api";
+import {
+  setPlatformAccountSuccess,
+  setPlatformAccountFailed,
+} from "redux/platform/platform_action";
+import { toast } from "react-toastify";
 
 
+const SIGN_IN_USER = ({ username, password }) => {
+  return multi_currency_sign_in({ username, password });
+};
 
+const GET_USER_DATA = (id) => {
+  return GetUserAccountById(id);
+};
+
+export const GoToAddEmail = (history) => {
+  return (
+    <span>
+      {translate("signup.msg.add.email", {
+        span: (content) => (
+          <span
+            className="text-warning text-bold"
+            onClick={() => history.push("/account/settings")}
+          >
+            {content}
+          </span>
+        ),
+      })}
+    </span>
+  );
+};
 
 const BootstrapInput = withStyles((theme: Theme) =>
   createStyles({
@@ -39,40 +79,25 @@ type LoginProps = {
   setTabKey: Function;
   requestResetPassword: Function;
   dispatch: Function;
-  setShowModal: Function;
+  handleSignUpModalClose: Function;
 };
 
-interface State {
-  username: string;
-  password: string;
-  showPassword: boolean;
-  loading: boolean;
-  isInvalid: boolean;
-}
-
-const Login = (
-// {
-//   platform,
-//   setTabKey,
-//   requestResetPassword,
-//   dispatch,
-//   setShowModal,
-// }: LoginProps
-) => {
-  const [values, setValues] = useState<State>({
-    username: '',
-    password: '',
-    showPassword: false,
-    loading: false,
-    isInvalid: false,
-  });
-
-  const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+const Login = ({
+  platform,
+  requestResetPassword,
+  dispatch,
+  handleSignUpModalClose
+}: LoginProps) => {
+  const history = useHistory();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPass, setShowPass] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [isInvalid, setInvalid] = useState(false);
+  const { formatMessage } = useIntl();
 
   const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
+    setShowPass(!showPass);
   };
 
   const handleMouseDownPassword = (
@@ -81,67 +106,147 @@ const Login = (
     event.preventDefault();
   };
 
+  const getBalance = async () => {
+    try {
+      const { data } = await GetUserWalletBalance();
+      if (data) {
+        dispatch(setUserBalance(data));
+      }
+    } catch (e) {
+      // do nothing
+    }
+  };
+
+  const usernameHandler = (e) => {
+    if (isInvalid) {
+      setInvalid(false);
+    }
+    const { value } = e.target;
+    setUsername(value);
+  };
+  const passwordHander = (e) => {
+    if (isInvalid) {
+      setInvalid(false);
+    }
+    const { value } = e.target;
+    setPassword(value);
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const {
+        data: { id, token },
+      } = await SIGN_IN_USER({ username, password });
+      multi_currency_set_token({ CLIENT_TOKEN: token, CLIENT_ID: id });
+
+      const user = await GET_USER_DATA(id);
+      getBalance();
+      if (user.data) {
+        const { username, email, is_verified } = user.data;
+        toast.success(
+          `${formatMessage({ id: "signup.msg.welcome" })} ${username || email}!`
+        );
+
+        if (!email && !is_verified) {
+          toast.info(GoToAddEmail(history), { autoClose: false });
+        }
+
+        dispatch(setPlatformAccountSuccess(user.data));
+        dispatch(setPlatformAccountFailed(null));
+        handleSignUpModalClose();
+      }
+    } catch (e: any) {
+      if (
+        e?.response?.status === 401 &&
+        e?.response?.statusText === "Unauthorized" &&
+        (e?.response?.config?.url + "").includes("account") === false
+      ) {
+        dispatch(
+          setPlatformAccountFailed(formatMessage({ id: "login.msg.invalid" }))
+        );
+        setInvalid(true);
+      } else {
+        dispatch(
+          setPlatformAccountFailed(formatMessage({ id: "login.msg.error" }))
+        );
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
     return (
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <FormControl fullWidth>
-            <InputLabel
-              shrink
-              className={`${styles.label}`}
+      <>
+        <Typography className={`${styles.error}`}>{platform.error}</Typography>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={4}>
+            <Grid item xs={12}>
+              <FormControl fullWidth>
+                <InputLabel shrink className={`${styles.label}`}>
+                  {translate("login.username")}
+                </InputLabel>
+                <BootstrapInput
+                  id="bootstrap-input"
+                  value={username}
+                  onChange={usernameHandler}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12}>
+              <FormControl fullWidth>
+                <InputLabel
+                  shrink
+                  htmlFor="standard-adornment-password"
+                  className={`${styles.label}`}
+                >
+                  {translate("login.password")}
+                </InputLabel>
+                <BootstrapInput
+                  id="standard-adornment-password"
+                  type={showPass ? "text" : "password"}
+                  value={password}
+                  onChange={passwordHander}
+                  className={`${styles.password_field}`}
+                  endAdornment={
+                    <InputAdornment
+                      position="end"
+                      className={`${styles.password_visibility}`}
+                    >
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPass ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              className={`${styles.login_submit} center-content`}
             >
-              {translate("login.username")}
-            </InputLabel>
-            {/* <InputBase defaultValue="" id="bootstrap-input" className={`${styles.input_field}`} /> */}
-            <BootstrapInput 
-              id="bootstrap-input" 
-              value={values.username}
-              onChange={handleChange('username')}
-            />
-          </FormControl>
-        </Grid>
-        <Grid item xs={12}>
-          <FormControl fullWidth>
-            <InputLabel
-              shrink
-              htmlFor="standard-adornment-password"
-              className={`${styles.label}`}
-            >
-              {translate("login.password")}
-            </InputLabel>
-            {/* <InputBase defaultValue="" id="bootstrap-input" className={`${styles.input_field}`} /> */}
-            <BootstrapInput 
-              id="standard-adornment-password"
-              type={values.showPassword ? 'text' : 'password'}
-              value={values.password}
-              onChange={handleChange('password')}
-              className={`${styles.password_field}`}
-              endAdornment={
-                <InputAdornment position="end" className={`${styles.password_visibility}`}>
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              } 
-            />
-          </FormControl>
-        </Grid>
-        <Grid
-          item
-          justifyContent="center"
-          xs={12}
-          className={`${styles.login_submit} center-content`}
-        >
-          <Button variant="contained" color="primary" size="large">
-            {translate("login.button")}
-          </Button>
-        </Grid>
-      </Grid>
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                type="submit"
+                disabled={loading}
+              >
+                {translate("login.button")}
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
+      </>
     );
 };
 
-export default Login;
+const mapStateToProps = ({ platform }) => ({ platform });
+const mapDispatchToProps = (dispatch) => ({ dispatch });
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -1,0 +1,38 @@
+@import "/src/assets/scss/colors.scss";
+
+.coinica_header{
+    background-color: $primary-lighter;
+}
+
+.login_button{
+    margin-left:auto;
+    font-size: large;
+    font-weight: 700;
+}
+
+.select_coin{
+    height: 35px;
+    width: 150px;
+    background-color: $secondary-color;
+    color: white;
+    margin-right: 15px;
+}
+
+.logged_in{
+    display: flex;
+}
+
+.username{
+    margin-left: 10px;
+    margin-right: 10px;
+    text-transform: none;
+}
+
+.user_menu{
+    height: 35px;
+    color: white;
+}
+
+.logo{
+    vertical-align: middle;
+}

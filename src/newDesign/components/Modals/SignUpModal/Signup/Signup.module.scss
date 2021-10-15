@@ -1,4 +1,4 @@
-@import "/src/newDesign/index.scss";
+@import "/src/assets/scss/colors.scss";
 
 .input_field{
     border-radius: 4;
@@ -11,6 +11,16 @@
     transition: border-color 1s, box-shadow 1s;
     box-shadow: 0 0 0 0.2rem;
     border-color: $text-primary-color;
+}
+
+.error_message{
+    text-align: center;
+    color: red;
+}
+
+.success_message{
+    text-align: center;
+    color: green;
 }
 
 .label{
@@ -50,16 +60,16 @@
     margin-right: 5px;
 }
 
-.password_field{
+.adornment_field{
     flex-direction: row-reverse;
 }
 
-.password_visibility{
+.adornment_element{
     position: absolute;
     right: 0;
     margin-right: 10px;
 }
 
-.password_visibility svg{
+.adornment_element svg{
     color: $text-sub-secondary-color;
 }

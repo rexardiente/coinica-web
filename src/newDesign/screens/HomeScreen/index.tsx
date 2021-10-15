@@ -11,7 +11,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Grid , { GridSpacing } from "@material-ui/core/Grid";
 import * as assets from "./Assets";
 
-const Dashboard = () => {
+const HomeScreen = () => {
     return (
       <>
         <div className={`${styles.carousel}`}>
@@ -95,4 +95,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default HomeScreen;

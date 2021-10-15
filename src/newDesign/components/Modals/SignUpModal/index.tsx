@@ -27,7 +27,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -50,6 +50,8 @@ type Props = {
 const SignUpModal = ({openModal, handleSignUpModalClose} : Props) => {
 
   const [value, setValue] = useState(0);
+  const [resetPassword, requestResetPassword] = useState(false)
+  const [tabKey, setTabKey] = useState<any>('signup')
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
@@ -92,10 +94,10 @@ const SignUpModal = ({openModal, handleSignUpModalClose} : Props) => {
               onChangeIndex={handleChangeIndex}
             >
               <TabPanel value={value} index={0} dir="rtl">
-                <Login />
+                <Login setTabKey={setTabKey} requestResetPassword={requestResetPassword} handleSignUpModalClose={handleSignUpModalClose} />
               </TabPanel>
               <TabPanel value={value} index={1} dir="rtl">
-                <Signup />
+                <Signup setTabKey={setTabKey} />
               </TabPanel>
             </SwipeableViews>
           </Paper>

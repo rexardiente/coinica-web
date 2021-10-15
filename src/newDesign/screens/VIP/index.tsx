@@ -59,7 +59,7 @@ const VIP = () => {
   const DUMMY_PROGRESS_VALUE = { current: 50, max: 100 };
   return (
     <Fragment>
-      <Grid container xs>
+      <Grid container>
         <Grid item className={styles.bannerWrapper} xs={12}>
           <img alt="banner" src={assets.banner} width="984" height="340" />
         </Grid>

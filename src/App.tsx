@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import LanguageProvider from "components/LanguageProvider";
 import EntryScreen from "./screens";
+import NewDesignEntryScreen from "newDesign/screens";
 import { ServerAPI } from "./Config";
 import Loading from "./components/Loader";
 import { useIdleTimer } from "react-idle-timer";
@@ -108,10 +109,13 @@ const App = () => {
   useEffect(() => {
     const { CLIENT_ID, CLIENT_TOKEN } = getHeaderParams();
     if (!CLIENT_ID || !CLIENT_TOKEN) {
+      console.log('no client id or token');
       dispatch(resetRedux());
     } else if (!account) {
+      console.log('no account');
       deleteHeaderParams();
     } else {
+      console.log('logged in');
       GetUserAccountById(account.id)
         .then((res) => {
           renewTokenWhenReload();
@@ -205,7 +209,8 @@ const App = () => {
   return (
     <LanguageProvider>
       <React.Suspense fallback={<Loading />}>
-        <EntryScreen />
+        {/* <EntryScreen /> */}
+        <NewDesignEntryScreen />
       </React.Suspense>
     </LanguageProvider>
   );

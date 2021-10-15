@@ -7,9 +7,10 @@ import dotenvExpand from "dotenv-expand";
 import App from "./App";
 import { store, persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import "./index.scss";
+// import "./index.scss";
+import "newDesign/index.scss";
 import "./assets/js/main";
-import AppNewDesign from "./newDesign/AppNewDesign";
+// import AppNewDesign from "./newDesign/AppNewDesign";
 
 let myEnv = dotenv.config();
 dotenvExpand(myEnv);
@@ -19,8 +20,8 @@ ReactDOM.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Router>
-          {/* <App /> */}
-          <AppNewDesign />
+          <App />
+          {/* <AppNewDesign /> */}
         </Router>
       </PersistGate>
     </Provider>

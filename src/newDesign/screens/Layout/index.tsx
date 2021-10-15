@@ -1,29 +1,29 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./Layout.module.scss";
-import PageContent from "../PageContent";
 import { setLanguage } from "redux/platform/platform_action";
 import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { CssBaseline, Container } from "@material-ui/core";
 import SwitchComponent from "newDesign/components/SwitchComponent";
-import Navigation from "newDesign/components/NavigationHidden";
+import NavigationHidden from "newDesign/components/NavigationHidden";
 import NavigationMini from "newDesign/components/NavigationMini";
 import Footer from "newDesign/components/Footer";
-import SignUpModal from "newDesign/components/Modals/SignUpModal";
-import "newDesign/index.scss";
 import theme from "newDesign/theme";
+import Loading from "../../components/Loading";
 
 type ReduxState = {
   platform: any;
+  page: any;
 };
 
-const Layout = () => {
+const Layout = (props) => {
+  const dispatch = useDispatch();
   const [openSidebar, seOpenSidebar] = useState(true);
-  const [openSignUpModal, setOpenSignUpModal] = useState(false);
   const [activeSidebar, setActiveSidebar] = useState("navigationHidden");
   const [mini, setMini] = useState(false);
   const { language } = useSelector((state: ReduxState) => state.platform);
-  const dispatch = useDispatch();
+  const { isLoading } = useSelector((state: ReduxState) => state.page);
+
 
   const handleSelectLanguage = (val: string) => {
     dispatch(setLanguage(val));
@@ -57,55 +57,36 @@ const Layout = () => {
     seOpenSidebar(!openSidebar);
   };
 
-  const handleSignUpModalOpen = () => {
-    setOpenSignUpModal(true);
-  }
-
-  const handleSignUpModalClose = () => {
-    setOpenSignUpModal(false);
-  }
-
   return (
     <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className={`${styles.wrapper}`}>
-          <SignUpModal
-            openModal={openSignUpModal}
-            handleSignUpModalOpen={handleSignUpModalOpen}
-            handleSignUpModalClose={handleSignUpModalClose}
-          />
           <SwitchComponent active={activeSidebar}>
-            <Navigation
+            <NavigationHidden
               name="navigationHidden"
               open={openSidebar}
               handleDrawerToggle={handleDrawerToggle}
-              handleNavMini={handleNavMini}
+              handleNavType={handleNavMini}
               mini={mini}
               language={language}
               handleSelectLanguage={handleSelectLanguage}
-              handleSignUpModalOpen={handleSignUpModalOpen}
             />
             <NavigationMini
               name="navigationMini"
               open={openSidebar}
               handleDrawerToggle={handleDrawerToggle}
-              handleNavHidden={handleNavHidden}
+              handleNavType={handleNavHidden}
               mini={mini}
               language={language}
               handleSelectLanguage={handleSelectLanguage}
-              handleSignUpModalOpen={handleSignUpModalOpen}
             />
           </SwitchComponent>
-          {/* <CurrentSidebar 
-            collapsed={collapsed}
-            language={language}
-            toggled={toggled}
-            handleCollapsedChange={handleCollapsedChange}
-            handleSelectLanguage={handleSelectLanguage}
-            handleToggleSidebar={handleToggleSidebar}
-            /> */}
-          <PageContent sideBarOpen={openSidebar} />
+          {/* page content */}
+          <Container className={`${styles.page_content}`} maxWidth="lg">
+            <Loading isLoading={isLoading} sideBarOpen={openSidebar} />
+            {props.children}
+          </Container>
           <Footer />
         </div>
       </ThemeProvider>
