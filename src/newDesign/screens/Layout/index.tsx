@@ -10,6 +10,8 @@ import NavigationMini from "newDesign/components/NavigationMini";
 import Footer from "newDesign/components/Footer";
 import theme from "newDesign/theme";
 import Loading from "../../components/Loading";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type ReduxState = {
   platform: any;
@@ -88,6 +90,7 @@ const Layout = (props) => {
             {props.children}
           </Container>
           <Footer />
+          <ToastContainer autoClose={4000} />
         </div>
       </ThemeProvider>
     </StylesProvider>
