@@ -61,7 +61,6 @@ const SignUpModal = ({openModal, handleSignUpModalClose} : Props) => {
     setValue(index);
   };
 
-
     return (
       <Modal
         open={openModal}
@@ -97,7 +96,7 @@ const SignUpModal = ({openModal, handleSignUpModalClose} : Props) => {
                 <Login setTabKey={setTabKey} requestResetPassword={requestResetPassword} handleSignUpModalClose={handleSignUpModalClose} />
               </TabPanel>
               <TabPanel value={value} index={1} dir="rtl">
-                <Signup setTabKey={setTabKey} />
+                <Signup setTabKey={setTabKey} handleSignUpModalClose={handleSignUpModalClose} />
               </TabPanel>
             </SwipeableViews>
           </Paper>

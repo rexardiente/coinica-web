@@ -64,12 +64,14 @@ type SignUpProps = {
   setTabKey: Function;
   platform: any;
   dispatch: Function;
+  handleSignUpModalClose: Function;
 };
 
 const SignUp = ({
   setTabKey,
   platform,
   dispatch,
+  handleSignUpModalClose,
 }: SignUpProps) => {
 
   const history = useHistory();
@@ -160,7 +162,9 @@ const SignUp = ({
           parameters.referred_by = code;
         }
         const data = await multi_currency_sign_up(parameters);
-        if (data?.status === 201 && data?.statusText === "Created") {
+        console.log('singup data',data.data);
+
+        if (data?.status === 201) {
           setSubmitErr("");
           setSubmitSuccess(formatMessage({ id: "signup.msg.success" }));
           setUsername("");
@@ -169,15 +173,16 @@ const SignUp = ({
             password: "",
             password2: "",
           });
-          automaticSignInUser({ username, password: passObj.password });
+          automaticSignInUser({ username, password: passObj.password }).then((res) =>{
+            setInterval(handleSignUpModalClose(),1000);
+          });
         } else {
           throw new Error(formatMessage({ id: "signup.msg.error" }));
         }
       } catch (e: any) {
         setSubmitSuccess("");
         if (
-          e?.response?.status === 409 &&
-          e?.response?.statusText === "Conflict"
+          e?.response?.status === 409
         ) {
           setSubmitErr(formatMessage({ id: "signup.msg.username.exist" }));
         } else {
@@ -215,7 +220,7 @@ const SignUp = ({
             <FormControl fullWidth>
               <InputLabel
                 shrink
-                htmlFor="bootstrap-input"
+                htmlFor="username"
                 className={`${styles.label}`}
               >
                 {translate("signup.username")}
@@ -223,7 +228,7 @@ const SignUp = ({
               {/* <InputBase defaultValue="" id="bootstrap-input" className={`${styles.input_field}`} /> */}
               <BootstrapInput
                 required
-                id="bootstrap-input"
+                id="username"
                 value={username}
                 onChange={usernameHandler}
                 endAdornment={
@@ -247,7 +252,7 @@ const SignUp = ({
                 }
               />
               <Box display="flex" className={`${styles.important}`} pt={"10px"}>
-                <Typography variant="caption" component="text" align='left' gutterBottom>
+                <Typography variant='caption' color='secondary' align='left' gutterBottom>
                   {translate("signup.important", {
                     strong: (content) => <strong>{content}</strong>,
                   })}
@@ -260,7 +265,7 @@ const SignUp = ({
             <FormControl fullWidth>
               <InputLabel
                 shrink
-                htmlFor="bootstrap-input"
+                htmlFor="password"
                 className={`${styles.label}`}
               >
                 {translate("signup.password")}
@@ -271,7 +276,7 @@ const SignUp = ({
                 type={showPass ? "text" : "password"}
                 value={passObj.password}
                 onChange={passwordHander}
-                id="bootstrap-input"
+                id="password"
                 endAdornment={
                   <InputAdornment
                     position="end"
@@ -294,7 +299,7 @@ const SignUp = ({
             <FormControl fullWidth>
               <InputLabel
                 shrink
-                htmlFor="bootstrap-input"
+                htmlFor="confirm-password"
                 className={`${styles.label}`}
               >
                 {translate("signup.confirm.password")}
@@ -305,7 +310,7 @@ const SignUp = ({
                 type={showPass ? "text" : "password"}
                 value={passObj.password2}
                 onChange={passwordHander}
-                id="bootstrap-input"
+                id="confirm-password"
                 endAdornment={
                   <InputAdornment
                     position="end"
@@ -328,14 +333,14 @@ const SignUp = ({
             <FormControl fullWidth>
               <InputLabel
                 shrink
-                htmlFor="bootstrap-input"
+                htmlFor="referral-code"
                 className={`${styles.label}`}
               >
                 {translate("signup.referral")}
               </InputLabel>
               {/* <InputBase defaultValue="" id="bootstrap-input" className={`${styles.input_field}`} /> */}
               <BootstrapInput
-                id="bootstrap-input"
+                id="referral-code"
                 name="code"
                 value={code}
                 onChange={(e) => setCode(e?.target?.value)}
