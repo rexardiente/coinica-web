@@ -10,8 +10,8 @@ export const BTC = ({ width, height }:SymbolProps) => (
     className="prefix__MuiSvgIcon-root prefix__jss325 prefix__jss807"
     viewBox="0 0 42 42"
     aria-hidden="true"
-    width={width ? width : "20px"}
-    height={height ? height : "20px"}
+    width={width ? width : "15px"}
+    height={height ? height : "15px"}
   >
     <g strokeWidth={0} fill="none" fillRule="evenodd">
       <path
@@ -29,8 +29,8 @@ export const ETH = ({ width, height }:SymbolProps) => (
     className="prefix__MuiSvgIcon-root prefix__jss325 prefix__jss808"
     viewBox="0 0 42 42"
     aria-hidden="true"
-    width={width ? width : "20px"}
-    height={height ? height : "20px"}
+    width={width ? width : "15px"}
+    height={height ? height : "15px"}
   >
     <g strokeWidth={0} fill="none" fillRule="evenodd">
       <g fill="#0a0f2d" fillRule="nonzero">
@@ -43,9 +43,9 @@ export const ETH = ({ width, height }:SymbolProps) => (
 
 export const USDC = ({ width, height }:SymbolProps) => (
   <svg
-    width={width ? width : "20px"}
-    height={height ? height : "20px"}
-    viewBox="0 0 32 32"
+    width={width ? width : "15px"}
+    height={height ? height : "15px"}
+    viewBox="0 0 33 33" 
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>{"color"}</title>
