@@ -53,8 +53,6 @@ const BootstrapInput = withStyles((theme: Theme) =>
       width: "100%",
       padding: "14px 12px",
       transition: theme.transitions.create(["border-color", "box-shadow"]),
-      // Use the system font instead of the default Roboto font.
-      fontFamily: "Roboto",
       "&:focus": {
         boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
       },
@@ -249,7 +247,7 @@ const SignUp = ({
                 }
               />
               <Box display="flex" className={`${styles.important}`} pt={"10px"}>
-                <Typography variant="caption" component="text" gutterBottom>
+                <Typography variant="caption" component="text" align='left' gutterBottom>
                   {translate("signup.important", {
                     strong: (content) => <strong>{content}</strong>,
                   })}
@@ -273,7 +271,6 @@ const SignUp = ({
                 type={showPass ? "text" : "password"}
                 value={passObj.password}
                 onChange={passwordHander}
-                defaultValue=""
                 id="bootstrap-input"
                 endAdornment={
                   <InputAdornment
@@ -346,9 +343,10 @@ const SignUp = ({
             </FormControl>
           </Grid>
           <Grid item xs={12}>
-            <FormControl>
+            <FormControl
+              className={`${styles.agreement_label}`}
+            >
               <FormControlLabel
-                className={`${styles.agreement_label}`}
                 value="start"
                 control={<Checkbox className={`${styles.agreement}`} />}
                 label={translate("signup.agreement")}
@@ -356,12 +354,11 @@ const SignUp = ({
               />
             </FormControl>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item lg={12}>
             <Divider className={`${styles.divider}`} />
           </Grid>
           <Grid
             item
-            justifyContent="center"
             xs={12}
             className={`${styles.signup_submit} center-content`}
           >

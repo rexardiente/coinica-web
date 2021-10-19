@@ -72,9 +72,9 @@ type LogoutProps = {
       if (account) {
         try {
           const LOGOUT_DATA = await multi_currency_sign_out();
+          console.log('logout data', LOGOUT_DATA);
           if (
-            LOGOUT_DATA?.status === 202 &&
-            LOGOUT_DATA?.statusText === "Accepted"
+            LOGOUT_DATA?.status === 202
           ) {
             dispatch(logoutPlatformAccount());
             setLogoutModal(false);
