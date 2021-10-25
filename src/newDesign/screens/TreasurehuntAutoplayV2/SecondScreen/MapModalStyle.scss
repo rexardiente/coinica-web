@@ -1,0 +1,81 @@
+.TH_MAP_MODAL {
+  .modal-header {
+    margin: 0 auto;
+    color: #ffffff;
+    background: #01166a;
+    .close {
+      color: #ffffff;
+    }
+  }
+  .modal-content {
+    background: transparent;
+  }
+}
+
+#THMapModalStyle {
+  // MAP
+  .map-container {
+    font-family: "TH Secondary";
+    color: #641e15;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  #map-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  #tiles-1 {
+    padding: 0px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  #tiles-1.tile-disabled:hover {
+    cursor: not-allowed;
+  }
+  #tiles-1:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  #tiles-row:nth-child(2) {
+    #tiles-1 {
+      top: -3px;
+    }
+  }
+  #tiles-row:nth-child(3) {
+    #tiles-1 {
+      top: -6px;
+    }
+  }
+  #tiles-row:nth-child(4) {
+    #tiles-1 {
+      top: -9px;
+    }
+  }
+  #tiles-row:nth-child(5) {
+    #tiles-1 {
+      top: -12px;
+    }
+  }
+  #tiles-row:nth-child(6) {
+    #tiles-1 {
+      top: -15px;
+    }
+  }
+
+  #tiles-1:nth-child(2) {
+    left: -3px;
+  }
+  #tiles-1:nth-child(3) {
+    left: -6px;
+  }
+  #tiles-1:nth-child(4) {
+    left: -9px
+  }
+  // END MAP
+}

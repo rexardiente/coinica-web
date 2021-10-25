@@ -120,12 +120,13 @@ const Confirmation = ({
         visible={loading.state}
         text={loading.text}
         style={{
-          marginLeft: '0px',
           height: '50%',
-          width: '100%',
           top: '107px',
           background: 'black',
           borderRadius: '10px',
+          left: "5%",
+          width: "90%",
+          marginLeft: 0,
         }}
       />
       <div className={styles.confirmationNote}>

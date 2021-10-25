@@ -1,16 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import useSound from "use-sound";
-import Header from "./Header";
+// import Header from "./Header";
 import Tutorial from "./Tutorial";
 import Rules from "./Rules";
 import Settings from "./Settings";
-import Summon from "./Summon";
-import Autoplay from "./Autoplay";
+// import Autoplay from "./Autoplay";
 import NoticeMessage from "./NoticeMessage";
 import useResize from "helpers/hooks/useResize";
 import { updateGhostQuestData } from "services/api/server/ghostquest_api";
-import { BTN_AUTOPLAY, GQ_MAIN_SOUND } from "./Assets";
+import { GQ_MAIN_SOUND } from "./Assets";
 import styles from "./GhostQuest.module.scss";
 
 // ASSETS
@@ -40,9 +39,7 @@ const GhostQuest = (props) => {
   const [tutorialState, showTutorial] = useState(false)
   const [ruleslState, showRules] = useState(false)
   const [settingState, showSettings] = useState(false)
-  const [summonState, showSummon] = useState(false)
   const [autoplayState, setAutoplayState] = useState(false)
-  const [isSummoning, setSummoning] = useState(false)
   const [noticeState, showNotice] = useState(false)
   const [scale, setScale] = useState(1)
 
@@ -60,13 +57,6 @@ const GhostQuest = (props) => {
     const scaleValue = Math.min(width / GQfixedWidth, height / GQfixedHeight)
     setScale(scaleValue * 0.9)
   });
-
-  useEffect(() => {
-    if (isSummoning && sound) {
-      sound.stop()
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSummoning, sound])
 
   useEffect(() => {
     if (sound) {
@@ -122,26 +112,20 @@ const GhostQuest = (props) => {
           settingState={settingState}
           showSettings={showSettings}
         />
-        <Summon
-          navigation={props}
-          summonState={summonState}
-          showSummon={showSummon}
-          setSummoning={setSummoning}
-        />
-        <Autoplay
+        {/* <Autoplay
           autoplayState={autoplayState}
           setAutoplayState={setAutoplayState}
-        />
-        {/* <div className={styles.header}>
+        /> */}
+        <div className={styles.header}>
           <img className={`${styles.noticeBtn} hover-cursor`} src={noticeImage} alt="Notice" onClick={() => showNotice(true)} />
-          <Header {...props} showSummon={showSummon} />
+          {/* <Header {...props} showSummon={showSummon} /> */}
           <img
             src={BtnSpecialGhost}
             alt="Special Ghost"
             className={`hover-cursor-scale ${styles.speacial_ghost_btn} `}
             onClick={() => alert(`Today's special ghost`)}
           />
-        </div> */}
+        </div>
         <div className={styles.contents}>
           <img src={GQ_Title} alt="GhostQuest" className={styles.ghostquest_title} />
           <div className={styles.playbtns}>
@@ -157,9 +141,22 @@ const GhostQuest = (props) => {
             {/* <BtnAutoplay className="hover-cursor-scale ml-2" onClick={() => setAutoplayState(true)} /> */}
           </div>
           <div className={styles.secondarybuttons}>
-            <img src={TutorialBtn} alt="Tutorial" className="hover-cursor-scale" onClick={() => showTutorial(true)} />
-            <img src={RulesBtn} alt="Rules" className="hover-cursor-scale mx-4" onClick={() => showRules(true)} />
-            <img src={BtnSettings} alt="Settings" className="hover-cursor-scale" onClick={() => showSettings(true)} />
+            <img
+              src={TutorialBtn} alt="Tutorial"
+              className="hover-cursor-scale"
+              onClick={() => showTutorial(true)}
+            />
+            <img
+              src={RulesBtn} alt="Rules"
+              className="hover-cursor-scale"
+              onClick={() => showRules(true)}
+              style={{ margin: "0 30px" }}
+            />
+            <img
+              src={BtnSettings} alt="Settings"
+              className="hover-cursor-scale"
+              onClick={() => showSettings(true)}
+            />
           </div>
         </div>
         <div className={styles.main_container_btm_overlay} />

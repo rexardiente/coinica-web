@@ -7,6 +7,11 @@ import { ClickSound, BtnDetails } from "./Assets";
 import { translate } from "helpers/translate";
 import styles from "./GhostQuestRanking.module.scss";
 
+const truncate = (str) => {
+  const maxLength = 16;
+  return (str.length > maxLength) ? `${str.substr(0, maxLength-1)}...` : str;
+};
+
 const ordinalNumber = (number) => {
   let j = number % 10,
       k = number % 100;
@@ -22,25 +27,12 @@ const ordinalNumber = (number) => {
   return number + "th";
 }
 
-const GhostRow = ({ place, data, selectedSort, ghost_quest }) => {
+const GhostRow = ({ place, data, sortCategory, ghost_quest }) => {
   const [modalState, setModalState] = useState(false)
   const [ghostImage, setGhostImage] = useState<any>(null)
   // sounds
   const GQ_VOLUME = ghost_quest?.volume
   const [playClick] = useSound(ClickSound, { volume: 0.5 * GQ_VOLUME })
-  /**
-   * sortOption = 0 (not set)
-   * sortOption = 1 (earnings)
-   * sortOption = 2 (win streak)
-   */
-  let sortOption = 0
-  if (selectedSort !== null) {
-    if (selectedSort.substr(0, 8) === 'earnings') {
-      sortOption = 1
-    } else if (selectedSort.substr(0, 3) === 'win') {
-      sortOption = 2
-    }
-  }
 
   useEffect(() => {
     const getGhostImage = (ghost_id) => {
@@ -52,7 +44,7 @@ const GhostRow = ({ place, data, selectedSort, ghost_quest }) => {
       const ghost_id = data?.ghost_id
       getGhostImage(ghost_id)
     }
-
+    console.log({ data })
   }, [data])
 
   return (
@@ -93,15 +85,18 @@ const GhostRow = ({ place, data, selectedSort, ghost_quest }) => {
             : ''
           } */}
           <div className="text-left">
+            { data?.rarity !== null ? `Rarity: ${data.rarity}` : null }
+          </div>
+          <div className="text-left">
             {
-              sortOption && sortOption === 1 && (
+              sortCategory === 0 ? (
                 `Earnings: ${data.earned}`
-              )
+              ) : null
             }
             {
-              sortOption && sortOption === 2 && (
+              sortCategory === 1 ? (
                 `Win streak: ${data.win_streak}`
-              )
+              ) : null
             }
           </div>
         </div>
@@ -111,7 +106,7 @@ const GhostRow = ({ place, data, selectedSort, ghost_quest }) => {
           {ordinalNumber((+place) + 1)}
         </div>
         <div>
-          {data.owner !== null ? (data.owner+"").slice(-12) : 'No data'}
+          {data?.owner !== null ? truncate((data.owner + "")) : 'No data'}
         </div>
         <div className="hover-cursor">
           <img

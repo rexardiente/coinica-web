@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import useSound from "use-sound";
-import ArrowBack from "@material-ui/icons/ArrowBack";
-import ArrowForward from "@material-ui/icons/ArrowForward";
 import {
-  //temp
-  Tutorial1,
-  Tutorial2,
-  Tutorial3,
-  //
   Tutorial_BG,
   Tutorial_BackBtn,
   Tutorial_NextBtn,
@@ -28,6 +21,7 @@ const slideText = [
   translate("gq.tutorial.1"),
   translate("gq.tutorial.2"),
   translate("gq.tutorial.3"),
+  translate("gq.tutorial.4"),
 ]
 
 type TutorialProps = {
@@ -52,7 +46,7 @@ const Tutorial = ({ tutorialState, showTutorial, ghost_quest }:TutorialProps) =>
 
   const slideHandler = (num) => {
     playClick()
-    if (num > 2) return
+    if (num > 3) return
     if (num < 0) return
     setSlide(num)
   }
@@ -61,62 +55,48 @@ const Tutorial = ({ tutorialState, showTutorial, ghost_quest }:TutorialProps) =>
   return (
     <div className={styles.outer}>
       <div className={styles.container}>
-        <div className={styles.title}>
-          <span>{translate("mj.main.tutorial")}</span>
-        </div>
-        {/* <img
+        <img
           src={Tutorial_BackBtn}
           alt="Back" className={`hover-cursor ${styles.backbtn} `}
           onClick={() => slideHandler(slide - 1)}
-        /> */}
-        <div className={styles.content}>
+        />
+        <img src={Tutorial_BG} alt="Background" />
+        <div className={styles.contentScrollable}>
           <div className={styles.tutorialContent}>
             <p>{ slideText[slide] }</p>
             {
               slide === 0 && (
-                <img src={Tutorial1} alt="Summon setting modal" />
+                <img src={Slide1} alt="Summon setting modal" />
               )
             }
             {
               slide === 1 && (
-                <img src={Tutorial2} alt="Summon confirmation modal" />
+                <img src={Slide2} alt="Summon confirmation modal" />
               )
             }
             {
               slide === 2 && (
-                <img src={Tutorial3} alt="Ghostlist table" />
+                <img src={Slide3} alt="Ghostlist table" />
               )
             }
-            <div className={styles.navigationContainer}>
-              <div
-                className={`hover-cursor ${styles.backbtn}`}
-                onClick={() => slideHandler(slide - 1)}
-              >
-                <ArrowBack />
-                Back
-              </div>
-              <div
-                className={`hover-cursor ${styles.nextbtn}`}
-                onClick={() => slideHandler(slide + 1)}
-              >
-                Next
-                <ArrowForward />
-              </div>
-            </div>
+            {
+              slide === 3 && (
+                <img src={Slide4} alt="Gameplay history" />
+              )
+            }
           </div>
         </div>
-        {/* <img
+        <img
           src={Tutorial_NextBtn}
           alt="Next" className={`hover-cursor ${styles.nextbtn} `}
           onClick={() => slideHandler(slide + 1)}
-        /> */}
+        />
         <img
           src={ModalBtnCancel} alt="Cancel"
           className={`hover-cursor ${styles.closeBtn} `}
           onClick={() => {
             playCancel()
             showTutorial(false)
-            slideHandler(0)
           }}
         />
       </div>

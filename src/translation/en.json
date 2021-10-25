@@ -402,10 +402,9 @@
   "th.rules.cummulative_odds": "Cumulative Odds",
   "th.rules.randomness": "Randomness",
 
-  "gq.tutorial.1": "At first you need summon Ghost to join battle. Select Summon time and Set battle limit.",
-  "gq.tutorial.2": "Check number of Ghost to summon and Battle limit setting and to confirm summon.",
-  "gq.tutorial.3": "After summoning, Ghost will be sent to battle and fight against another Ghost automatically,you can check the battle status in List screen.",
-  "gq.tutorial.4": "In addition, you can check battle history and battle log in “Details” screen and can add deposit or decide to withdraw earnings and quit from battles.",
+  "gq.tutorial.1": "Check number of Ghost to summon and Battle limit setting and to confirm summon.",
+  "gq.tutorial.2": "After summoning, Ghost will be sent to battle and fight against another Ghost automatically,you can check the battle status in List screen.",
+  "gq.tutorial.3": "In addition, you can check battle history and battle log in “Details” screen and can add deposit or decide to withdraw earnings and quit from battles.",
 
   "gq.rules.gameflow": "Game Flow",
   "gq.rules.gameflow.summon": "Summon",

@@ -96,6 +96,7 @@ export const GetTopEarningsRank = async(range) => {
    * @param { range: string }
    * available: 'lifetime', 'daily', 'weekly'
    */
+  console.log('GetTopWinStreakRank!', range)
   const headers = getHeaderParams();
   return await axios.get(BASE_URL + `/donut/api/v1/game/ghost-quest/characters/rank/earn/${range}`, { headers })
 }
@@ -105,6 +106,7 @@ export const GetTopWinStreakRank = async(range) => {
    * @param { range: string }
    * available: 'daily', 'weekly'
    */
+  console.log('GetTopWinStreakRank!', range)
   const headers = getHeaderParams();
   return await axios.get(BASE_URL + `/donut/api/v1/game/ghost-quest/characters/rank/win-streak/${range}`, { headers })
 }

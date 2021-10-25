@@ -1,7 +1,6 @@
 import React from "react"
 import { connect } from "react-redux";
 import useSound from "use-sound";
-import GHOST_LIFE_BAR from "helpers/ghostquest/getGhostLifeBar";
 import GET_GHOST_AVATAR from "helpers/ghostquest/getGhostAvatar";
 import { translate } from "helpers/translate";
 import {
@@ -10,7 +9,7 @@ import {
   NewBadge,
   StarIcon,
 } from "./Assets";
-import styles from "./GhostSummon.module.scss";
+import styles from "./GhostListV2.module.scss";
 
 const STATUS_DICT = {
   0: { type: 'GQ_DEFAULT', color: '#FFFFFF' },
@@ -49,9 +48,7 @@ const GET_STARS = (number) => {
         key={i+'uniq_key'}
         src={StarIcon}
         alt="*"
-        width="25px"
-        // style={{ left: `${i*12}px` }}
-        // className={styles.ghostRarity}
+        className={styles.ghostRarity}
       />
     )
   }
@@ -101,7 +98,6 @@ const GhostRow = ({ username, dataProps, inBattle, navigation, ghost_quest, disp
       // result = ghost_data?.STATUS
     }
 
-    const ProgBar = GHOST_LIFE_BAR(character_hp, character_hp)
     const StarsRarity:any = ghost_data ? GET_STARS(ghost_data['value']?.rarity) : []
     const isWithdrawable = (
       character_life !== null &&
@@ -113,8 +109,8 @@ const GhostRow = ({ username, dataProps, inBattle, navigation, ghost_quest, disp
 
     return (
       <div className={styles.ghostRow}>
+        {/********* LEFT *********/}
         <div className={styles.ghostImageContainer}>
-          {/* <img className={styles.ghostImage} src={ghostImage} alt="Ghost Avatar" /> */}
           <div
             className={styles.ghostImage}
             style={{
@@ -123,7 +119,13 @@ const GhostRow = ({ username, dataProps, inBattle, navigation, ghost_quest, disp
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
             }}
-          />
+          >
+            <div className={styles.ghostRarityContainer}>
+              {
+                StarsRarity.length && [StarsRarity].map((star) => star)
+              }
+            </div>
+          </div>
           {
             character_life === 0 ? (
               <span className={styles.eliminatedBadge}>
@@ -139,54 +141,25 @@ const GhostRow = ({ username, dataProps, inBattle, navigation, ghost_quest, disp
             StarsRarity.length && StarsRarity.map((star) => star)
           } */}
         </div>
-        {/********* LABELS *********/}
+        {/********* MIDDLE *********/}
         <div className={styles.ghostResults}>
-          <div className={styles.ghostLabelValue}>
-            {translate("gq.details.ghost_name")}:
-          </div>
-          <div className={styles.ghostLabelValue}>
-            {translate("gq.details.id")}:
-          </div>
-          <div className={styles.ghostLabelValue}>
-            {translate("gq.details.rarity")}:
-          </div>
-          <div className={styles.ghostLabelValue}>
-            {translate("gq.details.current_life")}:
-          </div>
-          <div className={styles.ghostLabelValue}>
-            {translate("gq.details.battle_limit")}:
+          <div>
+            <div className={styles.ghostLife}>
+              {character_life ? `${character_life} ${character_life > 1 ? 'Lives' : 'Life'} remaining` : '0 Life remaining'}
+            </div>
+            <div className={styles.ghostLabelValue}>
+              {`${battle_count !== null && battle_limit !== null ? `${battle_count}/${battle_limit} battles` : 'No data'}`}
+            </div>
           </div>
           <div className={styles.ghostLabelValue}>
             {translate("gq.details.status")}:
-            {/* <span style={{ marginLeft: '10px', color: STATUS_DICT[result]['color'] }}> */}
             <span style={{ marginLeft: '10px', color: GET_GHOST_STATUS(ghost_data)?.color }}>
               {GET_GHOST_STATUS(ghost_data)?.type}
-              {/* {result ? STATUS_DICT[result]['type'] : 'No data'} */}
             </span>
           </div>
-          <div className={`${styles.progressBar} GhostQuestGhostList`}>
-            {ProgBar}
-          </div>
         </div>
-        {/********* VALUES *********/}
+        {/********* RIGHT *********/}
         <div className={styles.ghostDetails}>
-          <div className={styles.ghostLabelValue}>
-            {character_name || 'No data'}
-          </div>
-          <div className={styles.ghostLabelValue}>
-            {key ? `${(key + '').substr(key.length - 12)}` : 'No data'}
-          </div>
-          <div className={styles.ghostLabelValue} style={{ width: '100%', textAlign: 'right' }}>
-            {
-              StarsRarity.length && StarsRarity.map((star) => star)
-            }
-          </div>
-          <div className={styles.ghostLabelValue}>
-            {character_life ? `${character_life}` : '0'}
-          </div>
-          <div className={styles.ghostLabelValue}>
-            {`${battle_count !== null && battle_limit !== null ? `${battle_count}/${battle_limit}` : 'No data'}`}
-          </div>
           <div
             className="hover-cursor position-relative"
             style={{
@@ -201,6 +174,14 @@ const GhostRow = ({ username, dataProps, inBattle, navigation, ghost_quest, disp
               className={styles.btnDetails}
               onClick={() => goToGameplayScreen(({ ghost_data, ghost_history }), null, ghostImage)}
             />
+          </div>
+          <div>
+            <div className={styles.ghostLabelValue}>
+              {character_name || 'No data'}
+            </div>
+            <div className={styles.ghostLabelValue}>
+              {key ? `ID: ${(key + '').substr(key.length - 12)}` : 'ID: No data'}
+            </div>
           </div>
         </div>
       </div>
@@ -239,16 +220,12 @@ const GhostRow = ({ username, dataProps, inBattle, navigation, ghost_quest, disp
             className={styles.ghostImage}
             style={{
               backgroundImage: `url(${ghostImage})`,
-              backgroundPosition: 'center',
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
             }}
           />
-          {/* {
-            StarsRarity.length && StarsRarity.map((star) => star)
-          } */}
         </div>
-        <div className={styles.ghostResults}>
+        <div className={styles.ghostResultsBattleEnd}>
           <div className={styles.ghostResultsLife}>
             <div>
               {translate("gq.details.id")}:

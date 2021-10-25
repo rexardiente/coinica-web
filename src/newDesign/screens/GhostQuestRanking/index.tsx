@@ -11,7 +11,6 @@ import GhostRow from "./GhostRow";
 import {
   BtnEarnings,
   BtnWinStreak,
-  BtnTips,
   BtnLifetimeInactive,
   BtnLifetimeActive,
   BtnWeeklyInactive,
@@ -87,32 +86,30 @@ const GhostQuestRanking = (props) => {
   }
 
   useEffect(() => {
-    if (selectedSort) {
-      setLoading(true)
-      if (sortCategory === 0) { // if EARNINGS
-        const param = BUTTONS_DICT[selectedSort]
-        GetTopEarningsRank(param).then(res => {
-          const { data } = res
-          if (data.length) {
-            props.dispatch(updateRankingList({ category: selectedSort, data }))
-          }
-        }).finally(() => {
-          setLoading(false)
-        })
-      } else if (sortCategory === 1) { // if WINSTREAK
-        const param = BUTTONS_DICT[selectedSort]
-        GetTopWinStreakRank(param).then(res => {
-          const { data } = res
-          if (data.length) {
-            props.dispatch(updateRankingList({ category: selectedSort, data }))
-          }
-        }).finally(() => {
-          setLoading(false)
-        })
-      }
+    setLoading(true)
+    if (sortCategory === 0) { // if EARNINGS
+      const param = BUTTONS_DICT[selectedSort]
+      GetTopEarningsRank(param).then(res => {
+        const { data } = res
+        if (data.length) {
+          props.dispatch(updateRankingList({ category: selectedSort, data }))
+        }
+      }).finally(() => {
+        setLoading(false)
+      })
+    } else if (sortCategory === 1) { // if WINSTREAK
+      const param = BUTTONS_DICT[selectedSort]
+      GetTopWinStreakRank(param).then(res => {
+        const { data } = res
+        if (data.length) {
+          props.dispatch(updateRankingList({ category: selectedSort, data }))
+        }
+      }).finally(() => {
+        setLoading(false)
+      })
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedSort])
+  }, [sortCategory, selectedSort])
 
   return (
     <div className={styles.parent_container} ref={ref}>
@@ -220,22 +217,25 @@ const GhostQuestRanking = (props) => {
             <div className={styles.contentScrollable}>
               <div className={styles.rulesContent}>
                 {
-                  loading ? <Spinner animation="grow" style={{ marginTop: '40%', position: 'absolute' }} />  : null
-                }
-                {
-                  rankingData && rankingData.length > 0
-                  ? rankingData.map((data, idx) => (
-                      <GhostRow
-                        selectedSort={selectedSort}
-                        key={idx} 
-                        place={idx}
-                        data={data}
-                      />
-                    ))
+                  loading
+                  ? (
+                      <Spinner animation="grow" style={{ marginTop: '40%', position: 'absolute' }} />
+                    )
                   : (
-                      <div className="w-100 h-100 d-flex align-items-center justify-content-center">
-                        <h3>No data found</h3>
-                      </div>
+                    rankingData && rankingData.length > 0
+                    ? rankingData.map((data, idx) => (
+                        <GhostRow
+                          sortCategory={sortCategory}
+                          key={idx} 
+                          place={idx}
+                          data={data}
+                        />
+                      ))
+                    : (
+                        <div className="w-100 h-100 d-flex align-items-center justify-content-center">
+                          <h3>No data found</h3>
+                        </div>
+                      )
                     )
                 }
               </div>

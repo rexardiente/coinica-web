@@ -1,0 +1,78 @@
+.history_container {
+  margin: 5px 0px 15px 0px;
+  font-family: sans-serif;
+}
+
+.text_win {
+  font-size: 1rem !important;
+  font-family: 'TH Secondary';
+  color: #79a1c9;
+}
+.text_lose {
+  font-size: 1rem !important;
+  font-family: 'TH Secondary';
+  color: #d45152;
+}
+.color_red {
+  color: #d45152;
+}
+
+.history_header {
+  display: flex;
+  justify-content: space-between;
+  background: #232729;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 5px 10px;
+}
+
+.history_content {
+  display: flex;
+  background: #333739;
+  color: #fff;
+  padding: 8px 8px 0px 8px;
+
+  small {
+    margin-left: 5px;
+  }
+}
+
+.content_container {
+  text-align: center;
+  padding: 5px;
+
+  span {
+    margin-left: 5px;
+    font-family: "TH Primary";
+  }
+}
+
+.history_content_result {
+  flex: 1;
+  background: #232729;
+}
+
+.history_content_rivals {
+  flex: 1;
+  margin: 0px 8px;
+  background: #232729;
+}
+
+.history_content_opened {
+  flex: 2;
+  background: #232729;
+
+  .opened_container {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.history_footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background: #333739;
+  color: #fff;
+  font-size: 0.5rem;
+}

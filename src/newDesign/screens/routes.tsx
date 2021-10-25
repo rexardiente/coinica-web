@@ -10,16 +10,16 @@ const Ranking = lazy(() => import("./Ranking"));
 // const Leaderboard = lazy(() => import("./Leaderboard"));
 // const FAQ = lazy(() => import("./FAQ"));
 const AccountSetting = lazy(() => import("./AccountSettings"));
-// const Treasurehunt = lazy(() => import("./Treasurehunt"));
-// const TreasurehuntGameplayV2 = lazy(() => import("./TreasurehuntGameplayV2"));
-// const TreasurehuntAutoplayV2 = lazy(() => import("./TreasurehuntAutoplayV2"));
-// const TreasurehuntAutoplayGameplay = lazy(() => import("./TreasurehuntAutoplayGameplay"));
+const Treasurehunt = lazy(() => import("./Treasurehunt"));
+const TreasurehuntGameplayV2 = lazy(() => import("./TreasurehuntGameplayV2"));
+const TreasurehuntAutoplayV2 = lazy(() => import("./TreasurehuntAutoplayV2"));
+const TreasurehuntAutoplayGameplay = lazy(() => import("./TreasurehuntAutoplayGameplay"));
 const GhostQuest = lazy(() => import("./GhostQuest"));
 const GhostQuestGhostList = lazy(() => import("./GhostQuestGhostList"));
 const GhostQuestSummon = lazy(() => import("./GhostQuestSummon"));
 // const GhostQuestGameplay = lazy(() => import("./GhostQuestGameplay"));
 const GhostQuestRanking = lazy(() => import("./GhostQuestRanking"));
-// const GhostQuestSummonResult = lazy(() => import("./GhostQuestSummonResult"));
+const GhostQuestSummonResult = lazy(() => import("./GhostQuestSummonResult"));
 const MahjongMain = lazy(() => import("./MahjongMain"));
 // const MahjongGameplay = lazy(() => import("./MahjongGameplay"));
 
@@ -111,42 +111,42 @@ const routes = [
   //  * ==== TREASUREHUNT GAME ====
   //  * ===========================
   //  * */
-  // {
-  //   key: "Treasurehunt",
-  //   game: "Treasurehunt",
-  //   exact: true,
-  //   path: "/game/treasurehunt",
-  //   component: Treasurehunt,
-  //   isPrivate: true,
-  //   showHistory: true,
-  // },
-  // {
-  //   key: "TreasurehuntGameplayV2",
-  //   game: "Treasurehunt",
-  //   exact: true,
-  //   path: "/game/treasurehunt/gameplay",
-  //   component: TreasurehuntGameplayV2,
-  //   isPrivate: true,
-  //   showHistory: true,
-  // },
-  // {
-  //   key: "TreasurehuntAutoplayV2",
-  //   game: "Treasurehunt",
-  //   exact: true,
-  //   path: "/game/treasurehunt/autoplay",
-  //   component: TreasurehuntAutoplayV2,
-  //   isPrivate: true,
-  //   showHistory: true,
-  // },
-  // {
-  //   key: "TreasurehuntAutoplayGameplay",
-  //   game: "Treasurehunt",
-  //   exact: true,
-  //   path: "/game/treasurehunt/autoplay-gameplay",
-  //   component: TreasurehuntAutoplayGameplay,
-  //   isPrivate: true,
-  //   showHistory: true,
-  // },
+  {
+    key: "Treasurehunt",
+    game: "Treasurehunt",
+    exact: true,
+    path: "/game/treasurehunt",
+    component: Treasurehunt,
+    isPrivate: true,
+    showHistory: true,
+  },
+  {
+    key: "TreasurehuntGameplayV2",
+    game: "Treasurehunt",
+    exact: true,
+    path: "/game/treasurehunt/gameplay",
+    component: TreasurehuntGameplayV2,
+    isPrivate: true,
+    showHistory: true,
+  },
+  {
+    key: "TreasurehuntAutoplayV2",
+    game: "Treasurehunt",
+    exact: true,
+    path: "/game/treasurehunt/autoplay",
+    component: TreasurehuntAutoplayV2,
+    isPrivate: true,
+    showHistory: true,
+  },
+  {
+    key: "TreasurehuntAutoplayGameplay",
+    game: "Treasurehunt",
+    exact: true,
+    path: "/game/treasurehunt/autoplay-gameplay",
+    component: TreasurehuntAutoplayGameplay,
+    isPrivate: true,
+    showHistory: true,
+  },
   // /**
   //  * ===========================
   //  * ==== GHOST QUEST GAME =====
@@ -197,15 +197,15 @@ const routes = [
     isPrivate: true,
     showHistory: false,
   },
-  // {
-  //   key: "GhostQuestSummonResult",
-  //   game: "GhostQuest",
-  //   exact: true,
-  //   path: "/game/ghostquest/result",
-  //   component: GhostQuestSummonResult,
-  //   isPrivate: true,
-  //   showHistory: false,
-  // },
+  {
+    key: "GhostQuestSummonResult",
+    game: "GhostQuest",
+    exact: true,
+    path: "/game/ghostquest/result",
+    component: GhostQuestSummonResult,
+    isPrivate: true,
+    showHistory: false,
+  },
   // /**
   //  * ===========================
   //  * ====== MAHJONG GAME =======

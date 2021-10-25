@@ -89,7 +89,6 @@ const GhostQuestSummon = (props) => {
     showSummon(true);
   }
 
-  console.log('rendered')
   return (
     <div className={styles.parent_container} ref={ref}>
       <div

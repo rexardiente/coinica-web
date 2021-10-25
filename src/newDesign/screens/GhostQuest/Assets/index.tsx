@@ -6,6 +6,9 @@ import newBtnRanking from "./tempAssets/btn_ranking.png";
 import newBtnSummon from "./tempAssets/btn_summon.png";
 import polygonImg from "./tempAssets/polygon.png";
 import newGhostListModalBg from "./tempAssets/modal_bg.png";
+import _tutorial_1 from "./tempAssets/tutorial_1.jpg";
+import _tutorial_2 from "./tempAssets/tutorial_2.jpg";
+import _tutorial_3 from "./tempAssets/tutorial_3.jpg";
 const ASSETS_URL = ServerAPI.assets_url;
 
 // TEMP ASSETS
@@ -37,6 +40,9 @@ export const noticeImage = `${ASSETS_URL}/imgs/games/ghost_quest/mainpage/notice
 export const ModalBtnCancel = `${ASSETS_URL}/imgs/games/ghost_quest/modals/btn_cancel.png`;
 
 // tutorials
+export const Tutorial1 = _tutorial_1;
+export const Tutorial2 = _tutorial_2;
+export const Tutorial3 = _tutorial_3;
 export const Tutorial_BG = `${ASSETS_URL}/imgs/games/ghost_quest/modals/tutorials/background.png`;
 export const Tutorial_BackBtn = `${ASSETS_URL}/imgs/games/ghost_quest/modals/tutorials/back.png`;
 export const Tutorial_NextBtn = `${ASSETS_URL}/imgs/games/ghost_quest/modals/tutorials/next.png`;

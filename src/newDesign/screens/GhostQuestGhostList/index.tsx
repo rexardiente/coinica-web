@@ -6,7 +6,7 @@ import useSound from "use-sound";
 // import { updateGhostQuestData } from "services/api/server/ghostquest_api";
 import Header from "../GhostQuest/Header";
 import useResize from "helpers/hooks/useResize";
-import GhostRow from "./GhostRow";
+import GhostRow from "./GhostRowV2";
 import {
   CharHistoryByUser,
   GetCharactersByUser
