@@ -85,7 +85,7 @@ const Layout = (props) => {
             />
           </SwitchComponent>
           {/* page content */}
-          <Container className={`${styles.page_content}`} maxWidth="lg">
+          <Container className={`${styles.page_content}`} maxWidth="xl">
             <Loading isLoading={isLoading} sideBarOpen={openSidebar} />
             {props.children}
           </Container>
