@@ -1,6 +1,7 @@
 @import "/src/assets/scss/colors.scss";
 
 .coinica_footer{
+    margin-top: 20px;
     padding-top: 10px;
     width: 100%;
     position: fixed;
@@ -27,6 +28,10 @@
     background-color: $primary-lighter;
     border-radius: 1px;
     color: $text-primary-lighter;
+}
+
+.modal_link{
+    color: #3C4E71;
 }
 
 .modal_link:hover{
