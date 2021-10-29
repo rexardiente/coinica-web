@@ -4,8 +4,6 @@ import styles from "./Layout.module.scss";
 import { setLanguage } from "redux/platform/platform_action";
 import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
 import { CssBaseline, Container } from "@material-ui/core";
-import SwitchComponent from "newDesign/components/SwitchComponent";
-import NavigationHidden from "newDesign/components/NavigationHidden";
 import NavigationMini from "newDesign/components/NavigationMini";
 import Footer from "newDesign/components/Footer";
 import theme from "newDesign/theme";
@@ -20,9 +18,9 @@ type ReduxState = {
 
 const Layout = (props) => {
   const dispatch = useDispatch();
-  const [openSidebar, seOpenSidebar] = useState(true);
-  const [activeSidebar, setActiveSidebar] = useState("navigationHidden");
-  const [mini, setMini] = useState(false);
+  const [openSidebar, setOpenSidebar] = useState(false);
+  const [activeSidebar, setActiveSidebar] = useState("navigationMini");
+  const [mini, setMini] = useState(true);
   const { language } = useSelector((state: ReduxState) => state.platform);
   const { isLoading } = useSelector((state: ReduxState) => state.page);
 
@@ -55,7 +53,11 @@ const Layout = (props) => {
   };
 
   const handleDrawerToggle = () => {
-    seOpenSidebar(!openSidebar);
+    setOpenSidebar(!openSidebar);
+  };
+
+  const handleDrawerClose = () => {
+    setOpenSidebar(false);
   };
 
   return (
@@ -63,7 +65,9 @@ const Layout = (props) => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className={`${styles.wrapper}`}>
-          <SwitchComponent active={activeSidebar}>
+          <Loading isLoading={isLoading} sideBarOpen={openSidebar} />
+
+          {/* <SwitchComponent active={activeSidebar}>
             <NavigationHidden
               name="navigationHidden"
               open={openSidebar}
@@ -82,12 +86,21 @@ const Layout = (props) => {
               language={language}
               handleSelectLanguage={handleSelectLanguage}
             />
-          </SwitchComponent>
+          </SwitchComponent> */}
+          <NavigationMini
+            name="navigationMini"
+            open={openSidebar}
+            handleDrawerToggle={handleDrawerToggle}
+            handleDrawerClose={handleDrawerClose}
+            handleNavType={handleNavHidden}
+            mini={mini}
+            language={language}
+            handleSelectLanguage={handleSelectLanguage}
+          />
           {/* page content */}
-          <Container className={`${styles.page_content}`} maxWidth="xl">
-            <Loading isLoading={isLoading} sideBarOpen={openSidebar} />
-            {props.children}
-          </Container>
+          <div className={`${styles.page_content}`}>
+            <div className={`${styles.container}`}>{props.children}</div>
+          </div>
           <Footer />
           <ToastContainer autoClose={4000} />
         </div>

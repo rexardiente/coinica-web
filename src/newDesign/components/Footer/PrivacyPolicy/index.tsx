@@ -20,7 +20,7 @@ const PrivacyPolicy = ({closeModal}:Props) => {
           </Button>
         </div>
             <h1 className="center-content" >Privacy Policy</h1>
-        <Box m={3} style={{fontWeight:'lighter'}} padding={3}>
+        <Box m={3} padding={3}>
           <p className={`${styles.privacy_policy}`}>
             <h2>Cookies Policy</h2>
             <h3>What are cookies?</h3>

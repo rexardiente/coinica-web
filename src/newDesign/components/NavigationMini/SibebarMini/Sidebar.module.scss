@@ -30,22 +30,13 @@ $drawer-width : 240px;
 }
 
 .sidebar_logo{
-    width: 230px;
+    width: 100%;
     padding: 30px;
-    // transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
-    // transition-property: width;
-    // transition-duration: 225ms;
-    // transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
-    // transition-delay: 0ms;   
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .sidebar_logo_closed{
-    width: 46px;
+    width: 100%;
     padding: 6px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .toolbar{
@@ -53,6 +44,9 @@ $drawer-width : 240px;
     align-items: center;
     justify-content: flex-end;
     color: $secondary-color;
+}
+
+.sidebar_items{
 }
 
 .list{
@@ -64,15 +58,19 @@ $drawer-width : 240px;
     position: fixed;
     bottom: 0;
     width: $drawer-width;
-    transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
-    transition-property: width;
-    transition-duration: 225ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
-    transition-delay: 0ms;
+    // transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+    // transition-property: width;
+    // transition-duration: 225ms;
+    // transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+    // transition-delay: 0ms;
 }
 
 .sidebar_footer_close{
     width: 56px;
+}
+
+.sidebar_footer_hide{
+    width: 0px;
 }
 
 .links:hover{

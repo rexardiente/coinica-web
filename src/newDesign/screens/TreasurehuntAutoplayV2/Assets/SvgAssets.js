@@ -7,8 +7,14 @@ export const NextBtn = ({ language }) => {
     case 'ja':
       text = (
         <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="24" letter-spacing="0em">
-          <tspan x="73" y="14.088">&#10;</tspan>
-          <tspan x="73" y="38.088">&#x6b21;&#10;</tspan>
+          <tspan x="65" y="38.088">次へ</tspan>
+        </text>
+      )
+      break;
+    case 'chinese':
+      text = (
+        <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="24" letter-spacing="0em">
+          <tspan x="48" y="38.088">下一页</tspan>
         </text>
       )
       break;
@@ -39,7 +45,14 @@ export const BackBtn = ({ language }) => {
     case 'ja':
       text = (
         <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="24" letter-spacing="0em">
-          <tspan x="61" y="40.088">&#x623b;&#x308b;</tspan>
+          <tspan x="61" y="40.088">戻る</tspan>
+        </text>
+      )
+      break;
+    case 'chinese':
+      text = (
+        <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="24" letter-spacing="0em">
+          <tspan x="61" y="40.088">返回</tspan>
         </text>
       )
       break;
@@ -70,7 +83,14 @@ export const MainpageBtn = ({ language }) => {
     case 'ja':
       text = (
         <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="20" letter-spacing="0em">
-          <tspan x="25" y="37.74">&#x30e1;&#x30a4;&#x30f3;&#x30da;&#x30fc;&#x30b8;</tspan>
+          <tspan x="25" y="37.74">メインページ</tspan>
+        </text>
+      )
+      break;
+    case 'chinese':
+      text = (
+        <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="20" letter-spacing="0em">
+          <tspan x="63" y="37.74">主页</tspan>
         </text>
       )
       break;
@@ -101,7 +121,14 @@ export const StartBtn = ({ language }) => {
     case 'ja':
       text = (
         <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="24" letter-spacing="0em">
-          <tspan x="49" y="39.088">&#x59cb;&#x3081;&#x308b;</tspan>
+          <tspan x="39" y="39.088">スタート</tspan>
+        </text>
+      )
+      break;
+    case 'chinese':
+      text = (
+        <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="24" letter-spacing="0em">
+          <tspan x="62" y="39.088">起点</tspan>
         </text>
       )
       break;
@@ -132,7 +159,14 @@ export const ChangeBtn = ({ language }) => {
     case 'ja':
       text = (
         <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="14" letter-spacing="0em">
-          <tspan x="22" y="25.718">&#x5909;&#x5316;&#x3059;&#x308b;</tspan>
+          <tspan x="22" y="25.718">変更する</tspan>
+        </text>
+      )
+      break;
+    case 'chinese':
+      text = (
+        <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="14" letter-spacing="0em">
+          <tspan x="35" y="25.718">修改</tspan>
         </text>
       )
       break;

@@ -17,40 +17,46 @@ const useStyles = makeStyles((theme: Theme) =>
     drawer: {
       width: drawerWidth,
       flexShrink: 0,
-      whiteSpace: 'nowrap',
+      whiteSpace: "nowrap",
     },
     drawerOpen: {
-      top: '75px',
-      backgroundColor: '#242D41',
+      top: "65px",
+      backgroundColor: "#242D41",
       width: drawerWidth,
-      transition: theme.transitions.create('width', {
+      transition: theme.transitions.create("width", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
       }),
+      [theme.breakpoints.down("sm")]: {
+        top: "57px",
+      },
     },
     drawerClose: {
-      top: '75px',
-      backgroundColor: '#242D41',
-      transition: theme.transitions.create('width', {
+      top: "65px",
+      backgroundColor: "#242D41",
+      transition: theme.transitions.create("width", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
-      overflowX: 'hidden',
+      overflowX: "hidden",
       width: 0,
+      [theme.breakpoints.down("sm")]: {
+        top: "57px",
+      },
     },
     toolbar: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end',
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-end",
       padding: theme.spacing(0, 1),
       // necessary for content to be below app bar
       ...theme.mixins.toolbar,
-      color: '#1785EB'
+      color: "#1785EB",
     },
     list: {
-        color: "#1785EB"
-    }
-  }),
+      color: "#1785EB",
+    },
+  })
 );
 
 const sidebarItems = [

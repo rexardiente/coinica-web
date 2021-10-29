@@ -61,7 +61,7 @@ const VIP = () => {
     <Fragment>
       <Grid container>
         <Grid item className={styles.bannerWrapper} xs={12}>
-          <img alt="banner" src={assets.banner} width="984" height="340" />
+          <img alt="banner" src={assets.banner} />
         </Grid>
         <Grid item container xs={12} justifyContent="space-between">
           <Grid item className={styles.levelWrapper} xs={12}>

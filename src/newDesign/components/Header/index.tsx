@@ -193,7 +193,7 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
       overflowX: "hidden",
       width: theme.spacing(7) + 1,
-      [theme.breakpoints.up("sm")]: {
+      [theme.breakpoints.up(768)]: {
         width: theme.spacing(9) + 1,
       },
     },
@@ -202,7 +202,11 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(3),
     },
     toolbar: {
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      [theme.breakpoints.down(768)]:{
+        paddingLeft: '5px',
+        paddingRight: '5px',
+      },
     },
   })
 );
@@ -244,13 +248,15 @@ const Header = (props: props) => {
   return (
     <AppBar position="fixed" className={clsx(classes.appBar)}>
       {
-        <SignupModal openModal={openSignupModal} handleSignUpModalOpen={handleSignUpModalOpen} handleSignUpModalClose={handleSignUpModalClose} />
+        <SignupModal
+          openModal={openSignupModal}
+          handleSignUpModalOpen={handleSignUpModalOpen}
+          handleSignUpModalClose={handleSignUpModalClose}
+        />
       }
-      {
-        <LogoutModal show={logoutState} setLogoutModal={setLogoutModal} />
-      }
+      {<LogoutModal show={logoutState} setLogoutModal={setLogoutModal} />}
       <Toolbar className={clsx(classes.toolbar)}>
-        {!props.mini ? (
+        {/* {!props.mini ? (
           <div>
             <IconButton
               color="inherit"
@@ -265,7 +271,6 @@ const Header = (props: props) => {
               <img
                 src={assets.logo}
                 // width={40}
-                height={40}
                 alt="logo"
                 className={`${styles.logo}`}
               />
@@ -273,19 +278,30 @@ const Header = (props: props) => {
           </div>
         ) : (
           <div></div>
-        )}
-        <FormGroup style={{ paddingLeft: "60px" }}>
+        )} */}
+        {/* <FormGroup className={`${styles.switch}`}>
           <FormControlLabel
             control={
               <Switch
                 color="primary"
                 checked={props.mini}
                 onChange={() => props.handleNavType()}
+                size='small'
               />
             }
-            label={"Mini"}
+            label={"mini"}
+            labelPlacement='top'
           />
-        </FormGroup>
+        </FormGroup> */}
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          onClick={() => props.handleDrawerToggle()}
+          edge="start"
+          className={clsx(classes.menuButton)}
+        >
+          <MenuIcon />
+        </IconButton>
         {userAccount || account ? (
           <LoggedIn {...props} setLogoutModal={setLogoutModal} />
         ) : (

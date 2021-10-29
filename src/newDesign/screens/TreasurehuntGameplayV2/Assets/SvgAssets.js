@@ -13,6 +13,13 @@ export const RulesBtn = ({ language, isHovered }) => {
         </text>
       )
       break;
+    case 'chinese':
+      text = (
+        <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="18" letter-spacing="0em">
+          <tspan x="53" y="36.066">游戏方法</tspan>
+        </text>
+      )
+      break;
     default: // default to ENGLISH
       text = (
         <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="36" letter-spacing="0em">
@@ -39,6 +46,13 @@ export const GameStartBtn = ({ language, isStarted }) => {
       text = (
         <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="35" letter-spacing="0em">
           <tspan x="41" y="55.795">&#x30b2;&#x30fc;&#x30e0;&#x958b;&#x59cb;</tspan>
+        </text>
+      )
+      break;
+    case 'chinese':
+      text = (
+        <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="35" letter-spacing="0em">
+          <tspan x="62" y="55.795">遊戲開始</tspan>
         </text>
       )
       break;
@@ -88,7 +102,14 @@ export const WithdrawBtn = ({ language, disabled }) => {
     case 'ja':
       text = (
         <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="36" letter-spacing="0em">
-          <tspan x="93" y="55.632">&#x64a4;&#x9000;</tspan>
+          <tspan x="40" y="55.632">ゲーム開始</tspan>
+        </text>
+      )
+      break;
+    case 'chinese':
+      text = (
+        <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="36" letter-spacing="0em">
+          <tspan x="93" y="55.632">取款</tspan>
         </text>
       )
       break;

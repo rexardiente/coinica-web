@@ -15,7 +15,10 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position-y: -10px;
+  background-position-y: -12px;
+  background-position-x: -2px;
+  zoom: 0.9;
+
 
   @media (max-width: 768px) {
     .gameplay-container {

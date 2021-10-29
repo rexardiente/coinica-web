@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       whiteSpace: 'nowrap',
     },
     drawerOpen: {
+      zIndex: 1210,
       backgroundColor: '#242D41',
       width: drawerWidth,
       transition: theme.transitions.create('width', {
@@ -28,7 +29,8 @@ const useStyles = makeStyles((theme: Theme) =>
         duration: theme.transitions.duration.enteringScreen,
       }),
     },
-    drawerClose: {
+    drawerMini: {
+      zIndex: 1210,
       backgroundColor: '#242D41',
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
@@ -38,6 +40,19 @@ const useStyles = makeStyles((theme: Theme) =>
       width: theme.spacing(5),
       [theme.breakpoints.up('sm')]: {
         width: theme.spacing(7),
+      },
+    },
+    drawerHide:{
+      top: "65px",
+      backgroundColor: "#242D41",
+      transition: theme.transitions.create("width", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+      overflowX: "hidden",
+      width: 0,
+      [theme.breakpoints.down("sm")]: {
+        top: "57px",
       },
     },
     toolbar: {
@@ -90,33 +105,36 @@ const sidebarItems = [
 ];
 
 const sidebarGames = [
-{
-  name: translate("sidebar.games.gq"),
-  image: assets.ghostquest,
-  url: '/game/ghostquest',
-},
-{
-  name: translate("sidebar.games.th"),
-  image: assets.treasurehunt,
-  url: '/game/treasurehunt',
-},{
-  name: translate("sidebar.games.mj"),
-  image: assets.mahjong,
-  url: '/game/mahjong',
-}
+  {
+    name: translate("sidebar.games.gq"),
+    image: assets.ghostquest,
+    url: "/game/ghostquest",
+  },
+  {
+    name: translate("sidebar.games.th"),
+    image: assets.treasurehunt,
+    url: "/game/treasurehunt",
+  },
+  {
+    name: translate("sidebar.games.mj"),
+    image: assets.mahjong,
+    url: "/game/mahjong",
+  },
 ];
 
 type props = {
   open: boolean;
+  mini?:boolean;
   // handleDrawerClose: Function;
   handleDrawerToggle: Function;
+  handleDrawerClose: Function;
   language: string;
   handleSelectLanguage: Function;
 }
 
-const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, open} : props) => {  
+const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, handleDrawerClose, open, mini} : props) => {  
   return(
-    <div className={`${styles.sidebar_footer} ${!open ? styles.sidebar_footer_close : ''}`}>
+    <div className={`${styles.sidebar_footer} ${mini ? styles.sidebar_footer_close : ''} ${!open ? styles.sidebar_footer_hide : ''}`}>
         <Divider />
         <List>
           <ListItem>
@@ -134,7 +152,7 @@ const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, open
           </ListItem>
           <ListItem button onClick={() => handleDrawerToggle()}>
             <ListItemIcon>
-              <PlayCircleFilled className={`${styles.toggle_mini_icon} ${!open ? styles.toggle_mini_icon_open : ''}`} />
+              <PlayCircleFilled className={`${styles.toggle_mini_icon} ${open ? styles.toggle_mini_icon_open : ''}`} />
             </ListItemIcon>
             <ListItemText primary={translate('sidebar.collapse')} style={{ color: "#1785EB" }}/>
           </ListItem>
@@ -143,12 +161,13 @@ const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, open
   );
 };
 
-const Sidebar = ({ open, handleDrawerToggle, language, handleSelectLanguage } : props) => {
+const Sidebar = ({ open, handleDrawerToggle, language, handleSelectLanguage, handleDrawerClose } : props) => {
   const classes = useStyles();
   const theme = useTheme();
   const langToArray = Object.entries(locale);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [collapse, setCollapse] = useState(false);
+  const [mini, setMini] = useState(false);
 
   const handleCollapse = () =>{
     setCollapse(!collapse);
@@ -161,71 +180,115 @@ const Sidebar = ({ open, handleDrawerToggle, language, handleSelectLanguage } : 
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+
+  const handleMini = () => {
+    setMini(!mini);
+  };
+
+  const toggleDrawer = () => (
+    event: React.KeyboardEvent | React.MouseEvent,
+  ) => {
+    if (
+      event.type === 'keydown' &&
+      ((event as React.KeyboardEvent).key === 'Tab' ||
+        (event as React.KeyboardEvent).key === 'Shift')
+    ) {
+      return;
+    }
+
+    handleDrawerClose();
+  };
  
   return (
-    <Drawer
-      variant="permanent"
-      className={clsx(classes.drawer, {
-        [classes.drawerOpen]: open,
-        [classes.drawerClose]: !open,
-      })}
-      classes={{
-        paper: clsx({
+    <React.Fragment>
+      <Drawer
+        open={open}
+        onClose={toggleDrawer()}
+        className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        }),
-      }}
-    >
-
-      <img className={`${styles.sidebar_logo} ${!open ? styles.sidebar_logo_closed : ''}`} src={open? assets.logo : assets.coinLogo} />
-      <List>
-        <ListItem className={`${styles.links}`} button onClick={handleCollapse}>
-          <ListItemIcon style={{ color: "#1785EB" }}>
-            <img src={assets.games} width={"20px"} />
-          </ListItemIcon>
-          <ListItemText
-            primary={translate("sidebar.games")}
-            style={{ color: "#1785EB" }}
+          [classes.drawerHide]: !open,
+          [classes.drawerMini]: mini,
+        })}
+        classes={{
+          paper: clsx({
+            [classes.drawerOpen]: open,
+            [classes.drawerHide]: !open,
+            [classes.drawerMini]: mini,
+          }),
+        }}
+      >
+        <Link to="/">
+          <img
+            className={`${styles.sidebar_logo} ${
+              mini ? styles.sidebar_logo_closed : ""
+            }`}
+            src={!mini ? assets.logo : assets.coinLogo}
           />
-          <ExpandLess className={`${styles.collapse_icon} ${ collapse ? styles.collapse_icon_collapsed : ''}`} />
-        </ListItem>
-        <Collapse in={collapse} unmountOnExit>
-          <List component="div" disablePadding>
-            {sidebarGames.map((item, index) => (
-              <ListItem
-                className={`${styles.links}`}
-                component={Link}
-                to={item.url}
-                key={"sidebar-item" + index}
-              >
-                <ListItemIcon style={{ color: "#1785EB" }}>
-                  <img src={item.image} width={open ? "40px" : "30px"} />
-                </ListItemIcon>
-                <ListItemText
-                  primary={item.name}
-                  style={{ color: "#1785EB" }}
-                />
-              </ListItem>
-            ))}
-          </List>
-        </Collapse>
-
-        {sidebarItems.map((item, index) => (
+        </Link>
+        <List className={`${styles.sidebar_items}`}>
           <ListItem
             className={`${styles.links}`}
-            component={Link}
-            to={item.url}
-            key={"sidebar-item" + index}
+            button
+            onClick={handleCollapse}
           >
             <ListItemIcon style={{ color: "#1785EB" }}>
-              <img src={item.image} width={"20px"} />
+              <img src={assets.games} width={"20px"} />
             </ListItemIcon>
-            <ListItemText primary={item.name} style={{ color: "#1785EB" }} />
+            <ListItemText
+              primary={translate("sidebar.games")}
+              style={{ color: "#1785EB" }}
+            />
+            <ExpandLess
+              className={`${styles.collapse_icon} ${
+                collapse ? styles.collapse_icon_collapsed : ""
+              }`}
+            />
           </ListItem>
-        ))}
-      </List>
-      <SidebarFooter language={language} handleSelectLanguage={handleSelectLanguage} handleDrawerToggle={handleDrawerToggle} open={open} />
-    </Drawer>
+          <Collapse in={collapse} unmountOnExit>
+            <List component="div" disablePadding>
+              {sidebarGames.map((item, index) => (
+                <ListItem
+                  className={`${styles.links}`}
+                  component={Link}
+                  to={item.url}
+                  key={"sidebar-item" + index}
+                >
+                  <ListItemIcon style={{ color: "#1785EB" }}>
+                    <img src={item.image} width={open ? "40px" : "30px"} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.name}
+                    style={{ color: "#1785EB" }}
+                  />
+                </ListItem>
+              ))}
+            </List>
+          </Collapse>
+
+          {sidebarItems.map((item, index) => (
+            <ListItem
+              className={`${styles.links}`}
+              component={Link}
+              to={item.url}
+              key={"sidebar-item" + index}
+            >
+              <ListItemIcon style={{ color: "#1785EB" }}>
+                <img src={item.image} width={"20px"} />
+              </ListItemIcon>
+              <ListItemText primary={item.name} style={{ color: "#1785EB" }} />
+            </ListItem>
+          ))}
+        </List>
+        <SidebarFooter
+          language={language}
+          handleSelectLanguage={handleSelectLanguage}
+          handleDrawerClose={handleDrawerClose}
+          handleDrawerToggle={handleMini}
+          open={open}
+          mini={mini}
+        />
+      </Drawer>
+    </React.Fragment>
   );
 };
 

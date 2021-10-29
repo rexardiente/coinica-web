@@ -131,7 +131,7 @@ const Referral = () => {
   };
   return (
     <Fragment>
-      <Grid container xs>
+      <Grid container>
         <Grid item className={styles.howItWorksWrapper} xs={12}>
           <HowItWorks
             title={INSTRUCTION_TITLE}
