@@ -2,25 +2,22 @@ import React, { useEffect } from "react";
 import Container from "@material-ui/core/Container";
 import styles from "./Dashboard.module.scss";
 import Typography from "@material-ui/core/Typography";
-import Carousel from "react-material-ui-carousel";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Grid, { GridSpacing } from "@material-ui/core/Grid";
 import * as assets from "./Assets";
-import { toast } from "react-toastify";
+import Carousel from "./HomeCarousel";
+import { translate } from "helpers/translate";
 
 const HomeScreen = () => {
   return (
     <>
-      <div className={`${styles.carousel}`}>
-        <img src={assets.referral} width="100%" />
-      </div>
+      <Carousel />
 
       <Typography variant="h4" className={`${styles.games_title}`}>
-        Games
+        {translate('home.gameList.title')}
       </Typography>
 
       <Grid
