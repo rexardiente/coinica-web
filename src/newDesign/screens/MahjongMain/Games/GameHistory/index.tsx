@@ -1,4 +1,4 @@
-import GetMahjongTile from "components/Mahjong/Tiles";
+import GetMahjongTile from "newDesign/components/Mahjong/Tiles";
 import styles from "./GamesHistory.module.scss";
 
 type GradientColor =

@@ -1,0 +1,91 @@
+@import "./src/assets/scss/config";
+@import "./src/assets/scss/utils";
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+  background: rgba(0, 2, 26, 0.8);
+  overflow: hidden;
+}
+
+.wrapper {
+  position: relative;
+  width: inherit;
+  height: inherit;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tiles {
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 110;
+}
+
+.curveBg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 443px;
+}
+
+.girlBg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: auto;
+  height: calc(100% - 60px);
+}
+
+.cards {
+  background: #1e4e77;
+  border-radius: 50%;
+  box-shadow: 0 0 60px 10px rgba(81, 159, 201, 0.2),
+    0 0 100px 50px rgba(65, 175, 235, 0.2),
+    0 0 70px 70px rgba(23, 174, 255, 0.2);
+
+  .cardsImg {
+    margin: 3px;
+  }
+}
+
+.btnFont {
+  font-family: Permanent Marker;
+  filter: drop-shadow(2px 5px 3px rgba(0, 0, 0, 0.8));
+}
+
+.btnKong {
+  width: 315px;
+  height: 75px;
+  border: none;
+  background-color: transparent;
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/gameplay/kong_bg.png");
+  background-size: cover;
+  padding: 0;
+  cursor: pointer;
+}
+
+.btnKongText {
+  font-size: rem(60);
+}
+
+.btnPass {
+  width: 118px;
+  height: 70px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.btnPassText {
+  font-size: rem(48);
+}

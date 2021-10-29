@@ -3,7 +3,6 @@ const ASSETS_URL = ServerAPI.assets_url;
 
 export const profile_pic_bg = `${ASSETS_URL}/imgs/games/mahjong_1/home_screen/profile_pic_bg.png`;
 export const btn_close = `${ASSETS_URL}/imgs/games/mahjong_1/home_screen/btn_close.png`;
-export const pass = `${ASSETS_URL}/imgs/games/mahjong_1/pass.png`;
 
 //Tutorial
 export const arrow = `${ASSETS_URL}/imgs/games/mahjong_1/home_screen/tutorial/arrow.png`;
@@ -14,15 +13,19 @@ export const rank_2nd = `${ASSETS_URL}/imgs/games/mahjong_1/home_screen/ranking/
 export const rank_3rd = `${ASSETS_URL}/imgs/games/mahjong_1/home_screen/ranking/rank_3.png`;
 
 //Complete hand result
-export const lose = `${ASSETS_URL}/imgs/games/mahjong_1/lose.png`;
-export const complete_hand = `${ASSETS_URL}/imgs/games/mahjong_1/complete_hand.png`;
+export const girlBgGold = `${ASSETS_URL}/imgs/games/mahjong_1/gameplay/girl_bg_gold.png`;
+export const completeHandText = `${ASSETS_URL}/imgs/games/mahjong_1/gameplay/completehand_text.png`;
 
 //Kong
-export const kong = `${ASSETS_URL}/imgs/games/mahjong_1/kong.png`;
+export const curveBg = `${ASSETS_URL}/imgs/games/mahjong_1/gameplay/curve_bg.png`;
+export const girlBgBlue = `${ASSETS_URL}/imgs/games/mahjong_1/gameplay/girl_bg_blue.png`;
 
-//Prediction
-export const prediction_fail = `${ASSETS_URL}/imgs/games/mahjong_1/prediction_fail.png`;
-export const prediction_success = `${ASSETS_URL}/imgs/games/mahjong_1/prediction_success.png`;
+//Modal
+export const closeBg = `${ASSETS_URL}/imgs/games/mahjong_1/home_screen/modal_bg_close.png`;
+export const modalBg = `${ASSETS_URL}/imgs/games/mahjong_1/home_screen/modal_bg.png`;
+
+//Menu
+export const modalBgMenu = `${ASSETS_URL}/imgs/games/mahjong_1/gameplay/modal_bg_menu.png`;
 
 //Tiles
 export const tiles = {

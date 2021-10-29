@@ -68,7 +68,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     "& .MuiDialog-paperScrollPaper": {
       marginTop: 0,
       marginBottom: 0,
-      maxHeight: "calc(100% - 32px)",
+      marginRight: 0,
+      maxHeight: "100%",
       borderRadius: 0,
     },
   },

@@ -1,3 +1,8 @@
+export { default as CompleteHandPass } from "./CompleteHandPass";
+export { default as CompleteHandResult } from "./CompleteHandResult";
+export { default as KongPass } from "./KongPass";
+export { default as MenuComponent } from "./MenuComponent";
+export { default as PredictionResult } from "./PredictionResult";
 export { default as Tutorial } from "./Tutorial";
 export { default as MyData } from "./MyData";
 export { default as Ranking } from "./Ranking";

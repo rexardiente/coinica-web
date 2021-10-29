@@ -21,7 +21,7 @@ const GhostQuestSummon = lazy(() => import("./GhostQuestSummon"));
 const GhostQuestRanking = lazy(() => import("./GhostQuestRanking"));
 const GhostQuestSummonResult = lazy(() => import("./GhostQuestSummonResult"));
 const MahjongMain = lazy(() => import("./MahjongMain"));
-// const MahjongGameplay = lazy(() => import("./MahjongGameplay"));
+const MahjongGameplay = lazy(() => import("./MahjongGameplay"));
 
 const routes = [
   // {
@@ -220,15 +220,15 @@ const routes = [
     isPrivate: true,
     showHistory: false,
   },
-  // {
-  //   key: "MahjongGameplay",
-  //   game: "Mahjong",
-  //   exact: true,
-  //   path: "/game/mahjong/gameplay",
-  //   component: MahjongGameplay,
-  //   isPrivate: true,
-  //   showHistory: false,
-  // },
+  {
+    key: "MahjongGameplay",
+    game: "Mahjong",
+    exact: true,
+    path: "/game/mahjong/gameplay",
+    component: MahjongGameplay,
+    isPrivate: true,
+    showHistory: false,
+  },
 ];
 
 export default routes;

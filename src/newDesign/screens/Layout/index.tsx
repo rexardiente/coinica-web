@@ -26,7 +26,6 @@ const Layout = (props) => {
   const { language } = useSelector((state: ReduxState) => state.platform);
   const { isLoading } = useSelector((state: ReduxState) => state.page);
 
-
   const handleSelectLanguage = (val: string) => {
     dispatch(setLanguage(val));
   };

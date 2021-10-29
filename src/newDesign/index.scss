@@ -1,6 +1,5 @@
-@import "/src/assets/scss/colors.scss";
+@import "./src/assets/scss/colors.scss";
 @import "./src/assets/scss/mixin";
-
 
 @font-face {
   font-family: "OpenSans";
@@ -58,4 +57,28 @@ body {
 
 .strokeDarkYellow4 {
   @include stroke(#735430, 4px);
+}
+
+.strokeBrown5 {
+  @include stroke(#53381f, 5px);
+}
+
+.strokeLightBrown5 {
+  @include stroke(#735430, 5px);
+}
+
+.strokeViolet5 {
+  @include stroke(#493072, 5px);
+}
+
+.strokeDarkBlue8 {
+  @include stroke(#2f3364, 8px);
+}
+
+.strokeLightBlue8 {
+  @include stroke(#5566a7, 8px);
+}
+
+.strokeLightBrown8 {
+  @include stroke(#735430, 8px);
 }

@@ -10,7 +10,10 @@ import {
   MJ_GET_HILO_WINRATE,
   MJ_GET_MAX_PAYOUT,
   MJ_GET_MONTHLY_RANKING,
-  MJ_GET_TOTAL_HILO_PLAYED,
+  MJ_GET_CONSECUTIVE_HILO,
+  MJ_GET_SHORTEST_ROUND,
+  MJ_GET_AVG_WIN_ROUND,
+  MJ_GET_AVG_WIN_SCORE,
 } from "services/api/server/mahjong_hilo";
 import {
   logo,
@@ -26,23 +29,36 @@ import { translate } from "helpers/translate";
 import styles from "./MahjongMain.module.scss";
 import GradientText from "newDesign/components/GradientText";
 
+type MyDataState = {
+  hiloWinRate: number;
+  maxPayout: number;
+  consHilo: number;
+  shortestRound: number;
+  avgWinScore: number;
+  avgWinRound: number;
+};
+
 type ReduxState = {
   platform: any;
   mahjong_hilo: any;
 };
 
-const MahjongMain = (props) => {
+const MahjongMain = () => {
   let history = useHistory();
   const reduxState = useSelector((state: ReduxState) => state);
   const { game_data } = reduxState?.mahjong_hilo;
   const { account } = reduxState?.platform;
   const username = account?.username;
-  const id: number = account?.user_game_id;
   const userID = account?.id;
-  const [mjhistory, setMjhistory] = useState([]);
-  const [winRate, setWinRate] = useState(0);
-  const [consHiLo, setConsHiLo] = useState(0);
-  const [maxPayout, setMaxPayout] = useState(0);
+  const [gamePlayHistory, setGamePlayHistory] = useState([]);
+  const [myDataTabs, setMyDataTabs] = useState<MyDataState>({
+    hiloWinRate: 0,
+    consHilo: 0,
+    maxPayout: 0,
+    shortestRound: 0,
+    avgWinScore: 0,
+    avgWinRound: 0,
+  });
   const [rankingData, setRanking] = useState<any[]>([]);
 
   const [showModal, setShowModal] = useState({
@@ -126,7 +142,7 @@ const MahjongMain = (props) => {
       try {
         await MJ_START_GAME();
         await updateMahjongHiloData(username);
-        toast.success(translate("msg.main.game.init"));
+        toast.success(translate("mj.main.game.init"));
         history.push("/game/mahjong/gameplay");
       } catch (err: any) {
         toast.error(err.message);
@@ -134,25 +150,51 @@ const MahjongMain = (props) => {
     }
   };
 
-  const mahjongHistory = () => {
-    MJ_HISTORY(userID)
-      .then((res) => {
-        setMjhistory(res.data);
-      })
-      .catch((err) => {
-        console.log("error fetching history", err);
+  const getRanking = async () => {
+    try {
+      const res = await MJ_GET_MONTHLY_RANKING();
+      setRanking(res.data);
+    } catch (err: any) {
+      console.log("error fetching ranking", err);
+    }
+  };
+  const getGameHistory = async () => {
+    try {
+      const res = await MJ_HISTORY(userID);
+      setGamePlayHistory(res.data);
+    } catch (err: any) {
+      console.log("error fetching history", err);
+    }
+  };
+
+  const getMyData = async () => {
+    try {
+      const hiloWinRate = await (await MJ_GET_HILO_WINRATE()).data;
+      const maxPayout = await (await MJ_GET_MAX_PAYOUT()).data;
+      const consHilo = await (await MJ_GET_CONSECUTIVE_HILO()).data;
+      const shortestRound = await (await MJ_GET_SHORTEST_ROUND()).data;
+      const avgWinScore = await (await MJ_GET_AVG_WIN_SCORE()).data;
+      const avgWinRound = await (await MJ_GET_AVG_WIN_ROUND()).data;
+
+      setMyDataTabs({
+        hiloWinRate,
+        maxPayout,
+        consHilo,
+        shortestRound,
+        avgWinScore,
+        avgWinRound,
       });
+    } catch (err: any) {
+      console.log("error fetching my data", err);
+    }
   };
 
   useEffect(() => {
     if (account) {
       updateMahjongHiloData(username);
-      mahjongHistory();
-
-      MJ_GET_HILO_WINRATE().then((res) => setWinRate(res.data));
-      MJ_GET_MAX_PAYOUT().then((res) => setMaxPayout(res.data));
-      MJ_GET_MONTHLY_RANKING().then((res) => setRanking(res.data));
-      MJ_GET_TOTAL_HILO_PLAYED().then((res) => setConsHiLo(res.data));
+      getGameHistory();
+      getMyData();
+      getRanking();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account]);
@@ -172,7 +214,13 @@ const MahjongMain = (props) => {
 
   return (
     <div className={styles.container}>
-      {/* {showModal.myData && <MyData onHide={onToggleMyData} />} */}
+      <MyData
+        show={showModal.myData}
+        userId={userID}
+        username={username}
+        data={myDataTabs}
+        onHide={onToggleMyData}
+      />
       <Tutorial show={showModal.tutorial} onHide={onToggleTutorial} />
       <Ranking
         data={rankingData}

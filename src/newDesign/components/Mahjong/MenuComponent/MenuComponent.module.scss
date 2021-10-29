@@ -1,0 +1,26 @@
+@import "./src/assets/scss/utils";
+
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+
+.button {
+  width: 176px;
+  background: #fff7dd;
+  border: 2px solid #c2a98b;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 10px;
+
+  color: #4e463c;
+  font-size: rem(18);
+  font-weight: 700;
+  font-family: "Nunito";
+
+  cursor: pointer;
+}

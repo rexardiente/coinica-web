@@ -43,7 +43,7 @@ export function GetWindTile(value: number) {
   if (value === 5) return tiles.wind_south;
   if (value === 6) return tiles.wind_west;
   if (value === 7) return tiles.wind_north;
-  if (!value) return null;
+  if (!value) return tiles.ura;
 }
 
 export default function GetMahjongTile(idx) {

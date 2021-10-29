@@ -3,7 +3,7 @@ import Dialog from "@material-ui/core/Dialog";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
-import { closeBg, modalBg } from "./Assets";
+import { closeBg, modalBg } from "../Assets";
 import styles from "./Modal.module.scss";
 
 type ModalProps = {
@@ -27,9 +27,10 @@ type ModalContentProps = {
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     "& .MuiDialog-paper": {
-      width: "977px",
-      maxWidth: "100%",
-      height: "743px",
+      width: "100%",
+      maxWidth: "977px",
+      height: "100%",
+      maxHeight: "550px",
       backgroundImage: `url(${modalBg})`,
       backgroundRepeat: "no-repeat",
       backgroundSize: "100% 99%",
@@ -53,7 +54,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const Modal = ({ show, onHide, children }: ModalProps) => {
+const Modal = ({ show, onHide, children, className }: ModalProps) => {
   const classes = useStyles();
 
   return (
@@ -61,7 +62,7 @@ const Modal = ({ show, onHide, children }: ModalProps) => {
       disablePortal
       open={show}
       onClose={onHide}
-      className={`${classes.root} ${styles.dialog}`}
+      className={[classes.root, styles.dialog, className].join(" ")}
     >
       {children}
     </Dialog>
@@ -73,7 +74,9 @@ const ModalHeader = ({ className, children, onHide }: ModalHeaderProps) => {
 
   return (
     <MuiDialogTitle className={[className, styles.dialogTitle].join(" ")}>
-      <span className={`${styles.title} strokeBlue2`}>{children}</span>
+      <span className={[styles.title, "strokeBlue2"].join(" ")}>
+        {children}
+      </span>
       <IconButton
         aria-label="close"
         className={classes.closeButton}

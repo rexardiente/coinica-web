@@ -1,0 +1,90 @@
+@import "./src/assets/scss/config";
+@import "./src/assets/scss/utils";
+@import "./src/assets/scss/mixin";
+
+.gradientContainer {
+  background-color: transparent;
+  border: none;
+
+  width: 148px;
+  min-height: 70px;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 9px;
+
+  cursor: pointer;
+}
+
+.gradientLabel {
+  display: flex;
+  flex-direction: column;
+  font-size: rem(24);
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.05em;
+
+  @media (max-width: 425px) {
+    font-size: rem(16);
+  }
+
+  @media (min-width: 515px) and (max-width: 768px) {
+    font-size: rem(28);
+  }
+
+  span {
+    font-size: rem(12);
+    @media (min-width: 515px) and (max-width: 768px) {
+      font-size: rem(15);
+    }
+  }
+}
+
+.solidContainer {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/gameplay/btn_bg_wallet.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: drop-shadow(0px 4px 4px rgba(6, 13, 39, 0.5));
+
+  width: 110px;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.icon {
+  @media (max-width: 425px) {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.disabled {
+  opacity: (0.4);
+  cursor: not-allowed !important;
+}
+
+.menu {
+  height: 67px;
+  width: 67px;
+  background-color: #3f4166;
+  border: 3.5px solid #bd9363;
+  border-radius: 10px;
+  cursor: pointer;
+
+  svg {
+    color: #f79f27;
+    width: 40px;
+    height: 40px;
+  }
+}
