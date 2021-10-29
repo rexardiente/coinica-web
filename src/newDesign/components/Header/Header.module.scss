@@ -35,4 +35,15 @@
 
 .logo{
     vertical-align: middle;
+    height: 40px;
+
+    @media(max-width: 1024px){
+        height: 20px;
+    }
+    
+}
+
+.switch{
+    position:absolute;
+    margin-left: 50%;
 }
