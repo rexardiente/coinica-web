@@ -698,13 +698,13 @@ const TreasurehuntGameplayV2 = (props) => {
         <meta property="og:title" content="Treasurehunt Game" />
         <meta property="og:type" content="game" />
         <meta property="og:url" content={`${Network.protocol}://${Network.host}/game/treasurehunt/gameplay`} />
-        <meta property="og:description" content="EOS Game Store - Treasurehunt" />
+        <meta property="og:description" content="Coinica - Treasurehunt" />
         <meta property="og:image" content={thGameLogo} />
         <meta property="og:image:secure_url" content={thGameLogo} />
 
         <meta name="twitter:card" content="game" />
         <meta name="twitter:title" content="Treasurehunt Game" />
-        <meta name="twitter:description" content="EOS Game Store - Treasurehunt" />
+        <meta name="twitter:description" content="Coinica - Treasurehunt" />
         <meta name="twitter:url" content={`${Network.protocol}://${Network.host}/game/treasurehunt/gameplay`} />
         <meta name="twitter:image" content={thGameLogo} />
       </Helmet>
