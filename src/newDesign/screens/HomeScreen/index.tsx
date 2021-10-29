@@ -16,6 +16,7 @@ const HomeScreen = () => {
     <>
       <Carousel />
 
+      <div className={`${styles.homescreen}`}>
       <Typography variant="h4" className={`${styles.games_title}`}>
         {translate('home.gameList.title')}
       </Typography>
@@ -93,6 +94,8 @@ const HomeScreen = () => {
           </Card>
         </Grid>
       </Grid>
+      </div>
+      
     </>
   );
 };

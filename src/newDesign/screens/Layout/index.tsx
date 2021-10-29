@@ -18,7 +18,7 @@ type ReduxState = {
 
 const Layout = (props) => {
   const dispatch = useDispatch();
-  const [openSidebar, setOpenSidebar] = useState(true);
+  const [openSidebar, setOpenSidebar] = useState(false);
   const [activeSidebar, setActiveSidebar] = useState("navigationMini");
   const [mini, setMini] = useState(true);
   const { language } = useSelector((state: ReduxState) => state.platform);
