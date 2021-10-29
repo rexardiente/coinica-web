@@ -19,6 +19,15 @@ export const SelectDestinationText = ({ language }) => {
         </g>
       )
       break;
+    case 'chinese':
+      text = (
+        <g clip-path="url(#clip0)">
+          <text fill="url(#paint0_linear)" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="Myfont" font-size="35" letter-spacing="0em">
+            <tspan x="120" y="29">选择航线</tspan>
+          </text>
+        </g>
+      )
+      break;
     default:
       break;
   }
@@ -53,6 +62,13 @@ export const TutorialBtn = ({ language }) => {
         </text>
       )
       break;
+    case 'chinese':
+      text = (
+        <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="18" letter-spacing="0em">
+          <tspan x="65" y="36.066">教程</tspan>
+        </text>
+      )
+      break;
     default:
       break;
   }
@@ -78,6 +94,13 @@ export const RulesBtn = ({ language }) => {
       text = (
         <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="18" letter-spacing="0em">
           <tspan x="57" y="36.066">&#x30eb;&#x30fc;&#x30eb;</tspan>
+        </text>
+      )
+      break;
+    case 'chinese':
+      text = (
+        <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="18" letter-spacing="0em">
+          <tspan x="52" y="36.066">游戏方法</tspan>
         </text>
       )
       break;
@@ -109,6 +132,15 @@ export const AutoplayBtn = ({ language }) => {
         <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="22" letter-spacing="0em">
           <tspan x="50" y="36.632">
             自動再生オプション
+          </tspan>
+        </text>
+      )
+      break;
+    case 'chinese':
+      text = (
+        <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="22" letter-spacing="0em">
+          <tspan x="80" y="36.632">
+            自动游戏选项
           </tspan>
         </text>
       )

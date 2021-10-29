@@ -11,6 +11,13 @@ export const StopBtn = ({ language, disabled }) => {
         </text>
       )
       break;
+    case 'chinese':
+      text = (
+        <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="30" letter-spacing="0em">
+          <tspan x="67" y="54.11">终止条件</tspan>
+        </text>
+      )
+      break;
     default: // default to ENGLISH
       text = (
         <text fill="#E6D9B0" xmlSpace="preserve" style={{ whiteSpace: "pre" }} font-family="TH Primary" font-size="50" letter-spacing="0em">

@@ -621,12 +621,12 @@ const TreasurehuntAutoplayGameplay = (props) => {
                   <div style={{ marginBottom: '10px', fontSize: '2rem', lineHeight: '30px' }}>
                     <div style={{ display: 'flex', justifyContent: "space-between" }}>
                       <div>
-                        <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"}`}>
+                        <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"}`}>
                           {translate("th.selected_dest")}
                         </span>
                       </div>
                       <div style={{ textAlign: 'end' }}>
-                        <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"}`}>
+                        <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"}`}>
                           {`${startingFunds} Token`}
                         </span>
                       </div>
@@ -635,12 +635,12 @@ const TreasurehuntAutoplayGameplay = (props) => {
                   <div style={{ margin: '10px 0px', fontSize: '2rem', lineHeight: '30px' }}>
                     <div style={{ display: 'flex', justifyContent: "space-between" }}>
                       <div>
-                        <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"}`}>
+                        <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"}`}>
                           {translate("th.selected_rivals")}
                         </span>
                       </div>
                       <div style={{ textAlign: 'end' }}>
-                        <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"}`}>
+                        <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"}`}>
                           { numOfRivals }
                         </span>
                       </div>
@@ -648,17 +648,17 @@ const TreasurehuntAutoplayGameplay = (props) => {
                   </div>
                   <div style={{ margin: '10px 0px', fontSize: '2rem', lineHeight: '30px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"}`} style={{ fontSize: '1.4rem' }}>
+                      <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"}`} style={{ fontSize: '1.4rem' }}>
                        {translate("th.starting_bal")}: {' '}
                       </span>
-                      <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"}`} style={{ fontSize: '1.4rem' }}>
+                      <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"}`} style={{ fontSize: '1.4rem' }}>
                         { startBalance || '...' }
                       </span>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <div className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"}`}>
+                  <div className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"}`}>
                     {translate("th.recent_history")}
                   </div>
                   <div className="recent-history">
@@ -668,7 +668,7 @@ const TreasurehuntAutoplayGameplay = (props) => {
                       )) : (
                         gameStarted === false && (
                           <div
-                            className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"}`}
+                            className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"}`}
                             style={{
                               height: '100%',
                               width: '100%',
@@ -740,12 +740,12 @@ const TreasurehuntAutoplayGameplay = (props) => {
           <div className="right_wrapper">
             <div className="right_details">
               <div style={{ borderBottom: '1px solid #D8A764', paddingBottom: '25px' }}>
-                <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"} stop_param_title`}>
+                <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"} stop_param_title`}>
                   {translate("th.remaining_games")}
                 </span>
                 <div className="stop_param_wrapper">
                   <span
-                    className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"}`}
+                    className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"}`}
                     style={
                       !stopParameters.numOfGames ? {
                         backgroundImage: 'linear-gradient(180deg, #715133, #543a21)'
@@ -755,12 +755,12 @@ const TreasurehuntAutoplayGameplay = (props) => {
                     { stopParameters.numOfGames ? remainingGames : 'Not set' }
                   </span>
                 </div>
-                <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"} stop_param_title`}>
+                <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"} stop_param_title`}>
                   {translate("th.reach_max_bal")}
                 </span>
                 <div className="stop_param_wrapper">
                   <span
-                    className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"}`}
+                    className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"}`}
                     style={
                       !stopParameters.maxBalance ? {
                         backgroundImage: 'linear-gradient(180deg, #715133, #543a21)'
@@ -770,12 +770,12 @@ const TreasurehuntAutoplayGameplay = (props) => {
                     { stopParameters.maxBalance ? `${maxBalance} Token` : 'Not set' }
                   </span>
                 </div>
-                <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"} stop_param_title`}>
+                <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"} stop_param_title`}>
                   {translate("th.reach_min_bal")}
                 </span>
                 <div className="stop_param_wrapper">
                   <span
-                    className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"}`}
+                    className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"}`}
                     style={
                       !stopParameters.minBalance ? {
                         backgroundImage: 'linear-gradient(180deg, #715133, #543a21)'
@@ -789,30 +789,30 @@ const TreasurehuntAutoplayGameplay = (props) => {
               <div className="winnings_detail">
                 <div style={{ padding: '10px 0px' }}>
                   <div style={{ maxHeight: '85px' }}>
-                    <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"} title`}>
+                    <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"} title`}>
                       {translate("th.gameplay.current_winnings")}
                     </span>
                     <div className="value_wrapper">
-                      <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"} value`}>{ currentWinnings.toFixed(4) }</span>
-                      <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"} value_unit`}>Token</span>
+                      <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"} value`}>{ currentWinnings.toFixed(4) }</span>
+                      <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"} value_unit`}>Token</span>
                     </div>
                   </div>
                   <div style={{ maxHeight: '85px' }}>
-                    <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"} title`}>
+                    <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"} title`}>
                       {translate("th.gameplay.next_win")}
                     </span>
                     <div className="value_wrapper">
-                      <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"} value`}>{ nextPrize.toFixed(4) }</span>
-                      <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"} value_unit`}>Token</span>
+                      <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"} value`}>{ nextPrize.toFixed(4) }</span>
+                      <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"} value_unit`}>Token</span>
                     </div>
                   </div>
                   <div style={{ maxHeight: '85px' }}>
-                    <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"} title`}>
+                    <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"} title`}>
                       {translate("th.gameplay.odds")}
                     </span>
                     <div className="value_wrapper">
                       <span
-                        className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"} title`}
+                        className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"} title`}
                         style={{ backgroundImage: 'linear-gradient(rgb(113, 81, 51), rgb(84, 58, 33))' }}
                       >
                         {/* {`x${(+odds).toFixed(4)}` */}
@@ -821,11 +821,11 @@ const TreasurehuntAutoplayGameplay = (props) => {
                     </div>
                   </div>
                   <div style={{ maxHeight: '85px' }}>
-                    <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"} title`}>
+                    <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"} title`}>
                       {translate("th.gameplay.remaining_treasure")}
                     </span>
                     <div className="value_wrapper">
-                    <span className={`${language === 'ja' ? "text_th_primary_jap" : "text_th_primary"} value`}>{remainingTreasure}</span>
+                    <span className={`${language === 'ja' || 'chinese' ? "text_th_primary_jap" : "text_th_primary"} value`}>{remainingTreasure}</span>
                     </div>
                   </div>
                 </div>
