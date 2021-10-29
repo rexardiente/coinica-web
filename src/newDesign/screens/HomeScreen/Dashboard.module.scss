@@ -4,6 +4,7 @@
 .games_title{
     padding-top: 4rem;
     font-weight: bolder;
+    // text-align: center;
 }
 
 .card{
@@ -19,8 +20,8 @@
 }
 
 .game_list{
+    justify-content: flex-start ;
     padding-top: 2rem;
-    width: 100%;
     flex-grow: 1;
     align-items: center;
 }
