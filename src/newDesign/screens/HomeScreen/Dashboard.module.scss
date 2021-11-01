@@ -1,0 +1,35 @@
+@import "/src/assets/scss/colors.scss";
+
+
+.games_title{
+    padding-top: 4rem;
+    font-weight: bolder;
+    // text-align: center;
+}
+
+.card{
+    border-radius: 0;
+    background-color: $primary-lighter;
+    color: $text-primary-color;
+    max-width: 312px;
+    height: 290px;
+}
+
+.card p {
+    color: $text-sub-color;
+}
+
+.game_list{
+    justify-content: flex-start ;
+    padding-top: 2rem;
+    flex-grow: 1;
+    align-items: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.homescreen{
+    max-width: 1800px;
+    margin-left:auto;
+    margin-right: auto;
+}

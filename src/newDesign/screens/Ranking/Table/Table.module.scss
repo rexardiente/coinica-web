@@ -1,0 +1,35 @@
+@import "./src/assets/scss/utils";
+
+.container {
+  border: 1px solid #161e2f;
+  background-color: #202839;
+}
+
+.table {
+  min-width: 450px;
+
+  thead th,
+  tbody td {
+    padding: 25px;
+    font-size: rem(18);
+
+    @media (max-width: 600px) {
+      padding: 20px;
+      font-size: rem(16);
+    }
+  }
+
+  thead th {
+    color: #526fa4;
+    border-bottom: 1px solid #303c57;
+  }
+
+  tbody td {
+    color: #9dc8ef;
+    border: none;
+  }
+}
+
+.emptyData {
+  text-align: center;
+}

@@ -1,0 +1,131 @@
+@import "./src/assets/scss/config";
+
+.ghostRow {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #B9AABB;
+  width: 96%;
+  height: 150px;
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+
+  background: #36303B;
+  border: 3px solid #211D25;
+  border-radius: 16px;
+}
+
+.btnDetails {
+  margin-right: -5px;
+  transform: scale(0.9);
+}
+
+.ghostDetails,
+.ghostResults,
+.ghostResultsBattleEnd {
+  display: flex;
+  flex-direction: column;
+}
+
+.ghostResults {
+  height: 100%;
+  flex: 1;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .ghostLife {
+    font-weight: bold;
+    font-size: 18px;
+    background: -webkit-linear-gradient(#E2DD6C, #E5AB16);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.ghostResultsBattleEnd {
+  height: 100%;
+  flex: 1;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin-left: 10px;
+}
+.ghostResultsLife {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ghostDetails {
+  height: 100%;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.progressBar {
+  width: 150px;
+  // background-color: #000;
+}
+
+.ghostImageContainer {
+  position: relative;
+  margin-right: 10px;
+  height: 100px;
+  width: 100px;
+}
+
+.ghostImage {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-position: unset !important;
+}
+
+.ghostRarityContainer {
+  position: absolute;
+  bottom: -10px;
+  width: 100%;
+  height: 25px;
+  text-align: right;
+  display: flex;
+  justify-content: center;
+}
+.ghostRarity {
+  width: 25px;
+  &:not(:first-child) {
+    margin-left: -10px;
+  }
+}
+
+.badgeStyle {
+  position: absolute;
+  width: 40px;
+  z-index: 10;
+  right: -5px;
+  top: 2px;
+}
+
+.withdrawBadge,
+.eliminatedBadge {
+  position: absolute;
+  left: 0px;
+  background-image: linear-gradient(#ff7575, #ffff6b);
+  color: #000;
+  width: 95px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 12px;
+  height: 20px;
+}
+
+.eliminatedBadge {
+  background-image: linear-gradient(#ff6d6d, #fd0d0d) !important;
+}
+
+.ghostLabelValue {
+  margin-bottom: 2px;
+}

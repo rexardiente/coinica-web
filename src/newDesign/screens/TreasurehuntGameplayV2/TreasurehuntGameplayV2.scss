@@ -1,0 +1,288 @@
+@import "./src/assets/scss/config";
+
+#TreasurehuntGameplayV2 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // padding-top: 50px
+  // min-height: 100vh !important;
+  padding-bottom: 85px !important;
+  color: #641e15;
+  background-color: #4e2a1a !important;
+  background: url("#{$ASSETS_URL}/imgs/games/treasurehunt_v3/gameplay/background.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: -12px;
+  background-position-x: -2px;
+  zoom: 0.9;
+
+
+  @media (max-width: 768px) {
+    .gameplay-container {
+      padding: 120px 0px;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .gameplay-container {
+      zoom: 0.5;
+    }
+  }
+  @media only screen and (min-width: 980px) {
+    .gameplay-container {
+      zoom: 0.6;
+    }
+  }
+  @media only screen and (min-width: 1150px) {
+    .gameplay-container {
+      zoom: 0.7;
+    }
+  }
+  @media only screen and (min-width: 1450px) {
+    .gameplay-container {
+      zoom: 0.8;
+    }
+  }
+  @media only screen and (min-width: 1800px) {
+    .gameplay-container {
+      zoom: 1;
+    }
+  }
+  @media only screen and (min-width: 2500px) {
+    .gameplay-container {
+      zoom: 1.2;
+    }
+  }
+  @media only screen and (min-width: 3840px) {
+    .gameplay-container {
+      zoom: 1.8;
+    }
+  }
+
+  .step2_option {
+    width: 84px;
+    height: 90px;
+  }
+
+  .left-container,
+  .map-container,
+  .right-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    // min-height: calc(100vh - 110px);
+  }
+
+  .game_start_btn:hover,
+  .withdraw_btn:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+  .withdraw_btn_disabled:hover {
+    cursor: not-allowed;
+  }
+
+  // MAP
+  .map-container {
+    font-family: "TH Secondary";
+    align-items: center;
+  }
+
+  #map-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  #tiles-1 {
+    padding: 0px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  #tiles-1.tile-disabled:hover {
+    cursor: not-allowed;
+  }
+  #tiles-1:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  #tiles-row:nth-child(2) {
+    #tiles-1 {
+      top: -3px;
+    }
+  }
+  #tiles-row:nth-child(3) {
+    #tiles-1 {
+      top: -6px;
+    }
+  }
+  #tiles-row:nth-child(4) {
+    #tiles-1 {
+      top: -9px;
+    }
+  }
+  #tiles-row:nth-child(5) {
+    #tiles-1 {
+      top: -12px;
+    }
+  }
+  #tiles-row:nth-child(6) {
+    #tiles-1 {
+      top: -15px;
+    }
+  }
+
+  #tiles-1:nth-child(2) {
+    left: -3px;
+  }
+  #tiles-1:nth-child(3) {
+    left: -6px;
+  }
+  #tiles-1:nth-child(4) {
+    left: -9px;
+  }
+  // END MAP
+
+  .left_wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .left_nav_parent {
+      height: 700px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .left_nav {
+      min-width: 320px;
+      min-height: 300px;
+      border: 2px solid #d8a764;
+      border-radius: 5px;
+      background-color: #282520;
+      padding: 20px;
+
+      .options_container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+    }
+
+    .left_details {
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .paper_value {
+        position: absolute;
+        margin: 0 !important;
+        padding: 0 !important;
+        color: #000;
+      }
+    }
+
+    .left_buttons {
+      max-width: 100%;
+      display: flex;
+
+      .home_btn {
+        width: 70px;
+        height: 61px;
+        background: url("#{$ASSETS_URL}/imgs/games/treasurehunt_v3/gameplay/buttons/btn_home.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      .home_btn:hover {
+        cursor: pointer;
+        background: url("#{$ASSETS_URL}/imgs/games/treasurehunt_v3/gameplay/buttons/btn_home_hover.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      .home_btn:active {
+        cursor: pointer;
+        background: url("#{$ASSETS_URL}/imgs/games/treasurehunt_v3/gameplay/buttons/btn_home_active.png");
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  .right_wrapper {
+    font-family: "TH Primary";
+    text-transform: lowercase;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .right_details {
+      max-width: 100%;
+      min-width: 320px;
+      height: 700px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background: #282520;
+      border: 2px solid #d8a764;
+      border-radius: 5px;
+
+      .winnings_detail {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .max_win {
+        font-size: 3rem;
+      }
+      .title {
+        color: #e0b579eb;
+        font-size: 1.8rem;
+      }
+      .value_wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        overflow: auto;
+      }
+      .value {
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 2rem;
+        line-height: 1em;
+        margin-bottom: 6px;
+      }
+      .value_unit {
+        font-size: 3rem;
+        line-height: 1em;
+      }
+      .red {
+        color: #ff0000;
+      }
+      .dark-red {
+        color: #be0000;
+      }
+    }
+  }
+}

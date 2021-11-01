@@ -1,0 +1,39 @@
+@import "./src/assets/scss/utils";
+
+.container {
+  width: 100%;
+  min-height: 460px;
+  background-color: #242d41;
+  padding: 50px 80px;
+
+  @media (max-width: 599px) {
+    padding: 25px 40px;
+  }
+}
+
+.title {
+  font-weight: 900;
+  margin-bottom: 35px;
+
+  @media (max-width: 599px) {
+    font-size: rem(20);
+  }
+}
+
+.id {
+  font-size: rem(18);
+  font-weight: 500;
+  color: #526fa4;
+
+  @media (max-width: 599px) {
+    font-size: rem(16);
+  }
+}
+
+.minMax {
+  font-size: rem(22);
+
+  @media (max-width: 599px) {
+    font-size: rem(18);
+  }
+}

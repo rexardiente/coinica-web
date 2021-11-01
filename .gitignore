@@ -7,7 +7,7 @@ yarn-error.log*
 
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
-build
+# build
 build/Release
 
 # Dependency directories
@@ -43,3 +43,4 @@ typings/
 
 # OS generated files
 .DS_Store
+yarn.lock

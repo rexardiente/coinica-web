@@ -1,0 +1,42 @@
+@import "./src/assets/scss/utils";
+
+.container {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  left: 0;
+
+  width: 100%;
+  height: 59px;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+}
+
+.successBg {
+  background: linear-gradient(
+    270deg,
+    rgba(235, 204, 27, 0) 0.5%,
+    rgba(235, 204, 27, 0.6) 22.55%,
+    rgba(255, 237, 137, 0.6) 45.44%,
+    rgba(235, 204, 27, 0.6) 68.79%,
+    rgba(235, 204, 27, 0) 100%
+  );
+}
+
+.failBg {
+  background: linear-gradient(
+    270deg,
+    rgba(149, 87, 254, 0) 0.5%,
+    rgba(149, 87, 254, 0.6) 22.55%,
+    rgba(215, 164, 255, 0.6) 45.44%,
+    rgba(149, 87, 254, 0.6) 68.79%,
+    rgba(149, 87, 254, 0) 100%
+  );
+}
+
+.statusMessage {
+  font-family: "Permanent Marker";
+  font-size: rem(36);
+  filter: drop-shadow(2px 5px 3px rgba(0, 0, 0, 0.8));
+}

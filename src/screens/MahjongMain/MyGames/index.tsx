@@ -29,9 +29,9 @@ const MyGames = (props) => {
         </div>
         <div className={`${styles.game_hand} text-center`}>
           {/* current tile */}
-          <img alt="tile" className={styles.game_tile} src={Tile(data.info.more_info.current_tile)?.src as string} />
+          <img alt="tile" className={styles.game_tile} src={Tile(data.info.more_info.current_tile)?.src} />
           <CaretRightFill />
-          <img alt="tile" className={styles.game_tile} src={Tile(data.info.more_info.standard_tile)?.src as string} />
+          <img alt="tile" className={styles.game_tile} src={Tile(data.info.more_info.standard_tile)?.src} />
           {/* standard tile */}
         </div>
         <div className={`${styles.game_reward} row mt-2`}>

@@ -1,0 +1,37 @@
+@import "./src/assets/scss/utils";
+
+.bannerWrapper {
+  background-color: #161e2f;
+  margin-bottom: 48px;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.levelWrapper {
+  min-height: 185px;
+  background-color: rgb(177, 177, 177);
+
+  @media (min-width: 0px) {
+    margin-bottom: 45px;
+  }
+
+  @media (min-width: 600px) {
+    flex-grow: 0;
+    max-width: 48%;
+    flex-basis: 48%;
+
+    margin-bottom: 50px;
+  }
+}
+
+.howItWorksWrapper {
+  margin-bottom: 80px;
+}
+
+.heading {
+  font-weight: 900;
+  font-size: rem(24);
+  margin-bottom: 24px;
+}

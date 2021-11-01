@@ -2,9 +2,6 @@
 const { whenProd } = require("@craco/craco");
 const zlib = require("zlib");
 const CompressionPlugin = require("compression-webpack-plugin");
-const dotEnv = require("dotenv");
-
-dotEnv.config();
 
 module.exports = {
   webpack: {

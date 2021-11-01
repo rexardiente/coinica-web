@@ -1,0 +1,32 @@
+@import "./src/assets/scss/utils";
+
+.tabPanel {
+  width: inherit;
+  height: 156px;
+  background-color: #fbeed4;
+}
+
+.winsContainer {
+  height: 100%;
+}
+
+.details {
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #e4daba;
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: space-between;
+  font-size: rem(18);
+  &:not(:last-of-type) {
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+
+  span {
+    &:last-of-type {
+      font-weight: 800;
+    }
+  }
+}

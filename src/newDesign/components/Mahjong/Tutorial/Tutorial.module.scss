@@ -1,0 +1,135 @@
+@import "./src/assets/scss/utils";
+
+.scrollContentWidth {
+  width: 90%;
+}
+
+.wrapper {
+  font-family: Nunito;
+  margin-right: 4px;
+}
+
+.title {
+  color: #e59b38;
+  font-size: rem(24);
+  font-weight: 900;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.paragraph {
+  color: #254b7e;
+  font-size: rem(16);
+  white-space: pre-line;
+  text-align: justify;
+  font-weight: 700;
+}
+
+.diagramContainer {
+  background: linear-gradient(180deg, #f8e37f 17.47%, #ed9227 104.85%);
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 330px;
+  padding-top: 42px;
+  padding-left: 37px;
+}
+
+.box {
+  background-color: #ec6e27;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+  width: 140.78px;
+  height: 75.08px;
+  padding: 8px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 900;
+  font-size: rem(20);
+  color: white;
+  text-align: center;
+}
+
+.break1 {
+  display: inline-flex;
+  justify-content: flex-end;
+  flex-basis: 80%;
+  height: 46.78px;
+  margin-top: -60px;
+}
+
+.arrow {
+  width: 37.54px;
+  height: 46.78px;
+}
+
+.arrow1,
+.arrow2 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.arrow3 {
+  margin-right: 10%;
+  transform: rotate(-140deg);
+}
+.arrow4 {
+  margin-right: 10%;
+  transform: rotate(120deg);
+}
+
+.arrow5 {
+  transform: rotate(45deg);
+}
+
+.break2 {
+  flex-basis: 45%;
+  height: 0;
+}
+
+.refresh {
+  margin-right: 15px;
+  margin-top: -80px;
+}
+
+.complete {
+  margin-top: -80px;
+}
+
+.fontWeight_900 {
+  font-weight: 900;
+  color: #e59b38;
+}
+
+.tableOddsCalculation {
+  width: 100%;
+
+  thead th,
+  tbody td {
+    padding: 7px;
+    border: 1px solid #74330e;
+    text-align: center;
+  }
+
+  thead tr {
+    background-color: #ec6e27;
+    color: white;
+  }
+
+  tbody tr {
+    &:nth-child(odd) {
+      background-color: #f8e37f;
+    }
+    &:nth-child(even) {
+      background-color: #f8e37f;
+    }
+  }
+}
+
+.rankingList {
+  padding-left: 20px;
+}

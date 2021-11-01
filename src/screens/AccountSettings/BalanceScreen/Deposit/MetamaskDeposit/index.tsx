@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import Web3 from "web3"
-import { Form, Row, Col, Button, InputGroup } from "react-bootstrap";
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import { Form, Row, Col, InputGroup } from "react-bootstrap";
 import AlertModal from "../../AlertModal";
 import {
   sendTransaction,
@@ -14,6 +16,16 @@ import { depositETH, depositUSDC } from "services/wallet/deposit";
 import { setWalletLogout } from "redux/wallet/wallet_actions";
 import { translate } from "helpers/translate";
 
+const useStyles = makeStyles(() => ({
+  depositBtn: {
+    color: '#ffffff',
+    padding: '10px 15px',
+    background: '#1785EB',
+    width: '180px',
+    height: '50px'
+  },
+}));
+
 type Props = {
   dispatch: Function;
   walletExt?: any;
@@ -22,9 +34,19 @@ type Props = {
   walletMemo: string;
   platform: any;
   isServerUp: () => Promise<boolean>;
+  depositAmount: number;
 };
 
-const MetamaskDeposit = ({ dispatch, walletExt, currency, walletAddress, isServerUp, platform }: Props) => {
+const MetamaskDeposit = ({
+  dispatch,
+  walletExt,
+  currency,
+  walletAddress, 
+  isServerUp,
+  platform,
+  depositAmount
+}: Props) => {
+  const classes = useStyles();
   const EGS_address = walletAddress
   const { toWei } = Web3.utils;
   const { account_address } = walletExt
@@ -32,18 +54,7 @@ const MetamaskDeposit = ({ dispatch, walletExt, currency, walletAddress, isServe
   const [txId, setTxId] = useState("");
   const [isDepositError, setDepositError] = useState(false);
   const [modalState, setModalState] = useState(false);
-  const [depositAmount, setDepositAmount] = useState(1);
   const { walletConfig: { tokenContractAddress, txExplorerUrl } } = platform;
-
-  useEffect(() => {
-    setDepositAmount(0)
-
-  }, [currency])
-
-  const depositAmountHandler = (e) => {
-    const { value } = e.target
-    setDepositAmount(value)
-  }
 
   const depositHandler = async () => {
     if (!account_address) {
@@ -187,62 +198,15 @@ const MetamaskDeposit = ({ dispatch, walletExt, currency, walletAddress, isServe
         setShow={setModalState}
         txExplorerUrl={txExplorerUrl}
       />
-      <div className={styles.stepTwo}>
-        <Form>
-          {/* <Form.Group>
-            <Form.Label>
-              <span className={styles.numberCircle}>2</span> EGS Address
-            </Form.Label>
-            <Form.Control
-              className="px-4 font-weight-bold"
-              plaintext
-              readOnly
-              defaultValue={walletAddress}
-            />
-          </Form.Group> */}
-
-          <Row>
-            <Form.Group>
-              <Col className="no-gutters">
-                <Form.Label>
-                  <span className={styles.numberCircle}>2</span> {translate("account_settings.balance_screen.metamask_deposit.amount")}
-                </Form.Label>
-                <InputGroup>
-                  <InputGroup.Prepend>
-                    <InputGroup.Text>{currency}</InputGroup.Text>
-                  </InputGroup.Prepend>
-                  <Form.Control
-                    type="number"
-                    min={1}
-                    value={depositAmount}
-                    onChange={depositAmountHandler}
-                  />
-                </InputGroup>
-              </Col>
-            </Form.Group>
-
-          </Row>
-
-          <Button
-            className="btn-egs-primary"
-            disabled={loading}
-            onClick={() => depositHandler()}
-          >
-            {loading ? translate("account_settings.balance_screen.metamask_deposit.depositing") : translate("account_settings.balance_screen.metamask_deposit.deposit")}
-          </Button>
-        </Form>
-      </div>
-      <hr className={styles.divider} />
-      <div className={styles.note}>
-        <h5>{translate("account_settings.balance_screen.metamask_deposit.note.title")}</h5>
-        <p>
-          {translate("account_settings.balance_screen.metamask_deposit.note.content.one.a")}<span className={styles.currency}>{currency}</span>
-          {translate("account_settings.balance_screen.metamask_deposit.note.content.one.b")}
-        </p>
-        <p>
-          {translate("account_settings.balance_screen.metamask_deposit.note.content.two.a")}{" "}
-          <span className={styles.currency}>{currency}</span> {translate("account_settings.balance_screen.metamask_deposit.note.content.two.b")}
-        </p>
+      <div className={styles.depositBtnContainer}>
+        <Button
+          className={classes.depositBtn}
+          variant="contained"
+          disabled={loading}
+          onClick={() => depositHandler()}
+        >
+          {loading ? translate("account_settings.balance_screen.metamask_deposit.depositing") : translate("account_settings.balance_screen.metamask_deposit.deposit")}
+        </Button>
       </div>
     </>
   );

@@ -1,0 +1,28 @@
+@import "/src/assets/scss/colors.scss";
+
+.logout_modal{
+    width: 30em;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $primary-lighter;
+    margin-top: 3%;
+    border-radius: 10px;
+}
+
+.title{
+    padding: 10px;
+    font-weight: bolder;
+}
+
+.logout_check{
+    text-align: center;
+    align-items: center;
+    margin-top: 10px;
+    padding-bottom: 5px;
+}
+
+.cancel_button{
+    margin-left: 40px;
+    background-color: yellow;
+}
+

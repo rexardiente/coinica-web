@@ -1,0 +1,54 @@
+@import "./src/assets/scss/utils";
+
+.container {
+  background-color: #242d41;
+  width: 100%;
+  min-height: 184px;
+
+  display: flex;
+  padding: 20px;
+}
+
+.infoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    @media (max-width: 599px) {
+      width: 40px;
+      height: auto;
+    }
+  }
+}
+
+.divider {
+  height: 100%;
+  border: 3px solid #414b84;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.infoPercentage {
+  padding-left: 15%;
+
+  div {
+    &:first-of-type {
+      font-size: rem(18);
+      color: #79b9f4;
+
+      @media (max-width: 599px) {
+        font-size: rem(14);
+      }
+    }
+
+    &:last-of-type {
+      font-size: rem(48);
+      color: #1785eb;
+
+      @media (max-width: 599px) {
+        font-size: rem(30);
+      }
+    }
+  }
+}

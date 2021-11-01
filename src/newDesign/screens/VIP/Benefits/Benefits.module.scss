@@ -1,0 +1,45 @@
+@import "./src/assets/scss/utils";
+
+.container {
+  border: 1px solid #303c57;
+  background-color: #202839;
+  border-radius: 0;
+}
+
+.table {
+  min-width: 650px;
+  color: #9dc8ef;
+
+  thead th,
+  tbody td {
+    padding: 25px;
+    color: #9dc8ef;
+
+    &:first-of-type {
+      background-color: #242d41;
+    }
+
+    &:last-of-type {
+      background-color: #242d41;
+      color: rgba(233, 202, 38, 1);
+    }
+  }
+
+  thead {
+    th {
+      font-weight: bold;
+      font-size: rem(18);
+      border: none;
+    }
+  }
+
+  tbody {
+    td {
+      border-bottom: 1px solid #303c57;
+
+      &:last-of-type {
+        font-weight: 700;
+      }
+    }
+  }
+}

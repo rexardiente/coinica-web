@@ -1,0 +1,12 @@
+@import "./src/assets/scss/utils";
+
+.pageTitleWrapper {
+  h1 {
+    font-weight: 900;
+    font-size: rem(22);
+
+    @media (max-width: 600px) {
+      font-size: rem(18);
+    }
+  }
+}

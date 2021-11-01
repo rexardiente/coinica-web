@@ -1,0 +1,12 @@
+@import "/src/assets/scss/colors.scss";
+
+.language_dropdown{
+    color: $secondary-color;
+    width: 100%;
+    padding: 0;
+    justify-content: flex-start;
+}
+
+.menu{
+    width: 100%;
+}

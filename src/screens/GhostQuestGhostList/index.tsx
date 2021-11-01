@@ -92,7 +92,7 @@ const GhostQuestGhostList = (props) => {
     if (isSummoning && sound) {
       sound.stop()
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSummoning, sound])
 
   useEffect(() => {
@@ -130,7 +130,7 @@ const GhostQuestGhostList = (props) => {
     if (isFromBattleEndScreen && !battleState) {
       setBattleState(1) // SET BATTLE-END LIST
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFromBattleEndScreen])
 
   useEffect(() => {
@@ -142,7 +142,7 @@ const GhostQuestGhostList = (props) => {
       toast.error('Please login first')
       props.history.push("/game/ghostquest")
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user_game_id])
 
   useEffect(() => {
@@ -150,7 +150,7 @@ const GhostQuestGhostList = (props) => {
     //   await updateGhostQuestData({ id: user_game_id })
     //   props.dispatch(updateBattleGhostList())
     // }
-  
+
     // if (initialized) {
     //   updateGQdata()
     // }
@@ -180,8 +180,7 @@ const GhostQuestGhostList = (props) => {
         })
       }
     }
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialized, battleState])
 
   useEffect(() => {
@@ -192,7 +191,7 @@ const GhostQuestGhostList = (props) => {
       const sortedData = sortData(InBattleCharacters, sortSelected)
       props.dispatch(updateInBattleList({ ghost_list: sortedData }))
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortSelected])
 
   useResize(ref, (resizeResponse) => {
@@ -230,6 +229,7 @@ const GhostQuestGhostList = (props) => {
           battleState={battleState}
         />
         <Summon
+          //@ts-ignore
           username={username}
           navigation={props}
           summonState={summonState}
@@ -246,37 +246,37 @@ const GhostQuestGhostList = (props) => {
               <div className={styles.rulesContent}>
                 {
                   battleState === 0
-                  ? (
+                    ? (
                       InBattleCharacters.length
-                      ? InBattleCharacters.map((data, idx) => (
+                        ? InBattleCharacters.map((data, idx) => (
                           <GhostRow username={username} inBattle={true} key={idx} dataProps={data} navigation={props} />
                         ))
-                      : loading ? (
+                        : loading ? (
                           <div className="h-100 d-flex justify-content-center align-items-center">
                             <Spinner animation="grow" />
                           </div>
                         )
-                      : (
-                          <div className="h-100 d-flex justify-content-center align-items-center">
-                            <h2>No characters found</h2>
-                          </div>
-                        )
+                          : (
+                            <div className="h-100 d-flex justify-content-center align-items-center">
+                              <h2>No characters found</h2>
+                            </div>
+                          )
                     )
-                  : (
+                    : (
                       BattleEndCharacters.length
-                      ? BattleEndCharacters.map((data, idx) => (
+                        ? BattleEndCharacters.map((data, idx) => (
                           <GhostRow username={username} inBattle={false} key={idx} dataProps={data} navigation={props} />
                         ))
-                      : loading ? (
+                        : loading ? (
                           <div className="h-100 d-flex justify-content-center align-items-center">
                             <Spinner animation="grow" />
                           </div>
                         )
-                      : (
-                          <div className="h-100 d-flex justify-content-center align-items-center">
-                            <h2>No characters found</h2>
-                          </div>
-                        )
+                          : (
+                            <div className="h-100 d-flex justify-content-center align-items-center">
+                              <h2>No characters found</h2>
+                            </div>
+                          )
                     )
                 }
               </div>
@@ -311,7 +311,7 @@ const GhostQuestGhostList = (props) => {
                 }}
               />
               <div className={styles.sortDetails}>
-                { getSelectedSortName[sortSelected] }
+                {getSelectedSortName[sortSelected]}
               </div>
             </div>
           </div>

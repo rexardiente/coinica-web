@@ -1,0 +1,14 @@
+@import "./src/assets/scss/utils";
+
+.container {
+  width: 100%;
+  min-height: 168px;
+  border-radius: 0;
+  background-color: #242d41;
+
+  padding: 20px 25px;
+}
+
+.title {
+  font-size: rem(18);
+}

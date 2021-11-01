@@ -17,7 +17,7 @@ const Hand = ({ tiles, onDiscardTile }: Props) => {
           <img
             key={idx}
             onDoubleClick={() => onDiscardTile(idx)}
-            src={tile?.src as string}
+            src={tile?.src}
             alt="tile"
             height="96"
             width="62"

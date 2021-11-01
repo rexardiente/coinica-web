@@ -1,0 +1,62 @@
+@import "./src/assets/scss/utils";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.pageTitleWrapper {
+  display: flex;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
+
+  h1 {
+    font-weight: 900;
+    font-size: rem(22);
+
+    @media (max-width: 600px) {
+      font-size: rem(18);
+    }
+  }
+}
+
+.icon {
+  display: flex;
+
+  svg {
+    margin-left: 7px;
+    margin-right: 7px;
+    align-self: center;
+
+    @media (max-width: 600px) {
+      width: 28px;
+      height: 22px;
+    }
+
+    @media (max-width: 960px) {
+      margin-left: 0px;
+    }
+  }
+}
+
+.timer {
+  font-size: rem(20);
+
+  @media (max-width: 600px) {
+    font-size: rem(16);
+  }
+}
+
+.toggle {
+  @media (max-width: 600px) {
+    height: 36px;
+
+    button {
+      font-size: rem(14);
+      padding: 3px 5px;
+    }
+  }
+}

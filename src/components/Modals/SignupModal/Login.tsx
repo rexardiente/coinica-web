@@ -121,7 +121,7 @@ const Login = ({
         dispatch(setPlatformAccountFailed(null));
         setShowModal(false);
       }
-    } catch (e) {
+    } catch (e: any) {
       if (
         e?.response?.status === 401 &&
         e?.response?.statusText === "Unauthorized" &&

@@ -1,0 +1,34 @@
+@import "./src/assets/scss/config";
+@import "./src/assets/scss/utils";
+
+.dialog {
+  position: absolute !important;
+}
+
+.dialogTitle {
+  background-image: url("#{$ASSETS_URL}/imgs/games/mahjong_1/home_screen/games_bg.png");
+  background-size: cover;
+}
+
+.gamesText {
+  font-family: Nunito;
+  font-size: rem(24);
+  font-weight: bold;
+  color: #fff;
+
+  position: relative;
+}
+
+.dialogContent {
+  background-color: #e9dec4;
+}
+
+.historyList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > div:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}

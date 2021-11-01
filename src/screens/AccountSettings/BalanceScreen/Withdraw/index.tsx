@@ -1,11 +1,13 @@
 import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useSelector } from "react-redux";
-import DropdownCurrency from "components/DropdownCurrency";
 import axios from "axios";
 import Web3 from "web3";
+import { makeStyles } from '@material-ui/core/styles';
 import { Form, InputGroup, Button, Spinner } from "react-bootstrap";
+import TextField from '@material-ui/core/TextField';
 import { XCircle } from "react-bootstrap-icons";
 import { toast } from "react-toastify";
+import DropdownCurrency from "components/DropdownCurrency";
 import AlertModal from "../AlertModal";
 import { withdrawETH, withdrawUSDC } from "services/wallet/withdraw";
 import styles from "./Withdraw.module.scss";
@@ -15,6 +17,16 @@ const { toWei, fromWei } = Web3.utils;
 
 const ETHERSCAN_KEY = process.env.REACT_APP_ETHERSCAN_API_KEY;
 const GAS_PRICE_URL = `https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=${ETHERSCAN_KEY}`
+
+const useStyles = makeStyles(() => ({
+  withdrawBtn: {
+    color: '#ffffff',
+    padding: '10px 15px',
+    background: '#1785EB',
+    width: '180px',
+    height: '50px'
+  },
+}));
 
 type Currency = {
   name: string;
@@ -31,7 +43,7 @@ type ReduxState = {
 }
 
 const Withdraw = ({ listOfCurrency, isServerUp }: Props) => {
-
+  const classes = useStyles();
   const [fetchingGas, setFetchingGas] = useState({ state: false, isError: false })
   const [gasPrice, setGasPrice] = useState<any>("")
   const [estimatedGasFee, setEstimatedGasFee] = useState<any>(0)
@@ -106,9 +118,7 @@ const Withdraw = ({ listOfCurrency, isServerUp }: Props) => {
     setRequiredMemo(e.target.checked);
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     if (!gasPrice) {
       toast.error(translate("account_settings.balance_screen.withdraw.note.no_gas_price"))
       return
@@ -174,7 +184,78 @@ const Withdraw = ({ listOfCurrency, isServerUp }: Props) => {
         setShow={setModalState}
         txExplorerUrl={txExplorerUrl}
       />
-      <div className={styles.stepOne}>
+
+      <div>
+        <p style={{ color: '#9DC8EF', margin: '30px 0 0 0' }}>I want to withdraw</p>
+        <div className={styles.stepOne}>
+          <TextField
+            label={translate("account_settings.balance_screen.metamask_deposit.amount")}
+            type="number"
+            variant="outlined"
+            InputLabelProps={{
+              style: { color: '#FFFF' },
+            }}
+            style={{
+              background: '#0E131F',
+              borderRadius: '5px'
+            }}
+            onChange={handleAmount}
+          />
+          <DropdownCurrency
+            listCurrency={listOfCurrency}
+            selectedCurrency={currency}
+            onSelectCurrency={handleSelectedCurrency}
+            styles={{ marginLeft: '-7px' }}
+          />
+        </div>
+      </div>
+
+      <div>
+        <p style={{ color: '#9DC8EF', margin: '30px 0 0 0' }}>
+          {translate("account_settings.balance_screen.withdraw.recipient")}
+          <span className={styles.currency}>{currency}</span>{" "}
+          {translate("account_settings.balance_screen.withdraw.address")}
+        </p>
+        <div className={styles.stepTwo}>
+          <TextField
+            label={translate("account_settings.balance_screen.withdraw.address")}
+            type="text"
+            variant="outlined"
+            InputLabelProps={{
+              style: { color: '#FFFF', textTransform: 'capitalize' },
+            }}
+            style={{
+              width: '400px',
+              background: '#0E131F',
+              borderRadius: '5px'
+            }}
+            onChange={handleRecipient}
+          />
+        </div>
+        {
+          fetchingGas.state ? (
+            <Spinner animation="border" />
+          ) : (
+            <p style={{ color: '#9DC8EF', margin: '10px 0 0 0' }}>
+              {translate("account_settings.balance_screen.withdraw.transaction_fee")}: {estimatedGasFee} ETH
+            </p>
+          )
+        }
+      </div>
+
+
+      <div className={styles.withdrawBtnContainer}>
+        <Button
+          className={classes.withdrawBtn}
+          variant="contained"
+          disabled={loading}
+          onClick={handleSubmit}
+        >
+          {loading ? translate("account_settings.balance_screen.withdraw.withdrawing") : translate("account_settings.balance_screen.withdraw.withdraw")}
+        </Button>
+      </div>
+  
+      {/* <div className={styles.stepOne}>
         <h6>
           <span className={styles.numberCircle}>1</span> {translate("account_settings.balance_screen.withdraw.select_currency")}
         </h6>
@@ -186,8 +267,8 @@ const Withdraw = ({ listOfCurrency, isServerUp }: Props) => {
           selectedCurrency={currency}
           onSelectCurrency={handleSelectedCurrency}
         />
-      </div>
-      <div className={styles.stepTwo}>
+      </div> */}
+      {/* <div className={styles.stepTwo}>
         <h6>
           <span className={styles.numberCircle}>2</span> {translate("account_settings.balance_screen.withdraw.fill_your")}{" "}
           <span className={styles.currency}>{currency}</span> {translate("account_settings.balance_screen.withdraw.address_and_amount")}
@@ -295,15 +376,7 @@ const Withdraw = ({ listOfCurrency, isServerUp }: Props) => {
             </Button>
           </Form>
         </div>
-      </div>
-
-      <hr className={styles.divider} />
-      <div className={styles.note}>
-        <h5>{translate("account_settings.balance_screen.withdraw.note")}</h5>
-        <p>
-          {translate("account_settings.balance_screen.withdraw.note.content")}
-        </p>
-      </div>
+      </div> */}
     </div>
   );
 };

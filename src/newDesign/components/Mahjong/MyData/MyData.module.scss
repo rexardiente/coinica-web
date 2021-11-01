@@ -1,0 +1,13 @@
+@import "./src/assets/scss/utils";
+
+.scrollContentWidth {
+  width: 90%;
+  font-family: Nunito;
+  padding: 10px;
+}
+
+.profileWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

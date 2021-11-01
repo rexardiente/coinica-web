@@ -1,0 +1,56 @@
+#Treasurehunt {
+  min-height: 100vh;
+  padding-left: 0px;
+  padding-right: 0px;
+  font-family: "Piedra", cursive;
+  background-color: #181816 !important;
+
+  #treasure-hunt-main {
+    max-width: 1800px;
+    padding-bottom: 130px;
+    background-repeat: no-repeat !important;
+    background-size: 100% !important;
+    margin: 0 auto;
+    color: var(--contrast-color);
+
+    h3,
+    span {
+      color: white;
+    }
+
+    .th-buttons {
+      transition: transform 0.2s;
+    }
+    .th-buttons:hover {
+      transform: scale(1.1);
+    }
+
+    .col-12:nth-child(2) {
+      #select-destination {
+        display: inline-block;
+        @media (max-width: 768px) {
+          // width: 55% !important;
+          transform: scale(.825);
+        }
+        @media (min-width: 769px) {
+          // width: 35% !important;
+          transform: scale(1.5);
+        }
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+      }
+      .row > .col-md-4.col-12 {
+        padding: 0.3rem;
+
+        @media (min-width: 992px) {
+          flex: 0 0 25%;
+          max-width: 25%;
+        }
+
+        & > svg {
+          width: 25px !important;
+        }
+      }
+    }
+  }
+}
