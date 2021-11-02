@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import clsx from 'clsx';
 import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
 import { Drawer, List, Divider, ListItem, ListItemIcon, ListItemText ,Collapse } from '@material-ui/core';
@@ -9,6 +9,7 @@ import styles from "./Sidebar.module.scss";
 import DropdownLanguage from "newDesign/components/DropdownLanguage";
 import locale from "translation/locales";
 import { Link } from "react-router-dom";
+import truncate from "helpers/numbers/truncate";
 
 const drawerWidth = 240;
 
@@ -125,14 +126,14 @@ const sidebarGames = [
 type props = {
   open: boolean;
   mini?:boolean;
-  // handleDrawerClose: Function;
   handleDrawerToggle: Function;
   handleDrawerClose: Function;
   language: string;
   handleSelectLanguage: Function;
+  handleDrawerOpen: Function;
 }
 
-const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, handleDrawerClose, open, mini} : props) => {  
+const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, handleDrawerClose, open, mini, handleDrawerOpen} : props) => {  
   return(
     <div className={`${styles.sidebar_footer} ${mini ? styles.sidebar_footer_close : ''} ${!open ? styles.sidebar_footer_hide : ''}`}>
         <Divider />
@@ -161,13 +162,50 @@ const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, hand
   );
 };
 
-const Sidebar = ({ open, handleDrawerToggle, language, handleSelectLanguage, handleDrawerClose } : props) => {
+// Define general type for useWindowSize hook, which includes width and height
+interface Size {
+  width: number | undefined;
+  height: number | undefined;
+}
+
+const Sidebar = ({ open, handleDrawerToggle, language, handleSelectLanguage, handleDrawerClose, handleDrawerOpen } : props) => {
   const classes = useStyles();
   const theme = useTheme();
   const langToArray = Object.entries(locale);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [collapse, setCollapse] = useState(false);
   const [mini, setMini] = useState(false);
+  const size:Size = useWindowSize();
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleWeb = () => {
+    setIsMobile(false);
+    handleDrawerOpen();
+  }
+
+  //get window size to adjust sidebar
+function useWindowSize(): Size {
+  const [windowSize, setWindowSize] = useState<Size>({
+    width: undefined,
+    height: undefined,
+  });
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+
+      window.innerWidth < 768 ? setIsMobile(true) : handleWeb();
+    }
+    // Add event listener
+    window.addEventListener("resize", handleResize); // Call handler right away so state gets updated with initial window size
+    handleResize();    // Remove event listener on cleanup
+    // console.log('resize', size);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  return windowSize;
+}
 
   const handleCollapse = () =>{
     setCollapse(!collapse);
@@ -195,13 +233,21 @@ const Sidebar = ({ open, handleDrawerToggle, language, handleSelectLanguage, han
     ) {
       return;
     }
-
+    console.log('drawer close');
     handleDrawerClose();
   };
+
+  useEffect(() => {
+    const width = window.innerWidth;
+    console.log('width change', width);
+  }, [window.innerWidth]);
  
+
+
   return (
     <React.Fragment>
       <Drawer
+        variant={isMobile ? 'temporary' :'permanent'}
         open={open}
         onClose={toggleDrawer()}
         className={clsx(classes.drawer, {
@@ -283,6 +329,7 @@ const Sidebar = ({ open, handleDrawerToggle, language, handleSelectLanguage, han
           language={language}
           handleSelectLanguage={handleSelectLanguage}
           handleDrawerClose={handleDrawerClose}
+          handleDrawerOpen={handleDrawerOpen}
           handleDrawerToggle={handleMini}
           open={open}
           mini={mini}
