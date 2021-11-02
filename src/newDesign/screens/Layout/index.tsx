@@ -60,6 +60,10 @@ const Layout = (props) => {
     setOpenSidebar(false);
   };
 
+  const handleDrawerOpen = () => {
+    setOpenSidebar(true);
+  };
+
   return (
     <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
@@ -92,6 +96,7 @@ const Layout = (props) => {
             open={openSidebar}
             handleDrawerToggle={handleDrawerToggle}
             handleDrawerClose={handleDrawerClose}
+            handleDrawerOpen={handleDrawerOpen}
             handleNavType={handleNavHidden}
             mini={mini}
             language={language}
@@ -100,8 +105,8 @@ const Layout = (props) => {
           {/* page content */}
           <div className={`${styles.page_content}`}>
             <div className={`${styles.container}`}>{props.children}</div>
+            <Footer />
           </div>
-          <Footer />
           <ToastContainer autoClose={4000} />
         </div>
       </ThemeProvider>
