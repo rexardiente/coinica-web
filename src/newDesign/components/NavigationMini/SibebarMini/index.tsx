@@ -34,15 +34,16 @@ const useStyles = makeStyles((theme: Theme) =>
     drawerMini: {
       zIndex: 1210,
       backgroundColor: '#242D41',
-      transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
       overflowX: 'hidden',
       width: theme.spacing(5),
       [theme.breakpoints.up('sm')]: {
         width: theme.spacing(7),
       },
+      transition: theme.transitions.create('width', {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+      
     },
     drawerHide:{
       top: "65px",

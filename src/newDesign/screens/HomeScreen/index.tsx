@@ -1,12 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import styles from "./Dashboard.module.scss";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Grid, { GridSpacing } from "@material-ui/core/Grid";
+import { Typography, Card, CardActionArea, CardContent, CardMedia, Grid } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 import { games as gamesApi, genres as genresApi } from "services/api/server/index.js";
 import { setGameList, setGenreList } from "redux/platform/platform_action";
 import Carousel from "./HomeCarousel";
@@ -14,16 +10,20 @@ import { translate } from "helpers/translate";
 
 const HomeScreen = ({platform, dispatch}) => {
   const { gameList, genreList } = platform;
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Fetch Games
-    gamesApi().then(res => {
-      dispatch(setGameList(res.data));
-    });
+    setLoading(true);
 
     // Fetch Genres
     genresApi().then(res => {
       dispatch(setGenreList(res.data));
+    });
+
+    // Fetch Games
+    gamesApi().then(res => {
+      dispatch(setGameList(res.data));
+      setLoading(false);
     });
   }, []);
 
@@ -66,7 +66,8 @@ const HomeScreen = ({platform, dispatch}) => {
             </Card>
           </Grid>
           ))
-          : null
+          : <Skeleton variant='rect' height={300} width={300} />
+
         }
         
       </Grid>
