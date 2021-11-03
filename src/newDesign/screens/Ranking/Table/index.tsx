@@ -43,8 +43,8 @@ const TableRanking = ({ theadData, tbodyData }: Props) => {
       <Table className={styles.table} aria-label="leader-board-table">
         <TableHead>
           <TableRow>
-            {theadData.map((head) => (
-              <TableCell align="center">{head}</TableCell>
+            {theadData.map((head,index) => (
+              <TableCell align="center" key={index}>{head}</TableCell>
             ))}
           </TableRow>
         </TableHead>

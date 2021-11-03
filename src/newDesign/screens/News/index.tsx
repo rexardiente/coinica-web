@@ -41,11 +41,11 @@ const News = () => {
   };
 
   useEffect(() => {
-    if (account) {
+    // if (account) {
       getNews();
-    }
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account]);
+  }, []);
 
   if (error) {
     return (
@@ -57,7 +57,7 @@ const News = () => {
 
   return (
     <Fragment>
-      <Grid container xs className={styles.container}>
+      <Grid container className={styles.container}>
         <Grid item xs={12}>
           <Header />
         </Grid>

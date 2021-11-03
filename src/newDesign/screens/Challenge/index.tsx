@@ -74,11 +74,11 @@ const Challenge = () => {
   };
 
   useEffect(() => {
-    if (account && selectedToggle) {
+    if (selectedToggle) {
       getChallengeRank(selectedToggle);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account, selectedToggle]);
+  }, [selectedToggle]);
 
   if (error) {
     return (
