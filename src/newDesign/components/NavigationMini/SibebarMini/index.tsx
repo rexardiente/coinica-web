@@ -1,4 +1,5 @@
 import React, { useState , useEffect } from "react";
+import { useSelector } from "react-redux";
 import clsx from 'clsx';
 import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
 import { Drawer, List, Divider, ListItem, ListItemIcon, ListItemText ,Collapse } from '@material-ui/core';
@@ -75,33 +76,40 @@ const sidebarItems = [
   {
     name: translate("sidebar.vip"),
     image: assets.vip,
-    url: '/vip'
+    url: '/vip',
+    private: true,
 
   },
   {
     name: translate("sidebar.referral"),
     image: assets.referral,
-    url: '/referral'
+    url: '/referral',
+    private: true,
   },
   {
     name: translate("sidebar.task"),
     image: assets.tasks,
-    url: '/tasks'
+    url: '/tasks',
+    private: true,
+
   },
   {
     name: translate("sidebar.challenge"),
     image: assets.challenge,
-    url: '/challenge'
+    url: '/challenge',
+    private: false,
   },
   {
     name: translate("sidebar.rank"),
     image: assets.rank,
-    url: '/ranking'
+    url: '/ranking',
+    private: false,
   },
   {
     name: translate("sidebar.news"),
     image: assets.news,
-    url: '/news'
+    url: '/news',
+    private: false,
   },
 ];
 
@@ -166,9 +174,14 @@ const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, hand
 interface Size {
   width: number | undefined;
   height: number | undefined;
-}
+};
+
+type ReduxState = {
+  platform: any
+};
 
 const Sidebar = ({ open, handleDrawerToggle, language, handleSelectLanguage, handleDrawerClose, handleDrawerOpen } : props) => {
+  const account = useSelector((state: ReduxState) => state.platform.account);
   const classes = useStyles();
   const theme = useTheme();
   const langToArray = Object.entries(locale);
@@ -292,7 +305,7 @@ function useWindowSize(): Size {
           </ListItem>
           <Collapse in={collapse} unmountOnExit>
             <List component="div" disablePadding>
-              {sidebarGames.map((item, index) => (
+              {sidebarGames.map((item, index) => (                  
                 <ListItem
                   className={`${styles.links}`}
                   component={Link}
@@ -313,7 +326,7 @@ function useWindowSize(): Size {
 
           {sidebarItems.map((item, index) => (
             <ListItem
-              className={`${styles.links}`}
+              className={`${styles.links} ${item.private && !account ? 'hide-element' : null}`}
               component={Link}
               to={item.url}
               key={"sidebar-item" + index}

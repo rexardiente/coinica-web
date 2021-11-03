@@ -48,7 +48,6 @@ type Props = {
 }
 
 const SignUpModal = ({openModal, handleSignUpModalClose} : Props) => {
-
   const [value, setValue] = useState(0);
   const [resetPassword, requestResetPassword] = useState(false)
   const [tabKey, setTabKey] = useState<any>('signup')

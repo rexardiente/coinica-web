@@ -218,9 +218,9 @@ type props = {
   mini: boolean;
   handleNavType: Function;
   scatter?: any;
-  platform?: any;
+  platform: any;
   walletExt?: any;  
-  dispatch?: Function;
+  dispatch: Function;
 };
 
 const Header = (props: props) => {
@@ -230,26 +230,31 @@ const Header = (props: props) => {
   const { userAccount } = props.scatter;
   const { account, entryModalState } = props.platform;
   const { dispatch } = props;
+
   const setShowSignupModal = (state) => {
     if (typeof dispatch === "function") {
       dispatch(setEntryModalState(state));
     }
   };
+
   const handleSignUpModalOpen = () => {
-    setOpenSignupModal(true);
+    dispatch(setEntryModalState(true));
+    // setOpenSignupModal(true);
   };
   const handleSignUpModalClose = () => {
-    setOpenSignupModal(false);
+    dispatch(setEntryModalState(false));
+    // setOpenSignupModal(false);
   };
 
   const handleCloseLogoutModal = () => {
     setLogoutModal(false);
   }
+
   return (
     <AppBar position="fixed" className={clsx(classes.appBar)}>
       {
         <SignupModal
-          openModal={openSignupModal}
+          openModal={entryModalState}
           handleSignUpModalOpen={handleSignUpModalOpen}
           handleSignUpModalClose={handleSignUpModalClose}
         />
