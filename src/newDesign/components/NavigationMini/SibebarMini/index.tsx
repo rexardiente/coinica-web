@@ -209,7 +209,7 @@ function useWindowSize(): Size {
         height: window.innerHeight,
       });
 
-      window.innerWidth < 768 ? setIsMobile(true) : handleWeb();
+      window.innerWidth < 1024 ? setIsMobile(true) : handleWeb();
     }
     // Add event listener
     window.addEventListener("resize", handleResize); // Call handler right away so state gets updated with initial window size
@@ -291,7 +291,7 @@ function useWindowSize(): Size {
             onClick={handleCollapse}
           >
             <ListItemIcon style={{ color: "#1785EB" }}>
-              <img src={assets.games} width={"20px"} />
+              <img src={assets.games} width={mini ? "20px" : "30px"} />
             </ListItemIcon>
             <ListItemText
               primary={translate("sidebar.games")}
@@ -313,7 +313,7 @@ function useWindowSize(): Size {
                   key={"sidebar-item" + index}
                 >
                   <ListItemIcon style={{ color: "#1785EB" }}>
-                    <img src={item.image} width={open ? "40px" : "30px"} />
+                    <img src={item.image} width={mini ? "30px" : "40px"} />
                   </ListItemIcon>
                   <ListItemText
                     primary={item.name}
@@ -332,7 +332,7 @@ function useWindowSize(): Size {
               key={"sidebar-item" + index}
             >
               <ListItemIcon style={{ color: "#1785EB" }}>
-                <img src={item.image} width={"20px"} />
+                <img src={item.image} width={mini ? "20px" : "30px"} />
               </ListItemIcon>
               <ListItemText primary={item.name} style={{ color: "#1785EB" }} />
             </ListItem>

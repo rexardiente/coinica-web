@@ -164,6 +164,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     appBar: {
+      height: '6vh',
       zIndex: theme.zIndex.drawer + 1,
       color: "#1785EB",
       backgroundColor: "#242D41",

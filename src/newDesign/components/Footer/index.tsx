@@ -60,7 +60,7 @@ const Footer = () => {
         </Fade>
       </Modal>
       <Box className={`${styles.coinica_footer}`}>
-        <Typography align="center" variant="subtitle2" paragraph>
+        <Typography align="center" variant="subtitle2">
           <a
             className={`${styles.modal_link}`}
             onClick={() => setOpenTerms(true)}
