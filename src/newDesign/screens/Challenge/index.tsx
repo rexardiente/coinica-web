@@ -90,7 +90,7 @@ const Challenge = () => {
 
   return (
     <Fragment>
-      <Grid container xs className={styles.container}>
+      <Grid container className={styles.container}>
         <Grid item xs={12}>
           <Header
             value={selectedToggle}

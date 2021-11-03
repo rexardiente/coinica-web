@@ -11,8 +11,8 @@ const Rewards = () => {
       </Typography>
 
       <Grid container spacing={2}>
-        {rewardSet.map((reward) => (
-          <Grid item xs={12} sm={6} md={4}>
+        {rewardSet.map((reward, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
             <div className={styles.id}>
               {translate("challenge.payout.reward")} {reward.id}:
             </div>

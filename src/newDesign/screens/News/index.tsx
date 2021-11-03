@@ -20,7 +20,7 @@ type NewsData = {
   createdAt: string;
 };
 
-const Ranking = () => {
+const News = () => {
   const { account } = useSelector((state: ReduxState) => state.platform);
   const dispatch = useDispatch();
 
@@ -69,4 +69,4 @@ const Ranking = () => {
   );
 };
 
-export default Ranking;
+export default News;
