@@ -13,19 +13,21 @@ const HomeScreen = ({platform, dispatch}) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-
-    // Fetch Genres
-    genresApi().then(res => {
-      dispatch(setGenreList(res.data));
-    });
-
-    // Fetch Games
-    gamesApi().then(res => {
-      dispatch(setGameList(res.data));
-      setLoading(false);
-    });
-  }, []);
+    if(genreList.length === 0){
+      // Fetch Genres
+      genresApi().then(res => {
+        dispatch(setGenreList(res.data));
+      });
+    }
+    
+    if(gameList.length === 0){
+      // Fetch Games
+      gamesApi().then((res) => {
+        dispatch(setGameList(res.data));
+      });
+    }
+    
+  }, [gameList]);
 
   return (
     <>
@@ -54,7 +56,7 @@ const HomeScreen = ({platform, dispatch}) => {
                   height="140"
                   image={game.imgURL}
                 />
-                <CardContent>
+                <CardContent className={`${styles.card_content}`}>
                   <Typography gutterBottom variant="h6" component="h2">
                     {game.name}
                   </Typography>

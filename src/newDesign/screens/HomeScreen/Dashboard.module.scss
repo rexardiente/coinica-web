@@ -8,11 +8,12 @@
 }
 
 .card{
+    padding: 0;
     border-radius: 0;
     background-color: $primary-lighter;
     color: $text-primary-color;
     max-width: 312px;
-    height: 290px;
+    height: 300px;
 }
 
 .card p {
@@ -33,4 +34,8 @@
     height: 100%;
     margin-left:auto;
     margin-right: auto;
+}
+
+.card_content{
+    height: 100%;
 }
