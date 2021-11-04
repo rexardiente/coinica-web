@@ -188,7 +188,7 @@ const Sidebar = ({ open, handleDrawerToggle, language, handleSelectLanguage, han
   const langToArray = Object.entries(locale);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [collapse, setCollapse] = useState(false);
-  const [mini, setMini] = useState(false);
+  const [mini, setMini] = useState(true);
   const size:Size = useWindowSize();
   const [isMobile, setIsMobile] = useState(false);
 
