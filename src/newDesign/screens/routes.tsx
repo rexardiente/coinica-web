@@ -17,7 +17,7 @@ const TreasurehuntAutoplayGameplay = lazy(() => import("./TreasurehuntAutoplayGa
 const GhostQuest = lazy(() => import("./GhostQuest"));
 const GhostQuestGhostList = lazy(() => import("./GhostQuestGhostList"));
 const GhostQuestSummon = lazy(() => import("./GhostQuestSummon"));
-// const GhostQuestGameplay = lazy(() => import("./GhostQuestGameplay"));
+const GhostQuestGameplay = lazy(() => import("./GhostQuestGameplay"));
 const GhostQuestRanking = lazy(() => import("./GhostQuestRanking"));
 const GhostQuestSummonResult = lazy(() => import("./GhostQuestSummonResult"));
 const MahjongMain = lazy(() => import("./MahjongMain"));
@@ -179,15 +179,15 @@ const routes = [
     isPrivate: true,
     showHistory: false,
   },
-  // {
-  //   key: "GhostQuestGameplay",
-  //   game: "GhostQuest",
-  //   exact: true,
-  //   path: "/game/ghostquest/gameplay",
-  //   component: GhostQuestGameplay,
-  //   isPrivate: true,
-  //   showHistory: false,
-  // },
+  {
+    key: "GhostQuestGameplay",
+    game: "GhostQuest",
+    exact: true,
+    path: "/game/ghostquest/gameplay",
+    component: GhostQuestGameplay,
+    isPrivate: true,
+    showHistory: false,
+  },
   {
     key: "GhostQuestRanking",
     game: "GhostQuest",

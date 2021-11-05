@@ -1,0 +1,257 @@
+@keyframes fadeInDownBig {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -2000px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUpBig {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-2000px);
+  }
+}
+
+.outer {
+  z-index: 160;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  background: rgba(0,0,0,0.5);
+}
+
+.container_closed {
+  color: #000000;
+  z-index: 160;
+  position: relative;
+  height: 100%;
+  text-align: center;
+  margin-bottom: 60px;
+  & :local {
+    animation-name: fadeInUpBig;
+    animation-duration: 1000ms;
+  }
+
+  .closeBtn {
+    position: absolute;
+    top: 14%;
+    right: -7%;
+  }
+}
+
+.container {
+  z-index: 160;
+  position: relative;
+  height: 100%;
+  text-align: center;
+  margin-bottom: 60px;
+  & :local {
+    animation-name: fadeInDownBig;
+    animation-duration: 500ms;
+  }
+
+  .closeBtn {
+    position: absolute;
+    top: 14%;
+    right: -7%;
+  }
+}
+
+.ghostDetailsContent {
+  border: 4px solid #322838;
+  border-radius: 20px;
+  position: relative;
+  height: 500px;
+  width: 650px;
+  background: #36303B;
+
+  .title {
+    background: radial-gradient(35.99% 76.43% at 50% 40%, #8861AD 0%, #5D4B85 100%);
+    border-radius: 20px 20px 0px 0px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .yellowTxt {
+    color:#FEE3A1;
+    font-size: 26px;
+    font-weight: 800;
+    -webkit-text-stroke: 2px #423054;
+  }
+  .ghostIdentifierUser, .ghostIdentifierEnemy {
+    font-size: 18px;
+    font-weight: 800;
+    -webkit-text-stroke: 1px #423054;
+    color:#FEE3A1;
+    width: 80%;
+    padding: 2px 0px;
+  }
+  .ghostIdentifierUser {
+    background: linear-gradient(90deg, rgba(104, 83, 150, 0) 0%, #685396 51.33%, rgba(104, 83, 150, 0) 100%);
+  }
+  .ghostIdentifierEnemy {
+    background: linear-gradient(90deg, rgba(224, 47, 89, 0) 0%, #E02F59 51.33%, rgba(224, 47, 89, 0) 100%);
+  }
+
+  .ghostAttributes {
+    height: 430px;
+    width: 100%;
+    border-radius: 0px 0px 20px 20px;
+    display: flex;
+
+    .ghostAttributesLeft, .ghostAttributesRight {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        margin-bottom: 15px;
+      }
+      .ghostLife {
+        margin: 10px 0px;
+        color: #FEEA1F;
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .attribute {
+        width: 60%;
+        display: flex;
+        color: #FCEBC1;
+        margin: 3px 0px;
+        .label {
+          width: 50%;
+          padding: 2px 7px;
+          background: #2D2432;
+          text-align: left;
+        }
+        .value {
+          width: 50%;
+          padding: 2px 7px;
+          text-align: right;
+          border-bottom: 2px solid #302A34;
+        }
+      }
+    }
+  }
+
+  .ghostDetailsCloseBtn {
+    position: absolute;
+    right: -100px;
+    top: 0;
+  }
+}
+
+// MODAL ERROR
+.contentsError {
+  position: absolute;
+  top: 27%;
+  left: 20%;
+  width: 312px;
+  height: 435px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.textsContainerError {
+  text-align: left;
+}
+
+// MODAL BATTLE LIMIT
+.contentsBattleLimit {
+  position: absolute;
+  top: 27%;
+  left: 20%;
+  width: 312px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.textsContainerBattleLimit {
+  text-align: center;
+}
+.BattleLimitWinnings {
+  span {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
+  margin-bottom: 20px;
+  text-align: left;
+  line-height: 1;
+}
+
+// MODAL DEPOSIT CONFIRMATION
+.textsContainerDeposit {
+  padding: 15px;
+  text-align: left;
+}
+.depositBtnYes {
+  position: absolute;
+  top: 30px;
+  left: 7px;
+}
+.depositBtnNo {
+  position: absolute;
+  top: 130px;
+  left: 7px;
+}
+
+// MODAL WITHDRAWAL CONFIRMATION
+.contentsWithdrawalConfirmation {
+  position: absolute;
+  top: 24%;
+  left: 20%;
+  width: 312px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.textsContainerWithdrawalConfirmation {
+  padding: 15px;
+  padding-top: 0px !important;
+  text-align: left;
+}
+
+// MODAL RESULTS
+.contentsResult {
+  position: absolute;
+  width: 350px;
+  left: 25px;
+  top: 49%;
+  height: 115px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.textsContainerResults {
+  text-align: center;
+  color: #fff;
+}
+
+.blurBg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: rgba(0,0,0,0.5);
+}
