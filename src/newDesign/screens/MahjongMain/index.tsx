@@ -202,7 +202,7 @@ const MahjongMain = () => {
   // Play main bg sound
   useEffect(() => {
     if (soundMjHome && isLoadedMainBgSound) {
-      soundMjHome.stop();
+      soundMjHome.play();
     }
 
     return () => {

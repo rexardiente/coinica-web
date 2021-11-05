@@ -275,6 +275,7 @@
   "mj.gameplay.error.play_hilo.discard_tile": "手持ちのタイルの最大数！最初にタイルを捨ててください（ダブルクリック）",
   "mj.gameplay.loading.reset_game": "ゲームをリセットしています...",
   "mj.gameplay.success.reset_game": "ゲームがリセットされました。もう一度プレイできるようになりました",
+  "mj.gameplay.error.reset_game": "賭けが行われているため、ゲームをリセットできません。",
   "mj.gameplay.loading.draw_hilo": "タイルを描くまでお待ちください...",
   "mj.gameplay.loading.discard": "タイルを破棄...",
   "mj.gameplay.loading.declare_kong": "コングを宣言する...",

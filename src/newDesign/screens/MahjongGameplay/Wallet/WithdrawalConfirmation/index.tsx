@@ -21,6 +21,7 @@ type Props = {
 const useStyles = makeStyles(() => ({
   root: {
     position: "absolute !important" as "absolute",
+    zIndex: "1200 !important" as any,
     "& .MuiPaper-root": {
       backgroundColor: "#363859",
       color: "#fff",

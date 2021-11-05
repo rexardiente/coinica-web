@@ -276,6 +276,7 @@
   "mj.gameplay.error.play_hilo.discard_tile": "Maximum number of tiles on hand! Please discard a tile first(double click)",
   "mj.gameplay.loading.reset_game": "Resetting the game...",
   "mj.gameplay.success.reset_game": "Game has been reset. You can now play again",
+  "mj.gameplay.error.reset_game": "Cannot reset the game. Bet in place.",
   "mj.gameplay.loading.draw_hilo": "Please wait while draw tile...",
   "mj.gameplay.loading.discard": "Discarding Tile...",
   "mj.gameplay.loading.declare_kong": "Declaring Kong...",
