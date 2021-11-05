@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import styles from "./Dashboard.module.scss";
 import { Typography, Card, CardActionArea, CardContent, CardMedia, Grid } from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton";
@@ -9,6 +10,7 @@ import Carousel from "./HomeCarousel";
 import { translate } from "helpers/translate";
 
 const HomeScreen = ({platform, dispatch}) => {
+  const history = useHistory()
   const { gameList, genreList } = platform;
   const [loading, setLoading] = useState(false);
 
@@ -48,7 +50,12 @@ const HomeScreen = ({platform, dispatch}) => {
           gameList?.length ? 
           gameList.map((game, index) => (
           <Grid key={index} item>
-            <Card className={`${styles.card}`}>
+            <Card
+              className={`${styles.card}`}
+              onClick={() => {
+                history.push(game?.path)
+              }}
+            >
               <CardActionArea>
                 <CardMedia
                   component="img"
