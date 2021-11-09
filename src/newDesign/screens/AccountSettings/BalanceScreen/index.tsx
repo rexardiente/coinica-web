@@ -136,9 +136,6 @@ const BalanceScreen = ({ dispatch, platform }) => {
                             style={{
                               background: 'transparent',
                               padding: "10px",
-                              border: "1px solid #9DC8EF",
-                              borderTopRightRadius: "5px",
-                              borderTopLeftRadius: "5px",
                             }}
                           >
                             <div className="d-flex justify-content-between align-items-center">
@@ -159,7 +156,6 @@ const BalanceScreen = ({ dispatch, platform }) => {
                             style={{
                               background: 'transparent',
                               padding: "10px",
-                              border: "1px solid #9DC8EF"
                             }}
                           >
                             <div className="d-flex justify-content-between align-items-center">
@@ -180,9 +176,6 @@ const BalanceScreen = ({ dispatch, platform }) => {
                             style={{
                               background: 'transparent',
                               padding: "10px",
-                              border: "1px solid #9DC8EF",
-                              borderBottomRightRadius: "5px",
-                              borderBottomLeftRadius: "5px",
                             }}
                           >
                             <div className="d-flex justify-content-between align-items-center">

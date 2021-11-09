@@ -49,9 +49,9 @@ const SettingsScreen = ({ platform, dispatch }: SettingsProps) => {
           <Typography variant="h6">
             {username}
           </Typography>
-          <Button className={classes.button} variant="contained">
+          {/* <Button className={classes.button} variant="contained">
             Update Profile Picture
-          </Button>
+          </Button> */}
         </div>
       </div>
 
