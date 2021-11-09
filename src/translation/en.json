@@ -598,5 +598,6 @@
   "account_settings.transactions_screen.table.header.type":"Type",
   "account_settings.transactions_screen.table.header.currency":"Currency",
   "account_settings.transactions_screen.table.header.amount":"Amount",
-  "account_settings.transactions_screen.table.header.hash":"Hash"
+  "account_settings.transactions_screen.table.header.hash":"Hash",
+  "account_settings.transactions_screen.table.header.status":"Status"
 }

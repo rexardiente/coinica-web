@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Switch, Route, useLocation, useHistory } from "react-router-dom";
 import { Location, History } from "history";
-import { Row, Container, Col, Image, ListGroup } from "react-bootstrap";
 import SettingsRoutes from "./routes";
 import NotFound from "../NotFound";
-import Header from "./Header";
 import styles from "./AccountSetting.module.scss";
 import { translate } from "helpers/translate";
 
@@ -13,7 +11,7 @@ import { makeStyles, withStyles, Theme, createStyles } from '@material-ui/core/s
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-const DISABLED_TABS = ["Bonuses", "Transaction"]
+const DISABLED_TABS = ["Bonuses"]
 
 interface StyledTabProps {
   label: string;
@@ -74,7 +72,7 @@ const getTabLabel = (value) => {
     case 1:
       return "Bonuses";
     case 2:
-      return "Transaction";
+      return "Transactions";
     case 3:
       return "Settings";
     default:
@@ -89,7 +87,7 @@ const getInitialTab = (path) => {
       return 0;
     case '/account/bonuses':
       return 1;
-    case '/account/transaction':
+    case '/account/transactions':
       return 2;
     case '/account/settings':
       return 3;
@@ -130,8 +128,18 @@ const AccountSetting = ({ platform, dispatch }) => {
             key={route.key}
             path={route.path}
             component={(props) => (
-              <Container fluid style={{ background: '#161E2F', height: '100%' }}>
-                <Row className={`${styles.headerTabsContainer}`}>
+              <div
+                style={{
+                  background: "#161E2F",
+                  height: "100%",
+                  width: "100%",
+                  paddingRight: "15px",
+                  paddingLeft: "15px",
+                  marginRight: "auto",
+                  marginLeft: "auto",
+                }}
+              >
+                <div className={`${styles.headerTabsContainer}`}>
                   <div className={classes.root}>
                     <div className={classes.headerContainer}>
                       <HeaderTabs value={selectedTab} onChange={handleChange} aria-label="Header Tabs">
@@ -142,14 +150,14 @@ const AccountSetting = ({ platform, dispatch }) => {
                       </HeaderTabs>
                     </div>
                   </div>
-                </Row>
-                <Row className={`${styles.settingsContainer}`}>
+                </div>
+                <div className={`${styles.settingsContainer}`}>
                   <div className={`${styles.settingsContent} h-100`}>
                     <h5 className={styles.tabLabel}>{getTabLabel(selectedTab)}</h5>
                     <route.component {...props} />  
                   </div>
-                </Row>
-              </Container>
+                </div>
+              </div>
             )}
           />
         );

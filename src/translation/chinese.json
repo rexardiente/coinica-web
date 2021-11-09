@@ -592,10 +592,11 @@
   "account_settings.setting_screen.email_address.title":"Email Address",
   "account_settings.setting_screen.password.title":"Password",
 
-  "account_settings.transactions_screen.title":"Transaction History",
-  "account_settings.transactions_screen.table.header.date_and_time":"Date & Time",
-  "account_settings.transactions_screen.table.header.type":"Type",
-  "account_settings.transactions_screen.table.header.currency":"Currency",
-  "account_settings.transactions_screen.table.header.amount":"Amount",
-  "account_settings.transactions_screen.table.header.hash":"Hash"
+  "account_settings.transactions_screen.title":"交易記錄",
+  "account_settings.transactions_screen.table.header.date_and_time":"日期 & 時間",
+  "account_settings.transactions_screen.table.header.type":"類型",
+  "account_settings.transactions_screen.table.header.currency":"貨幣",
+  "account_settings.transactions_screen.table.header.amount":"數量",
+  "account_settings.transactions_screen.table.header.hash":"哈希",
+  "account_settings.transactions_screen.table.header.status":"地位"
 }

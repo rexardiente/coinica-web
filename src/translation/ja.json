@@ -597,5 +597,6 @@
   "account_settings.transactions_screen.table.header.type":"タイプ",
   "account_settings.transactions_screen.table.header.currency":"通貨",
   "account_settings.transactions_screen.table.header.amount":"量",
-  "account_settings.transactions_screen.table.header.hash":"ハッシュ"
+  "account_settings.transactions_screen.table.header.hash":"ハッシュ",
+  "account_settings.transactions_screen.table.header.status":"状態"
 }
