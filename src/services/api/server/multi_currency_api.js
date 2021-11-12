@@ -14,11 +14,6 @@ export const multi_currency_sign_out = () => {
   return API.get("/donut/api/v1/sign-out", { headers });
 };
 
-export const multi_currency_renew_token = () => {
-  const headers = getHeaderParams();
-  return API.get("/donut/api/v1/login/token/renew", { headers });
-};
-
 export const multi_currency_set_token = ({ CLIENT_TOKEN, CLIENT_ID }) => {
   setHeaderParams({ CLIENT_TOKEN, CLIENT_ID });
 };
