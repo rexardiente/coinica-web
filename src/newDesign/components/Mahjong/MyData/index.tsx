@@ -19,19 +19,18 @@ type Props = {
   username: string;
   show: boolean;
   data: TabsData;
+  tiles: number[];
   onHide: () => void;
 };
 
-const Tutorial = ({ userId, username, show, data, onHide }: Props) => {
+const MyData = ({ userId, username, show, data, tiles, onHide }: Props) => {
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Title onHide={onHide}>{translate("mj.main.my_data")}</Modal.Title>
       <Modal.Content innerClassName={styles.scrollContentWidth}>
         <div className={styles.profileWrapper}>
           <Profile userId={userId} username={username} />
-          <HighestScore
-            tiles={[1, 14, 56, 23, 136, 1, 14, 54, 23, 136, 44, 78, 99, 2]}
-          />
+          <HighestScore tiles={tiles} />
         </div>
         <Tabs data={data} />
       </Modal.Content>
@@ -39,4 +38,4 @@ const Tutorial = ({ userId, username, show, data, onHide }: Props) => {
   );
 };
 
-export default Tutorial;
+export default MyData;

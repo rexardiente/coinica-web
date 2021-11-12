@@ -72,7 +72,9 @@ const CompleteHandResultModal = ({
               <div className={styles.totalPointsText}>
                 {" "}
                 <GradientText
-                  text="Total Points"
+                  text={translate(
+                    "mj.gameplay.complete_hand_result.total_points"
+                  )}
                   fromColor="#EB9058"
                   toColor="#EB6756"
                   textAnchor="start"
@@ -114,7 +116,7 @@ const CompleteHandResultModal = ({
         <div className={styles.btnContainer}>
           <div className={styles.btnDiv}>
             <button className={styles.rankingsBtn}>
-              {translate("mj.gameplay.complete_hand_result.rankings")}
+              {translate("mj.gameplay.complete_hand_result.ranking")}
             </button>
             <button className={styles.homeBtn} onClick={handleGoBackHome}>
               {translate("mj.gameplay.complete_hand_result.home")}

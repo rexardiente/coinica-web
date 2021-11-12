@@ -93,7 +93,6 @@
   "sidebar.rank": "Rank",
   "sidebar.news": "News",
   "sidebar.telegram": "Telegram",
-  "sidebar.language.japanese":"日本",
 
   "footer.termsOfUse": "Terms of Use",
   "footer.privacyPolicy": "Privacy policy",
@@ -260,8 +259,6 @@
   "mj.my_data.hilo.average_round": "Average Win Round",
   "mj.my_data.hilo.shortest_round": "Shortest Win Round",
 
-  "mj.gameplay.menu": "Menu",
-
   "mj.gameplay.error.fetching_data": "Error fetching data, please try again",
   "mj.gameplay.error.login_first": "Please login first",
   "mj.gameplay.error.no_game_data": "No game data found",
@@ -304,8 +301,8 @@
   "mj.gameplay.wallet.withdraw.content": "Are you sure you want to withdraw your {amount} balance?",
 
   "mj.gameplay.complete_hand_result.no_data": "No data",
-  "mj.gameplay.complete_hand_result.total_score": "Total score",
-  "mj.gameplay.complete_hand_result.rankings": "Rankings",
+  "mj.gameplay.complete_hand_result.total_points": "Total Points",
+  "mj.gameplay.complete_hand_result.ranking": "Ranking",
   "mj.gameplay.complete_hand_result.home": "Home",
   "mj.gameplay.complete_hand_result.play_again": "Play Again",
 

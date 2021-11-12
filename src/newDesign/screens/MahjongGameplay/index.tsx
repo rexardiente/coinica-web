@@ -721,7 +721,7 @@ const MahjongGameplay = () => {
               onDeclare={handleDeclareWinHand}
             />
           )}
-        {/* {winHand.showCompleteHandResult && game_data?.status >= 2 && (
+        {winHand.showCompleteHandResult && game_data?.status >= 2 && (
           <CompleteHandResult
             tiles={game_data?.hand_player}
             isWin={game_data?.status === 2}
@@ -729,7 +729,7 @@ const MahjongGameplay = () => {
             finalScore={game_data?.final_score}
             playAgain={handlePlayAgain}
           />
-        )} */}
+        )}
       </div>
     </div>
   );

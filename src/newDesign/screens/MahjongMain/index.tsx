@@ -219,6 +219,7 @@ const MahjongMain = () => {
         userId={userID}
         username={username}
         data={myDataTabs}
+        tiles={[]}
         onHide={onToggleMyData}
       />
       <Tutorial show={showModal.tutorial} onHide={onToggleTutorial} />

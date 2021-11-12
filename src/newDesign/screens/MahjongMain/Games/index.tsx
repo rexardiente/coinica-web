@@ -4,6 +4,7 @@ import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
 import GameHistory from "./GameHistory";
+import { translate } from "helpers/translate";
 import { iconGamesClose } from "../Assets";
 import styles from "./Games.module.scss";
 
@@ -92,7 +93,7 @@ const MyGame = ({ show, onHide }: Props) => {
     >
       <MuiDialogTitle className={styles.dialogTitle}>
         <span className={`${styles.gamesText} ${styles.strokeBlue2}`}>
-          Games
+          {translate("mj.main.games")}
         </span>
         <IconButton
           aria-label="close"

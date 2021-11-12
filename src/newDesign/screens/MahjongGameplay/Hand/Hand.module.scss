@@ -1,11 +1,13 @@
+@import "./src/assets/scss/utils";
+
 .container {
   display: flex;
-  align-items: center;
+  align-items: end;
   max-width: 900px;
   min-height: 110px;
   overflow-x: auto;
   overflow-y: hidden;
-
+  cursor: pointer;
   img {
     transition: 0.2s transform;
     &:nth-child(14) {
@@ -35,6 +37,11 @@
   border-radius: 5px;
 }
 
-.wrapper {
-  width: 100%;
+.tile {
+  text-align: center;
+}
+
+.btnSuit {
+  cursor: pointer;
+  font-size: rem(14);
 }
