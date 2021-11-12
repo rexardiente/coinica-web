@@ -6,6 +6,7 @@ import styles from "./SignupModal.module.scss";
 import {translate} from "helpers/translate";
 import Login from "./Login";
 import Signup from "./Signup";
+import ForgotPassword from "./ForgotPassword";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -47,10 +48,12 @@ type Props = {
  handleSignUpModalClose: Function;
 }
 
-const SignUpModal = ({openModal, handleSignUpModalClose} : Props) => {
+const SignUpModal = ({openModal, handleSignUpModalClose, handleSignUpModalOpen} : Props) => {
   const [value, setValue] = useState(0);
-  const [resetPassword, requestResetPassword] = useState(false)
-  const [tabKey, setTabKey] = useState<any>('signup')
+  const [resetPassword, requestResetPassword] = useState(false);
+  const [tabKey, setTabKey] = useState<any>('signup');
+  const [openForgotPasswordModal, setOpenForgotPasswordModal] = useState(false);
+
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
@@ -60,47 +63,84 @@ const SignUpModal = ({openModal, handleSignUpModalClose} : Props) => {
     setValue(index);
   };
 
+  const handleCloseForgotPasswordModal = () => {
+    setOpenForgotPasswordModal(false);
+    handleSignUpModalOpen();
+  };
+
+  const handleOpenForgotPasswordModal = () => {
+    setOpenForgotPasswordModal(true);
+    handleSignUpModalClose();
+  };
+
     return (
-      <Modal
-        open={openModal}
-        onClose={() => handleSignUpModalClose()}
-        BackdropComponent={Backdrop}
-        BackdropProps={{ timeout: 500 }}
-        closeAfterTransition
-        className={`${styles.modal}`}
-      >
-        <Fade in={openModal}>
-          <Paper elevation={3} className={`${styles.modal_content}`}>
-            <Box className={`${styles.logo_container}`}>
-              <img src={assets.logo} className={`${styles.logo}`} />
-            </Box>
-            <AppBar position="static" color="transparent" className={`${styles.appbar}`}>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                variant="fullWidth"
+      <>
+        <ForgotPassword
+          open={openForgotPasswordModal}
+          handleClose={handleCloseForgotPasswordModal}
+        />
+        <Modal
+          open={openModal}
+          onClose={() => handleSignUpModalClose()}
+          BackdropComponent={Backdrop}
+          BackdropProps={{ timeout: 500 }}
+          closeAfterTransition
+          className={`${styles.modal}`}
+        >
+          <Fade in={openModal}>
+            <Paper elevation={3} className={`${styles.modal_content}`}>
+              <Box className={`${styles.logo_container}`}>
+                <img src={assets.logo} className={`${styles.logo}`} />
+              </Box>
+              <AppBar
+                position="static"
+                color="transparent"
+                className={`${styles.appbar}`}
               >
-                <Tab label={translate("header.login")} {...a11yProps(0)} className={`${styles.tab}`} />
-                <Tab label={translate("header.signup")} {...a11yProps(1)} className={`${styles.tab}`} />
-              </Tabs>
-            </AppBar>
-            <SwipeableViews
-              axis="x"
-              index={value}
-              onChangeIndex={handleChangeIndex}
-            >
-              <TabPanel value={value} index={0} dir="rtl">
-                <Login setTabKey={setTabKey} requestResetPassword={requestResetPassword} handleSignUpModalClose={handleSignUpModalClose} />
-              </TabPanel>
-              <TabPanel value={value} index={1} dir="rtl">
-                <Signup setTabKey={setTabKey} handleSignUpModalClose={handleSignUpModalClose} />
-              </TabPanel>
-            </SwipeableViews>
-          </Paper>
-        </Fade>
-      </Modal>
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  indicatorColor="primary"
+                  textColor="primary"
+                  variant="fullWidth"
+                >
+                  <Tab
+                    label={translate("header.login")}
+                    {...a11yProps(0)}
+                    className={`${styles.tab}`}
+                  />
+                  <Tab
+                    label={translate("header.signup")}
+                    {...a11yProps(1)}
+                    className={`${styles.tab}`}
+                  />
+                </Tabs>
+              </AppBar>
+              <SwipeableViews
+                axis="x"
+                index={value}
+                onChangeIndex={handleChangeIndex}
+              >
+                <TabPanel value={value} index={0} dir="rtl">
+                  <Login
+                    setTabKey={setTabKey}
+                    requestResetPassword={requestResetPassword}
+                    handleSignUpModalClose={handleSignUpModalClose}
+                    handleSignUpModalOpen={handleSignUpModalOpen}
+                    handleOpenForgotPasswordModal={handleOpenForgotPasswordModal}
+                  />
+                </TabPanel>
+                <TabPanel value={value} index={1} dir="rtl">
+                  <Signup
+                    setTabKey={setTabKey}
+                    handleSignUpModalClose={handleSignUpModalClose}
+                  />
+                </TabPanel>
+              </SwipeableViews>
+            </Paper>
+          </Fade>
+        </Modal>
+      </>
     );
 };
 

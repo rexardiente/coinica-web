@@ -37,7 +37,7 @@ const routes = [
     exact: true,
     path: "/vip",
     component: VIP,
-    isPrivate: false,
+    isPrivate: true,
   },
   {
     key: "Challenge",
@@ -104,7 +104,7 @@ const routes = [
     path: "/account",
     component: AccountSetting,
     showHistory: false,
-    isPrivate: false,
+    isPrivate: true,
   },
   // /**
   //  * ===========================

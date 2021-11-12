@@ -78,13 +78,17 @@ type LoginProps = {
   requestResetPassword: Function;
   dispatch: Function;
   handleSignUpModalClose: Function;
+  handleSignUpModalOpen: Function;
+  handleOpenForgotPasswordModal: Function;
 };
 
 const Login = ({
   platform,
   requestResetPassword,
   dispatch,
-  handleSignUpModalClose
+  handleSignUpModalClose,
+  handleSignUpModalOpen,
+  handleOpenForgotPasswordModal,
 }: LoginProps) => {
   const history = useHistory();
   const [username, setUsername] = useState("");
@@ -92,6 +96,7 @@ const Login = ({
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isInvalid, setInvalid] = useState(false);
+
   const { formatMessage } = useIntl();
 
   const handleClickShowPassword = () => {
@@ -178,7 +183,7 @@ const Login = ({
       <>
         <Typography className={`${styles.error}`}>{platform.error}</Typography>
         <form onSubmit={handleSubmit}>
-          <Grid container spacing={4}>
+          <Grid container spacing={4} className={`${styles.grid}`}>
             <Grid item xs={12}>
               <FormControl fullWidth>
                 <InputLabel shrink className={`${styles.label}`}>
@@ -224,6 +229,11 @@ const Login = ({
                 />
               </FormControl>
             </Grid>
+            <Grid item xs={12}>
+              <Button variant='text' color='primary' onClick={() => handleOpenForgotPasswordModal()}>
+                  {translate('login.forgot.password')}
+              </Button>
+            </Grid>
             <Grid
               item
               xs={12}
@@ -239,6 +249,7 @@ const Login = ({
                 {translate("login.button")}
               </Button>
             </Grid>
+            
           </Grid>
         </form>
       </>

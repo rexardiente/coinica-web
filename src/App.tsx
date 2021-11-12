@@ -6,7 +6,8 @@ import LanguageProvider from "newDesign/components/LanguageProvider";
 import EntryScreen from "./screens";
 import NewDesignEntryScreen from "newDesign/screens";
 import { ServerAPI } from "./Config";
-import Loading from "./components/Loader";
+// import Loading from "./components/Loader";
+import Loading from "./newDesign/components/Loading";
 import { useIdleTimer } from "react-idle-timer";
 import { multi_currency_sign_out } from "services/api/server/multi_currency_api";
 import { deleteHeaderParams, getHeaderParams } from "services/auth";
@@ -156,7 +157,7 @@ const App = () => {
 
   return (
     <LanguageProvider>
-      <React.Suspense fallback={<Loading />}>
+      <React.Suspense fallback={<Loading isLoading={true} />}>
         {/* <EntryScreen /> */}
         <NewDesignEntryScreen />
       </React.Suspense>

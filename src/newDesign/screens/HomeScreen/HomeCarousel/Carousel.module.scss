@@ -14,7 +14,11 @@
         height: 30vh;
     }
 
-    height: 7vh;
+    @media(min-width: 2000px){
+        height: 30vh;
+    }
+
+    height: 10vh;
     position: relative;
 
     .Media

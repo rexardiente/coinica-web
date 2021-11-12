@@ -122,7 +122,7 @@ const BalanceScreen = ({ dispatch, platform }) => {
               path={route.path}
               component={(props) => (
                 <Grid container spacing={2}>
-                  <Grid item sm={12} md={4}>
+                  <Grid item sm={12} md={12} lg={4}>
                     <div className={`${styles.settingsSideNav}`}>
                       <div className="text-left">
                         <div className={styles.balanceTitle}>
@@ -199,7 +199,7 @@ const BalanceScreen = ({ dispatch, platform }) => {
                       <Header {...route} routeKey={route.key} />
                     </div> */}
                   </Grid >
-                  <Grid item sm={12} md={8}>
+                  <Grid item sm={12} md={12} lg={8}>
                     <div className={styles.deposit_withdraw_container}>
                       <BalanceHeader routeKey={defaultRouteKey()} />
                       {getNoteMessage(route.key)}
