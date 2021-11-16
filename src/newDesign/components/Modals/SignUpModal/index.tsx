@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import SwipeableViews from "react-swipeable-views";
-import { Modal, Fade, Backdrop, Paper, Tabs, Tab, AppBar, Box, Typography} from "@material-ui/core";
+import { Modal, Fade, Backdrop, Paper, Tabs, Tab, AppBar, Box} from "@material-ui/core";
 import * as assets from "./Assets";
 import styles from "./SignupModal.module.scss";
 import {translate} from "helpers/translate";
 import Login from "./Login";
 import Signup from "./Signup";
 import ForgotPassword from "./ForgotPassword";
+import ButtonClose from "../../ButtonClose";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -89,6 +90,7 @@ const SignUpModal = ({openModal, handleSignUpModalClose, handleSignUpModalOpen} 
         >
           <Fade in={openModal}>
             <Paper elevation={3} className={`${styles.modal_content}`}>
+              <ButtonClose handleClick={handleSignUpModalClose} />
               <Box className={`${styles.logo_container}`}>
                 <img src={assets.logo} className={`${styles.logo}`} />
               </Box>

@@ -4,7 +4,7 @@ import { translate } from "helpers/translate";
 import styles from "./ForgotPassword.module.scss";
 import {toast} from "react-toastify";
 import { ResetPassword } from "services/api/server/multi_currency_api";
-
+import ButtonClose from "newDesign/components/ButtonClose";
 
 type Props = {
   open: boolean;
@@ -56,28 +56,31 @@ const ForgotPassword = ({open,handleClose}:Props) => {
         className={`${styles.modal}`}
       >
         <Fade in={open}>
-          <Box component="div" className={`${styles.modal_content}`}>
-            <Typography variant="h4" align="center" gutterBottom>
-              {translate("forgot.password.title")}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              {translate("forgot.password.instruction")}
-            </Typography>
-            <BootstrapInput
-              id="bootstrap-input"
-              value={email}
-              onChange={handleEmail}
-              placeholder={"Email Address"}
-              fullWidth
-            />
-            <Button
-              variant="contained"
-              color="primary"
-              fullWidth
-              onClick={handleClick}
-            >
-              {translate("forgot.password.title")}
-            </Button>
+          <Box component="div" className={`${styles.modal}`}>
+            <ButtonClose handleClick={handleClose} />
+            <Box className={`${styles.modal_content}`}>
+              <Typography variant="h4" align="center" gutterBottom>
+                {translate("forgot.password.title")}
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                {translate("forgot.password.instruction")}
+              </Typography>
+              <BootstrapInput
+                id="bootstrap-input"
+                value={email}
+                onChange={handleEmail}
+                placeholder={"Email Address"}
+                fullWidth
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                onClick={handleClick}
+              >
+                {translate("forgot.password.title")}
+              </Button>
+            </Box>
           </Box>
         </Fade>
       </Modal>

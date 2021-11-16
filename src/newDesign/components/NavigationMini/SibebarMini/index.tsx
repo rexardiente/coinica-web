@@ -39,6 +39,11 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.up('sm')]: {
         width: theme.spacing(7),
       },
+      [theme.breakpoints.down('xs')]:{
+        "& ul":{
+          marginLeft: '-6px',
+        }
+      },
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
