@@ -261,7 +261,6 @@ const Deposit = ({ listOfCurrency, walletExt, dispatch, isServerUp, platform }: 
             listCurrency={listOfCurrency}
             selectedCurrency={currency}
             onSelectCurrency={handleSelectedCurrency}
-            styles={{ marginLeft: '-7px' }}
           />
         </div>
       </div>

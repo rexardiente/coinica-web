@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import { Switch, Route, useLocation } from "react-router-dom";
+import Typography from '@material-ui/core/Typography';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -122,7 +123,7 @@ const BalanceScreen = ({ dispatch, platform }) => {
               path={route.path}
               component={(props) => (
                 <Grid container spacing={2}>
-                  <Grid item sm={12} md={12} lg={4}>
+                  <Grid item xs={12} sm={12} md={12} lg={4}>
                     <div className={`${styles.settingsSideNav}`}>
                       <div className="text-left">
                         <div className={styles.balanceTitle}>
@@ -199,7 +200,7 @@ const BalanceScreen = ({ dispatch, platform }) => {
                       <Header {...route} routeKey={route.key} />
                     </div> */}
                   </Grid >
-                  <Grid item sm={12} md={12} lg={8}>
+                  <Grid item xs={12} sm={12} md={12} lg={8}>
                     <div className={styles.deposit_withdraw_container}>
                       <BalanceHeader routeKey={defaultRouteKey()} />
                       {getNoteMessage(route.key)}

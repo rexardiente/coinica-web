@@ -142,7 +142,13 @@ const AccountSetting = ({ platform, dispatch }) => {
                 <div className={`${styles.headerTabsContainer}`}>
                   <div className={classes.root}>
                     <div className={classes.headerContainer}>
-                      <HeaderTabs value={selectedTab} onChange={handleChange} aria-label="Header Tabs">
+                      <HeaderTabs
+                        value={selectedTab}
+                        onChange={handleChange}
+                        aria-label="header tabs"
+                        variant="scrollable"
+                        scrollButtons="auto"
+                      >
                         <HeaderTab label="Balance" />
                         <HeaderTab label="Bonuses" />
                         <HeaderTab label="Transaction" />
