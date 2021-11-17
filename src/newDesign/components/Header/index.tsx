@@ -7,7 +7,24 @@ import {
   useTheme,
   Theme,
 } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Button, FormGroup, FormControlLabel, FormControl, Switch, IconButton, Select, MenuItem, Avatar, Typography, Menu, withStyles, MenuProps } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Button,
+  FormGroup,
+  FormControlLabel,
+  FormControl,
+  Switch,
+  IconButton,
+  Select,
+  MenuItem,
+  Avatar,
+  Typography,
+  Menu,
+  withStyles,
+  MenuProps,
+  Box,
+} from "@material-ui/core";
 import { Menu as MenuIcon, ArrowDropDown } from "@material-ui/icons"
 import styles from "./Header.module.scss";
 import { translate } from "helpers/translate";
@@ -235,6 +252,7 @@ type props = {
 };
 
 const Header = (props: props) => {
+  const history = useHistory();
   const classes = useStyles();
   const [logoutState, setLogoutModal] = useState(false);
   const [openSignupModal, setOpenSignupModal] = useState(false);
@@ -318,6 +336,15 @@ const Header = (props: props) => {
         >
           <MenuIcon />
         </IconButton>
+        <Button
+          variant="text"
+          color="primary"
+          className={`${styles.stake_button}`}
+          onClick={() => history.push("/staking")}
+        >
+          {translate("header.stake")}
+        </Button>
+        <Box border="1px solid #57688D" height="38px" margin="0 10px" />
         {userAccount || account ? (
           <LoggedIn {...props} setLogoutModal={setLogoutModal} />
         ) : (

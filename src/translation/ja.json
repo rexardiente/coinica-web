@@ -16,6 +16,7 @@
   "header.dropdown.balance":"残高",
   "header.dropdown.settings":"設定",
   "header.dropdown.logout":"ログアウト",
+  "header.stake":"ステーク",
 
   "signup.username": "ユーザー名",
   "signup.placeholder.username": "ユーザーネームを入力してください",
