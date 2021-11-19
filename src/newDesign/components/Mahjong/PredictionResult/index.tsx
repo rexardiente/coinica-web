@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import GradientText from "newDesign/components/GradientText";
+import GradientText from "../../GradientText";
 import styles from "./PredictionResult.module.scss";
 
 type PredictionResultProps = {
@@ -27,7 +27,6 @@ const PredictionResult = ({
   }, [isWin, showResult]);
 
   const styleBg = isWin ? styles.successBg : styles.failBg;
-  console.log("IsWin: win or lose ", isWin);
   return (
     <div className={[styles.container, styleBg].join(" ")}>
       {isWin ? (
