@@ -3,60 +3,25 @@ import Dialog from "@material-ui/core/Dialog";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
+import moment from "moment";
 import GameHistory from "./GameHistory";
 import { translate } from "helpers/translate";
 import { iconGamesClose } from "../Assets";
 import styles from "./Games.module.scss";
 
+type History = {
+  game_id: string;
+  user: number;
+  predictions: any[];
+  status: boolean;
+  created_at: Date;
+};
+
 type Props = {
+  data: History[];
   show: boolean;
   onHide: () => void;
 };
-
-const DUMMY_GAME_HISTORY: Array<any> = [
-  {
-    title: "14th SUCCESSFUL HI-LO",
-    status: "win",
-    txId: "8273f58b",
-    txDate: "9/9 23:59",
-    tiles: [1, 2, 45, 36, 89, 29, 4, 7, 10, 23, 67, 100, 78, 34],
-  },
-  {
-    title: "Failed Hi-LO",
-    status: "lose",
-    txId: "8273f58b",
-    txDate: "9/9 23:59",
-    tiles: [1, 2, 45, 36, 89, 29, 4, 7, 10, 23, 67, 100, 78, 34],
-  },
-  {
-    title: "Complete Hand",
-    status: "completehand",
-    txId: "8273f58b",
-    txDate: "9/9 23:59",
-    tiles: [1, 2, 45, 36, 89, 29, 4, 7, 10, 23, 67, 100, 78, 34],
-  },
-  {
-    title: "Complete Hand",
-    status: "completehand",
-    txId: "8273f58b",
-    txDate: "9/9 23:59",
-    tiles: [1, 2, 45, 36, 89, 29, 4, 7, 10, 23, 67, 100, 78, 34],
-  },
-  {
-    title: "Complete Hand",
-    status: "completehand",
-    txId: "8273f58b",
-    txDate: "9/9 23:59",
-    tiles: [1, 2, 45, 36, 89, 29, 4, 7, 10, 23, 67, 100, 78, 34],
-  },
-  {
-    title: "Complete Hand",
-    status: "completehand",
-    txId: "8273f58b",
-    txDate: "9/9 23:59",
-    tiles: [1, 2, 45, 36, 89, 29, 4, 7, 10, 23, 67, 100, 78, 34],
-  },
-];
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -82,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const MyGame = ({ show, onHide }: Props) => {
+const MyGame = ({ data, show, onHide }: Props) => {
   const classes = useStyles();
   return (
     <Dialog
@@ -105,18 +70,22 @@ const MyGame = ({ show, onHide }: Props) => {
       </MuiDialogTitle>
       <MuiDialogContent className={styles.dialogContent}>
         <div className={styles.historyList}>
-          {DUMMY_GAME_HISTORY.length
-            ? DUMMY_GAME_HISTORY.map((history, idx) => (
-                <GameHistory
-                  key={idx}
-                  id={idx}
-                  title={history.title}
-                  txId={history.txId}
-                  txDate={history.txDate}
-                  status={history.status}
-                  tiles={history.tiles}
-                />
-              ))
+          {data.length
+            ? data.map((history, idx) =>
+                history.predictions.map((tiles, idx) => (
+                  <GameHistory
+                    key={idx}
+                    id={idx}
+                    title={tiles[0] === tiles[1] ? "WIN" : "LOSE"}
+                    txId={history.game_id.substring(0, 8)}
+                    txDate={moment(history.created_at).format(
+                      "DD/MM/YYYY H:HH"
+                    )}
+                    status={tiles[0] === tiles[1] ? "win" : "lose"}
+                    tiles={tiles}
+                  />
+                ))
+              )
             : "No game data history."}
         </div>
       </MuiDialogContent>

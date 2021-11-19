@@ -412,7 +412,7 @@ const MahjongGameplay = () => {
         toast.dismiss(hiloLoading);
         setTimeout(() => {
           togglePredictionResult();
-        }, 1000);
+        }, 1500);
       })
       .catch((err) => {
         playError();
@@ -615,7 +615,6 @@ const MahjongGameplay = () => {
       .then(async (result) => {
         await MJ_START_GAME();
         await updateMahjongHiloData(username);
-        toggleMenu();
         toast.success(translate("mj.gameplay.success.reset_game"));
         toast.dismiss(againLoading);
       })
@@ -690,6 +689,7 @@ const MahjongGameplay = () => {
           <Hand
             winTiles={game_data?.wintiles}
             tiles={game_data?.hand_player}
+            riichiStatus={game_data?.riichi_status}
             onDiscardTile={handleDiscardTile}
           />
         </div>

@@ -45,3 +45,8 @@
   cursor: pointer;
   font-size: rem(14);
 }
+
+.disableTile {
+  pointer-events: none;
+  opacity: 0.4;
+}

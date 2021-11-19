@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import GetMahjongTile from "newDesign/components/Mahjong/Tiles";
 import Tooltip from "@material-ui/core/Tooltip";
 import styles from "./Hand.module.scss";
@@ -5,10 +6,13 @@ import styles from "./Hand.module.scss";
 type Props = {
   winTiles: { index: number; tileswin: { suit: number; value: number }[] }[];
   tiles: number[];
+  riichiStatus: number;
   onDiscardTile: (idx: number) => void;
 };
 
-const Hand = ({ winTiles, tiles, onDiscardTile }: Props) => {
+const Hand = ({ winTiles, tiles, riichiStatus, onDiscardTile }: Props) => {
+  const tilesLength = tiles?.length;
+
   const filteredWinTiles = (idx: number) => {
     return winTiles.filter((obj) => obj.index === idx) || [];
   };
@@ -32,7 +36,17 @@ const Hand = ({ winTiles, tiles, onDiscardTile }: Props) => {
   };
 
   const imgTiles =
-    (tiles?.length && tiles.map((val) => GetMahjongTile(val))) || [];
+    (tilesLength && tiles.map((val) => GetMahjongTile(val))) || [];
+
+  //If riichiStatus === 3, only the last tile can discard
+  const disableTilesExceptLast = (idx: number) => {
+    const lastIdx = tilesLength - 1;
+
+    if (riichiStatus === 3 && lastIdx !== idx) {
+      return true;
+    }
+    return false;
+  };
 
   return (
     <div className={styles.container}>
@@ -46,12 +60,17 @@ const Hand = ({ winTiles, tiles, onDiscardTile }: Props) => {
               >
                 <img
                   key={idx}
-                  onDoubleClick={() => onDiscardTile(idx)}
+                  onDoubleClick={() => {
+                    !disableTilesExceptLast(idx) && onDiscardTile(idx);
+                  }}
                   src={tile?.src}
                   alt="tile"
                   height="96"
                   width="62"
-                  className={`img-fluid ${idx === 13 && styles.highlightTile}`}
+                  className={clsx({
+                    [styles.highlightTile]: idx === 13,
+                    [styles.disableTile]: disableTilesExceptLast(idx),
+                  })}
                 />
               </Tooltip>
             </div>

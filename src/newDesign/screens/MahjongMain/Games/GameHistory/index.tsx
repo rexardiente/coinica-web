@@ -15,7 +15,7 @@ type Props = {
   tiles: Array<string | number>;
   txId: string;
   txDate: Date | string | number;
-  status: string;
+  status: "win" | "lose" | "completehand";
 };
 
 const GameHistory = ({ id, title, tiles, txId, txDate, status }: Props) => {
@@ -105,12 +105,12 @@ const GameHistory = ({ id, title, tiles, txId, txDate, status }: Props) => {
       <div className={styles.wrapperTiles}>{renderTiles()}</div>
       <div className={styles.numberOfCoin}>
         {renderGradientText(
-          "+100 EOS",
+          "+0",
           gradientColor()?.strokeWidth_2,
           gradientColor()?.colors
         )}
       </div>
-      <div className={styles.txId}> TxID: {txId}</div>
+      <div className={styles.txId}> ID: {txId}</div>
     </div>
   );
 };

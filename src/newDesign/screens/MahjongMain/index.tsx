@@ -228,7 +228,11 @@ const MahjongMain = () => {
         show={showModal.ranking}
         onHide={onToggleRanking}
       />
-      <MyGames show={showModal.myGames} onHide={onToggleMyGames} />
+      <MyGames
+        data={gamePlayHistory}
+        show={showModal.myGames}
+        onHide={onToggleMyGames}
+      />
 
       <div className={styles.coverBg}>
         <img className={styles.girlBg} src={bgGirl} alt="girl background" />

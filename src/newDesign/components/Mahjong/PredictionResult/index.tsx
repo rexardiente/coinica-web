@@ -27,6 +27,7 @@ const PredictionResult = ({
   }, [isWin, showResult]);
 
   const styleBg = isWin ? styles.successBg : styles.failBg;
+  console.log("IsWin: win or lose ", isWin);
   return (
     <div className={[styles.container, styleBg].join(" ")}>
       {isWin ? (

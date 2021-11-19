@@ -53,14 +53,14 @@ const HiLoDraw = (props: Props) => {
   return (
     <div className={styles.container}>
       {showResult && !isWin && <div className={styles.loseBg} />}
-      {showResult && (
+      {showResult ? (
         <PredictionResult
           isWin={isWin}
           showResult={showResult}
           playWin={playWin}
           playLose={playLose}
         />
-      )}
+      ) : null}
 
       <div className={styles.autoPlayWrapper}>
         <div className={styles.tiles}>

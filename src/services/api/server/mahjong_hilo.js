@@ -96,7 +96,7 @@ export const MJ_RESET_BET = () => {
 
 export const MJ_HISTORY = (id) => {
   const headers = getHeaderParams();
-  return axios.get(`${BASE_URL}/game/all/history/${game_id}/${id}`, {
+  return axios.get(`${BASE_URL}/game/mahjong-hilo/game/history`, {
     headers,
   });
 };
