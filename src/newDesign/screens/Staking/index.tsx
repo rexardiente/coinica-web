@@ -1,10 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Box, Grid, Button } from "@material-ui/core";
 import { CoinicaStakingIcon, StakingIcon, RewardsIcon } from "./Assets";
 import styles from "./Staking.module.scss";
 
 const Staking = () => {
-
+  const history = useHistory();
   return (
     <Grid container className={styles.container}>
       <Box className={styles.mainheaderContainer}>
@@ -31,7 +32,7 @@ const Staking = () => {
               <img src={StakingIcon} alt="" />
               <h3>Staking</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipi elit,  sed do eiusmod tempor incididunt ut labor.</p>
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="primary" onClick={() => history.push("/staking/pools")}>
                 Stake Coin
               </Button>
             </Box>
