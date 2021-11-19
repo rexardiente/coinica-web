@@ -164,10 +164,10 @@ const SidebarFooter = ({language, handleSelectLanguage, handleDrawerToggle, hand
                 />
               }
             />
-          </ListItem>
+          </ListItem> 
           <ListItem button onClick={() => handleDrawerToggle()}>
             <ListItemIcon>
-              <PlayCircleFilled className={`${styles.toggle_mini_icon} ${open ? styles.toggle_mini_icon_open : ''}`} />
+              <PlayCircleFilled className={`${styles.toggle_mini_icon} ${mini ? styles.toggle_mini_icon_open : ''}`} />
             </ListItemIcon>
             <ListItemText primary={translate('sidebar.collapse')} style={{ color: "#1785EB" }}/>
           </ListItem>

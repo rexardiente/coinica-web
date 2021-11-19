@@ -12,6 +12,11 @@
 
 .select_coin{
     height: 35px;
+
+    @media(max-width:425px){
+        width: 108px;
+    }
+
     width: 150px;
     background-color: $secondary-color;
     color: white;

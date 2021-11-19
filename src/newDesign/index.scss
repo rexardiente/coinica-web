@@ -86,3 +86,7 @@ body {
 .strokeLightBrown8 {
   @include stroke(#735430, 8px);
 }
+
+.paddingTop20{
+  padding-top: 20px;
+}

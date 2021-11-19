@@ -1,12 +1,20 @@
 .Carousel{
-    margin-left: -50px;
-    margin-right: -50px;
-    margin-top: -20px;
+
+    @media (min-width: 768px){
+        margin: 20px -50px;
+    }
+    
+    margin: 0 -9px;
+    padding-top: 20px;
 }
 
 .Banner
 {
-    @media (min-width: 768px){
+    @media (min-width: 425px){
+        height: 15vh;
+    }
+
+    @media (min-width: 550px){
         height: 20vh;
     }
 

@@ -74,7 +74,7 @@ const RouteComponent = ({ props, route }) => {
       );
     } else {
       return (
-        <div id={route.key}>
+        <div id={route.key} className='paddingTop20'>
           <route.component {...props} />
         </div>
       );
@@ -82,7 +82,7 @@ const RouteComponent = ({ props, route }) => {
     // FOR PLATFORM SCREENS
   } else {
     return (
-      <div id={route.key}>
+      <div id={route.key} className='paddingTop20'>
         <route.component {...props} />
       </div>
     );

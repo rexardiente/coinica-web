@@ -2,19 +2,27 @@
 
 
 .games_title{
-    padding-top: 4rem;
     padding-left: 16px; //to align with grid items spacing
     font-weight: bolder;
     // text-align: center;
 }
 
-.card{
+.game_card{
     padding: 0;
     border-radius: 0;
     background-color: $primary-lighter;
     color: $text-primary-color;
-    max-width: 312px;
     height: 300px;
+
+    @media (min-width: 768px) {
+        margin: 50px;
+    }
+    
+    @media (min-width: 425px){
+        max-width: 312px;
+    }
+
+    margin: 10px;
 }
 
 .card p {
@@ -22,7 +30,7 @@
 }
 
 .game_list{
-    justify-content: flex-start ;
+    justify-content: space-evenly ;
     padding-top: 2rem;
     flex-grow: 1;
     align-items: center;

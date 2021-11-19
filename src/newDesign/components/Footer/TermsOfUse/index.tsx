@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Button } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import styles from "./Terms.module.scss";
+import ButtonClose from "newDesign/components/ButtonClose";
 
 interface Props{
     closeModal: Function;
@@ -11,13 +12,7 @@ const TermsOfUse = ({closeModal}:Props) => {
     return (
       <div>
         <div style={{textAlign:'right'}}>
-          <Button
-            variant="text"
-            onClick={() => closeModal()}
-            className={`${styles.close}`}
-          >
-            <Close color="secondary" />
-          </Button>
+          <ButtonClose handleClick={() => closeModal()} />
         </div>
         <p className="center-content">
           <h1>Terms of Use</h1>

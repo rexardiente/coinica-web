@@ -36,7 +36,7 @@ const HomeScreen = ({platform, dispatch}) => {
       <Carousel />
 
       <div className={`${styles.homescreen}`}>
-      <Typography variant="h4" className={`${styles.games_title}`}>
+      <Typography variant="h5" className={`${styles.games_title}`}>
         {translate('home.gameList.title')}
       </Typography>
 
@@ -44,14 +44,13 @@ const HomeScreen = ({platform, dispatch}) => {
         justifyContent="flex-start"
         container
         className={`${styles.game_list}`}
-        spacing={4}
       >
         {
           gameList?.length ? 
           gameList.map((game, index) => (
           <Grid key={index} item>
             <Card
-              className={`${styles.card}`}
+              className={`${styles.game_card}`}
               onClick={() => {
                 history.push(game?.path)
               }}
