@@ -4,7 +4,7 @@ import { translate } from "helpers/translate";
 import styles from "./NewsCard.module.scss";
 
 type Props = {
-  data: { title: string }[];
+  data: { title: string, description: string }[];
 };
 
 const NewsCard = ({ data }: Props) => {
@@ -14,8 +14,11 @@ const NewsCard = ({ data }: Props) => {
         {data.length ? (
           data.map((news, index) => (
             <Fragment key={index}>
-              <Typography className={styles.title} color="primary" gutterBottom>
+              <Typography className={styles.title} color="secondary">
                 {news.title}
+              </Typography>
+              <Typography className={styles.description} color="textPrimary" gutterBottom>
+                {news.description}
               </Typography>
             </Fragment>
           ))
