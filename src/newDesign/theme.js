@@ -8,6 +8,10 @@ const coinicaTheme = createTheme({
       secondary: {
         main: '#79B9F4',
       },
+      text:{
+        primary: '#e8eaed',
+        secondary: '#000000de',
+      }
     },
   });
 
