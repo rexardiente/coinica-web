@@ -23,6 +23,7 @@ import {
   MJ_PLAY_HILO,
   MJ_WITHDRAW_TOKEN,
   MJ_DISCARD_TILE,
+  MJ_RIICHI_DISCARD,
   MJ_DCLR_WIN_HAND,
   MJ_DECLARE_KONG,
   MJ_BET_TOKEN,
@@ -484,6 +485,19 @@ const MahjongGameplay = () => {
       "discard"
     );
     setStopMainBgSound(true);
+
+    if (game_data?.riichi_status === 2) {
+      MJ_RIICHI_DISCARD()
+        .then(() => {
+          updateMahjongHiloData(username);
+          toast.dismiss(discardLoading);
+        })
+        .catch((err) => {
+          toast.dismiss(discardLoading);
+          toast.error(err.message);
+        });
+      return;
+    }
 
     MJ_DISCARD_TILE({ idx })
       .then(() => {
