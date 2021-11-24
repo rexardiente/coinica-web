@@ -39,7 +39,7 @@ class News extends Component<{}, State> {
 
   async getNews() {
     try {
-      const res = await GetNews();
+      const res = await GetNews(1);
       this.setState({
         newsData: [...res.data],
         isLoading: false,

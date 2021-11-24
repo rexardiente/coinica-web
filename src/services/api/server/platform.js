@@ -142,8 +142,8 @@ export const GetDailyRanking = () => {
 /**
  * @param  {}
  */
-export const GetNews = () => {
-  return api.get("/donut/api/v1/news");
+export const GetNews = (pageNum) => {
+  return api.get(`https://forum.coinica.net/wp-json/wp/v2/posts?per_page=5&page=${pageNum}`);
 };
 
 // Account Settings //

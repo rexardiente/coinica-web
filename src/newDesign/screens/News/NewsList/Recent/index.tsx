@@ -1,7 +1,7 @@
 import NewsCard from "../NewsCard";
 
 type Props = {
-  news: { title: string, description: string }[];
+  news: { title: { rendered: string }; excerpt: { rendered: string } }[];
 };
 const Recent = ({ news }: Props) => {
   return <NewsCard data={news} />;

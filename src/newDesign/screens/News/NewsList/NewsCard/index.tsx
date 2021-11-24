@@ -4,10 +4,14 @@ import { translate } from "helpers/translate";
 import styles from "./NewsCard.module.scss";
 
 type Props = {
-  data: { title: string, description: string }[];
+  data: { title: { rendered: string }; excerpt: { rendered: string } }[];
 };
 
 const NewsCard = ({ data }: Props) => {
+  const createMarkup = (elem: string) => {
+    return { __html: elem };
+  };
+
   return (
     <Card className={styles.container}>
       <CardContent>
@@ -15,10 +19,18 @@ const NewsCard = ({ data }: Props) => {
           data.map((news, index) => (
             <Fragment key={index}>
               <Typography className={styles.title} color="secondary">
-                {news.title}
+                <div
+                  dangerouslySetInnerHTML={createMarkup(news.title.rendered)}
+                />
               </Typography>
-              <Typography className={styles.description} color="textPrimary" gutterBottom>
-                {news.description}
+              <Typography
+                className={styles.description}
+                color="textPrimary"
+                gutterBottom
+              >
+                <div
+                  dangerouslySetInnerHTML={createMarkup(news.excerpt.rendered)}
+                />
               </Typography>
             </Fragment>
           ))
