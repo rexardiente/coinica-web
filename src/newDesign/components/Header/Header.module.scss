@@ -26,9 +26,13 @@
 
     width: 150px;
     background-color: $secondary-color;
-    color: white;
+    color: $google-black;
     margin-right: 15px;
     align-items: center;
+}
+
+.select_coin_item{
+    color: $google-black;
 }
 
 .logged_in{
