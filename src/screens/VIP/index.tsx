@@ -45,7 +45,7 @@ class VIP extends PureComponent<Props, State> {
   getVip(id: string) {
     this.setState({ isLoading: true }, async () => {
       try {
-        const res = await GetVIP(id);
+        const res = await GetVIP();
         this.setState({
           rankData: { ...res.data },
           isLoading: false,

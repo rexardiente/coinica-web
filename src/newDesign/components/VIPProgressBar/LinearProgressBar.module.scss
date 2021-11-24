@@ -1,0 +1,20 @@
+@import "./src/assets/scss/utils";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  position: relative;
+}
+
+.barHeight {
+  height: 20px;
+}
+
+.barLabel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-size: rem(13);
+}

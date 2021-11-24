@@ -31,7 +31,7 @@ const VIP = () => {
   const getVip = async () => {
     dispatch(setPageLoading(true));
     try {
-      const res = await GetVIP(account?.id);
+      const res = await GetVIP();
       setData({ ...res.data });
     } catch (error: any) {
       setError(error.message);
@@ -55,7 +55,7 @@ const VIP = () => {
     );
   }
 
-  const { rank, points, payout, next_rank } = data;
+  const { rank, points, payout, next_rank, percentage, referral_count } = data;
   const DUMMY_PROGRESS_VALUE = { current: 50, max: 100 };
   return (
     <Fragment>
@@ -66,13 +66,13 @@ const VIP = () => {
         <Grid item container xs={12} justifyContent="space-between">
           <Grid item className={styles.levelWrapper} xs={12}>
             <Rank
-              username="John Doe"
+              username={account.username}
               data={{ rank, points, payout, next_rank }}
             />
           </Grid>
           <Grid item className={styles.levelWrapper} xs={12}>
             <Points
-              vipPoints={DUMMY_PROGRESS_VALUE}
+              vipPoints={percentage}
               totalPayout={DUMMY_PROGRESS_VALUE}
             />
           </Grid>
