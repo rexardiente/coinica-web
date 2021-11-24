@@ -7,8 +7,6 @@ const Tasks = lazy(() => import("./Tasks"));
 const Referral = lazy(() => import("./Referral"));
 const News = lazy(() => import("./News"));
 const Ranking = lazy(() => import("./Ranking"));
-const Staking = lazy(() => import("./Staking"));
-const StakingPools = lazy(() => import("./StakingPools"));
 // const Leaderboard = lazy(() => import("./Leaderboard"));
 // const FAQ = lazy(() => import("./FAQ"));
 const AccountSetting = lazy(() => import("./AccountSettings"));
@@ -77,20 +75,6 @@ const routes = [
     exact: true,
     path: "/ranking",
     component: Ranking,
-    isPrivate: false,
-  },
-  {
-    key: "Staking",
-    exact: true,
-    path: "/staking",
-    component: Staking,
-    isPrivate: false,
-  },
-  {
-    key: "StakingPools",
-    exact: true,
-    path: "/staking/pools",
-    component: StakingPools,
     isPrivate: false,
   },
   // {

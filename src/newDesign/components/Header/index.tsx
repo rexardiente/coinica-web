@@ -128,11 +128,15 @@ const LoggedIn = (props) => {
           <Select
             value={selectedCurrency}
             onChange={handleSelectChange}
-            className={`${styles.select_coin}`}
+            className={styles.select_coin}
           >
             {accountBalance && balanceAvailable && balanceAvailable.length
               ? balanceAvailable.map((currency,index) => (
-                  <MenuItem key={currency + index} value={currency}>
+                  <MenuItem
+                    className={styles.coinMenu}
+                    key={currency + index}
+                    value={currency}
+                  >
                     {getSymbol(currency)}{" "}
                     {accountBalance[currency] !== null
                       ? truncate(accountBalance[currency].amount, 6)
@@ -336,7 +340,7 @@ const Header = (props: props) => {
         >
           <MenuIcon />
         </IconButton>
-        <Button
+        {/* <Button
           variant="text"
           color="primary"
           className={`${styles.stake_button}`}
@@ -344,7 +348,7 @@ const Header = (props: props) => {
         >
           {translate("header.stake")}
         </Button>
-        <Box border="1px solid #57688D" height="38px" margin="0 10px" />
+        <Box border="1px solid #57688D" height="38px" margin="0 10px" /> */}
         {userAccount || account ? (
           <LoggedIn {...props} setLogoutModal={setLogoutModal} />
         ) : (
