@@ -36,9 +36,7 @@ const News = () => {
   };
 
   useEffect(() => {
-    // if (account) {
     getNews();
-    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
