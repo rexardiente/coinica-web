@@ -53,7 +53,7 @@ const GameTaks = ({
           {translate("task.play")}{" "}
           <span className={styles.textCapitalize}>{game_name}</span>{" "}
           <span className={styles.fontWeight_700}>
-            {currentProgress} {translate("task.times")}
+            {maxProgress} {translate("task.times")}
           </span>
         </div>
         <LinearProgressBar

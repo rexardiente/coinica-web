@@ -2,10 +2,10 @@ import GameTasks from "../GameTask";
 import styles from "./GameTaskList.module.scss";
 
 type Tasks = {
-  gameName: string;
-  currentProgress: number;
-  maxProgress: number;
-  vipPoints: number;
+  game: any;
+  count: number;
+  points: number;
+  progress:number;
 };
 type Props = { data: Tasks[] };
 
@@ -14,10 +14,10 @@ const GameTask = ({ data }: Props) => {
     <div className={styles.container}>
       {data.map((task: Tasks) => (
         <GameTasks
-          gameName={task.gameName}
-          currentProgress={task.currentProgress}
-          maxProgress={task.maxProgress}
-          vipPoints={task.vipPoints}
+          gameName={task.game.name}
+          currentProgress={0}
+          maxProgress={task.count}
+          vipPoints={task.points}
         />
       ))}
     </div>
