@@ -78,9 +78,9 @@ const LoggedIn = (props) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [balanceAvailable, setBalanceAvailable] = useState(() => {
     if (accountBalance.id !== null) {
-      const arr = Object.keys(accountBalance);
-      const filteredArr = arr.filter(val => val !== "id");
-      return filteredArr;
+      const arr = accountBalance.wallet;
+      const coins = arr.map(a => {return a.symbol});
+      return coins;
     }
   });
 
@@ -93,9 +93,9 @@ const LoggedIn = (props) => {
   useEffect(() => {
     setBalanceAvailable(() => {
       if (accountBalance.id !== null) {
-        const arr = Object.keys(accountBalance);
-        const filteredArr = arr.filter(val => val !== "id");
-        return filteredArr;
+        const arr = accountBalance.wallet;
+        const coins = arr.map(a => {return a.symbol});
+        return coins;
       }
     })
   }, [accountBalance]);
@@ -130,19 +130,25 @@ const LoggedIn = (props) => {
             onChange={handleSelectChange}
             className={styles.select_coin}
           >
-            {accountBalance && balanceAvailable && balanceAvailable.length
-              ? balanceAvailable.map((currency,index) => (
+            {accountBalance && accountBalance.wallet && balanceAvailable && balanceAvailable.length
+              ? balanceAvailable.map((currency,index) => {
+                var coin = accountBalance.wallet.find(x => x.symbol === currency);
+                var sCurrency = currency.toLowerCase();
+                return(
                   <MenuItem
-                    className={styles.coinMenu}
-                    key={currency + index}
-                    value={currency}
-                  >
-                    {getSymbol(currency)}{" "}
-                    {accountBalance[currency] !== null
-                      ? truncate(accountBalance[currency].amount, 6)
-                      : (0).toFixed(6)}
-                  </MenuItem>
-                ))
+                  className={styles.coinMenu}
+                  key={sCurrency + index}
+                  value={sCurrency}
+                >
+                  {getSymbol(sCurrency)}{" "}
+                  {
+                      coin !== null
+                    ? 
+                    truncate(coin.amount, 6)
+                    : (0).toFixed(6)}
+                </MenuItem>
+                );
+              })
               : null}
           </Select>
         </FormControl>
@@ -260,7 +266,7 @@ const Header = (props: props) => {
   const classes = useStyles();
   const [logoutState, setLogoutModal] = useState(false);
   const [openSignupModal, setOpenSignupModal] = useState(false);
-  const { userAccount } = props.scatter;
+  // const { userAccount } = props.scatter;
   const { account, entryModalState } = props.platform;
   const { dispatch } = props;
 
@@ -349,7 +355,7 @@ const Header = (props: props) => {
           {translate("header.stake")}
         </Button>
         <Box border="1px solid #57688D" height="38px" margin="0 10px" /> */}
-        {userAccount || account ? (
+        { account ? (
           <LoggedIn {...props} setLogoutModal={setLogoutModal} />
         ) : (
           <NotLoggedIn handleSignUpModalOpen={handleSignUpModalOpen} />
