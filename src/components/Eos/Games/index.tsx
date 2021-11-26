@@ -23,7 +23,7 @@ const Tiles = ({ games, genres }: GamesProps) => {
               id="card-banner"
             >
               <img
-                src={game.imgURL}
+                src={game.logo}
                 alt="Avatar"
                 className="game-img img-fluid w-100"
               />
@@ -34,7 +34,7 @@ const Tiles = ({ games, genres }: GamesProps) => {
               </Link>
             </div>
             <div className="card-body">
-              <h1 className="text-md-left text-center">{game.name}</h1>
+              <h1 className="text-md-left text-center">{game.displayName}</h1>
               {/* <small className="card-text"></small> */}
             </div>
           </div>
