@@ -49,9 +49,9 @@ const SettingsScreen = ({ platform, dispatch }: SettingsProps) => {
           <Typography variant="h6">
             {username}
           </Typography>
-          <Button className={classes.button} variant="contained">
+          {/* <Button className={classes.button} variant="contained">
             Update Profile Picture
-          </Button>
+          </Button> */}
         </div>
       </div>
 
@@ -60,25 +60,25 @@ const SettingsScreen = ({ platform, dispatch }: SettingsProps) => {
       </Typography>
       <div className={styles.accountSettingsContainer}>
         <div className={styles.settingsContent}>
-          <Grid container spacing={3} style={{ alignItems: 'center' }}>
-            <Grid item xs={3}>
+          <Grid container style={{ alignItems: 'center' }}>
+            <Grid item xs={12} md={3}>
               <Typography variant="h6">
                 {translate("account_settings.setting_screen.email_address.title")}
               </Typography>
             </Grid>
-            <Grid item xs={9}>
+            <Grid item xs={12} md={9}>
               <UserInformation showModal={showConfirmEmailModal} setShow={setShowConfirmEmailModal} />
             </Grid>
           </Grid>
         </div>
         <div className={styles.settingsContent}>
-          <Grid container spacing={3} style={{ alignItems: 'center' }}>
-            <Grid item xs={3}>
+          <Grid container style={{ alignItems: 'center' }}>
+            <Grid item xs={12} md={3}>
               <Typography variant="h6">
                 {translate("account_settings.setting_screen.password.title")}
               </Typography>
             </Grid>
-            <Grid item xs={9}>
+            <Grid item xs={12} md={9}>
               <Security />
             </Grid>
           </Grid>

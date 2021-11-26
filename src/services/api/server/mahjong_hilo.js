@@ -61,6 +61,11 @@ export const MJ_DISCARD_TILE = ({ idx }) => {
   return axios.post(`${MJ_URL}/discard-tile`, data, { headers });
 };
 
+export const MJ_RIICHI_DISCARD = () => {
+  const headers = getHeaderParams();
+  return axios.get(`${MJ_URL}/riichi-discard`, { headers });
+};
+
 export const MJ_DECLARE_KONG = ({ array_idx }) => {
   const headers = getHeaderParams();
   const data = { sets: array_idx };
@@ -96,7 +101,7 @@ export const MJ_RESET_BET = () => {
 
 export const MJ_HISTORY = (id) => {
   const headers = getHeaderParams();
-  return axios.get(`${BASE_URL}/game/all/history/${game_id}/${id}`, {
+  return axios.get(`${BASE_URL}/game/mahjong-hilo/game/history`, {
     headers,
   });
 };

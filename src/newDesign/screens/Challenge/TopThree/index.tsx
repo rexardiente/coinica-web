@@ -10,7 +10,7 @@ const TopThree = ({ data }: Props) => {
     <div className={styles.container}>
       {data.length &&
         data.map(({ username, points }: Players, index) => (
-          <Place playerName={username} points={points} index={index} />
+          <Place playerName={username} points={points} index={index} key={index} />
         ))}
     </div>
   );

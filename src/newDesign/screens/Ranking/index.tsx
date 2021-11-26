@@ -75,11 +75,11 @@ const Ranking = () => {
   };
 
   useEffect(() => {
-    if (account && selectedToggle) {
+    if (selectedToggle) {
       getRanking(selectedToggle);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account, selectedToggle]);
+  }, [selectedToggle]);
 
   if (error) {
     return (
@@ -91,7 +91,7 @@ const Ranking = () => {
 
   return (
     <Fragment>
-      <Grid container xs className={styles.container}>
+      <Grid container className={styles.container}>
         <Grid item xs={12}>
           <Header
             value={selectedToggle}

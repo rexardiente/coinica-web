@@ -5,6 +5,7 @@ import Sidebar from "./SibebarMini";
 interface Props {
     handleDrawerToggle : Function;
     handleDrawerClose: Function
+    handleDrawerOpen: Function;
     handleNavType : Function;
     open : boolean;
     name : string;
@@ -13,7 +14,7 @@ interface Props {
     handleSelectLanguage : Function;
 }
 
-export default function Navigation({handleDrawerToggle, open, mini, handleNavType, language, handleSelectLanguage, handleDrawerClose}:Props){
+export default function Navigation({handleDrawerToggle, open, mini, handleNavType, language, handleSelectLanguage, handleDrawerClose, handleDrawerOpen}:Props){
     return (
       <>
         <Header
@@ -28,6 +29,7 @@ export default function Navigation({handleDrawerToggle, open, mini, handleNavTyp
           language={language}
           handleSelectLanguage={handleSelectLanguage}
           handleDrawerClose={handleDrawerClose}
+          handleDrawerOpen={handleDrawerOpen}
         />
       </>
     );

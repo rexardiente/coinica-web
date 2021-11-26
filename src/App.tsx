@@ -2,21 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import LanguageProvider from "components/LanguageProvider";
+import LanguageProvider from "newDesign/components/LanguageProvider";
 import EntryScreen from "./screens";
 import NewDesignEntryScreen from "newDesign/screens";
 import { ServerAPI } from "./Config";
-import Loading from "./components/Loader";
+// import Loading from "./components/Loader";
+import Loading from "./newDesign/components/Loading";
 import { useIdleTimer } from "react-idle-timer";
-import {
-  multi_currency_renew_token,
-  multi_currency_sign_out,
-} from "services/api/server/multi_currency_api";
-import {
-  deleteHeaderParams,
-  getHeaderParams,
-  setHeaderParams,
-} from "services/auth";
+import { multi_currency_sign_out } from "services/api/server/multi_currency_api";
+import { deleteHeaderParams, getHeaderParams } from "services/auth";
 import {
   GetUserAccountById,
   GetUserWalletBalance,
@@ -39,9 +33,7 @@ type ReduxState = {
   platform: any;
 };
 
-const TEN_MINUTES: number = 60000 * 10;
-const IDLE_TIMEOUT = (60000 * 15) - (30000); // 14mins 30sec
-let renewInterval: number | undefined;
+const IDLE_TIMEOUT = 60000 * 15 - 30000; // 14mins 30sec
 
 const App = () => {
   const history = useHistory();
@@ -62,39 +54,10 @@ const App = () => {
     },
   });
 
-  const renewTokenInterval = () => {
-    renewInterval = window.setInterval(async () => {
-      try {
-        const {
-          data: { token },
-        } = await multi_currency_renew_token();
-        const { CLIENT_ID } = getHeaderParams();
-        setHeaderParams({ CLIENT_TOKEN: token, CLIENT_ID });
-      } catch (e) {
-        if (renewInterval) {
-          window.clearInterval(renewInterval);
-        }
-        dispatch(logoutPlatformAccount());
-      }
-    }, TEN_MINUTES);
-  };
-
   const updateWalletBalance = async () => {
     try {
       const { data } = await GetUserWalletBalance();
       dispatch(setUserBalance(data));
-    } catch (error) {
-      throw error;
-    }
-  };
-
-  const renewTokenWhenReload = async () => {
-    try {
-      const {
-        data: { token },
-      } = await multi_currency_renew_token();
-      const { CLIENT_ID } = getHeaderParams();
-      setHeaderParams({ CLIENT_TOKEN: token, CLIENT_ID });
     } catch (error) {
       throw error;
     }
@@ -109,17 +72,14 @@ const App = () => {
   useEffect(() => {
     const { CLIENT_ID, CLIENT_TOKEN } = getHeaderParams();
     if (!CLIENT_ID || !CLIENT_TOKEN) {
-      console.log('no client id or token');
+      console.log("no client id or token");
       dispatch(resetRedux());
     } else if (!account) {
-      console.log('no account');
+      console.log("no account");
       deleteHeaderParams();
     } else {
-      console.log('logged in');
+      console.log("logged in");
       GetUserAccountById(account.id)
-        .then((res) => {
-          renewTokenWhenReload();
-        })
         .then((res) => {
           updateWalletBalance();
         })
@@ -170,19 +130,8 @@ const App = () => {
       // store global websocket connection
       window.gqWS = gqWs;
 
-      /*
-       * Renew token every two mins and 30 seconds
-       * */
-      renewTokenInterval();
-
-      // Clear interval when unmount
-      // and close websocket connection
       return () => {
         window.gqWS.close();
-
-        if (renewInterval) {
-          window.clearInterval(renewInterval);
-        }
       };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -208,7 +157,7 @@ const App = () => {
 
   return (
     <LanguageProvider>
-      <React.Suspense fallback={<Loading />}>
+      <React.Suspense fallback={<Loading isLoading={true} />}>
         {/* <EntryScreen /> */}
         <NewDesignEntryScreen />
       </React.Suspense>

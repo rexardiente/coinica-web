@@ -4,22 +4,41 @@
     background-color: $primary-lighter;
 }
 
-.login_button{
+.login_button, .stake_button {
     margin-left:auto;
     font-size: large;
     font-weight: 700;
 }
 
+.coinMenu {
+    color: #000;
+    svg {
+        margin-right: 5px;
+    }
+}
+
 .select_coin{
     height: 35px;
+
+    @media(max-width:425px){
+        width: 108px;
+    }
+
     width: 150px;
     background-color: $secondary-color;
-    color: white;
+    color: $google-black;
     margin-right: 15px;
+    align-items: center;
+}
+
+.select_coin_item{
+    color: $google-black;
 }
 
 .logged_in{
+    height: 100%;
     display: flex;
+    align-items: center;
 }
 
 .username{
@@ -28,8 +47,8 @@
     text-transform: none;
 }
 
-.user_menu{
-    height: 35px;
+.user_menu_button{
+    height: 100%;
     color: white;
 }
 

@@ -42,9 +42,9 @@ export const GetUserAccountById = (id) => {
 /**
  * @param  {string} id - platform account id
  */
-export const GetVIP = (id) => {
+export const GetVIP = () => {
   const headers = getHeaderParams();
-  return api.get("/donut/api/v1/vip", { params: { id }, headers: headers });
+  return api.get("/donut/api/v1/vip", { headers: headers });
 };
 
 /**
@@ -84,6 +84,13 @@ export const ReferralHistory = (referral_code) => {
   const headers = getHeaderParams();
   return api.get(`/donut/api/v1/referral/history/${referral_code}`, {
     headers,
+  });
+};
+
+export const TasksList = () => {
+  const headers = getHeaderParams();
+  return api.get("/donut/api/v1/tasks", {
+    headers: headers,
   });
 };
 
@@ -142,8 +149,8 @@ export const GetDailyRanking = () => {
 /**
  * @param  {}
  */
-export const GetNews = () => {
-  return api.get("/donut/api/v1/news");
+export const GetNews = (pageNum) => {
+  return api.get(`https://forum.coinica.net/wp-json/wp/v2/posts?per_page=5&page=${pageNum}`);
 };
 
 // Account Settings //

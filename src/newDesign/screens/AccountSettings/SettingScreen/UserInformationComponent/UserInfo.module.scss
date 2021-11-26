@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.emailInput {
+  width: 400px;
+  background: #0E131F;
+  border-radius: 5px;
+}
+
+.submitBtn {
+  height: 55px;
+  width: 85px;
+  margin-left: 15px;
+  @media (max-width: "596px") {
+    margin-left: 0px;
+    margin-top: 8px;
+  }
+}

@@ -35,6 +35,10 @@ body {
   margin-right: auto;
 }
 
+.hide-element{
+  display: none;
+}
+
 .strokeBlue2 {
   @include stroke(#12186b, 2px);
 }
@@ -81,4 +85,8 @@ body {
 
 .strokeLightBrown8 {
   @include stroke(#735430, 8px);
+}
+
+.paddingTop20{
+  padding-top: 20px;
 }

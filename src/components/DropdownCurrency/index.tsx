@@ -28,7 +28,6 @@ type Props = {
   selectedCurrency: string | null;
   listCurrency: Array<Currency>;
   containerClass?: string;
-  styles?: any;
 };
 
 const useStyles = makeStyles(() => ({
@@ -65,7 +64,6 @@ const DropdownCurrency = ({
   selectedCurrency,
   listCurrency,
   containerClass,
-  styles
 }: Props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -90,22 +88,7 @@ const DropdownCurrency = ({
   };
 
   return (
-    // <DropdownButton
-    //   id="dropdown-currency"
-    //   drop="down"
-    //   variant="secondary"
-    //   title={selectedCurrency}
-    //   onSelect={(selectedKey) => onSelectCurrency(selectedKey)}
-    //   className={`${styles.container} ${containerClass || ""}`}
-    // >
-    //   {listCurrency.length &&
-    //     listCurrency.map((curr, index) => (
-    //       <Dropdown.Item key={index} eventKey={curr.symbol}>
-    //         {curr.symbol}
-    //       </Dropdown.Item>
-    //     ))}
-    // </DropdownButton>
-    <div style={styles}>
+    <div className={styles.dropdownContainer}>
       <ButtonGroup
         variant="contained"
         ref={anchorRef}

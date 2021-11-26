@@ -5,7 +5,7 @@ import styles from "./Header.module.scss";
 const Header = () => {
   return (
     <div className={styles.pageTitleWrapper}>
-      <Typography component="h1" variant="h4">
+      <Typography variant="h1">
         {translate("news.title")}
       </Typography>
     </div>

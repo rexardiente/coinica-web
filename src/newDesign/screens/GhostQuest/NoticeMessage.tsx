@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal'
 
 const NoticeMessage = ({ noticeState, showNotice }) => {
   return (
-    <Modal show={noticeState} onHide={() => showNotice(false)}>
+    <Modal show={noticeState} onHide={() => showNotice(false)} style={{ color: "#000" }}>
       <Modal.Header closeButton>
         <Modal.Title>Notice</Modal.Title>
       </Modal.Header>

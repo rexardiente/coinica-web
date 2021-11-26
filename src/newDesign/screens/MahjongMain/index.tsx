@@ -202,7 +202,7 @@ const MahjongMain = () => {
   // Play main bg sound
   useEffect(() => {
     if (soundMjHome && isLoadedMainBgSound) {
-      soundMjHome.stop();
+      soundMjHome.play();
     }
 
     return () => {
@@ -219,6 +219,7 @@ const MahjongMain = () => {
         userId={userID}
         username={username}
         data={myDataTabs}
+        tiles={[]}
         onHide={onToggleMyData}
       />
       <Tutorial show={showModal.tutorial} onHide={onToggleTutorial} />
@@ -227,7 +228,11 @@ const MahjongMain = () => {
         show={showModal.ranking}
         onHide={onToggleRanking}
       />
-      <MyGames show={showModal.myGames} onHide={onToggleMyGames} />
+      <MyGames
+        data={gamePlayHistory}
+        show={showModal.myGames}
+        onHide={onToggleMyGames}
+      />
 
       <div className={styles.coverBg}>
         <img className={styles.girlBg} src={bgGirl} alt="girl background" />

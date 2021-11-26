@@ -46,8 +46,8 @@ const SwitchButton = ({ value, options, onChange, className }: Props) => {
       exclusive={true}
     >
       {options.length &&
-        options.map(({ label, value }) => (
-          <ToggleButton value={value} aria-label={label}>
+        options.map(({ label, value }, index) => (
+          <ToggleButton value={value} aria-label={label} key={index}>
             {label}
           </ToggleButton>
         ))}

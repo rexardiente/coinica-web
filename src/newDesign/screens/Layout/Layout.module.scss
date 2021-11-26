@@ -7,14 +7,19 @@
 .page_content{
     height: 100%;
     width: 100%;
-    margin-top: 64px;
-    margin-bottom: 68.5px;
+    margin-top: 6vh;
     // border: 3px solid $primary-lighter;
 }
 
 .container{
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-left: 50px;
-    margin-right: 50px;
+
+    @media (min-width: 768px){
+        padding: 0 50px;
+    }
+
+    padding: 0 10px;
+    
+    min-height: 100vh - 6vh;
 }

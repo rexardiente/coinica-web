@@ -11,7 +11,7 @@ const History = ({ news }: Props) => {
     <Fragment>
       {newsEntries.map((data, index) => (
         <Fragment key={index}>
-          <h3>{moment(data[0]).format("Do MMM, YYYY")}</h3>
+          <h5>{moment(data[0]).format("Do MMM, YYYY")}</h5>
           <NewsCard data={data[1]} />
         </Fragment>
       ))}

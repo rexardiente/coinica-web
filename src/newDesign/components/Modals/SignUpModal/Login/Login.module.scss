@@ -1,5 +1,9 @@
 @import "/src/assets/scss/colors.scss";
 
+.grid{
+    direction: ltr;
+}
+
 .input_field{
     border-radius: 4;
     position: relative;

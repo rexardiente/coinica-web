@@ -3,12 +3,11 @@ import History from "./History";
 
 type NewsData = {
   id: string;
-  title: string;
-  subTitle: string;
-  description: string;
-  author: string;
-  url: string;
-  createdAt: string;
+  title: { rendered: string };
+  excerpt: { rendered: string };
+  content: string;
+  link: string;
+  date: string;
 };
 type Props = {
   data: NewsData[];
@@ -20,8 +19,8 @@ const NewsList = ({ data }: Props) => {
     return history.reduce(
       (result, news) => ({
         ...result,
-        [news.createdAt.split("T")[0]]: [
-          ...(result[news.createdAt.split("T")[0]] || []),
+        [news.date.split("T")[0]]: [
+          ...(result[news.date.split("T")[0]] || []),
           news,
         ],
       }),

@@ -38,8 +38,8 @@ const TabRanking = ({ data, selectedTab, onChangeTab }: Props) => {
         className={[classes.root, styles.tabListHeader].join(" ")}
         indicatorColor="primary"
       >
-        {dataEntries.map((title) => (
-          <Tab label={translate(`ranking.tab.${title[0]}`)} value={title[0]} />
+        {dataEntries.map((title, index) => (
+          <Tab label={translate(`ranking.tab.${title[0]}`)} value={title[0]} key={index}/>
         ))}
       </TabList>
     );

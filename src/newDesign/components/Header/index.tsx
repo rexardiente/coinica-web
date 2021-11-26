@@ -7,7 +7,24 @@ import {
   useTheme,
   Theme,
 } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Button, FormGroup, FormControlLabel, FormControl, Switch, IconButton, Select, MenuItem, Avatar, Typography, Menu } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Button,
+  FormGroup,
+  FormControlLabel,
+  FormControl,
+  Switch,
+  IconButton,
+  Select,
+  MenuItem,
+  Avatar,
+  Typography,
+  Menu,
+  withStyles,
+  MenuProps,
+  Box,
+} from "@material-ui/core";
 import { Menu as MenuIcon, ArrowDropDown } from "@material-ui/icons"
 import styles from "./Header.module.scss";
 import { translate } from "helpers/translate";
@@ -39,6 +56,20 @@ const getSymbol = (symbol) => {
     default: return null
   }
 }
+
+const StyledMenu = withStyles({
+  paper: {
+    backgroundColor: "#242D41",
+    color: 'white',
+  },
+})((props: MenuProps) => (
+  <Menu
+    getContentAnchorEl={null}
+    anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+    transformOrigin={{ vertical: "top", horizontal: "center" }}
+    {...props}
+  />
+));
 
 const LoggedIn = (props) => {
   const history = useHistory();
@@ -97,11 +128,15 @@ const LoggedIn = (props) => {
           <Select
             value={selectedCurrency}
             onChange={handleSelectChange}
-            className={`${styles.select_coin}`}
+            className={styles.select_coin}
           >
             {accountBalance && balanceAvailable && balanceAvailable.length
               ? balanceAvailable.map((currency,index) => (
-                  <MenuItem key={currency + index} value={currency}>
+                  <MenuItem
+                    className={styles.coinMenu}
+                    key={currency + index}
+                    value={currency}
+                  >
                     {getSymbol(currency)}{" "}
                     {accountBalance[currency] !== null
                       ? truncate(accountBalance[currency].amount, 6)
@@ -117,7 +152,7 @@ const LoggedIn = (props) => {
         aria-controls="user-menu"
         aria-haspopup="true"
         onClick={handleMenuClick}
-        className={`${styles.user_menu}`}
+        className={`${styles.user_menu_button}`}
       >
         <Avatar src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" />
         <Typography variant="subtitle1" className={`${styles.username}`}>
@@ -125,12 +160,9 @@ const LoggedIn = (props) => {
         </Typography>
         <ArrowDropDown />
       </Button>
-      <Menu
+      <StyledMenu
         id="user-menu"
         anchorEl={anchorEl}
-        getContentAnchorEl={null}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-        transformOrigin={{ vertical: "top", horizontal: "center" }}
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
@@ -139,7 +171,7 @@ const LoggedIn = (props) => {
         <MenuItem onClick={() => history.push("/account/balance/deposit")}>{translate("header.dropdown.balance")}</MenuItem>
         <MenuItem onClick={() => history.push("/account/settings")}>{translate("header.dropdown.settings")}</MenuItem>
         <MenuItem onClick={() => logoutUser()}>{translate("header.dropdown.logout")}</MenuItem>
-      </Menu>
+      </StyledMenu>
     </div>
   );
 };
@@ -164,6 +196,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     appBar: {
+      minHeight: '6vh',
       zIndex: theme.zIndex.drawer + 1,
       color: "#1785EB",
       backgroundColor: "#242D41",
@@ -205,7 +238,6 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'space-between',
       [theme.breakpoints.down(768)]:{
         paddingLeft: '5px',
-        paddingRight: '5px',
       },
     },
   })
@@ -218,38 +250,44 @@ type props = {
   mini: boolean;
   handleNavType: Function;
   scatter?: any;
-  platform?: any;
+  platform: any;
   walletExt?: any;  
-  dispatch?: Function;
+  dispatch: Function;
 };
 
 const Header = (props: props) => {
+  const history = useHistory();
   const classes = useStyles();
   const [logoutState, setLogoutModal] = useState(false);
   const [openSignupModal, setOpenSignupModal] = useState(false);
   const { userAccount } = props.scatter;
   const { account, entryModalState } = props.platform;
   const { dispatch } = props;
+
   const setShowSignupModal = (state) => {
     if (typeof dispatch === "function") {
       dispatch(setEntryModalState(state));
     }
   };
+
   const handleSignUpModalOpen = () => {
-    setOpenSignupModal(true);
+    dispatch(setEntryModalState(true));
+    // setOpenSignupModal(true);
   };
   const handleSignUpModalClose = () => {
-    setOpenSignupModal(false);
+    dispatch(setEntryModalState(false));
+    // setOpenSignupModal(false);
   };
 
   const handleCloseLogoutModal = () => {
     setLogoutModal(false);
   }
+
   return (
     <AppBar position="fixed" className={clsx(classes.appBar)}>
       {
         <SignupModal
-          openModal={openSignupModal}
+          openModal={entryModalState}
           handleSignUpModalOpen={handleSignUpModalOpen}
           handleSignUpModalClose={handleSignUpModalClose}
         />
@@ -302,6 +340,15 @@ const Header = (props: props) => {
         >
           <MenuIcon />
         </IconButton>
+        {/* <Button
+          variant="text"
+          color="primary"
+          className={`${styles.stake_button}`}
+          onClick={() => history.push("/staking")}
+        >
+          {translate("header.stake")}
+        </Button>
+        <Box border="1px solid #57688D" height="38px" margin="0 10px" /> */}
         {userAccount || account ? (
           <LoggedIn {...props} setLogoutModal={setLogoutModal} />
         ) : (

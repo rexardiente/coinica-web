@@ -16,6 +16,8 @@
   "header.dropdown.balance":"Balance",
   "header.dropdown.settings":"Settings",
   "header.dropdown.logout":"Logout",
+  "header.stake":"Stake",
+
 
 
   "signup.username": "Username",
@@ -93,7 +95,6 @@
   "sidebar.rank": "Rank",
   "sidebar.news": "News",
   "sidebar.telegram": "Telegram",
-  "sidebar.language.japanese":"日本",
 
   "footer.termsOfUse": "Terms of Use",
   "footer.privacyPolicy": "Privacy policy",
@@ -103,7 +104,7 @@
 
   "game.play.button": "PLAY GAME",
 
-  "home.gameList.title": "GAMES",
+  "home.gameList.title": "Games",
 
   "referral.title": "My Referral",
   "referral.copy.button": "Copy",
@@ -260,8 +261,6 @@
   "mj.my_data.hilo.average_round": "Average Win Round",
   "mj.my_data.hilo.shortest_round": "Shortest Win Round",
 
-  "mj.gameplay.menu": "Menu",
-
   "mj.gameplay.error.fetching_data": "Error fetching data, please try again",
   "mj.gameplay.error.login_first": "Please login first",
   "mj.gameplay.error.no_game_data": "No game data found",
@@ -276,6 +275,7 @@
   "mj.gameplay.error.play_hilo.discard_tile": "Maximum number of tiles on hand! Please discard a tile first(double click)",
   "mj.gameplay.loading.reset_game": "Resetting the game...",
   "mj.gameplay.success.reset_game": "Game has been reset. You can now play again",
+  "mj.gameplay.error.reset_game": "Cannot reset the game. Bet in place.",
   "mj.gameplay.loading.draw_hilo": "Please wait while draw tile...",
   "mj.gameplay.loading.discard": "Discarding Tile...",
   "mj.gameplay.loading.declare_kong": "Declaring Kong...",
@@ -303,8 +303,8 @@
   "mj.gameplay.wallet.withdraw.content": "Are you sure you want to withdraw your {amount} balance?",
 
   "mj.gameplay.complete_hand_result.no_data": "No data",
-  "mj.gameplay.complete_hand_result.total_score": "Total score",
-  "mj.gameplay.complete_hand_result.rankings": "Rankings",
+  "mj.gameplay.complete_hand_result.total_points": "Total Points",
+  "mj.gameplay.complete_hand_result.ranking": "Ranking",
   "mj.gameplay.complete_hand_result.home": "Home",
   "mj.gameplay.complete_hand_result.play_again": "Play Again",
 
@@ -597,5 +597,6 @@
   "account_settings.transactions_screen.table.header.type":"Type",
   "account_settings.transactions_screen.table.header.currency":"Currency",
   "account_settings.transactions_screen.table.header.amount":"Amount",
-  "account_settings.transactions_screen.table.header.hash":"Hash"
+  "account_settings.transactions_screen.table.header.hash":"Hash",
+  "account_settings.transactions_screen.table.header.status":"Status"
 }

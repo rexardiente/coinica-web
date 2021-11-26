@@ -1,5 +1,5 @@
 import { Fragment, useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setPageLoading } from "redux/page/page_action";
 import { Grid, Typography } from "@material-ui/core";
 import { GetNews } from "services/api/server/platform";
@@ -7,21 +7,16 @@ import Header from "./Header";
 import NewsList from "./NewsList";
 import styles from "./News.module.scss";
 
-type ReduxState = {
-  platform: any;
-};
 type NewsData = {
   id: string;
-  title: string;
-  subTitle: string;
-  description: string;
-  author: string;
-  url: string;
-  createdAt: string;
+  title: { rendered: string };
+  excerpt: { rendered: string };
+  content: string;
+  link: string;
+  date: string;
 };
 
-const Ranking = () => {
-  const { account } = useSelector((state: ReduxState) => state.platform);
+const News = () => {
   const dispatch = useDispatch();
 
   const [newsData, setNewsData] = useState<NewsData[]>([]);
@@ -30,7 +25,7 @@ const Ranking = () => {
   const getNews = async () => {
     dispatch(setPageLoading(true));
     try {
-      const response = await GetNews();
+      const response = await GetNews(1);
 
       setNewsData(response.data);
     } catch (error: any) {
@@ -41,11 +36,9 @@ const Ranking = () => {
   };
 
   useEffect(() => {
-    if (account) {
-      getNews();
-    }
+    getNews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account]);
+  }, []);
 
   if (error) {
     return (
@@ -57,7 +50,7 @@ const Ranking = () => {
 
   return (
     <Fragment>
-      <Grid container xs className={styles.container}>
+      <Grid container className={styles.container}>
         <Grid item xs={12}>
           <Header />
         </Grid>
@@ -69,4 +62,4 @@ const Ranking = () => {
   );
 };
 
-export default Ranking;
+export default News;

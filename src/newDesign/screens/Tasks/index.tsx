@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setPageLoading } from "redux/page/page_action";
 import { Grid, Typography } from "@material-ui/core";
 import HowItWorks from "newDesign/components/HowItWorks";
-import { DailyTask, MonthlyTask, GameList } from "services/api/server/platform";
+import { DailyTask, MonthlyTask, GameList, TasksList } from "services/api/server/platform";
 import { translate } from "helpers/translate";
 import styles from "./Tasks.module.scss";
 import GameTaskList from "./GameTaskList";
@@ -21,6 +21,14 @@ type ReduxState = {
 };
 
 type Task = typeof defaultTaskObj;
+
+type NTask = {
+  game: any;
+  count: number;
+  points: number;
+  progress: number;
+}
+
 type StateTaskData = {
   dailyTaskData: Task[];
   monthlyTaskData: Task[];
@@ -35,64 +43,80 @@ const INSTRUCTION_LIST = [
 const Tasks = () => {
   const { account } = useSelector((state: ReduxState) => state.platform);
   const dispatch = useDispatch();
+  const [taskData, setTaskData] = useState<NTask[]>([]);
 
-  const [taskData, setTaskData] = useState<StateTaskData>({
-    dailyTaskData: [],
-    monthlyTaskData: [],
-  });
+  // const [taskData, setTaskData] = useState<StateTaskData>({
+  //   dailyTaskData: [],
+  //   monthlyTaskData: [],
+  // });
   const [error, setError] = useState("");
 
-  const getTaskData = async (
-    gameList: any[],
-    cbFetchTasks: (
-      userId: string,
-      gameId: string
-    ) => Promise<AxiosResponse<any>>
-  ) => {
-    if (gameList.length) {
-      const taskDataArr = await Promise.all(
-        gameList.map(async (game) => {
-          let newTaskObj = { ...defaultTaskObj };
-          const { data: taskData } = await cbFetchTasks(account.id, game.id);
+  // const getTaskData = async (
+  //   gameList: any[],
+  //   cbFetchTasks: (
+  //     userId: string,
+  //     gameId: string
+  //   ) => Promise<AxiosResponse<any>>
+  // ) => {
+  //   if (gameList.length) {
+  //     const taskDataArr = await Promise.all(
+  //       gameList.map(async (game) => {
+  //         let newTaskObj = { ...defaultTaskObj };
+  //         const { data: taskData } = await cbFetchTasks(account.id, game.id);
 
-          if (taskData) {
-            newTaskObj.gameName = game.name;
-            newTaskObj.currentProgress = taskData.game_count;
-            newTaskObj.maxProgress = 10;
-            newTaskObj.vipPoints = 1;
-          } else {
-            newTaskObj.gameName = game.name;
-          }
+  //         if (taskData) {
+  //           newTaskObj.gameName = game.name;
+  //           newTaskObj.currentProgress = taskData.game_count;
+  //           newTaskObj.maxProgress = 10;
+  //           newTaskObj.vipPoints = 1;
+  //         } else {
+  //           newTaskObj.gameName = game.name;
+  //         }
 
-          return newTaskObj;
-        })
-      );
+  //         return newTaskObj;
+  //       })
+  //     );
 
-      return taskDataArr;
-    }
-  };
+  //     return taskDataArr;
+  //   }
+  // };
 
-  const getGameList = async () => {
+  // const getGameList = async () => {
+  //   dispatch(setPageLoading(true));
+  //   try {
+  //     const { data } = await GameList();
+  //     const daily = await getTaskData(data, DailyTask);
+  //     const monthly = await getTaskData(data, MonthlyTask);
+
+  //     setTaskData({
+  //       dailyTaskData: daily as Task[],
+  //       monthlyTaskData: monthly as Task[],
+  //     });
+  //   } catch (error: any) {
+  //     setError(error.message);
+  //   } finally {
+  //     dispatch(setPageLoading(false));
+  //   }
+  // };
+
+  const getTasks = async() => {
     dispatch(setPageLoading(true));
     try {
-      const { data } = await GameList();
-      const daily = await getTaskData(data, DailyTask);
-      const monthly = await getTaskData(data, MonthlyTask);
-
-      setTaskData({
-        dailyTaskData: daily as Task[],
-        monthlyTaskData: monthly as Task[],
-      });
+      const { data } = await TasksList();
+      if(data){
+        setTaskData(data.tasks);
+      }
     } catch (error: any) {
       setError(error.message);
-    } finally {
+    }finally{
       dispatch(setPageLoading(false));
     }
   };
 
   useEffect(() => {
     if (account) {
-      getGameList();
+      // getGameList();
+      getTasks();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account]);
@@ -107,7 +131,7 @@ const Tasks = () => {
 
   return (
     <Fragment>
-      <Grid container xs>
+      <Grid container>
         <Grid item xs={12}>
           <HowItWorks
             className={styles.howItWorks}
@@ -115,11 +139,14 @@ const Tasks = () => {
           />
         </Grid>
         <Grid item container spacing={2}>
-          <Grid item xs={6} md={12}>
+          {/* <Grid item xs={6} md={12}>
             <GameTaskList data={taskData.dailyTaskData} />
           </Grid>
           <Grid item xs={6} md={12}>
             <GameTaskList data={taskData.monthlyTaskData} />
+          </Grid> */}
+          <Grid item xs={6} md={12}>
+            <GameTaskList data={taskData} />
           </Grid>
         </Grid>
       </Grid>

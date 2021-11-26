@@ -21,12 +21,11 @@ import {
 import {
   updateMahjongHiloData,
   MJ_PLAY_HILO,
-  // MJ_DEPOSIT_TOKEN,
   MJ_WITHDRAW_TOKEN,
   MJ_DISCARD_TILE,
+  MJ_RIICHI_DISCARD,
   MJ_DCLR_WIN_HAND,
   MJ_DECLARE_KONG,
-  MJ_ACTION_RESET_GAME,
   MJ_BET_TOKEN,
   MJ_ADD_BET,
   MJ_TRANSFER_TOKEN,
@@ -175,6 +174,7 @@ const MahjongGameplay = () => {
           toast.error(
             err?.message || translate("mj.gameplay.error.fetching_data")
           );
+          history.push("/game/mahjong");
         });
     } else {
       // toast.error(translate("mj.gameplay.error.login_first"));
@@ -358,22 +358,21 @@ const MahjongGameplay = () => {
 
     MJ_BET_TOKEN()
       .then(async (result) => {
-        if (result.data) {
-          await updateMahjongHiloData(username);
-          toast.success(translate("mj.gameplay.success.play_hilo.can_play"));
-          toast.dismiss(hiloLoading);
-        } else {
-          playError();
-          toast.dismiss(hiloLoading);
-          toast.error(translate("mj.gameplay.error.play_hilo.discard_tile"), {
-            autoClose: false,
-          });
-        }
+        await updateMahjongHiloData(username);
+        toast.success(translate("mj.gameplay.success.play_hilo.can_play"));
+        toast.dismiss(hiloLoading);
       })
       .catch((err) => {
         playError();
-        toast.error(err.message);
         toast.dismiss(hiloLoading);
+
+        if (game_data?.riichi_status === 1) {
+          toast.error(translate("mj.gameplay.error.play_hilo.discard_tile"), {
+            autoClose: false,
+          });
+        } else {
+          toast.error(err.message);
+        }
       });
   };
 
@@ -393,7 +392,7 @@ const MahjongGameplay = () => {
         toast.dismiss(resetLoading);
       })
       .catch((err) => {
-        toast.error(err.message);
+        toast.error(translate("mj.gameplay.error.reset_game"));
         toast.dismiss(resetLoading);
       });
   };
@@ -414,7 +413,7 @@ const MahjongGameplay = () => {
         toast.dismiss(hiloLoading);
         setTimeout(() => {
           togglePredictionResult();
-        }, 1000);
+        }, 1500);
       })
       .catch((err) => {
         playError();
@@ -486,6 +485,19 @@ const MahjongGameplay = () => {
       "discard"
     );
     setStopMainBgSound(true);
+
+    if (game_data?.riichi_status === 2) {
+      MJ_RIICHI_DISCARD()
+        .then(() => {
+          updateMahjongHiloData(username);
+          toast.dismiss(discardLoading);
+        })
+        .catch((err) => {
+          toast.dismiss(discardLoading);
+          toast.error(err.message);
+        });
+      return;
+    }
 
     MJ_DISCARD_TILE({ idx })
       .then(() => {
@@ -617,7 +629,6 @@ const MahjongGameplay = () => {
       .then(async (result) => {
         await MJ_START_GAME();
         await updateMahjongHiloData(username);
-        toggleMenu();
         toast.success(translate("mj.gameplay.success.reset_game"));
         toast.dismiss(againLoading);
       })
@@ -690,7 +701,9 @@ const MahjongGameplay = () => {
         </div>
         <div className={styles.itemHand}>
           <Hand
+            winTiles={game_data?.wintiles}
             tiles={game_data?.hand_player}
+            riichiStatus={game_data?.riichi_status}
             onDiscardTile={handleDiscardTile}
           />
         </div>

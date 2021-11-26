@@ -43,7 +43,7 @@ const GhostQuestSummonResult = (props) => {
   useResize(ref, (resizeResponse) => {
     const { width, height } = resizeResponse
     const scaleValue = Math.min(width / GQfixedWidth, height / GQfixedHeight)
-    setScale(scaleValue * 0.9)
+    setScale(scaleValue * 0.8)
   });
 
   useEffect(() => {

@@ -207,7 +207,6 @@ const Withdraw = ({ listOfCurrency, isServerUp }: Props) => {
             listCurrency={listOfCurrency}
             selectedCurrency={currency}
             onSelectCurrency={handleSelectedCurrency}
-            styles={{ marginLeft: '-7px' }}
           />
         </div>
       </div>

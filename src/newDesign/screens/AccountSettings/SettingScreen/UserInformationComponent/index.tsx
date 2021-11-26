@@ -7,6 +7,7 @@ import { UpdateEmail, AddEmail } from "services/api/server/multi_currency_api";
 import { GetUserAccountById } from "services/api/server/platform";
 import { setPlatformAccountSuccess } from "redux/platform/platform_action";
 import { translate } from "helpers/translate";
+import styles from "./UserInfo.module.scss";
 
 // const ConfirmEmailModal = ({showModal,setShow}) => {
 //   const [code, setCode] = useState('');
@@ -123,29 +124,22 @@ const UserInformation = ({platform, dispatch, showModal, setShow} : SettingsProp
   }
 
   return (
-      <div className="d-flex align-items-center h-100">
+      <div className={styles.container}>
         <TextField
+          className={styles.emailInput}
           type="email"
           variant="outlined"
           label={email ? email : ''}
-          style={{
-            width: '400px',
-            background: '#0E131F',
-            borderRadius: '5px'
-          }}
           InputLabelProps={{
             style: { color: '#427AAD' },
           }}
           onChange={EmailHandler}
         />
         <Button
+          className={styles.submitBtn}
           color="primary"
           variant="contained"
           onClick={() => handleSubmit()}
-          style={{
-            height: '55px',
-            marginLeft: '15px'
-          }}
         >
           {loading ? 'Loading...' : translate("account_settings.setting_screen.user_information.button.submit")}
         </Button>

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import GradientText from "newDesign/components/GradientText";
+import GradientText from "../../GradientText";
 import styles from "./PredictionResult.module.scss";
 
 type PredictionResultProps = {
