@@ -36,51 +36,50 @@ const HomeScreen = ({platform, dispatch}) => {
       <Carousel />
 
       <div className={`${styles.homescreen}`}>
-      <Typography variant="h5" className={`${styles.games_title}`}>
-        {translate('home.gameList.title')}
-      </Typography>
+        <Typography variant="h5" className={`${styles.games_title}`}>
+          {translate("home.gameList.title")}
+        </Typography>
 
-      <Grid
-        justifyContent="flex-start"
-        container
-        className={`${styles.game_list}`}
-      >
-        {
-          gameList?.length ? 
-          gameList.map((game, index) => (
-          <Grid key={index} item>
-            <Card
-              className={`${styles.game_card}`}
-              onClick={() => {
-                history.push(game?.path)
-              }}
-            >
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="Avatar"
-                  height="140"
-                  image={game.imgURL}
-                />
-                <CardContent className={`${styles.card_content}`}>
-                  <Typography gutterBottom variant="h6" component="h2">
-                    {game.name}
-                  </Typography>
-                  <Typography variant="caption" component="p">
-                    {game.description}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-          ))
-          : <Skeleton variant='rect' height={300} width={300} />
+        <Grid
+          justifyContent="flex-start"
+          container
+          className={`${styles.game_list}`}
+        >
+          {gameList?.length ? (
+            gameList.map((game, index) => (
+              <Grid key={index} item>
+                <Card
+                  className={`${styles.game_card}`}
+                  onClick={() => {
+                    history.push(game?.path);
+                  }}
+                >
+                  <div className={styles.image_button}>
+                    {/* <span className={styles.play_button}>play</span> */}
+                    <CardMedia
+                      component="img"
+                      alt="Avatar"
+                      height="140"
+                      image={game.logo}
+                    />
+                  </div>
 
-        }
-        
-      </Grid>
+                  <CardContent className={`${styles.card_content}`}>
+                    <Typography gutterBottom variant="h6" component="h2">
+                      {game.displayName}
+                    </Typography>
+                    <Typography variant="caption" component="p">
+                      {game.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))
+          ) : (
+            <Skeleton variant="rect" height={300} width={300} />
+          )}
+        </Grid>
       </div>
-      
     </>
   );
 };

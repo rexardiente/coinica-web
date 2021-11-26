@@ -23,6 +23,23 @@
     }
 
     margin: 10px;
+
+    -webkit-transition: opacity .15s ease-in-out;
+    -moz-transition: opacity .15s ease-in-out;
+    -ms-transition: opacity .15s ease-in-out;
+    -o-transition: opacity .15s ease-in-out;
+    transition: opacity .15s ease-in-out;
+}
+
+.game_card:hover{
+    cursor: pointer;
+    opacity: 0.8;
+
+    -webkit-transition: opacity .15s ease-in-out;
+    -moz-transition: opacity .15s ease-in-out;
+    -ms-transition: opacity .15s ease-in-out;
+    -o-transition: opacity .15s ease-in-out;
+    transition: opacity .15s ease-in-out;
 }
 
 .card p {
@@ -47,4 +64,19 @@
 
 .card_content{
     height: 100%;
+}
+
+.play_button{
+    display: flex;
+    position: absolute;
+    align-content: center;
+    justify-content: center;
+}
+
+.card_button{
+    
+}
+
+.image_button{
+
 }
