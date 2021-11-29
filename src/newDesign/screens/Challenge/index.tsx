@@ -60,11 +60,13 @@ const Challenge = () => {
   };
 
   const topThree = () => {
-    if (challengeData.length) {
-      let top = challengeData.slice(0, 3);
-      return top.length < 3
-        ? [...top, ...new Array(3 - top.length).fill({})]
-        : top;
+    if(challengeData){
+      if (challengeData.length) {
+        let top = challengeData.slice(0, 3);
+        return top.length < 3
+          ? [...top, ...new Array(3 - top.length).fill({})]
+          : top;
+      }
     }
     return new Array(3).fill({});
   };

@@ -24,7 +24,7 @@ type Props = {
 
 const Benefits = ({ data }: Props) => {
   const rows = () => {
-    if (!data.length) {
+    if (!data || !data.length) {
       return (
         <TableRow>
           <TableCell colSpan={6} className={styles.emptyData}>
