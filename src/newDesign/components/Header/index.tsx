@@ -59,17 +59,21 @@ const getSymbol = (symbol) => {
 
 const StyledMenu = withStyles({
   paper: {
-    width: '170px',
+    width: '150px',
     backgroundColor: "#242D41",
     color: '#1785EB',
-    marginTop: '5px',
     borderRadius: '0px',
-    boxShadown: 'none',
+    top: '70px !important',
+    boxShadow: '0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%) !important',
+    right: 0,
+    left: '90% !important',
     '& li':{
-      paddingTop: '10px',
-      justifyContent: 'center',
+      padding: '10px 0px 10px 20px',
+      alignItems: 'center',
       fontWeight: 'bolder',
       '& img':{
+        height: '20px',
+        width: '20px',
         marginRight: '10px',
       }
     }
@@ -186,9 +190,9 @@ const LoggedIn = (props) => {
         onClose={handleMenuClose}
       >
         {/* <MenuItem>{translate("header.dropdown.hello")} {`, ${username}`}</MenuItem> */}
-        <MenuItem onClick={() => history.push("/account/balance/deposit")}><img src={assets.wallet} /> {translate("header.dropdown.balance")}</MenuItem>
-        <MenuItem onClick={() => history.push("/account/settings")}><img src={assets.settings} /> {translate("header.dropdown.settings")}</MenuItem>
-        <MenuItem onClick={() => logoutUser()}><img src={assets.logout} /> {translate("header.dropdown.logout")}</MenuItem>
+        <MenuItem onClick={() => history.push("/account/balance/deposit")}><img src={assets.wallet} />{translate("header.dropdown.balance")}</MenuItem>
+        <MenuItem onClick={() => history.push("/account/settings")}><img src={assets.settings} />{translate("header.dropdown.settings")}</MenuItem>
+        <MenuItem onClick={() => logoutUser()}><img src={assets.logout} />{translate("header.dropdown.logout")}</MenuItem>
       </StyledMenu>
     </div>
   );
@@ -214,7 +218,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     appBar: {
-      minHeight: '6vh',
+      padding: 0,
       zIndex: theme.zIndex.drawer + 1,
       color: "#1785EB",
       backgroundColor: "#242D41",
@@ -253,6 +257,8 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(3),
     },
     toolbar: {
+      height: '70px',
+      padding: 0,
       justifyContent: 'space-between',
       [theme.breakpoints.down(768)]:{
         paddingLeft: '5px',

@@ -7,7 +7,7 @@
 .page_content{
     height: 100%;
     width: 100%;
-    margin-top: 6vh;
+    margin-top: 70px;
     // border: 3px solid $primary-lighter;
 }
 
@@ -21,5 +21,5 @@
 
     padding: 0 10px;
     
-    min-height: 100vh - 6vh;
+    min-height: calc(100vh - 70px);
 }
