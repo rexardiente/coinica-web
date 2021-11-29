@@ -15,7 +15,7 @@ const GameTask = ({ data }: Props) => {
       {data.map((task: Tasks) => (
         <GameTasks
           gameName={task.game.name}
-          currentProgress={0}
+          currentProgress={task.progress? task.progress : 0}
           maxProgress={task.count}
           vipPoints={task.points}
         />
