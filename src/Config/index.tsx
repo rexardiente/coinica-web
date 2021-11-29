@@ -37,12 +37,6 @@ const defaultPrivateKey = process.env.REACT_APP_EOS_PRIVATE_KEY as string; // wa
 const eosServer = `${protocol}://${host}:${port}`;
 const signatureProvider = new JsSignatureProvider([defaultPrivateKey]);
 
-const GamesId = {
-  ghostquest: "0f335579-1bf8-4f9e-8ede-eb204f5c0cba",
-  treasurehunt: "1b977a2b-842e-430b-bd1b-c0bd3abe1c55",
-  mahjonghilo: "74cd374c-6126-495a-a8a3-33db87caa511",
-};
-
 const rpc = new JsonRpc(eosServer, {}); // {} default fetch.
 const api = new Api({
   rpc,
@@ -89,7 +83,6 @@ AxiosServerApi.defaults.headers.post["Content-Type"] = "application/json";
 console.log({ ServerAPI, AxiosMultiCurrency })
 
 export {
-  GamesId,
   Eos,
   Network,
   ServerAPI,

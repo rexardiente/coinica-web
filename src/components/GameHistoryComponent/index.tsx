@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import Spinner from "react-bootstrap/Spinner";
-import { GamesId } from "Config";
 import TreasurehuntTable from "./Treasurehunt/TreasurehuntTable";
 import GhostQuestTable from "./GhostQuest/GhostQuestTable";
 import {
@@ -17,6 +16,7 @@ import styles from "./GameHistory.module.scss";
 type GameHistoryProps = {
   game?: any;
   userId?: any;
+  platform: any;
   treasurehunt: any;
   ghost_quest: any;
   dispatch: Function;
@@ -25,15 +25,30 @@ type GameHistoryProps = {
 const GameHistory = ({
   game,
   userId,
+  platform,
   treasurehunt,
   ghost_quest,
   dispatch
 } : GameHistoryProps) => {
-  const TH_GAME_HISTORY = treasurehunt?.game_history
-  const GQ_GAME_HISTORY = ghost_quest?.game_history
+  const { gameList } = platform;
+  const TH_GAME_HISTORY = treasurehunt?.game_history;
+  const GQ_GAME_HISTORY = ghost_quest?.game_history;
   const [isLoading, setLoading] = useState(true);
   const [isError, setError] = useState(false);
   const [data, setData] = useState<any[]>([]);
+
+  const getGameData = (game) => {
+    if (gameList && Array.isArray(gameList)) {
+      const data = gameList.find((list) => {
+        return list?.name === game;
+      })
+      if (data) {
+        return data;
+      }
+      return null;
+    }
+    return null;
+  }
 
   useEffect(() => {
     if (window.gqWS) {
@@ -62,59 +77,62 @@ const GameHistory = ({
 
   useEffect(() => {
     if (game && userId) {
-      // console.log('FETCHING gameHistoryWithGameIdUserId')
-      const gameId = GamesId[game]
+      const gameData = getGameData(game);
+      if (gameData) {
+        const gameId = gameData?.id
+        gameHistoryWithGameIdUserId(gameId, userId)
+          .then((res) => {
+            // console.log({ dataHistory: res.data })
+            if (res?.data.length) {
+              const sortedData = [...res.data].sort((a, b) => b?.createdAt - a?.createdAt)
+              setData(sortedData);
+            } else {
+              setData([]);
+            }
+          })
+          .catch(() => {
+            toast.error("Error fetching game history, please try again");
+            setError(true);
+          })
+          .finally(() => {
+            setLoading(false);
+          });
+      }
 
-      gameHistoryWithGameIdUserId(gameId, userId)
-        .then((res) => {
-          // console.log({ dataHistory: res.data })
-          if (res?.data.length) {
-            const sortedData = [...res.data].sort((a, b) => b?.createdAt - a?.createdAt)
-            setData(sortedData);
-          } else {
-            setData([]);
-          }
-        })
-        .catch(() => {
-          toast.error("Error fetching game history, please try again");
-          setError(true);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
     } else if (game) {
-      console.log('FETCHING gameHistoryWithGameId')
-      const gameId = GamesId[game]
-
-      gameHistoryWithGameId(gameId)
-        .then((res) => {
-          console.log({ dataHistory: res.data })
-          if (res?.data.length) {
-            const sortedData = [...res.data].sort((a, b) => b?.createdAt - a?.createdAt)
-            if (game === "treasurehunt") {
-              dispatch(setTreasurehuntGameHistory({ game_history: sortedData }))
+      const gameData = getGameData(game);
+      if (gameData) {
+        const gameId = gameData?.id
+        gameHistoryWithGameId(gameId)
+          .then((res) => {
+            console.log({ dataHistory: res.data })
+            if (res?.data.length) {
+              const sortedData = [...res.data].sort((a, b) => b?.createdAt - a?.createdAt)
+              if (game === "treasurehunt") {
+                dispatch(setTreasurehuntGameHistory({ game_history: sortedData }))
+              }
+              if (game === "ghostquest") {
+                dispatch(setGhostQuestGameHistory({ game_history: sortedData })) 
+              }
+              setData(sortedData);
+            } else {
+              if (game === "treasurehunt") {
+                dispatch(setTreasurehuntGameHistory({ game_history: [] }))
+              }
+              if (game === "ghostquest") {
+                dispatch(setGhostQuestGameHistory({ game_history: [] })) 
+              }
+              setData([]);
             }
-            if (game === "ghostquest") {
-              dispatch(setGhostQuestGameHistory({ game_history: sortedData })) 
-            }
-            setData(sortedData);
-          } else {
-            if (game === "treasurehunt") {
-              dispatch(setTreasurehuntGameHistory({ game_history: [] }))
-            }
-            if (game === "ghostquest") {
-              dispatch(setGhostQuestGameHistory({ game_history: [] })) 
-            }
-            setData([]);
-          }
-        })
-        .catch(() => {
-          toast.error("Error fetching game history, please try again");
-          setError(true);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+          })
+          .catch(() => {
+            toast.error("Error fetching game history, please try again");
+            setError(true);
+          })
+          .finally(() => {
+            setLoading(false);
+          });
+      }
     } else {
       // console.log('FETCHING gameHistoryAllGames')
       // gameHistoryAllGames()
@@ -159,6 +177,6 @@ const GameHistory = ({
   );
 };
 
-const mapStateToProps = ({ treasurehunt, ghost_quest }) => ({ treasurehunt, ghost_quest });
+const mapStateToProps = ({ platform, treasurehunt, ghost_quest }) => ({ platform, treasurehunt, ghost_quest });
 const mapDispatchToProps = (dispatch) => ({ dispatch });
 export default connect(mapStateToProps, mapDispatchToProps)(GameHistory);
