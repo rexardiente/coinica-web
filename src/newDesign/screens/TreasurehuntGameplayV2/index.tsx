@@ -281,11 +281,26 @@ const getErrorMessage = (type, intl) => {
   }
 }
 
-const TreasurehuntGameplayV2 = (props) => {
-  const { selectedCurrency, language } = props.platform
-  const { user_game_id, username } = props.platform.account
-  const treasurehuntData = props.treasurehunt
+const getBalance = (wallet, selectedCurrency) => {
+  if (wallet && Array.isArray(wallet)) {
+    const data = wallet.find(data => data?.symbol === selectedCurrency);
+    return data?.amount;
+  }
+  return 0;
+}
 
+const TreasurehuntGameplayV2 = (props) => {
+  const { accountBalance, selectedCurrency, language } = props.platform;
+  const { user_game_id, username } = props.platform.account;
+  const treasurehuntData = props.treasurehunt;
+  const [wallet] = useState(() => {
+    if (accountBalance && accountBalance.id !== null) {
+      const arr = accountBalance.wallet;
+      return arr;
+    }
+  });
+
+  const balance = getBalance(wallet, selectedCurrency);
   const [loadedPrevGame, setLoadedPrevGame] = useState(false)
   const [openedPanel, setOpenedPanel] = useState<any>({ tile: null, data: null })
   const [initialized, setInitialized] = useState(false)
@@ -593,6 +608,12 @@ const TreasurehuntGameplayV2 = (props) => {
 
     if (numOfRivals === 0 || numOfRivals === '') {
       toast.warn('Please input number of rivals')
+      playError()
+      return
+    }
+
+    if (balance < startingFunds) {
+      toast.warn("Sorry, you do not have enough balance")
       playError()
       return
     }

@@ -30,6 +30,14 @@ type ConfirmationProps = {
   platform: any;
 }
 
+const getBalance = (wallet, selectedCurrency) => {
+  if (wallet && Array.isArray(wallet)) {
+    const data = wallet.find(data => data?.symbol === selectedCurrency);
+    return data?.amount;
+  }
+  return 0;
+}
+
 const Confirmation = ({
   setStep,
   battleLimit,
@@ -44,8 +52,14 @@ const Confirmation = ({
   const { account, accountBalance, selectedCurrency, language } = platform;
   const user_game_id = account?.user_game_id || null
   const username = account?.username || null
-  const balance = accountBalance[selectedCurrency] ? accountBalance[selectedCurrency]?.amount : 0
   const GQ_VOLUME = ghost_quest?.volume
+  const [wallet] = useState(() => {
+    if (accountBalance && accountBalance.id !== null) {
+      const arr = accountBalance.wallet;
+      return arr;
+    }
+  });
+  const balance = getBalance(wallet, selectedCurrency);
   const [loading, setLoading] = useState({ state: false, text: '' })
   const [playConfirm] = useSound(confirmSound, { volume: 0.5 * GQ_VOLUME })
   const [playCancel] = useSound(cancelSound, { volume: 0.5 * GQ_VOLUME })
@@ -106,7 +120,7 @@ const Confirmation = ({
     }
 
     if (parseFloat(balance) < summonCount) {
-      toast.error(`Sorry, you do not have enough balance to summon ghost`)
+      toast.error("Sorry, you do not have enough balance to summon ghost")
       return
     }
 
