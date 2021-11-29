@@ -59,8 +59,20 @@ const getSymbol = (symbol) => {
 
 const StyledMenu = withStyles({
   paper: {
+    width: '170px',
     backgroundColor: "#242D41",
-    color: 'white',
+    color: '#1785EB',
+    marginTop: '5px',
+    borderRadius: '0px',
+    boxShadown: 'none',
+    '& li':{
+      paddingTop: '10px',
+      justifyContent: 'center',
+      fontWeight: 'bolder',
+      '& img':{
+        marginRight: '10px',
+      }
+    }
   },
 })((props: MenuProps) => (
   <Menu
@@ -161,7 +173,7 @@ const LoggedIn = (props) => {
         className={`${styles.user_menu_button}`}
       >
         <Avatar src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" />
-        <Typography variant="subtitle1" className={`${styles.username}`}>
+        <Typography className={`${styles.username}`}>
           {username}
         </Typography>
         <ArrowDropDown />
@@ -173,10 +185,10 @@ const LoggedIn = (props) => {
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
       >
-        <MenuItem>{translate("header.dropdown.hello")} {`, ${username}`}</MenuItem>
-        <MenuItem onClick={() => history.push("/account/balance/deposit")}>{translate("header.dropdown.balance")}</MenuItem>
-        <MenuItem onClick={() => history.push("/account/settings")}>{translate("header.dropdown.settings")}</MenuItem>
-        <MenuItem onClick={() => logoutUser()}>{translate("header.dropdown.logout")}</MenuItem>
+        {/* <MenuItem>{translate("header.dropdown.hello")} {`, ${username}`}</MenuItem> */}
+        <MenuItem onClick={() => history.push("/account/balance/deposit")}><img src={assets.wallet} /> {translate("header.dropdown.balance")}</MenuItem>
+        <MenuItem onClick={() => history.push("/account/settings")}><img src={assets.settings} /> {translate("header.dropdown.settings")}</MenuItem>
+        <MenuItem onClick={() => logoutUser()}><img src={assets.logout} /> {translate("header.dropdown.logout")}</MenuItem>
       </StyledMenu>
     </div>
   );

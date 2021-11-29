@@ -42,14 +42,16 @@
 }
 
 .username{
+    font-size: large;
     margin-left: 10px;
     margin-right: 10px;
     text-transform: none;
+    font-weight: bolder;
 }
 
 .user_menu_button{
     height: 100%;
-    color: white;
+    color: $secondary-color;
 }
 
 .logo{
