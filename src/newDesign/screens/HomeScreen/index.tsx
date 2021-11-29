@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styles from "./Dashboard.module.scss";
 import { Typography, Card, CardActionArea, CardContent, CardMedia, Grid } from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton";
@@ -55,13 +55,19 @@ const HomeScreen = ({platform, dispatch}) => {
                   }}
                 >
                   <div className={styles.image_button}>
-                    {/* <span className={styles.play_button}>play</span> */}
                     <CardMedia
                       component="img"
                       alt="Avatar"
                       height="140"
                       image={game.logo}
                     />
+                    <Link
+                      className={styles.play_button}
+                      to={game.path}
+                      style={{ textDecoration: "none" }}
+                    >
+                      PLAY
+                    </Link>
                   </div>
 
                   <CardContent className={`${styles.card_content}`}>
