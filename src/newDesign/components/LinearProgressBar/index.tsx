@@ -25,10 +25,15 @@ const BorderLinearProgressBar = withStyles((theme: Theme) =>
 )(LinearProgress);
 
 const LinearProgressBar = ({ currentValue, maxValue }: Props) => {
+  // MIN = Minimum expected value
+  // MAX = Maximium expected value
+  // Function to normalise the values (MIN / MAX could be integrated)
+  const normalise = (value) => ((value - 0) * 100) / (maxValue - 0);
+
   return (
     <div className={styles.container}>
       <BorderLinearProgressBar
-        value={currentValue}
+        value={normalise(currentValue)}
         variant="determinate"
         className={styles.barHeight}
       />

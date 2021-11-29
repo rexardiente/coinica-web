@@ -20,7 +20,6 @@ const Place = ({ playerName, points, index }: Props) => {
       <Avatar variant="square" className={styles.avatarBg} />
       <div className={styles.playerPoints}>
         <div>{playerName || "---"}</div>
-        <div>{points || 0}</div>
       </div>
       <img className={styles.trophy} alt="trophy" src={trophies[index]} />
     </div>
