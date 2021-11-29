@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { connect } from "react-redux";
 import { Switch, Route, useLocation } from "react-router-dom";
 import Typography from '@material-ui/core/Typography';
@@ -31,6 +31,11 @@ const LIST_OF_CURRENCY = [
 const BalanceScreen = ({ dispatch, platform }) => {
   const location = useLocation();
   const { account, accountBalance, walletConfig } = platform;
+  const [coins, setCoins] = useState({
+    ETH : 0,
+    BTC : 0,
+    USDC : 0,
+  })
 
   const defaultRouteKey = () => {
     const defaultRoute = BalanceRoutes.find(
@@ -52,9 +57,30 @@ const BalanceScreen = ({ dispatch, platform }) => {
     }
   };
 
+  const updateCoins = () => {
+    var wallet = accountBalance.wallet;
+    var update = {
+      ETH : 0,
+      BTC : 0,
+      USDC: 0,
+    }
+    if(wallet){
+      wallet.map(c => {
+        if(update.hasOwnProperty(c.symbol)){
+          update[c.symbol] = c.amount;
+        }
+      });
+
+      setCoins(update);
+    }
+  }
+
   useEffect(() => {
     if (accountBalance.id === null) {
-      getBalance()
+      getBalance();
+    }else{
+      console.log('update local balance');
+      updateCoins();
     }
   }, [])
 
@@ -146,9 +172,7 @@ const BalanceScreen = ({ dispatch, platform }) => {
                               </div>
                               <div>
                                 {
-                                  accountBalance && accountBalance.btc !== null
-                                  ? truncate((accountBalance.btc.amount), 6)
-                                  : (0).toFixed(6)
+                                  coins.BTC.toFixed(6)
                                 }
                               </div>
                             </div>
@@ -166,9 +190,7 @@ const BalanceScreen = ({ dispatch, platform }) => {
                               </div>
                               <div>
                                 {
-                                  accountBalance && accountBalance.eth !== null
-                                  ? truncate((accountBalance.eth.amount), 6)
-                                  : (0).toFixed(6)
+                                  coins.ETH.toFixed(6)
                                 }
                               </div>
                             </div>
@@ -186,9 +208,7 @@ const BalanceScreen = ({ dispatch, platform }) => {
                               </div>
                               <div>
                                 {
-                                  accountBalance && accountBalance.usdc !== null
-                                  ? truncate((accountBalance.usdc.amount), 6)
-                                  : (0).toFixed(6)
+                                  coins.USDC.toFixed(6)
                                 }
                               </div>
                             </div>

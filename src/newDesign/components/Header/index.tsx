@@ -50,9 +50,9 @@ declare global {
 
 const getSymbol = (symbol) => {
   switch (symbol) {
-    case 'btc': return <BTC />
-    case 'eth': return <ETH />
-    case 'usdc': return <USDC />
+    case 'BTC': return <BTC />
+    case 'ETH': return <ETH />
+    case 'USDC': return <USDC />
     default: return null
   }
 }
@@ -145,7 +145,7 @@ const LoggedIn = (props) => {
             {accountBalance && accountBalance.wallet && balanceAvailable && balanceAvailable.length
               ? balanceAvailable.map((currency,index) => {
                 var coin = accountBalance.wallet.find(x => x.symbol === currency);
-                var sCurrency = currency.toLowerCase();
+                var sCurrency = currency;
                 return(
                   <MenuItem
                   className={styles.coinMenu}

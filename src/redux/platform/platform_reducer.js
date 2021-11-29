@@ -11,7 +11,7 @@ const INITIAL_STATE = {
     id: null,
     usdc: null,
   },
-  selectedCurrency: "usdc",
+  selectedCurrency: "USDC",
   walletConfig: null,
   language: "en",
   gameList: [],
