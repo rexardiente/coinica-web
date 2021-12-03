@@ -17,11 +17,11 @@ const NewsCard = ({ data }: Props) => {
   };
 
   return (
-    <Card className={styles.container}>
-      <CardContent>
-        {data.length ? (
-          data.map((news, index) => (
-            <Fragment key={index}>
+    <>
+      {data.length ? (
+        data.map((news, index) => (
+          <Card className={styles.container} key={index}>
+            <CardContent>
               <Link
                 href={news.link}
                 target="_blank"
@@ -41,15 +41,23 @@ const NewsCard = ({ data }: Props) => {
                   dangerouslySetInnerHTML={createMarkup(news.excerpt.rendered)}
                 />
               </Typography>
-            </Fragment>
-          ))
-        ) : (
-          <Typography className={styles.title} color="primary" variant="body2">
-            {translate("news.noRecent")}
-          </Typography>
-        )}
-      </CardContent>
-    </Card>
+            </CardContent>
+          </Card>
+        ))
+      ) : (
+        <Card className={styles.container}>
+          <CardContent>
+            <Typography
+              className={styles.title}
+              color="primary"
+              variant="body2"
+            >
+              {translate("news.noRecent")}
+            </Typography>
+          </CardContent>
+        </Card>
+      )}
+    </>
   );
 };
 

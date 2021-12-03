@@ -2,6 +2,7 @@ import { store } from "redux/store";
 import { AxiosMultiCurrency as api } from "Config";
 import { setUserBalance } from "redux/platform/platform_action";
 import { getHeaderParams } from "services/auth";
+import axios from "axios";
 
 /**
  * @param  {string} name - scatter account name
@@ -150,7 +151,9 @@ export const GetDailyRanking = () => {
  * @param  {}
  */
 export const GetNews = (pageNum) => {
-  return api.get(`https://forum.coinica.net/wp-json/wp/v2/posts?per_page=5&page=${pageNum}`);
+  return axios.get(
+    `https://forum.coinica.net/wp-json/wp/v2/posts?per_page=5&page=${pageNum}`
+  );
 };
 
 // Account Settings //
@@ -167,7 +170,7 @@ export const GetTransactionHistory = () => {
  * @param  {}
  */
 export const GetServerStatus = () => {
-  return api.get('/');
+  return api.get("/");
 };
 
 /**
@@ -176,6 +179,10 @@ export const GetServerStatus = () => {
 export const GetUsernameAccountById = (id) => {
   const headers = getHeaderParams();
   return api.get(`/donut/api/v1/get/account/username/by?id=${id}`, { headers });
+};
+
+export const GetTotalRegisteredUser = () => {
+  return api.get("/donut/api/v1/account/registered");
 };
 
 // GET   /donut/api/v1/task/daily
