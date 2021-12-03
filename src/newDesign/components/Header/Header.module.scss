@@ -1,70 +1,78 @@
 @import "/src/assets/scss/colors.scss";
 
-.coinica_header{
-    background-color: $primary-lighter;
+.coinica_header {
+  background-color: $primary-lighter;
 }
 
-.login_button, .stake_button {
-    margin-left:auto;
-    font-size: large;
-    font-weight: 700;
+.login_button,
+.stake_button {
+  margin-left: auto;
+  font-size: large;
+  font-weight: 700;
 }
 
 .coinMenu {
-    color: #000;
-    svg {
-        margin-right: 5px;
-    }
+  color: #000;
+  svg {
+    margin-right: 5px;
+  }
 }
 
-.select_coin{
-    height: 35px;
+.select_coin {
+  height: 35px;
 
-    @media(max-width:425px){
-        width: 108px;
-    }
+  @media (max-width: 425px) {
+    width: 108px;
+  }
 
-    width: 150px;
-    background-color: $secondary-color;
-    color: $google-black;
-    margin-right: 15px;
-    align-items: center;
+  width: 150px;
+  background-color: $secondary-color;
+  color: $google-black;
+  margin-right: 15px;
+  align-items: center;
 }
 
-.select_coin_item{
-    color: $google-black;
+.select_coin_item {
+  color: $google-black;
 }
 
-.logged_in{
-    height: 100%;
-    display: flex;
-    align-items: center;
+.logged_in {
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
-.username{
-    font-size: large;
-    margin-left: 10px;
-    margin-right: 10px;
-    text-transform: none;
-    font-weight: bolder;
+.username {
+  font-size: large;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-transform: none;
+  font-weight: bolder;
 }
 
-.user_menu_button{
-    height: 100%;
-    color: $secondary-color;
+.user_menu_button {
+  height: 100%;
+  color: $secondary-color;
 }
 
-.logo{
-    vertical-align: middle;
-    height: 40px;
+.logo {
+  vertical-align: middle;
+  height: 40px;
 
-    @media(max-width: 1024px){
-        height: 20px;
-    }
-    
+  @media (max-width: 1024px) {
+    height: 20px;
+  }
 }
 
-.switch{
-    position:absolute;
-    margin-left: 50%;
+.switch {
+  position: absolute;
+  margin-left: 50%;
+}
+
+.totalRegistered {
+  color: #bba046ed;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-right: 15px;
+  font-size: 14px;
 }

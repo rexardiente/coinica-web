@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { GetTotalRegisteredUser } from "services/api/server/platform";
 import styles from "./Layout.module.scss";
 import { setLanguage } from "redux/platform/platform_action";
 import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
@@ -21,7 +22,10 @@ const Layout = (props) => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const [activeSidebar, setActiveSidebar] = useState("navigationMini");
   const [mini, setMini] = useState(true);
-  const { language } = useSelector((state: ReduxState) => state.platform);
+  const [registeredUser, setRegisteredUser] = useState(0);
+  const { language, account } = useSelector(
+    (state: ReduxState) => state.platform
+  );
   const { isLoading } = useSelector((state: ReduxState) => state.page);
 
   const handleSelectLanguage = (val: string) => {
@@ -64,6 +68,19 @@ const Layout = (props) => {
     setOpenSidebar(true);
   };
 
+  const countRegisteredUser = async () => {
+    try {
+      const totalUsers = await GetTotalRegisteredUser();
+      setRegisteredUser(totalUsers.data);
+    } catch {}
+  };
+
+  useEffect(() => {
+    if (account) {
+      countRegisteredUser();
+    }
+  }, [account]);
+
   return (
     <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
@@ -94,6 +111,7 @@ const Layout = (props) => {
           <NavigationMini
             name="navigationMini"
             open={openSidebar}
+            totalRegisteredUser={registeredUser}
             handleDrawerToggle={handleDrawerToggle}
             handleDrawerClose={handleDrawerClose}
             handleDrawerOpen={handleDrawerOpen}
