@@ -76,10 +76,8 @@ const Layout = (props) => {
   };
 
   useEffect(() => {
-    if (account) {
-      countRegisteredUser();
-    }
-  }, [account]);
+    countRegisteredUser();
+  }, []);
 
   return (
     <StylesProvider injectFirst>

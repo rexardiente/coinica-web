@@ -137,9 +137,6 @@ const LoggedIn = (props) => {
 
   return (
     <div className={`${styles.logged_in}`}>
-      <div className={styles.totalRegistered}>
-        Registered users: {props.totalRegisteredUser}
-      </div>
       {accountBalance.id !== null ? (
         <FormControl variant="outlined">
           <Select
@@ -385,6 +382,9 @@ const Header = (props: props) => {
           {translate("header.stake")}
         </Button>
         <Box border="1px solid #57688D" height="38px" margin="0 10px" /> */}
+        <div className={styles.totalRegistered}>
+          Registered users: {props.totalRegisteredUser}
+        </div>
         {account ? (
           <LoggedIn {...props} setLogoutModal={setLogoutModal} />
         ) : (
