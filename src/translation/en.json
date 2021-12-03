@@ -43,6 +43,7 @@
   "signup.msg.password.valid": "Looks good!",
   "signup.signing.in": "Signing in...",
   "signup.creating.account": "Creating Account...",
+  "signup.msg.terms.agree": "You must agree to the Terms and Conditions before signing up",
 
   "login.button": "Log in",
   "login.username": "Username",

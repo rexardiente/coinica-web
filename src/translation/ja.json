@@ -41,6 +41,8 @@
   "signup.msg.password.valid": "いいね！",
   "signup.signing.in": "サインイン...",
   "signup.creating.account": "アカウントを作成しています...",
+  "signup.msg.terms.agree": "サインアップする前に利用規約に同意する必要があります",
+
 
   "login.button": "ログイン",
   "login.username": "ユーザー名",
