@@ -3,6 +3,7 @@ import { Typography } from "@material-ui/core";
 import { translate } from "helpers/translate";
 import ToggleButton from "newDesign/components/ToggleButton";
 import styles from "./Header.module.scss";
+import CountdownTimer from "./CoundownTimer";
 
 const ClockIcon = () => {
   return (
@@ -51,7 +52,7 @@ const Header = ({ value, toggleOptions, onChange }: Props) => {
         </Typography>
         <div className={styles.icon}>
           <ClockIcon />
-          <div className={styles.timer}>21:02:24</div>
+          <div className={styles.timer}><CountdownTimer /></div>
         </div>
       </div>
       <ToggleButton
