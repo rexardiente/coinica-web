@@ -59,8 +59,8 @@ const StyledMenu = withStyles({
     top: "70px !important",
     boxShadow:
       "0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%) !important",
-    right: 0,
-    left: "90% !important",
+    right: '0 !important',
+    marginLeft: 'auto',
     "& li": {
       padding: "10px 0px 10px 20px",
       alignItems: "center",
@@ -208,7 +208,6 @@ const LoggedIn = (props) => {
 
 const NotLoggedIn = ({ handleSignUpModalOpen }) => {
   return (
-    <div>
       <Button
         variant="text"
         color="primary"
@@ -217,7 +216,6 @@ const NotLoggedIn = ({ handleSignUpModalOpen }) => {
       >
         {translate("header.login")}
       </Button>
-    </div>
   );
 };
 
