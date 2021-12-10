@@ -1,5 +1,6 @@
 @import "/src/assets/scss/colors.scss";
 
+
 .coinica_header {
   background-color: $primary-lighter;
 }
@@ -9,6 +10,8 @@
   margin-left: auto;
   font-size: large;
   font-weight: 700;
+  height: 100%;
+  border-radius: 0;
 }
 
 .coinMenu {
