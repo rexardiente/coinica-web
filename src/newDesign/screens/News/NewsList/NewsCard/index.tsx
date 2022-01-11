@@ -1,5 +1,5 @@
-import { Fragment } from "react";
-import { Card, CardContent, Typography, Link } from "@material-ui/core";
+import { Link, useRouteMatch } from "react-router-dom";
+import { Card, CardContent, Typography } from "@material-ui/core";
 import { translate } from "helpers/translate";
 import styles from "./NewsCard.module.scss";
 
@@ -8,10 +8,13 @@ type Props = {
     title: { rendered: string };
     excerpt: { rendered: string };
     link: string;
+    id: number;
   }[];
 };
 
 const NewsCard = ({ data }: Props) => {
+  const match = useRouteMatch();
+
   const createMarkup = (elem: string) => {
     return { __html: elem };
   };
@@ -23,12 +26,12 @@ const NewsCard = ({ data }: Props) => {
           <Card className={styles.container} key={index}>
             <CardContent>
               <Link
-                href={news.link}
-                target="_blank"
-                rel="noreferrer"
-                variant="body1"
+                to={`${match.url}/${news.id}`}
+                // href={news.link}
+                // target="_blank"
+                // rel="noreferrer"
+                // variant="body1"
                 color="secondary"
-                underline="always"
                 className={styles.title}
                 dangerouslySetInnerHTML={createMarkup(news.title.rendered)}
               />

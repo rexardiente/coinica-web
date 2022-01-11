@@ -156,6 +156,12 @@ export const GetNews = (pageNum) => {
   );
 };
 
+export const GetNewsById = (id) => {
+  return axios.get(
+    `https://forum.coinica.net/wp-json/wp/v2/posts?include[]=${id}`
+  );
+};
+
 // Account Settings //
 
 /**
