@@ -23,7 +23,7 @@ import {
   setCurrency,
 } from "redux/platform/platform_action";
 import truncate from "helpers/numbers/truncate";
-import { BTC, ETH, USDC } from "components/CurrencySymbols";
+import { BTC, ETH, USDC, TOKEN } from "components/CurrencySymbols";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as assets from "./Assets";
@@ -44,7 +44,7 @@ const getSymbol = (symbol) => {
     case "ETH":
       return <ETH />;
     case "USDC":
-      return <USDC />;
+      return <TOKEN />;
     default:
       return null;
   }

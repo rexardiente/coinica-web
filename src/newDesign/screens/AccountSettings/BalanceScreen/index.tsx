@@ -6,6 +6,7 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import WarningIcon from '@material-ui/icons/Error';
+import StarsIcon from '@material-ui/icons/Stars';
 import BalanceRoutes from "./routes";
 import BalanceHeader from "./BalanceHeader";
 import { GetServerStatus } from "services/api/server/platform";
@@ -159,20 +160,21 @@ const BalanceScreen = ({ dispatch, platform }) => {
                           </div>
                         </div>
                         <Box style={{ display: "flex", flexDirection: "column" }}>
-                          <Box key="btc"
+                        <Box key="usdc"
                             style={{
                               background: 'transparent',
                               padding: "10px",
                             }}
                           >
                             <div className="d-flex justify-content-between align-items-center">
-                              <div className="d-flex align-items-center">
-                                <img className="mr-2" src={BTC_ICON} alt="BTC" />
-                                <div>BTC</div>
+                              <div className="d-flex align-items-center">  
+                                {/* <img className="mr-2" src={USDC_ICON} alt="USDC" /> */}
+                                <StarsIcon style={{fontSize:'2.8em'}} />
+                                <div>TOKEN</div>
                               </div>
                               <div>
                                 {
-                                  coins.BTC.toFixed(6)
+                                  coins.USDC.toFixed(6)
                                 }
                               </div>
                             </div>
@@ -195,20 +197,20 @@ const BalanceScreen = ({ dispatch, platform }) => {
                               </div>
                             </div>
                           </Box>
-                          <Box key="usdc"
+                          <Box key="btc"
                             style={{
                               background: 'transparent',
                               padding: "10px",
                             }}
                           >
                             <div className="d-flex justify-content-between align-items-center">
-                              <div className="d-flex align-items-center">  
-                                <img className="mr-2" src={USDC_ICON} alt="USDC" />
-                                <div>USDC</div>
+                              <div className="d-flex align-items-center">
+                                <img className="mr-2" src={BTC_ICON} alt="BTC" />
+                                <div>BTC</div>
                               </div>
                               <div>
                                 {
-                                  coins.USDC.toFixed(6)
+                                  coins.BTC.toFixed(6)
                                 }
                               </div>
                             </div>

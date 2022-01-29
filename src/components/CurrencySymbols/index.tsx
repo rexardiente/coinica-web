@@ -1,4 +1,5 @@
 import React from "react";
+import StarsIcon from "@material-ui/icons/Stars";
 
 interface SymbolProps {
   width?: any;
@@ -57,4 +58,10 @@ export const USDC = ({ width, height }:SymbolProps) => (
       />
     </g>
   </svg>
+)
+
+export const TOKEN = () => (
+<span>
+  <StarsIcon fontSize='small' />
+</span>
 )
