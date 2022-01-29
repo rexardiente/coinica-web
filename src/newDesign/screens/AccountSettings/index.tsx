@@ -23,7 +23,7 @@ const HeaderTab = withStyles((theme: Theme) =>
       color: '#405680',
       textTransform: 'none',
       minWidth: 72,
-      fontWeight: theme.typography.fontWeightRegular,
+      fontWeight: 'normal',
       marginRight: theme.spacing(4),
       '&:hover': {
         color: '#1785EB',
