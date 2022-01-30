@@ -299,7 +299,7 @@
   "mj.gameplay.wallet.balance": "Balance",
   "mj.gameplay.wallet.withdraw": "Withdraw",
   "mj.gameplay.wallet.deposit": "Deposit",
-  "mj.gameplay.wallet.deposit.content": "(TOKEN) equivalent from your wallet balance",
+  "mj.gameplay.wallet.deposit.content": "(BETA) equivalent from your wallet balance",
   "mj.gameplay.wallet.withdraw.confirmation": "Confirmation",
   "mj.gameplay.wallet.withdraw.content": "Are you sure you want to withdraw your {amount} balance?",
 
