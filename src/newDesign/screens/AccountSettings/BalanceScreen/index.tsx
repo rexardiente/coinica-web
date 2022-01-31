@@ -224,9 +224,12 @@ const BalanceScreen = ({ dispatch, platform }) => {
                   </Grid >
                   <Grid item xs={12} sm={12} md={12} lg={8}>
                     <div className={styles.deposit_withdraw_container}>
-                      <BalanceHeader routeKey={defaultRouteKey()} />
+                      {/* <BalanceHeader routeKey={defaultRouteKey()} />
                       {getNoteMessage(route.key)}
-                      <route.component listOfCurrency={LIST_OF_CURRENCY} isServerUp={isServerUp} {...props} />
+                      <route.component listOfCurrency={LIST_OF_CURRENCY} isServerUp={isServerUp} {...props} /> */}
+                       <p className={styles.deposit_withdraw_disabled}>
+                      <b>Deposit</b> and <b>Withdraw</b> actions are currently disabled during Beta Testing.
+                    </p>
                     </div>
                   </Grid >
                 </Grid>

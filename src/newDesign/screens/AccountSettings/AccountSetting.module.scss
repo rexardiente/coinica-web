@@ -53,10 +53,10 @@
 }
 
 .deposit_withdraw_container {
+  min-height: 100%;
   padding: 1rem 2rem;
   background-color: #242D41;
   border-radius: 5px;
-  display: none;
 }
 
 .info_message {
@@ -82,4 +82,8 @@
   padding: 10px 10px;
   color: #9DC8EF;
   h5 { margin: 0; }
+}
+
+.deposit_withdraw_disabled{
+
 }
