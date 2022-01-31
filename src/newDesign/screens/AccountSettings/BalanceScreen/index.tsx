@@ -170,7 +170,7 @@ const BalanceScreen = ({ dispatch, platform }) => {
                               <div className="d-flex align-items-center">  
                                 {/* <img className="mr-2" src={USDC_ICON} alt="USDC" /> */}
                                 <StarsIcon style={{fontSize:'2.8em'}} />
-                                <div>TOKEN</div>
+                                <div>BETA</div>
                               </div>
                               <div>
                                 {
