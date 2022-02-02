@@ -13,6 +13,7 @@ type Props = {
 };
 
 const NewsCard = ({ data }: Props) => {
+  console.log(data);
   const match = useRouteMatch();
 
   const createMarkup = (elem: string) => {
@@ -25,22 +26,23 @@ const NewsCard = ({ data }: Props) => {
         data.map((news, index) => (
           <Card className={styles.container} key={index}>
             <CardContent>
-              <Link
-                to={`${match.url}/${news.id}`}
-                // href={news.link}
+              <a
+                // to={`${match.url}/${news.id}`}
+                href={news.link}
                 // target="_blank"
                 // rel="noreferrer"
                 // variant="body1"
                 color="secondary"
                 className={styles.title}
                 dangerouslySetInnerHTML={createMarkup(news.title.rendered)}
+                target='_blank'
               />
               <Typography
                 className={styles.description}
                 color="textPrimary"
                 gutterBottom
               >
-                <div
+                <span
                   dangerouslySetInnerHTML={createMarkup(news.excerpt.rendered)}
                 />
               </Typography>
