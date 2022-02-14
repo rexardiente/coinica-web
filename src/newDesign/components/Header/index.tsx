@@ -381,7 +381,7 @@ const Header = (props: props) => {
         </Button>
         <Box border="1px solid #57688D" height="38px" margin="0 10px" /> */}
         <div className={styles.totalRegistered}>
-          Registered users: {props.totalRegisteredUser}
+          Registered users: {(1234 + props.totalRegisteredUser).toLocaleString()}
         </div>
         {account ? (
           <LoggedIn {...props} setLogoutModal={setLogoutModal} />
