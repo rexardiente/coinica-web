@@ -34,6 +34,7 @@ type ChallengeData = {
   wagered: number;
   ratio: number;
   points: number;
+  payout: number;
 };
 
 const Challenge = () => {

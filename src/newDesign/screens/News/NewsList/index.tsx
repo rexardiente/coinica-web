@@ -2,7 +2,7 @@ import Recent from "./Recent";
 import History from "./History";
 
 type NewsData = {
-  id: string;
+  id: number;
   title: { rendered: string };
   excerpt: { rendered: string };
   content: string;

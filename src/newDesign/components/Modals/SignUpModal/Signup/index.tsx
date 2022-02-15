@@ -99,6 +99,10 @@ const SignUp = ({
     }
   };
 
+  const handleTermsToggle = () => {
+    setTerms(!terms);
+  }
+
   const usernameHandler = (e) => {
     const { value } = e.target;
     setUsername(value);
@@ -119,13 +123,21 @@ const SignUp = ({
       setErr(false);
     }
   };
+
   const validateForm = () => {
     if (passObj.password !== passObj.password2) {
       setErr(true);
+      setSubmitErr('signup.msg.password.not_match');
+      return false;
+    }
+    if(!terms){
+      setErr(true);
+      setSubmitErr('signup.msg.terms.agree');
       return false;
     }
     return true;
   };
+
   const automaticSignInUser = async ({ username, password }) => {
     try {
       setSigningIn(true);
@@ -152,6 +164,7 @@ const SignUp = ({
       setSigningIn(false);
     }
   };
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     if (validateForm()) {
@@ -203,12 +216,13 @@ const SignUp = ({
   ) => {
     event.preventDefault();
   };
+
     return (
       <form onSubmit={handleSignUp}>
         <Grid container spacing={4}>
           {submitErr && (
             <Grid item xs={12} className={`${styles.error_message}`}>
-              {submitErr}
+              {translate(submitErr)}
             </Grid>
           )}
           {submitSuccess && (
@@ -272,6 +286,7 @@ const SignUp = ({
               </InputLabel>
               {/* <InputBase defaultValue="" id="bootstrap-input" className={`${styles.input_field}`} /> */}
               <BootstrapInput
+                required
                 name="password"
                 type={showPass ? "text" : "password"}
                 value={passObj.password}
@@ -299,13 +314,14 @@ const SignUp = ({
             <FormControl fullWidth>
               <InputLabel
                 shrink
-                htmlFor="confirm-password"
+                htmlFor="password2"
                 className={`${styles.label}`}
               >
                 {translate("signup.confirm.password")}
               </InputLabel>
               {/* <InputBase defaultValue="" id="bootstrap-input" className={`${styles.input_field}`} /> */}
               <BootstrapInput
+                required
                 name="password2"
                 type={showPass ? "text" : "password"}
                 value={passObj.password2}
@@ -353,7 +369,7 @@ const SignUp = ({
             >
               <FormControlLabel
                 value="start"
-                control={<Checkbox className={`${styles.agreement}`} />}
+                control={<Checkbox className={`${styles.agreement}`} value={terms} onClick={handleTermsToggle} />}
                 label={translate("signup.agreement")}
                 labelPlacement="start"
               />

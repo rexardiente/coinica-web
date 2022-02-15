@@ -3,12 +3,14 @@ import { useDispatch } from "react-redux";
 import { setPageLoading } from "redux/page/page_action";
 import { Grid, Typography } from "@material-ui/core";
 import { GetNews } from "services/api/server/platform";
+import { Route, useRouteMatch } from "react-router-dom";
 import Header from "./Header";
 import NewsList from "./NewsList";
+import Post from "./Post";
 import styles from "./News.module.scss";
 
 type NewsData = {
-  id: string;
+  id: number;
   title: { rendered: string };
   excerpt: { rendered: string };
   content: string;
@@ -17,6 +19,7 @@ type NewsData = {
 };
 
 const News = () => {
+  const { path } = useRouteMatch();
   const dispatch = useDispatch();
 
   const [newsData, setNewsData] = useState<NewsData[]>([]);
@@ -55,7 +58,20 @@ const News = () => {
           <Header />
         </Grid>
         <Grid item xs={12}>
-          <NewsList data={newsData} />
+          <Route
+            exact
+            path={path}
+            component={() => {
+              return <NewsList data={newsData} />;
+            }}
+          ></Route>
+          <Route
+            exact
+            path={`${path}/:postId`}
+            component={() => {
+              return <Post />;
+            }}
+          ></Route>
         </Grid>
       </Grid>
     </Fragment>

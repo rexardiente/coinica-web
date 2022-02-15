@@ -16,6 +16,7 @@ type LeaderBoard = {
   wagered: number;
   ratio: number;
   points: number;
+  payout: number;
 };
 
 type Props = {
@@ -38,10 +39,10 @@ const Benefits = ({ data }: Props) => {
       <TableRow key={index}>
         <TableCell align="center">{index + 1}</TableCell>
         <TableCell align="center">{row.username || "---"}</TableCell>
-        <TableCell align="center">{row.bets}</TableCell>
-        <TableCell align="center">{row.wagered}</TableCell>
-        <TableCell align="center">{row.ratio}</TableCell>
-        <TableCell align="center">{row.points}</TableCell>
+        <TableCell align="center">{row.bets % 1 === 0? row.bets : row.bets.toFixed(4)}</TableCell>
+        <TableCell align="center">{row.payout % 1 === 0? row.payout : row.payout.toFixed(4)}</TableCell>
+        <TableCell align="center">{row.ratio % 1 === 0? row.ratio : row.ratio.toFixed(4)}</TableCell>
+        <TableCell align="center">{row.points % 1 === 0? row.points : row.points.toFixed(4)}</TableCell>
       </TableRow>
     ));
   };

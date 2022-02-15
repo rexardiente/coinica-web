@@ -28,10 +28,9 @@ const BorderLinearProgress = withStyles((theme: Theme) =>
 
 type Props = {
   vipPoints: number;
-  totalPayout: { current: number; max: number };
 };
 
-const Points = ({ vipPoints, totalPayout }: Props) => {
+const Points = ({ vipPoints }: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles.headerTitle}>

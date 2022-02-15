@@ -11,16 +11,18 @@ interface Props {
     name : string;
     mini : boolean;
     language : string;
+    totalRegisteredUser: number;
     handleSelectLanguage : Function;
 }
 
-export default function Navigation({handleDrawerToggle, open, mini, handleNavType, language, handleSelectLanguage, handleDrawerClose, handleDrawerOpen}:Props){
+export default function Navigation({handleDrawerToggle, open, mini, handleNavType, language, totalRegisteredUser, handleSelectLanguage, handleDrawerClose, handleDrawerOpen}:Props){
     return (
       <>
         <Header
           open={open}
           handleDrawerToggle={handleDrawerToggle}
           mini={mini}
+          totalRegisteredUser={totalRegisteredUser}
           handleNavType={handleNavType}
         />
         <Sidebar

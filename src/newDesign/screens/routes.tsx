@@ -13,7 +13,9 @@ const AccountSetting = lazy(() => import("./AccountSettings"));
 const Treasurehunt = lazy(() => import("./Treasurehunt"));
 const TreasurehuntGameplayV2 = lazy(() => import("./TreasurehuntGameplayV2"));
 const TreasurehuntAutoplayV2 = lazy(() => import("./TreasurehuntAutoplayV2"));
-const TreasurehuntAutoplayGameplay = lazy(() => import("./TreasurehuntAutoplayGameplay"));
+const TreasurehuntAutoplayGameplay = lazy(
+  () => import("./TreasurehuntAutoplayGameplay")
+);
 const GhostQuest = lazy(() => import("./GhostQuest"));
 const GhostQuestGhostList = lazy(() => import("./GhostQuestGhostList"));
 const GhostQuestSummon = lazy(() => import("./GhostQuestSummon"));
@@ -65,7 +67,7 @@ const routes = [
   },
   {
     key: "News",
-    exact: true,
+    exact: false,
     path: "/news",
     component: News,
     isPrivate: false,

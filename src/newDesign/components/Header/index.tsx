@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import clsx from "clsx";
-import {
-  createStyles,
-  makeStyles,
-  useTheme,
-  Theme,
-} from "@material-ui/core/styles";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
   AppBar,
   Toolbar,
   Button,
-  FormGroup,
-  FormControlLabel,
   FormControl,
-  Switch,
   IconButton,
   Select,
   MenuItem,
@@ -23,9 +14,8 @@ import {
   Menu,
   withStyles,
   MenuProps,
-  Box,
 } from "@material-ui/core";
-import { Menu as MenuIcon, ArrowDropDown } from "@material-ui/icons"
+import { Menu as MenuIcon, ArrowDropDown } from "@material-ui/icons";
 import styles from "./Header.module.scss";
 import { translate } from "helpers/translate";
 import {
@@ -33,14 +23,13 @@ import {
   setCurrency,
 } from "redux/platform/platform_action";
 import truncate from "helpers/numbers/truncate";
-import { BTC, ETH, USDC } from "components/CurrencySymbols";
+import { BTC, ETH, USDC, TOKEN } from "components/CurrencySymbols";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as assets from "./Assets";
 
 const LogoutModal = React.lazy(() => import("../Modals/Logout"));
 const SignupModal = React.lazy(() => import("../Modals/SignUpModal"));
-
 
 declare global {
   interface Window {
@@ -50,33 +39,38 @@ declare global {
 
 const getSymbol = (symbol) => {
   switch (symbol) {
-    case 'BTC': return <BTC />
-    case 'ETH': return <ETH />
-    case 'USDC': return <USDC />
-    default: return null
+    case "BTC":
+      return <BTC />;
+    case "ETH":
+      return <ETH />;
+    case "USDC":
+      return <TOKEN />;
+    default:
+      return null;
   }
-}
+};
 
 const StyledMenu = withStyles({
   paper: {
-    width: '150px',
+    width: "150px",
     backgroundColor: "#242D41",
-    color: '#1785EB',
-    borderRadius: '0px',
-    top: '70px !important',
-    boxShadow: '0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%) !important',
-    right: 0,
-    left: '90% !important',
-    '& li':{
-      padding: '10px 0px 10px 20px',
-      alignItems: 'center',
-      fontWeight: 'bolder',
-      '& img':{
-        height: '20px',
-        width: '20px',
-        marginRight: '10px',
-      }
-    }
+    color: "#1785EB",
+    borderRadius: "0px",
+    top: "70px !important",
+    boxShadow:
+      "0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%) !important",
+    right: '0 !important',
+    marginLeft: 'auto',
+    "& li": {
+      padding: "10px 0px 10px 20px",
+      alignItems: "center",
+      fontWeight: "bolder",
+      "& img": {
+        height: "20px",
+        width: "20px",
+        marginRight: "10px",
+      },
+    },
   },
 })((props: MenuProps) => (
   <Menu
@@ -90,12 +84,14 @@ const StyledMenu = withStyles({
 const LoggedIn = (props) => {
   const history = useHistory();
   const { account, accountBalance, selectedCurrency } = props?.platform;
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [balanceAvailable, setBalanceAvailable] = useState(() => {
     if (accountBalance.id !== null) {
       const arr = accountBalance.wallet;
-      const coins = arr.map(a => {return a.symbol});
+      const coins = arr.map((a) => {
+        return a.symbol;
+      });
       return coins;
     }
   });
@@ -110,10 +106,12 @@ const LoggedIn = (props) => {
     setBalanceAvailable(() => {
       if (accountBalance.id !== null) {
         const arr = accountBalance.wallet;
-        const coins = arr.map(a => {return a.symbol});
+        const coins = arr.map((a) => {
+          return a.symbol;
+        });
         return coins;
       }
-    })
+    });
   }, [accountBalance]);
 
   const logoutUser = () => {
@@ -125,7 +123,7 @@ const LoggedIn = (props) => {
     props.dispatch(setCurrency(currency));
   };
 
-  const handleSelectChange = (event: React.ChangeEvent<{ value : unknown }>) => {
+  const handleSelectChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setSelectedCurrency(event.target.value as string);
   };
 
@@ -136,7 +134,7 @@ const LoggedIn = (props) => {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
-  
+
   return (
     <div className={`${styles.logged_in}`}>
       {accountBalance.id !== null ? (
@@ -146,25 +144,28 @@ const LoggedIn = (props) => {
             onChange={handleSelectChange}
             className={styles.select_coin}
           >
-            {accountBalance && accountBalance.wallet && balanceAvailable && balanceAvailable.length
-              ? balanceAvailable.map((currency,index) => {
-                var coin = accountBalance.wallet.find(x => x.symbol === currency);
-                var sCurrency = currency;
-                return(
-                  <MenuItem
-                  className={styles.coinMenu}
-                  key={sCurrency + index}
-                  value={sCurrency}
-                >
-                  {getSymbol(sCurrency)}{" "}
-                  {
-                      coin !== null
-                    ? 
-                    truncate(coin.amount, 6)
-                    : (0).toFixed(6)}
-                </MenuItem>
-                );
-              })
+            {accountBalance &&
+            accountBalance.wallet &&
+            balanceAvailable &&
+            balanceAvailable.length
+              ? balanceAvailable.map((currency, index) => {
+                  var coin = accountBalance.wallet.find(
+                    (x) => x.symbol === currency
+                  );
+                  var sCurrency = currency;
+                  return (
+                    <MenuItem
+                      className={styles.coinMenu}
+                      key={sCurrency + index}
+                      value={sCurrency}
+                    >
+                      {getSymbol(sCurrency)}{" "}
+                      {coin !== null
+                        ? truncate(coin.amount, 6)
+                        : (0).toFixed(6)}
+                    </MenuItem>
+                  );
+                })
               : null}
           </Select>
         </FormControl>
@@ -177,9 +178,7 @@ const LoggedIn = (props) => {
         className={`${styles.user_menu_button}`}
       >
         <Avatar src="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" />
-        <Typography className={`${styles.username}`}>
-          {username}
-        </Typography>
+        <Typography className={`${styles.username}`}>{username}</Typography>
         <ArrowDropDown />
       </Button>
       <StyledMenu
@@ -190,17 +189,25 @@ const LoggedIn = (props) => {
         onClose={handleMenuClose}
       >
         {/* <MenuItem>{translate("header.dropdown.hello")} {`, ${username}`}</MenuItem> */}
-        <MenuItem onClick={() => history.push("/account/balance/deposit")}><img src={assets.wallet} />{translate("header.dropdown.balance")}</MenuItem>
-        <MenuItem onClick={() => history.push("/account/settings")}><img src={assets.settings} />{translate("header.dropdown.settings")}</MenuItem>
-        <MenuItem onClick={() => logoutUser()}><img src={assets.logout} />{translate("header.dropdown.logout")}</MenuItem>
+        <MenuItem onClick={() => history.push("/account/balance/deposit")}>
+          <img src={assets.wallet} />
+          {translate("header.dropdown.balance")}
+        </MenuItem>
+        <MenuItem onClick={() => history.push("/account/settings")}>
+          <img src={assets.settings} />
+          {translate("header.dropdown.settings")}
+        </MenuItem>
+        <MenuItem onClick={() => logoutUser()}>
+          <img src={assets.logout} />
+          {translate("header.dropdown.logout")}
+        </MenuItem>
       </StyledMenu>
     </div>
   );
 };
 
-const NotLoggedIn = ({handleSignUpModalOpen}) => {
+const NotLoggedIn = ({ handleSignUpModalOpen }) => {
   return (
-    <div>
       <Button
         variant="text"
         color="primary"
@@ -209,7 +216,6 @@ const NotLoggedIn = ({handleSignUpModalOpen}) => {
       >
         {translate("header.login")}
       </Button>
-    </div>
   );
 };
 
@@ -257,11 +263,11 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(3),
     },
     toolbar: {
-      height: '70px',
+      height: "70px",
       padding: 0,
-      justifyContent: 'space-between',
-      [theme.breakpoints.down(768)]:{
-        paddingLeft: '5px',
+      justifyContent: "space-between",
+      [theme.breakpoints.down(768)]: {
+        paddingLeft: "5px",
       },
     },
   })
@@ -275,8 +281,9 @@ type props = {
   handleNavType: Function;
   scatter?: any;
   platform: any;
-  walletExt?: any;  
+  walletExt?: any;
   dispatch: Function;
+  totalRegisteredUser: number;
 };
 
 const Header = (props: props) => {
@@ -305,7 +312,7 @@ const Header = (props: props) => {
 
   const handleCloseLogoutModal = () => {
     setLogoutModal(false);
-  }
+  };
 
   return (
     <AppBar position="fixed" className={clsx(classes.appBar)}>
@@ -373,7 +380,10 @@ const Header = (props: props) => {
           {translate("header.stake")}
         </Button>
         <Box border="1px solid #57688D" height="38px" margin="0 10px" /> */}
-        { account ? (
+        <div className={styles.totalRegistered}>
+          Registered users: {(1234 + props.totalRegisteredUser).toLocaleString()}
+        </div>
+        {account ? (
           <LoggedIn {...props} setLogoutModal={setLogoutModal} />
         ) : (
           <NotLoggedIn handleSignUpModalOpen={handleSignUpModalOpen} />

@@ -28,7 +28,7 @@ const VIPprogressBar = ({ currentValue }: Props) => {
   return (
     <div className={styles.container}>
       <BorderLinearProgressBar
-        value={currentValue}
+        value={currentValue? Number(currentValue) : 0}
         variant="determinate"
         className={styles.barHeight}
       />
@@ -36,8 +36,9 @@ const VIPprogressBar = ({ currentValue }: Props) => {
         {currentValue
           ? currentValue == 100
             ? currentValue
-            : currentValue.toFixed(2)
-          : 0}
+            : Number(currentValue).toFixed(2)
+          : 0
+          }
         %
       </div>
     </div>

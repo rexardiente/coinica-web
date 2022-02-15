@@ -43,6 +43,7 @@
   "signup.msg.password.valid": "Looks good!",
   "signup.signing.in": "Signing in...",
   "signup.creating.account": "Creating Account...",
+  "signup.msg.terms.agree": "You must agree to the Terms and Conditions before signing up",
 
   "login.button": "Log in",
   "login.username": "Username",
@@ -298,7 +299,7 @@
   "mj.gameplay.wallet.balance": "Balance",
   "mj.gameplay.wallet.withdraw": "Withdraw",
   "mj.gameplay.wallet.deposit": "Deposit",
-  "mj.gameplay.wallet.deposit.content": "(USDC) equivalent from your {currency} balance",
+  "mj.gameplay.wallet.deposit.content": "(BETA) equivalent from your wallet balance",
   "mj.gameplay.wallet.withdraw.confirmation": "Confirmation",
   "mj.gameplay.wallet.withdraw.content": "Are you sure you want to withdraw your {amount} balance?",
 
